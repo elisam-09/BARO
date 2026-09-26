@@ -13,6 +13,7 @@ _STATUS_LABELS = {
     'pending':   'Reçue — en attente de confirmation',
     'confirmed': 'Confirmée ✅',
     'preparing': 'En préparation 👨‍🍳',
+    'shipped':   'En route 🚚',
     'delivered': 'Livrée / retirée 📦',
     'cancelled': 'Annulée',
 }
@@ -53,7 +54,10 @@ class ShopOrder(db.Model):
             'payment':       self.payment,
             'note':          self.note,
             'status':        self.status,
-            'date':          self.created_at.isoformat() if self.created_at else None,
+            # created_at est en UTC (datetime.utcnow) : on le DIT, sinon le
+            # navigateur lit une heure locale et chaque commande paraît plus
+            # vieille (ou plus jeune) du décalage horaire du téléphone.
+            'date':          (self.created_at.isoformat() + 'Z') if self.created_at else None,
             'source':        'online',
         }
 
@@ -113,7 +117,7 @@ def track_order(order_id):
         'total':         order.total,
         'mode':          order.mode,
         'items_count':   len(json.loads(order.items or '[]')),
-        'created_at':    order.created_at.isoformat() if order.created_at else None,
+        'created_at':    (order.created_at.isoformat() + 'Z') if order.created_at else None,
         'business_name': owner.business_name if owner else None,
     })
 
@@ -134,7 +138,9 @@ def update_order(current_user, order_id):
     if not order:
         return jsonify({'error': 'Commande introuvable'}), 404
     status = (request.json or {}).get('status')
-    if status not in ('pending', 'confirmed', 'preparing', 'delivered', 'cancelled'):
+    # « shipped » : l'app propose désormais l'étape « en route » entre la
+    # confirmation et la livraison ; le client la voit sur sa page de suivi.
+    if status not in ('pending', 'confirmed', 'preparing', 'shipped', 'delivered', 'cancelled'):
         return jsonify({'error': 'Statut invalide'}), 400
     order.status = status
     db.session.commit()

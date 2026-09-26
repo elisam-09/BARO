@@ -270,6 +270,192 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zau_planifPleine: "trop d'envois programmés ({0}) : celui-ci n'a pas été accepté",
+    zau_ignores: "{0} ignoré(s) aujourd'hui",
+    zau_etat_erreur: "refusé",
+    zau_etat_config: "à régler",
+    zau_etat_indetermine: "résultat inconnu",
+    zau_reprisePlan: "Retour au forfait Entreprise : {0} envoi(s) programmé(s) trop anciens ont été abandonnés, et les règles repartent de maintenant.",
+    zau_repriseRestauration: "Sauvegarde restaurée : {0} envoi(s) programmé(s) trop anciens ont été abandonnés, et les règles repartent de maintenant.",
+    zau_avertTelegramChat: "Telegram est connecté mais sans identifiant de conversation : rien ne partira. Renseignez-le dans Intégrations › Telegram.",
+    zau_aideAttenteDelai: "Le délai, c'est le nombre d'heures ci-dessus : l'alerte part dès qu'il est atteint, jamais après une confirmation.",
+    zau_jetonsInconnus: "{0} n'existe pas pour ce déclencheur : il sera retiré du message.",
+    zwf_fileSaturee: "La file était pleine : {0} ancien(s) message(s) en attente ont dû être retirés. Envoyez ou jetez les messages plus souvent.",
+    zwf_compris: "Compris",
+    zpl_reserve: "{0} — réservé au forfait Pro",
+    zpl_passer: "Passer en Pro",
+    zpl_bqDesc: "Créez une vraie boutique en ligne — une page web avec panier — que vos clients visitent pour commander.",
+    zpl_bq1: "🏪 Boutique en ligne personnalisable",
+    zpl_bq2: "🎨 Éditeur visuel en direct",
+    zpl_bq3: "🛒 Panier et commande sur le site ou par WhatsApp",
+    zpl_bq4: "📦 Articles et ventes illimités",
+    zpl_bq5: "🔍 Spectra, la vision IA, sans limite",
+    zpl_mkTitre: "Marketing et campagnes",
+    zpl_mkDesc: "Lancez des promotions, bannières, fenêtres, campagnes WhatsApp et SMS, et un programme de fidélité pour vendre plus.",
+    zpl_mk1: "📣 Promotions, bannières, fenêtres",
+    zpl_mk2: "📧 Campagnes WhatsApp, SMS et e-mail",
+    zpl_mk3: "🎁 Programme de fidélité",
+    zpl_mk4: "⭐ Avis clients",
+    zpl_mk5: "🔗 Liens de suivi marketing",
+    zpl_inTitre: "Intégrations et API",
+    zpl_inDesc: "Reliez WhatsApp Business, Shopify, WooCommerce, Glovo, Yango, Wave et d'autres à votre stock BARO.",
+    zpl_in1: "🔌 10 intégrations en Pro",
+    zpl_in2: "🛒 Shopify, WooCommerce, Jumia",
+    zpl_in3: "🚚 Glovo, Yango Delivery",
+    zpl_in4: "💳 Tableaux Wave et Orange Money",
+    zpl_in5: "🔗 API REST (Entreprise)",
+    zcm_marquerRoute: "En route",
+    zcm_marquerLivree: "Marquer livrée",
+    zcm_contacter: "Contacter",
+    zcm_paiement: "Paiement",
+    zcm_commandeN: "Commande {0}",
+    zcm_preparation: "En préparation",
+    zcm_enRoute: "En route",
+    zcm_contactMsg: "Bonjour {0}, votre commande chez {1} est prête ! Total : {2}",
+    zcm_actConfirmee: "Commande confirmée — {0}",
+    zcm_okConfirmee: "Commande confirmée",
+    zcm_okRoute: "Commande en route",
+    zcm_okLivree: "Commande livrée",
+    zcm_okAnnulee: "Commande annulée",
+    zcm_okMaj: "Commande mise à jour",
+    zcm_nbArticles: "{0} article(s)",
+    zau_okBaseline1: "Règle enregistrée. Le cas déjà en cours n'est pas relancé d'un coup : elle agit à partir de maintenant.",
+    zi_ev_regle: "Règle sur mesure",
+    zau_titre: "Automatisations",
+    zau_sousTitre: "Vos propres règles : quand… si… alors…",
+    zau_menuSub: "Des règles sur mesure qui travaillent pour vous",
+    zau_lockDesc: "Composez vos propres règles : quand une commande arrive, attend, est livrée, quand un fidèle décroche — BARO écrit au bon moment, à la bonne personne, sur le bon canal.",
+    zau_perk1: "⚙️ Quand, si, alors, après : vos propres règles",
+    zau_perk2: "⏳ Les commandes oubliées signalées toutes seules",
+    zau_perk3: "⭐ Les avis demandés deux jours après la livraison",
+    zau_perk4: "🎯 Les fidèles qui décrochent relancés à temps",
+    zau_actives: "Actives",
+    zau_executions: "Exécutions",
+    zau_planifiees: "Programmées",
+    zau_noteApi: "Sans l'API Cloud de Meta, les messages WhatsApp de vos règles s'écrivent seuls mais attendent un tap dans « Messages en attente ».",
+    zau_vosRegles: "Vos règles",
+    zau_videT: "Aucune règle pour l'instant",
+    zau_videD: "Partez d'une recette ci-dessous, ou composez la vôtre en quatre choix.",
+    zau_nouvelle: "Nouvelle règle",
+    zau_recettes: "Recettes prêtes",
+    zau_recettesAide: "Chacune s'ouvre dans l'éditeur : vous la relisez, l'ajustez, puis l'enregistrez. Rien ne s'arme sans vous.",
+    zau_utiliser: "Utiliser",
+    zau_piedTemps: "Les actions différées et les déclencheurs liés au temps sont vérifiés chaque minute tant que l'app est ouverte, et à chaque retour dans l'app. Aucun serveur ne veille à sa place : une action due pendant que l'app est fermée part à la prochaine ouverture.",
+    zau_quand: "Quand",
+    zau_si: "Si",
+    zau_alors: "Alors",
+    zau_message: "Le message",
+    zau_executee: "Exécutée {0} fois",
+    zau_jamais: "Pas encore exécutée",
+    zau_enAttenteN: "{0} programmée(s)",
+    zau_modifier: "Modifier",
+    zau_apercu: "Aperçu",
+    zau_masquer: "Masquer",
+    zau_supprimer: "Supprimer",
+    zau_apercuT: "Ce qui partira, avec vos vraies données",
+    zau_allumer: "Allumer",
+    zau_eteindre: "Éteindre",
+    zau_sansNom: "Règle sans nom",
+    zau_confirmSuppr: "Supprimer la règle « {0} » ? Ce qu'elle avait programmé ne partira pas.",
+    zau_editT: "Modifier la règle",
+    zau_nouvelleT: "Nouvelle règle",
+    zau_editSous: "Quatre choix, et BARO s'occupe du reste",
+    zau_fNom: "Nom de la règle",
+    zau_fNomPh: "ex : Avis après livraison",
+    zau_fDecl: "Déclencheur",
+    zau_fHeures: "Au bout de combien d'heures ?",
+    zau_aideSilence: "Un habitué — au moins trois visites — dont l'absence dépasse une fois et demie son rythme habituel. C'est le même calcul que le Radar clients.",
+    zau_fCond: "Condition",
+    zau_fValMontant: "Montant ({0})",
+    zau_fValZone: "La zone contient",
+    zau_fValNb: "Nombre de commandes",
+    zau_fAct: "Action",
+    zau_fDelai: "Quand l'envoyer",
+    zau_annuler: "Annuler",
+    zau_enregistrer: "Enregistrer la règle",
+    zau_errNom: "Donnez un nom à la règle",
+    zau_errTexte: "Écrivez le message",
+    zau_errValeur: "La valeur de la condition est manquante ou invalide",
+    zau_okCree: "Règle créée — elle agit à partir de maintenant",
+    zau_okModif: "Règle enregistrée",
+    zau_okBaseline: "Règle enregistrée. {0} cas déjà en cours ne sont pas relancés d'un coup : elle agit à partir de maintenant.",
+    zau_notePartir: "Cette règle agit à partir de maintenant : les commandes et les clients déjà concernés ne recevront pas un message d'un coup.",
+    zau_noteFutur: "Cette règle s'applique aux prochains événements, jamais aux commandes passées.",
+    zau_texteDefaut: "Bonjour {{client}} 👋\n\n\n{{business}}",
+    zau_texteVide: "message vide",
+    zau_plafond: "plafond de {0} envois par jour atteint",
+    zau_sansTelClient: "pas de numéro client",
+    zau_sansTelMoi: "votre numéro WhatsApp n'est pas réglé",
+    zau_sansTelegram: "Telegram n'est pas connecté",
+    zau_sansWebhook: "aucun Zapier, Make ou n8n connecté",
+    zau_moi: "Moi",
+    zau_exArticle: "Article exemple",
+    zau_avertTelegram: "Telegram n'est pas connecté : la règle sera enregistrée, mais rien ne partira tant que vous ne l'aurez pas branché dans Intégrations.",
+    zau_avertWebhook: "Aucun Zapier, Make ou n8n n'est connecté : rien ne partira tant que l'un d'eux n'est pas branché dans Intégrations.",
+    zau_avertWa: "WhatsApp n'est pas configuré : réglez au moins votre numéro dans l'écran WhatsApp.",
+    zau_lienWa: "Allez plus loin : vos propres règles, avec conditions et délais",
+    zau_do_cmd_recue: "Une commande arrive",
+    zau_do_cmd_confirmee: "Une commande est confirmée",
+    zau_do_cmd_expediee: "Une commande part en livraison",
+    zau_do_cmd_livree: "Une commande est livrée",
+    zau_do_cmd_annulee: "Une commande est annulée",
+    zau_do_cmd_attente: "Une commande attend sans confirmation",
+    zau_do_stock_bas: "Un article passe sous son seuil",
+    zau_do_client_silence: "Un habitué ne revient pas",
+    zau_dl_cmd_recue: "une commande arrive",
+    zau_dl_cmd_confirmee: "une commande est confirmée",
+    zau_dl_cmd_expediee: "une commande part en livraison",
+    zau_dl_cmd_livree: "une commande est livrée",
+    zau_dl_cmd_annulee: "une commande est annulée",
+    zau_dl_cmd_attente: "une commande attend depuis {0} h",
+    zau_dl_stock_bas: "un article passe sous son seuil",
+    zau_dl_client_silence: "un habitué ne revient pas",
+    zau_co_aucune: "Toujours",
+    zau_co_montant_min: "Le montant atteint au moins…",
+    zau_co_montant_max: "Le montant ne dépasse pas…",
+    zau_co_zone: "La zone de livraison contient…",
+    zau_co_premiere: "C'est sa première commande",
+    zau_co_fidele: "Il a déjà commandé plusieurs fois",
+    zau_co_palier: "C'est sa énième commande (palier)",
+    zau_co_montant_mois: "Il dépense au moins… par mois",
+    zau_cl_montant_min: "le montant atteint {0}",
+    zau_cl_montant_max: "le montant ne dépasse pas {0}",
+    zau_cl_zone: "la zone contient « {0} »",
+    zau_cl_premiere: "c'est sa première commande",
+    zau_cl_fidele: "c'est au moins sa {0}e commande",
+    zau_cl_palier: "c'est sa {0}e commande",
+    zau_cl_montant_mois: "il dépense au moins {0} par mois",
+    zau_a_wa_client: "WhatsApp au client",
+    zau_a_wa_moi: "WhatsApp à moi",
+    zau_a_telegram: "Message Telegram",
+    zau_a_webhook: "Zapier, Make ou n8n",
+    zau_al_wa_client: "écrire au client sur WhatsApp",
+    zau_al_wa_moi: "me prévenir sur WhatsApp",
+    zau_al_telegram: "envoyer sur Telegram",
+    zau_al_webhook: "envoyer à Zapier, Make ou n8n",
+    zau_t0: "tout de suite",
+    zau_t1h: "une heure après",
+    zau_t1j: "le lendemain",
+    zau_t2j: "deux jours après",
+    zau_t7j: "une semaine après",
+    zau_r_avis: "Demander un avis",
+    zau_rd_avis: "Deux jours après la livraison, un mot au client.",
+    zau_rt_avis: "Bonjour {{client}} 👋\n\nVotre commande {{ref}} est arrivée il y a deux jours. Tout vous convient ?\nUn mot de votre part nous aide énormément.\n\n{{business}}",
+    zau_r_attente: "Commande oubliée",
+    zau_rd_attente: "Vous êtes prévenu si une commande attend deux heures sans confirmation.",
+    zau_rt_attente: "⏳ La commande {{ref}} de {{client}} ({{total}} {{sym}}) attend depuis {{heures}} h sans confirmation.",
+    zau_r_premier: "Remercier un nouveau client",
+    zau_rd_premier: "Une heure après sa première commande confirmée.",
+    zau_rt_premier: "{{client}}, merci pour votre toute première commande chez {{business}} ! Nous sommes ravis de vous compter parmi nos clients. 🙏",
+    zau_r_grosse: "Alerte grosse commande",
+    zau_rd_grosse: "Vous êtes prévenu dès qu'une commande dépasse un montant.",
+    zau_rt_grosse: "💰 Grosse commande : {{total}} {{sym}} de {{client}}\nZone : {{zone}}\nRéférence : {{ref}}",
+    zau_r_palier: "Fêter la 5e commande",
+    zau_rd_palier: "Un mot au client qui atteint sa cinquième commande.",
+    zau_rt_palier: "🎉 {{client}}, c'est votre {{rang}}e commande chez {{business}} ! Merci pour votre fidélité.",
+    zau_r_silence: "Relancer un habitué qui décroche",
+    zau_rd_silence: "Quand un habitué dépasse son rythme de visite, d'après le Radar clients.",
+    zau_rt_silence: "Bonjour {{client}} 👋\n\nCela fait {{jours}} jours qu'on ne vous a pas vu chez {{business}}. Tout va bien ? Passez nous voir, on a pensé à vous.",
     zwg_mettreVitrine: "Mettre en vitrine",
     zwg_retirerVitrine: "Retirer de la vitrine",
     zwg_connecte: "Connecté",
@@ -3539,6 +3725,192 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zau_planifPleine: "too many scheduled sends ({0}): this one was not accepted",
+    zau_ignores: "{0} skipped today",
+    zau_etat_erreur: "refused",
+    zau_etat_config: "needs setting up",
+    zau_etat_indetermine: "unknown result",
+    zau_reprisePlan: "Back on the Enterprise plan: {0} scheduled send(s) that were too old have been dropped, and the rules start again from now.",
+    zau_repriseRestauration: "Backup restored: {0} scheduled send(s) that were too old have been dropped, and the rules start again from now.",
+    zau_avertTelegramChat: "Telegram is connected but has no chat ID: nothing will be sent. Set it in Integrations › Telegram.",
+    zau_aideAttenteDelai: "The delay is the number of hours above: the alert goes out as soon as it is reached, never after a confirmation.",
+    zau_jetonsInconnus: "{0} does not exist for this trigger: it will be removed from the message.",
+    zwf_fileSaturee: "The queue was full: {0} older pending message(s) had to be removed. Send or discard messages more often.",
+    zwf_compris: "Got it",
+    zpl_reserve: "{0} — Pro plan only",
+    zpl_passer: "Upgrade to Pro",
+    zpl_bqDesc: "Create a real online shop — a web page with a cart — that your customers visit to order.",
+    zpl_bq1: "🏪 Customisable online shop",
+    zpl_bq2: "🎨 Live visual editor",
+    zpl_bq3: "🛒 Cart and ordering on the site or through WhatsApp",
+    zpl_bq4: "📦 Unlimited items and sales",
+    zpl_bq5: "🔍 Spectra AI vision, unlimited",
+    zpl_mkTitre: "Marketing and campaigns",
+    zpl_mkDesc: "Run promotions, banners, pop-ups, WhatsApp and SMS campaigns, and a loyalty programme to sell more.",
+    zpl_mk1: "📣 Promotions, banners, pop-ups",
+    zpl_mk2: "📧 WhatsApp, SMS and email campaigns",
+    zpl_mk3: "🎁 Loyalty programme",
+    zpl_mk4: "⭐ Customer reviews",
+    zpl_mk5: "🔗 Marketing tracking links",
+    zpl_inTitre: "Integrations and API",
+    zpl_inDesc: "Connect WhatsApp Business, Shopify, WooCommerce, Glovo, Yango, Wave and more to your BARO stock.",
+    zpl_in1: "🔌 10 integrations on Pro",
+    zpl_in2: "🛒 Shopify, WooCommerce, Jumia",
+    zpl_in3: "🚚 Glovo, Yango Delivery",
+    zpl_in4: "💳 Wave and Orange Money dashboards",
+    zpl_in5: "🔗 REST API (Enterprise)",
+    zcm_marquerRoute: "On its way",
+    zcm_marquerLivree: "Mark delivered",
+    zcm_contacter: "Contact",
+    zcm_paiement: "Payment",
+    zcm_commandeN: "Order {0}",
+    zcm_preparation: "Being prepared",
+    zcm_enRoute: "On its way",
+    zcm_contactMsg: "Hello {0}, your order at {1} is ready! Total: {2}",
+    zcm_actConfirmee: "Order confirmed — {0}",
+    zcm_okConfirmee: "Order confirmed",
+    zcm_okRoute: "Order on its way",
+    zcm_okLivree: "Order delivered",
+    zcm_okAnnulee: "Order cancelled",
+    zcm_okMaj: "Order updated",
+    zcm_nbArticles: "{0} item(s)",
+    zau_okBaseline1: "Rule saved. The case already under way will not be contacted at once: it acts from now on.",
+    zi_ev_regle: "Custom rule",
+    zau_titre: "Automations",
+    zau_sousTitre: "Your own rules: when… if… then…",
+    zau_menuSub: "Custom rules that work for you",
+    zau_lockDesc: "Build your own rules: when an order arrives, waits, is delivered, when a regular drifts away — BARO writes at the right time, to the right person, on the right channel.",
+    zau_perk1: "⚙️ When, if, then, after: your own rules",
+    zau_perk2: "⏳ Forgotten orders flagged on their own",
+    zau_perk3: "⭐ Reviews requested two days after delivery",
+    zau_perk4: "🎯 Regulars who drift away followed up in time",
+    zau_actives: "Active",
+    zau_executions: "Runs",
+    zau_planifiees: "Scheduled",
+    zau_noteApi: "Without Meta's Cloud API, the WhatsApp messages from your rules are written on their own but wait for a tap in “Pending messages”.",
+    zau_vosRegles: "Your rules",
+    zau_videT: "No rules yet",
+    zau_videD: "Start from a recipe below, or build your own in four choices.",
+    zau_nouvelle: "New rule",
+    zau_recettes: "Ready-made recipes",
+    zau_recettesAide: "Each one opens in the editor: you read it, adjust it, then save it. Nothing switches on without you.",
+    zau_utiliser: "Use",
+    zau_piedTemps: "Delayed actions and time-based triggers are checked every minute while the app is open, and every time you come back to it. No server watches in its place: an action due while the app is closed goes out at the next opening.",
+    zau_quand: "When",
+    zau_si: "If",
+    zau_alors: "Then",
+    zau_message: "The message",
+    zau_executee: "Ran {0} times",
+    zau_jamais: "Not run yet",
+    zau_enAttenteN: "{0} scheduled",
+    zau_modifier: "Edit",
+    zau_apercu: "Preview",
+    zau_masquer: "Hide",
+    zau_supprimer: "Delete",
+    zau_apercuT: "What will be sent, with your real data",
+    zau_allumer: "Switch on",
+    zau_eteindre: "Switch off",
+    zau_sansNom: "Untitled rule",
+    zau_confirmSuppr: "Delete the rule “{0}”? Anything it had scheduled will not be sent.",
+    zau_editT: "Edit the rule",
+    zau_nouvelleT: "New rule",
+    zau_editSous: "Four choices, and BARO takes care of the rest",
+    zau_fNom: "Rule name",
+    zau_fNomPh: "e.g. Review after delivery",
+    zau_fDecl: "Trigger",
+    zau_fHeures: "After how many hours?",
+    zau_aideSilence: "A regular — at least three visits — whose absence exceeds one and a half times their usual rhythm. It is the same calculation as the Customer radar.",
+    zau_fCond: "Condition",
+    zau_fValMontant: "Amount ({0})",
+    zau_fValZone: "The area contains",
+    zau_fValNb: "Number of orders",
+    zau_fAct: "Action",
+    zau_fDelai: "When to send it",
+    zau_annuler: "Cancel",
+    zau_enregistrer: "Save the rule",
+    zau_errNom: "Give the rule a name",
+    zau_errTexte: "Write the message",
+    zau_errValeur: "The condition value is missing or invalid",
+    zau_okCree: "Rule created — it acts from now on",
+    zau_okModif: "Rule saved",
+    zau_okBaseline: "Rule saved. {0} cases already under way will not all be contacted at once: it acts from now on.",
+    zau_notePartir: "This rule acts from now on: orders and customers already concerned will not all get a message at once.",
+    zau_noteFutur: "This rule applies to upcoming events, never to past orders.",
+    zau_texteDefaut: "Hello {{client}} 👋\n\n\n{{business}}",
+    zau_texteVide: "empty message",
+    zau_plafond: "daily limit of {0} sends reached",
+    zau_sansTelClient: "no customer number",
+    zau_sansTelMoi: "your WhatsApp number is not set",
+    zau_sansTelegram: "Telegram is not connected",
+    zau_sansWebhook: "no Zapier, Make or n8n connected",
+    zau_moi: "Me",
+    zau_exArticle: "Sample item",
+    zau_avertTelegram: "Telegram is not connected: the rule will be saved, but nothing will be sent until you connect it in Integrations.",
+    zau_avertWebhook: "No Zapier, Make or n8n is connected: nothing will be sent until one of them is connected in Integrations.",
+    zau_avertWa: "WhatsApp is not set up: set at least your number in the WhatsApp screen.",
+    zau_lienWa: "Go further: your own rules, with conditions and delays",
+    zau_do_cmd_recue: "An order arrives",
+    zau_do_cmd_confirmee: "An order is confirmed",
+    zau_do_cmd_expediee: "An order goes out for delivery",
+    zau_do_cmd_livree: "An order is delivered",
+    zau_do_cmd_annulee: "An order is cancelled",
+    zau_do_cmd_attente: "An order waits without confirmation",
+    zau_do_stock_bas: "An item drops below its threshold",
+    zau_do_client_silence: "A regular stops coming",
+    zau_dl_cmd_recue: "an order arrives",
+    zau_dl_cmd_confirmee: "an order is confirmed",
+    zau_dl_cmd_expediee: "an order goes out for delivery",
+    zau_dl_cmd_livree: "an order is delivered",
+    zau_dl_cmd_annulee: "an order is cancelled",
+    zau_dl_cmd_attente: "an order has waited {0} h",
+    zau_dl_stock_bas: "an item drops below its threshold",
+    zau_dl_client_silence: "a regular stops coming",
+    zau_co_aucune: "Always",
+    zau_co_montant_min: "The amount is at least…",
+    zau_co_montant_max: "The amount is at most…",
+    zau_co_zone: "The delivery area contains…",
+    zau_co_premiere: "It is their first order",
+    zau_co_fidele: "They have ordered several times",
+    zau_co_palier: "It is their nth order (milestone)",
+    zau_co_montant_mois: "They spend at least… a month",
+    zau_cl_montant_min: "the amount reaches {0}",
+    zau_cl_montant_max: "the amount does not exceed {0}",
+    zau_cl_zone: "the area contains “{0}”",
+    zau_cl_premiere: "it is their first order",
+    zau_cl_fidele: "it is at least their order no. {0}",
+    zau_cl_palier: "it is their order no. {0}",
+    zau_cl_montant_mois: "they spend at least {0} a month",
+    zau_a_wa_client: "WhatsApp to the customer",
+    zau_a_wa_moi: "WhatsApp to me",
+    zau_a_telegram: "Telegram message",
+    zau_a_webhook: "Zapier, Make or n8n",
+    zau_al_wa_client: "write to the customer on WhatsApp",
+    zau_al_wa_moi: "notify me on WhatsApp",
+    zau_al_telegram: "send to Telegram",
+    zau_al_webhook: "send to Zapier, Make or n8n",
+    zau_t0: "right away",
+    zau_t1h: "one hour later",
+    zau_t1j: "the next day",
+    zau_t2j: "two days later",
+    zau_t7j: "a week later",
+    zau_r_avis: "Ask for a review",
+    zau_rd_avis: "Two days after delivery, a word to the customer.",
+    zau_rt_avis: "Hello {{client}} 👋\n\nYour order {{ref}} arrived two days ago. Is everything to your liking?\nA word from you helps us enormously.\n\n{{business}}",
+    zau_r_attente: "Forgotten order",
+    zau_rd_attente: "You are notified if an order waits two hours without confirmation.",
+    zau_rt_attente: "⏳ Order {{ref}} from {{client}} ({{total}} {{sym}}) has waited {{heures}} h without confirmation.",
+    zau_r_premier: "Thank a new customer",
+    zau_rd_premier: "One hour after their first confirmed order.",
+    zau_rt_premier: "{{client}}, thank you for your very first order at {{business}}! We are delighted to count you among our customers. 🙏",
+    zau_r_grosse: "Large order alert",
+    zau_rd_grosse: "You are notified as soon as an order exceeds an amount.",
+    zau_rt_grosse: "💰 Large order: {{total}} {{sym}} from {{client}}\nArea: {{zone}}\nReference: {{ref}}",
+    zau_r_palier: "Celebrate the 5th order",
+    zau_rd_palier: "A word to the customer who reaches their fifth order.",
+    zau_rt_palier: "🎉 {{client}}, this is your order no. {{rang}} at {{business}}! Thank you for your loyalty.",
+    zau_r_silence: "Follow up a regular who drifts away",
+    zau_rd_silence: "When a regular goes past their usual visit rhythm, according to the Customer radar.",
+    zau_rt_silence: "Hello {{client}} 👋\n\nIt has been {{jours}} days since we last saw you at {{business}}. Is everything all right? Come and see us, we have been thinking of you.",
     zwg_mettreVitrine: "Put in the shop window",
     zwg_retirerVitrine: "Remove from the shop window",
     zwg_connecte: "Connected",
@@ -7889,7 +8261,7 @@ async function api(method, path, body) {
 // données métier (articles/ventes/clients/dépenses ont leurs propres tables).
 async function _syncStoreBackup() {
   if (USE_LOCAL || !S.token) return;
-  const EXCLUDE = /^(stockr_articles|baro_articles|stockr_products|stockr_sales|stockr_clients|baro_clients|baro_expenses|baro_users_v2|stockr_session|baro_api_url|stockr_eanDB|baro_spectra_history|baro_activities|baro_local_data|baro_myorders|baro_payment_history|baro_movements|baro_last_sync)/;
+  const EXCLUDE = /^(stockr_articles|baro_articles|stockr_products|stockr_sales|stockr_clients|baro_clients|baro_expenses|baro_users_v2|stockr_session|baro_api_url|stockr_eanDB|baro_spectra_history|baro_activities|baro_local_data|baro_myorders|baro_payment_history|baro_movements|baro_last_sync|baro_regles_planif)/;
   const _collect = () => {
     const blob = {};
     let total = 0;
@@ -7915,6 +8287,9 @@ async function _syncStoreBackup() {
       let blob = null; try { blob = JSON.parse(srv.data); } catch(_){}
       if (blob && Object.keys(blob).length) {
         Object.keys(blob).forEach(k => { try { localStorage.setItem(k, blob[k]); } catch(_){} });
+        // Un état ancien ramène des envois programmés déjà partis ailleurs :
+        // ils sont retirés, et les règles repartent de maintenant.
+        try { localStorage.removeItem('baro_regles_planif'); localStorage.setItem('baro_regles_rebase', '1'); } catch(_){}
         showToast('☁️ Configuration restaurée depuis votre compte', 'success');
         setTimeout(() => location.reload(), 900);
         return;
@@ -7935,7 +8310,18 @@ async function _syncBoutiqueOrders() {
     if (!Array.isArray(srv)) return;
     const cur = S.boutiqueOrders || [];
     const localOnly = cur.filter(o => o && !String(o.id).startsWith('srv_'));
-    const mapped = srv.map(o => ({ ...o, id: 'srv_' + o.id, serverId: o.id }));
+    const mapped = srv.map(o => {
+      const m = { ...o, id: 'srv_' + o.id, serverId: o.id };
+      // Le serveur écrit l'heure UTC sans le dire (« 2026-09-26T10:00:00 ») :
+      // lue telle quelle, elle devient une heure LOCALE. En France l'été, une
+      // commande qui arrive paraissait déjà vieille de deux heures.
+      if (typeof m.date === 'string' && m.date && !/[zZ]$|[+-]\d\d:?\d\d$/.test(m.date)) m.date += 'Z';
+      const avant = cur.find(x => x && String(x.id) === m.id);
+      // Un serveur pas encore mis à jour refuse « shipped » et renvoie
+      // « confirmed » : sans ce garde, la synchro défaisait l'étape.
+      if (avant && avant.status === 'shipped' && (m.status === 'confirmed' || m.status === 'preparing')) m.status = 'shipped';
+      return m;
+    });
     const connus = new Set(cur.filter(o => String(o.id).startsWith('srv_')).map(o => String(o.id)));
     const nouvelles = mapped.filter(o => !connus.has(String(o.id)));
     S.boutiqueOrders = [...mapped, ...localOnly].sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
@@ -8389,23 +8775,26 @@ async function _envoyerAuto(entree, evenement, charge) {
       // Telegram veut un identifiant de conversation. Sans lui, on ne peut
       // pas écrire : on le dit plutôt que d'échouer en silence.
       const chat = String(entree.chatId || '').trim();
-      if (!chat) { _journalAuto({ ...base, etat:'config', message:t('zi_telSansChat') }); return; }
+      if (!chat) { _journalAuto({ ...base, etat:'config', message:t('zi_telSansChat') }); return 'config'; }
       const texte = `*BARO — ${charge.titre}*\n${charge.detail}`;
       const url = `https://api.telegram.org/bot${encodeURIComponent(entree.key || '')}/sendMessage`;
       const r = await fetch(url, { method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ chat_id: chat, text: texte, parse_mode: 'Markdown' }) });
       const j = await r.json().catch(() => null);
-      _journalAuto({ ...base, etat: (j && j.ok) ? 'ok' : 'erreur',
+      const etatTg = (j && j.ok) ? 'ok' : 'erreur';
+      _journalAuto({ ...base, etat: etatTg,
         message: (j && j.ok) ? nom : ((j && j.description) || 'HTTP ' + r.status) });
-      return;
+      return etatTg;
     }
     const r = await fetch(entree.value, { method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify(charge) });
     _journalAuto({ ...base, etat: r.ok ? 'ok' : 'erreur', message: r.ok ? nom : 'HTTP ' + r.status });
+    return r.ok ? 'ok' : 'erreur';
   } catch (_) {
     // Échec CORS : la requête est partie, le navigateur refuse d'en lire la
     // réponse. On ne peut ni confirmer ni infirmer — on l'écrit ainsi.
     _journalAuto({ ...base, etat:'indetermine', message: nom });
+    return 'indetermine';
   }
 }
 
@@ -8439,7 +8828,10 @@ function logActivity(type, detail, extra = {}) {
   try { _declencherAuto(type, detail); } catch (_) {}
   // Une vente ou un mouvement de stock peut faire passer un article sous
   // son seuil : c'est le seul endroit par lequel les deux passent.
-  if (type === 'sale' || type === 'stock') { try { _evtStockBas(); } catch (_) {} }
+  if (type === 'sale' || type === 'stock') {
+    try { _evtStockBas(); } catch (_) {}
+    try { _reglesStockBas(); } catch (_) {}
+  }
 }
 function fmtTimeAgo(iso) {
   const diff = Date.now() - new Date(iso).getTime();
@@ -13215,6 +13607,24 @@ async function _autoSync() {
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') _autoSync(); });
 setInterval(_autoSync, 180000);
 
+// Les règles sur mesure : les actions différées et les déclencheurs liés au
+// temps ne peuvent être vérifiés que tant que l'app est ouverte — aucun
+// serveur ne veille à sa place. Toutes les minutes, et à chaque retour.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') { try { _reglesTick(); } catch (_) {} }
+});
+setInterval(() => { try { _reglesTick(); } catch (_) {} }, 60000);
+setTimeout(() => { try { _reglesTick(); } catch (_) {} }, 6000);
+// Deux onglets ouverts : celui qui n'a rien fait gardait sa vieille copie
+// des règles, et en sauvegardant ses compteurs ressuscitait une règle
+// éteinte ou supprimée ailleurs.
+window.addEventListener('storage', ev => {
+  if (ev.key === 'baro_regles') {
+    S.regles = null;
+    if (S.view === 'automatisations') { try { render(); } catch (_) {} }
+  }
+});
+
 // ── Sauvegarde / restauration par FICHIER (marche sans serveur) ──
 // Migration d'appareil pour ceux qui ne déploient pas de backend :
 // tout le localStorage BARO dans un .json, restaurable ailleurs.
@@ -13267,6 +13677,8 @@ function importBackupFile(file) {
       for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (/^(baro|stockr)_/.test(k)) toRemove.push(k); }
       toRemove.forEach(k => localStorage.removeItem(k));
       Object.keys(payload.data).forEach(k => { try { localStorage.setItem(k, payload.data[k]); } catch (_) {} });
+      // Même règle qu'à la restauration depuis le serveur.
+      try { localStorage.removeItem('baro_regles_planif'); localStorage.setItem('baro_regles_rebase', '1'); } catch (_) {}
       showToast('✅ Données restaurées — redémarrage…', 'success');
       setTimeout(() => location.reload(), 1000);
     } catch (e) {
@@ -14279,7 +14691,7 @@ function _doRender() {
     'social-media': vSocialMedia, 'social-setup': vSocialSetup, 'payments-setup': vPayments,
     integrations: vIntegrations,
     'delivery-setup': vDeliverySetup,
-    'whatsapp-setup': vWhatsAppSetup, 'whatsapp-file': vWhatsappFile,
+    'whatsapp-setup': vWhatsAppSetup, 'whatsapp-file': vWhatsappFile, 'automatisations': vAutomatisations, 'automatisation-edit': vAutomatisationEdit,
     'whatsapp-broadcast': vWhatsappBroadcast,
     'sms-setup': vSmsSetup,
     'sms-broadcast': vSmsBroadcast,
@@ -14381,7 +14793,7 @@ function _doRender() {
     if (gs) { gs.focus({ preventScroll: true }); gs.setSelectionRange(gs.value.length, gs.value.length); }
   }
 
-  const hideNav = ['detail','add','add-product','edit-product','pack-form','add-client','client-detail','notifications','catalog','add-supplier','supplier-detail','stock-history','purchase-orders','add-order','pricing','subscription','billing-setup','boutique','boutique-editor','boutique-appearance','boutique-domain','boutique-pixels','boutique-code','boutique-seo','boutique-analytics','boutique-hours','boutique-policies','boutique-faq','bulk-add','bulk-photos','marketing','social-media','social-setup','payments-setup','integrations','delivery-setup','whatsapp-setup','whatsapp-file','whatsapp-broadcast','sms-setup','sms-broadcast','email-broadcast','ecommerce-setup','sheets-setup','pos-setup','compta-setup','api-settings','spectra','clients','exports','team','add-team-member','audit-log','appearance','security','2fa-verify','onboarding','setup-wizard','creator'].includes(S.view);
+  const hideNav = ['detail','add','add-product','edit-product','pack-form','add-client','client-detail','notifications','catalog','add-supplier','supplier-detail','stock-history','purchase-orders','add-order','pricing','subscription','billing-setup','boutique','boutique-editor','boutique-appearance','boutique-domain','boutique-pixels','boutique-code','boutique-seo','boutique-analytics','boutique-hours','boutique-policies','boutique-faq','bulk-add','bulk-photos','marketing','social-media','social-setup','payments-setup','integrations','delivery-setup','whatsapp-setup','whatsapp-file','automatisations','automatisation-edit','whatsapp-broadcast','sms-setup','sms-broadcast','email-broadcast','ecommerce-setup','sheets-setup','pos-setup','compta-setup','api-settings','spectra','clients','exports','team','add-team-member','audit-log','appearance','security','2fa-verify','onboarding','setup-wizard','creator'].includes(S.view);
   navEl.style.display = hideNav ? 'none' : '';
   if (!hideNav) navEl.innerHTML = renderNav();
 }
@@ -15590,7 +16002,7 @@ function vHome() {
         <div class="alert-ico" style="background:rgba(16,185,129,0.15);color:#10B981;font-size:16px">🛒</div>
         <div style="flex:1;min-width:0">
           <div class="alert-title" style="color:#10B981">${pending.length} ${t(pending.length > 1 ? 'w4_cmdsBoutique' : 'w4_cmdBoutique')}</div>
-          <div class="alert-sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${pending.slice(0,3).map(o => `${o.clientName||'Client'} · ${fmt(o.total||0)} ${sym()}`).join(' · ')}</div>
+          <div class="alert-sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${pending.slice(0,3).map(o => `${_wafEsc(o.clientName || t('zwa_client'))} · ${fmt(o.total||0)} ${sym()}`).join(' · ')}</div>
         </div>
         <div class="alert-arrow">${IC.chevron}</div>
       </div>`;
@@ -27451,6 +27863,7 @@ function vMore() {
     { id:'reassort-auto',   icon:'🤝',          label:t('z2_titre'),                    sub:_planHasFeature('advancedAnalytics') ? t('z2_sousTitre') : 'Entreprise · ' + t('z2_sousTitre'), color:'#0891b2', badge: (()=>{try{const d=_reassortAuto(S.reorderWindow||30);return d.groupes.filter(g=>g.id!==null).length||null;}catch(_){return null;}})() },
     { id:'previsions',      icon:'📈',          label:t('w3_prevision'),           sub:_planHasFeature('advancedAnalytics') ? t('w3_previsionSub') : t('w3_previsionLock'), color:'#8B5CF6', badge: (()=>{try{return _previsionsData().liste.filter(p=>isFinite(p.joursRestants)&&p.joursRestants<=14).length||null;}catch(_){return null;}})() },
     { id:'radar-clients',   icon:'🎯',          label:t('zrc_titre'),                sub:_planHasFeature('advancedAnalytics') ? t('zrc_menuSub') : t('zv_planEntreprise') + ' · ' + t('zrc_menuSub'), color:'#E11D48', badge: (()=>{try{ if(!_planHasFeature('advancedAnalytics')) return null; const r=_radarClients(); return r.retard.filter(x=>!r.recent(x)).length||null; }catch(_){return null;}})() },
+    { id:'automatisations', icon:'⚙️',          label:t('zau_titre'),                sub:_planHasFeature('advancedAnalytics') ? t('zau_menuSub') : t('zv_planEntreprise') + ' · ' + t('zau_menuSub'), color:'#7C3AED', badge: (()=>{try{ if(!_planHasFeature('advancedAnalytics')) return null; return _reglesCharge().filter(r=>r&&r.actif).length||null; }catch(_){return null;}})() },
     { id:'caisse',          icon:'🧾',          label:t('w3_cloture'),              sub:t('w3_clotureSub'), color:'#059669' },
     { id:'credits',         icon:'📒',          label:t('w3_credits'),                sub:t('w3_creditsSub'), color:'#DC2626', badge: (()=>{try{return _creditsStats().openCount||null;}catch(_){return null;}})() },
     { id:'peremptions',     icon:'⏳',          label:t('w3_peremptions'),                    sub:t('w3_peremptionsSub'), color:'#EC4899', badge: (S.articles||[]).filter(a=>{const e=getExpiryStatus(a.expiry);return e&&e.days<=30;}).length || null },
@@ -27790,7 +28203,7 @@ function vExports() {
 // Écran de verrouillage pour les fonctionnalités réservées aux plans payants
 function _vProLock(emoji, title, desc, features) {
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,var(--accent),#7C3AED)">
+  <div class="sub-hero" style="background:linear-gradient(135deg,var(--accent-hero, var(--accent)),#5B21B6)">
     <button class="back-btn-dark" style="margin-bottom:14px" onclick="nav('more')">${IC.left}</button>
     <div class="sub-hero-title">${emoji} ${title}</div>
     <div class="sub-hero-sub">${t('x4_fonctionnaliteePro')}</div>
@@ -27798,16 +28211,16 @@ function _vProLock(emoji, title, desc, features) {
   <div class="container" style="padding:20px">
     <div style="text-align:center;padding:18px 0">
       <div style="font-size:54px;margin-bottom:8px">🔒</div>
-      <div style="font-size:19px;font-weight:900;letter-spacing:-.3px">${title} — réservé au plan Pro</div>
+      <div style="font-size:19px;font-weight:900;letter-spacing:-.3px">${t('zpl_reserve').replace('{0}', title)}</div>
       <div style="font-size:13px;color:var(--text-3);margin-top:8px;line-height:1.55;max-width:320px;margin-left:auto;margin-right:auto">${desc}</div>
     </div>
     <div class="card" style="border:2px solid var(--accent);background:linear-gradient(135deg,rgba(124,115,255,.08),transparent);margin-bottom:12px">
       <div style="font-size:14px;font-weight:800;margin-bottom:10px">${t('x4_avecBaroPro')}</div>
       ${features.map(f=>`<div style="display:flex;gap:8px;font-size:13px;padding:3px 0;color:var(--text-2)"><span style="color:var(--accent)">✓</span>${f}</div>`).join('')}
-      <button class="btn btn-primary" style="margin-top:14px" onclick="nav('pricing')">Passer en Pro →</button>
+      <button class="btn btn-primary" style="margin-top:14px" onclick="nav('pricing')">${t('zpl_passer')} →</button>
       <button class="btn btn-ghost" style="margin-top:8px" onclick="nav('pricing')">${t('x4_voirTousPlans')}</button>
     </div>
-    <div style="font-size:11px;color:var(--text-3);text-align:center;line-height:1.5">💡 Essai 14 jours offert · Sans engagement · Résiliable à tout moment</div>
+    <div style="font-size:11px;color:var(--text-3);text-align:center;line-height:1.5">💡 ${t('zs_resiliable')}</div>
   </div>`;
 }
 
@@ -27843,7 +28256,7 @@ function _bqPerf() {
 
 function vBoutique() {
   if (!_planHasFeature('boutique')) {
-    return _vProLock('🏪', t('zs_boutiqueEnLigne'), 'Crée une vraie boutique en ligne (page web + panier WhatsApp) que tes clients visitent pour commander.', ['🏪 Boutique en ligne personnalisable', '🎨 Éditeur visuel en direct', '🛒 Panier + commande WhatsApp', '📦 Articles & ventes illimités', '🔍 Spectra IA vision illimité']);
+    return _vProLock('🏪', t('zs_boutiqueEnLigne'), t('zpl_bqDesc'), [t('zpl_bq1'), t('zpl_bq2'), t('zpl_bq3'), t('zpl_bq4'), t('zpl_bq5')]);
   }
   const bc = S.boutiqueConfig || (S.boutiqueConfig = {});
   if (!Array.isArray(bc.articles)) bc.articles = [];
@@ -28311,35 +28724,43 @@ function vBoutique() {
     <div class="card" style="text-align:center;padding:20px">
       <div style="color:var(--text-3);font-size:13px;margin-bottom:8px">${t('w8_aucuneCommande')}</div>
       <button class="btn btn-ghost" style="font-size:12px" onclick="addBoutiqueOrder()">${t('w8_ajouterManuel')}</button>
-    </div>` : orders.slice(0,20).map(o => `
-    <div class="card" style="margin-bottom:8px;border-left:4px solid ${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--gray-4)'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div>
-          <div style="font-weight:700;font-size:14px">${o.clientName||'Client'}</div>
-          <div style="font-size:12px;color:var(--text-3);margin-top:2px">${o.phone||''} ${o.zone?'· '+o.zone:''}</div>
-          <div style="font-size:12px;color:var(--text-2);margin-top:4px">${(o.items||[]).map(i=>i.name+' x'+i.qty).join(', ')}</div>
+    </div>` : orders.slice(0,20).map(o => {
+      const e = _wafEsc;
+      const st = _cmdStatut(o);
+      const id = _jsArg(o.id);
+      const articles = (o.items || []).map(x => e(x && x.name) + ' ×' + e(x && x.qty)).join(', ');
+      return `
+    <div class="card" style="margin-bottom:8px;border-left:4px solid ${st.couleur}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+        <div style="min-width:0">
+          <div style="font-weight:700;font-size:14px">${e(o.clientName || t('zwa_client'))}</div>
+          <div style="font-size:12px;color:var(--text-3);margin-top:2px">${e(o.phone || '')}${o.zone ? ' · ' + e(o.zone) : ''}</div>
+          ${articles ? `<div style="font-size:12px;color:var(--text-2);margin-top:4px">${articles}</div>` : ''}
           <div style="font-size:11px;color:var(--text-3);margin-top:4px">${fmtDate(o.date)}</div>
         </div>
-        <div style="text-align:right">
+        <div style="text-align:right;flex-shrink:0">
           <div style="font-weight:700;font-size:15px">${fmt(o.total||0)} ${sym()}</div>
-          <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--gray-4)'}20;color:${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--text-3)'}">${o.status==='pending'?t('orderPending'):o.status==='confirmed'?t('orderConfirmed'):o.status==='delivered'?t('orderDelivered'):t('orderCancelled')}</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:color-mix(in srgb, ${st.couleur} 14%, transparent);color:${st.couleur}">${e(st.lib)}</span>
         </div>
       </div>
-      ${o.status==='pending'?`
+      ${st.cle === 'pending' ? `
       <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${o.id},'confirmed')">${t('confirm')}</button>
-        <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="updateOrderStatus(${o.id},'cancelled')">${t('cancel')}</button>
-      </div>`:o.status==='confirmed'?`
-      <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${o.id},'delivered')">Marquer livree</button>
-        <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="contactOrderClient(${o.id})">Contacter</button>
+        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'confirmed')">${t('confirm')}</button>
+        <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'cancelled')">${t('cancel')}</button>
+      </div>` : (st.cle === 'confirmed' || st.cle === 'preparing' || st.cle === 'shipped') ? `
+      <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+        ${st.cle !== 'shipped' ? `<button class="btn btn-ghost" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'shipped')">🚚 ${t('zcm_marquerRoute')}</button>` : ''}
+        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'delivered')">${t('zcm_marquerLivree')}</button>
+        <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="contactOrderClient(${id})">${t('zcm_contacter')}</button>
       </div>
+      ${st.cle !== 'shipped' ? `
       <div style="display:flex;gap:6px;margin-top:6px">
-        <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px;background:#FF4D0010;color:#FF4D00;border-color:#FF4D0040" onclick="createYangoDelivery(${o.id})">${IC.truck} Yango</button>
-        <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px;background:#FFC24410;color:#B8860B;border-color:#FFC24440" onclick="createGlovoDelivery(${o.id})">${IC.truck} Glovo</button>
-        <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px;background:#1DC3FF10;color:#1DC3FF;border-color:#1DC3FF40" onclick="requestPaymentWhatsApp(${o.total||0},'${(o.phone||'').replace(/'/g,'')}','Commande #${o.id}')">${IC.creditCard} Paiement</button>
-      </div>`:''}
-    </div>`).join('')}
+        <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px;background:#FF4D0010;color:#FF4D00;border-color:#FF4D0040" onclick="createYangoDelivery(${id})">${IC.truck} Yango</button>
+        <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px;background:#FFC24410;color:#B8860B;border-color:#FFC24440" onclick="createGlovoDelivery(${id})">${IC.truck} Glovo</button>
+        <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px;background:#1DC3FF10;color:#1DC3FF;border-color:#1DC3FF40" onclick="requestPaymentWhatsApp(${_jsArg(o.total||0)},${_jsArg(o.phone||'')},${_jsArg(t('zcm_commandeN').replace('{0}', o.ref || ('#' + (o.serverId || o.id))))})">${IC.creditCard} ${t('zcm_paiement')}</button>
+      </div>` : ''}` : ''}
+    </div>`;
+    }).join('')}
   </div>`;
 }
 
@@ -34851,10 +35272,10 @@ function vBoutiqueAnalytics() {
     <div class="card" style="margin-bottom:6px;padding:12px 14px">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
         <div style="flex:1;min-width:0">
-          <div style="font-weight:700;font-size:13.5px">${o.clientName||'Client'}${o.zone?` · <span style="color:var(--text-3);font-weight:500">${o.zone}</span>`:''}</div>
-          <div style="font-size:11px;color:var(--text-3)">${fmtDate(o.date)} · ${(o.items||[]).reduce((s,x)=>s+(x.qty||1),0)} article(s)</div>
+          <div style="font-weight:700;font-size:13.5px">${_wafEsc(o.clientName || t('zwa_client'))}${o.zone?` · <span style="color:var(--text-3);font-weight:500">${_wafEsc(o.zone)}</span>`:''}</div>
+          <div style="font-size:11px;color:var(--text-3)">${fmtDate(o.date)} · ${t('zcm_nbArticles').replace('{0}', (o.items||[]).reduce((s,x)=>s+(Number(x && x.qty)||1),0))}</div>
         </div>
-        <div style="text-align:right"><div style="font-weight:800;color:var(--accent)">${fmt(o.total||0)} ${sym()}</div><div style="font-size:10px;color:var(--text-3)">${o.status==='pending'?'⏳ En attente':'✓ '+(o.status||'')}</div></div>
+        <div style="text-align:right"><div style="font-weight:800;color:var(--accent)">${fmt(o.total||0)} ${sym()}</div><div style="font-size:10px;color:${_cmdStatut(o).couleur}">${_wafEsc(_cmdStatut(o).lib)}</div></div>
       </div>
     </div>`).join('')}
   </div>`;
@@ -34908,23 +35329,45 @@ function updateOrderStatus(id, status) {
         S.sales.unshift({ id:Date.now(), productId:item.id, productName:item.name, qty:item.qty, total:item.price*item.qty, profit:((item.price||0)-(product.purchasePrice||0))*item.qty, date:new Date().toISOString(), paymentMethod:'pending', clientName:order.clientName });
       }
     }
-    logActivity('sale', `Commande confirmee — ${order.clientName}`);
+    logActivity('sale', t('zcm_actConfirmee').replace('{0}', order.clientName || ''));
   }
-  showToast(status==='confirmed'?'Commande confirmee !':status==='delivered'?'Commande livree !':'Commande annulee');
+  showToast(t({ confirmed:'zcm_okConfirmee', shipped:'zcm_okRoute', delivered:'zcm_okLivree',
+                 cancelled:'zcm_okAnnulee' }[status] || 'zcm_okMaj'));
   render();
 }
+// Un argument passé à un onclick : JSON le rend sûr pour JavaScript, puis
+// l'échappement HTML le rend sûr pour l'attribut. L'un sans l'autre ne
+// suffit pas — « &#39; » redevient une apostrophe avant que JS ne lise.
+// C'est ce qui manquait : updateOrderStatus(srv_42, …) faisait une
+// ReferenceError sur toute commande venue du site.
+function _jsArg(v) { return _wafEsc(JSON.stringify(v == null ? '' : v)); }
+function _cmdParId(id) { return (S.boutiqueOrders || []).find(o => o && String(o.id) === String(id)); }
+// L'état d'une commande, avec sa couleur et son nom. « shipped » et
+// « preparing » tombaient dans le cas par défaut et s'affichaient « Annulée ».
+function _cmdStatut(o) {
+  const cle = (o && o.status) || 'pending';
+  const couleurs = { pending:'var(--warning)', confirmed:'var(--accent)', preparing:'#8B5CF6',
+                     shipped:'#0EA5E9', delivered:'var(--success)', cancelled:'var(--text-3)' };
+  const libs = { pending:t('orderPending'), confirmed:t('orderConfirmed'), preparing:t('zcm_preparation'),
+                 shipped:t('zcm_enRoute'), delivered:t('orderDelivered'), cancelled:t('orderCancelled') };
+  return { cle, couleur: couleurs[cle] || 'var(--text-3)', lib: libs[cle] || String(cle) };
+}
+
 function contactOrderClient(id) {
-  const order = S.boutiqueOrders.find(o => o.id === id);
-  if (!order || !order.phone) { showToast('Pas de numero de telephone', 'error'); return; }
-  const phone = order.phone.replace(/\s/g, '');
-  const msg = `Bonjour ${order.clientName}, votre commande chez ${S.boutiqueConfig.name||S.session?.business||'nous'} est prete ! Total: ${fmt(order.total)} ${sym()}`;
+  const order = _cmdParId(id);
+  const phone = order ? _waNormalize(order.phone) : '';
+  if (!phone) { showToast(t('zrc_pasNumero'), 'error'); return; }
+  const msg = t('zcm_contactMsg')
+    .replace('{0}', order.clientName || '')
+    .replace('{1}', (S.boutiqueConfig && S.boutiqueConfig.name) || (S.session && S.session.business) || '')
+    .replace('{2}', fmt(order.total || 0) + ' ' + sym());
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 // ── MARKETING CENTER (hub à onglets) ─────────
 function vMarketing() {
   if (!_planHasFeature('marketing')) {
-    return _vProLock('📣', 'Marketing & campagnes', 'Lance des promos, bannières, popups, campagnes WhatsApp/SMS et un programme de fidélité pour vendre plus.', ['📣 Promos, bannières, popups', '📧 Campagnes WhatsApp / SMS / Email', '🎁 Programme de fidélité', '⭐ Avis clients', '🔗 Liens de suivi marketing']);
+    return _vProLock('📣', t('zpl_mkTitre'), t('zpl_mkDesc'), [t('zpl_mk1'), t('zpl_mk2'), t('zpl_mk3'), t('zpl_mk4'), t('zpl_mk5')]);
   }
   const tab = S.marketingTab || 'promos';
   const promos = S.promotions || [];
@@ -39279,7 +39722,7 @@ function toggleWebhookEvent(id, evt) {
 // ── INTEGRATIONS (fonctionnelles) ────────────
 function vIntegrations() {
   if (!_planHasFeature('integrations')) {
-    return _vProLock('🔌', 'Intégrations & API', 'Connecte WhatsApp Business, Shopify, WooCommerce, Glovo, Yango, Wave et plus à ton stock BARO.', ['🔌 10 intégrations (Pro)', '🛒 Shopify, WooCommerce, Jumia', '🚚 Glovo, Yango Delivery', '💳 Wave, Orange Money dashboards', '🔗 API REST (Enterprise)']);
+    return _vProLock('🔌', t('zpl_inTitre'), t('zpl_inDesc'), [t('zpl_in1'), t('zpl_in2'), t('zpl_in3'), t('zpl_in4'), t('zpl_in5')]);
   }
   const integrationsList = BARO_INTEGRATIONS_();
 
@@ -41189,6 +41632,7 @@ function vWhatsAppSetup() {
         ${d.mode === 'business' ? t('zwf_avecApi') : t('zwf_sansApi')}
       </div>
       <div class="wa-astuce">${t('zwf_fenetre')}</div>
+      <div class="wa-astuce au-lien" onclick="nav('automatisations')">⚙️ ${t('zau_lienWa')} <span class="au-ent">${t('zv_planEntreprise')}</span> ›</div>
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:12px">
@@ -41426,11 +41870,29 @@ function _waFileSauve() {
   try { localStorage.setItem('baro_wa_file', JSON.stringify(S.waFile || [])); return true; }
   catch (_) { showToast(t('zu_memPleine'), 'error'); return false; }
 }
+// La file est bornée, mais on retire d'abord ce qui est déjà parti ou
+// jeté, du plus ancien au plus récent. Un message encore EN ATTENTE n'est
+// jamais retiré en silence : s'il faut en arriver là, l'écran le dit.
 function _waFileAjoute(entree) {
   const f = _waFileCharge();
   f.unshift(entree);
-  if (f.length > 60) S.waFile = f.slice(0, 60);
+  const MAX = 200;
+  for (let i = f.length - 1; i >= 0 && f.length > MAX; i--) {
+    if (f[i] && f[i].etat !== 'attente') f.splice(i, 1);
+  }
+  if (f.length > MAX) {
+    const perdus = f.splice(MAX).length;
+    try {
+      const n = (Number(localStorage.getItem('baro_wa_file_perdus')) || 0) + perdus;
+      localStorage.setItem('baro_wa_file_perdus', String(n));
+    } catch (_) {}
+  }
+  S.waFile = f;
   _waFileSauve();
+}
+function waFileComprisPerdus() {
+  try { localStorage.removeItem('baro_wa_file_perdus'); } catch (_) {}
+  render();
 }
 function _waEnAttente() { return _waFileCharge().filter(x => x && x.etat === 'attente').length; }
 
@@ -41441,6 +41903,9 @@ function _evtCommande(cle, commande) {
   try {
     const moment = BARO_MOMENTS_CMD.find(m => m.cle === cle);
     if (!moment || !commande) return;
+    // Les règles sur mesure (Entreprise) écoutent les mêmes moments, que les
+    // messages fixes soient armés ou non.
+    try { _reglesDeclenche('cmd_' + cle, commande); } catch (_) {}
     const cfg = _getWhatsAppConfig();
     if (!cfg || !_waSwOn(cfg, moment.sw)) return;
     const tpl = _waModeles(cfg).find(x => x.id === moment.tpl);
@@ -41531,6 +41996,877 @@ function _evtStockBas() {
     try { localStorage.setItem('baro_wa_stock_vu', JSON.stringify(vus)); } catch (_) {}
   } catch (_) {}
 }
+
+// ══════════════════════════════════════════════════════════════
+// RÈGLES SUR MESURE — plan Entreprise
+// « Quand… si… alors… après… ». Les cinq moments d'une commande envoient
+// chacun un message fixe, à une personne fixe, tout de suite. Une règle
+// choisit tout : son déclencheur, sa condition, son destinataire, son
+// canal et son heure.
+//
+// Honnêteté sur le temps : sans serveur qui veille, une action différée
+// ou un déclencheur qui dépend du temps (« une commande attend depuis
+// 2 h ») n'est vérifié que pendant que l'app est ouverte. L'écran le dit.
+//
+// Ce moteur a été relu par trois relecteurs indépendants ; les défauts
+// qu'ils ont trouvés sont corrigés ici, chacun à l'endroit où il vivait.
+// ══════════════════════════════════════════════════════════════
+const BARO_REGLE_DECL = ['cmd_recue', 'cmd_confirmee', 'cmd_expediee', 'cmd_livree', 'cmd_annulee',
+                         'cmd_attente', 'stock_bas', 'client_silence'];
+const BARO_REGLE_ICONE = { cmd_recue:'🛍️', cmd_confirmee:'✅', cmd_expediee:'🚚', cmd_livree:'📬',
+                           cmd_annulee:'✕', cmd_attente:'⏳', stock_bas:'⚠️', client_silence:'🎯' };
+const BARO_REGLE_DELAIS = [0, 3600000, 86400000, 172800000, 604800000];
+const BARO_REGLE_DELAI_CLE = { 0:'zau_t0', 3600000:'zau_t1h', 86400000:'zau_t1j',
+                               172800000:'zau_t2j', 604800000:'zau_t7j' };
+// Un plafond par règle et par jour : une synchro qui ramène deux cents
+// commandes d'un coup ne doit pas vider le forfait WhatsApp du commerçant.
+const _REGLE_MAX_JOUR = 30;
+// Borne des envois programmés, toutes règles confondues. Au-delà, un envoi
+// n'est pas coupé en silence : il est refusé, le journal le dit, et l'objet
+// n'est pas marqué — il pourra être repris.
+const _REGLE_MAX_PLANIF = 500;
+// Combien de temps une règle se souvient d'un objet qu'elle ne voit plus.
+// Un objet encore présenté (commande toujours en attente, habitué toujours
+// absent) voit son souvenir rafraîchi : il ne repart pas au bout du délai.
+const _REGLE_OUBLI_JOURS = 180;
+const _REGLE_TEMPS = ['cmd_attente', 'client_silence'];
+
+function _regleEntreprise() {
+  return typeof _planHasFeature !== 'function' || _planHasFeature('advancedAnalytics');
+}
+// « Montant » n'a pas de sens pour un article en rupture, ni « zone »
+// pour un client qui ne vient plus.
+function _regleConds(decl) {
+  if (decl === 'stock_bas') return ['aucune'];
+  if (decl === 'client_silence') return ['aucune', 'montant_min'];
+  return ['aucune', 'montant_min', 'montant_max', 'zone', 'premiere', 'fidele', 'palier'];
+}
+// Un article n'a pas de numéro de téléphone : pas de « WhatsApp au client ».
+function _regleActs(decl) {
+  return decl === 'stock_bas' ? ['wa_moi', 'telegram', 'webhook']
+                              : ['wa_client', 'wa_moi', 'telegram', 'webhook'];
+}
+function _regleVarsDe(decl) {
+  if (decl === 'stock_bas') return ['article', 'stock', 'unit', 'business'];
+  if (decl === 'client_silence') return ['client', 'jours', 'business'];
+  const v = ['client', 'ref', 'total', 'sym', 'zone', 'rang', 'business'];
+  if (decl === 'cmd_attente') v.splice(4, 0, 'heures');
+  return v;
+}
+// Les jetons écrits dans le message qui n'existent pas pour ce déclencheur.
+function _regleJetonsInconnus(decl, texte) {
+  const ok = _regleVarsDe(decl);
+  const vus = [];
+  String(texte || '').replace(/\{\{\s*(\w+)\s*\}\}/g, (m, k) => { if (!ok.includes(k) && !vus.includes(k)) vus.push(k); return m; });
+  return vus;
+}
+// Un jeton qui n'a pas de valeur ne part jamais tel quel chez un client :
+// « Cela fait {{jours}} jours » est pire qu'une phrase un peu plus courte.
+function _regleNettoieJetons(s) { return String(s || '').replace(/\{\{\s*\w+\s*\}\}/g, ''); }
+
+// Le cache est par onglet. Si un autre onglet éteint ou supprime une règle,
+// cette copie doit l'apprendre — sinon, en sauvegardant ses compteurs, elle
+// ressusciterait la règle (voir l'écouteur « storage » près de la veille).
+function _reglesCharge() {
+  if (!Array.isArray(S.regles)) {
+    try { S.regles = JSON.parse(localStorage.getItem('baro_regles') || '[]'); }
+    catch (_) { S.regles = []; }
+    if (!Array.isArray(S.regles)) S.regles = [];
+  }
+  return S.regles;
+}
+function _reglesSauve() {
+  try { localStorage.setItem('baro_regles', JSON.stringify(S.regles || [])); return true; }
+  catch (_) { showToast(t('zu_memPleine'), 'error'); return false; }
+}
+function _reglesPlanif() {
+  try { const x = JSON.parse(localStorage.getItem('baro_regles_planif') || '[]'); return Array.isArray(x) ? x : []; }
+  catch (_) { return []; }
+}
+// Plus de coupe silencieuse ici : la borne est tenue à l'entrée, par
+// _reglesDeclenche, qui refuse à voix haute.
+function _reglesPlanifSauve(x) {
+  try { localStorage.setItem('baro_regles_planif', JSON.stringify(x || [])); } catch (_) {}
+}
+function _reglesVus() {
+  try { const v = JSON.parse(localStorage.getItem('baro_regles_vus') || '{}'); return (v && typeof v === 'object') ? v : {}; }
+  catch (_) { return {}; }
+}
+function _reglesVusSauve(v) {
+  const limite = Date.now() - _REGLE_OUBLI_JOURS * 86400000;
+  Object.keys(v).forEach(rid => {
+    const m = v[rid] || {};
+    Object.keys(m).forEach(k => { if (!(m[k] >= limite)) delete m[k]; });
+  });
+  try { localStorage.setItem('baro_regles_vus', JSON.stringify(v)); } catch (_) {}
+}
+
+// Le rang d'une commande chez ce client : 1 = sa première. Le serveur ne
+// renvoie que ses 200 dernières commandes ; compter sur la seule liste en
+// mémoire ferait « première commande » d'une fidèle dont les anciennes
+// commandes sont sorties de la fenêtre. Un index par numéro garde la trace
+// de chaque commande vue, annulées comprises (marquées).
+function _rangsIndex() {
+  try { const x = JSON.parse(localStorage.getItem('baro_cmd_rangs') || '{}'); return (x && typeof x === 'object') ? x : {}; }
+  catch (_) { return {}; }
+}
+function _rangsNote(idx, o) {
+  const num = _waNormalize(o.phone || o.clientPhone || '');
+  if (!num) return false;
+  const l = idx[num] = Array.isArray(idx[num]) ? idx[num] : [];
+  const id = String(o.id);
+  const an = o.status === 'cancelled' ? 1 : 0;
+  const deja = l.find(x => x && x.i === id);
+  if (deja) { if (deja.a !== an) { deja.a = an; return true; } return false; }
+  l.push({ i: id, t: new Date(o.date || 0).getTime() || 0, a: an });
+  if (l.length > 300) l.splice(0, l.length - 300);
+  return true;
+}
+// Sans numéro, le rang est inconnu (0) : « première commande » ne se
+// déclenche pas au hasard.
+function _regleRangClient(cmd) {
+  const num = _waNormalize(cmd.phone || cmd.clientPhone || '');
+  if (!num) return 0;
+  const idx = _rangsIndex();
+  let change = false;
+  (S.boutiqueOrders || []).forEach(o => { if (o && _rangsNote(idx, o)) change = true; });
+  if (_rangsNote(idx, cmd)) change = true;
+  if (change) { try { localStorage.setItem('baro_cmd_rangs', JSON.stringify(idx)); } catch (_) {} }
+  const t0 = new Date(cmd.date || 0).getTime() || 0;
+  return Math.max(1, (idx[num] || []).filter(x => x && !x.a && x.t <= t0).length);
+}
+
+// Le contexte d'un déclenchement : à qui écrire, avec quelles valeurs, et
+// l'identifiant qui empêche de traiter deux fois la même chose. Le
+// déclencheur fait partie de cet identifiant : une règle passée de « reçue »
+// à « confirmée » doit pouvoir traiter une commande déjà vue à la réception.
+function _regleCtx(decl, obj, avecRang) {
+  const biz = (S.session && S.session.business) || 'BARO';
+  const cfgWa = _getWhatsAppConfig();
+  const signature = (cfgWa && cfgWa.signature) || biz;
+  if (decl === 'stock_bas') {
+    return {
+      cible: 'stock_bas:' + obj.id + ':' + new Date().toISOString().slice(0, 10),
+      tel: '', nom: obj.name || '', valeur: 0,
+      vars: { article: obj.name || '', stock: String(obj.stock || 0), unit: obj.unit || '', business: signature },
+    };
+  }
+  if (decl === 'client_silence') {
+    const prenom = String(obj.nom || '').trim().split(/\s+/)[0] || '';
+    return {
+      // La dernière visite fait partie de l'identifiant : un habitué qui
+      // revient puis décroche à nouveau peut être relancé une seconde fois.
+      cible: 'client_silence:' + obj.id + ':' + obj.derniere, cid: obj.id,
+      tel: obj.tel || '', nom: obj.nom || '', valeur: Number(obj.parMois) || 0,
+      vars: { client: prenom || obj.nom || '', jours: String(obj.depuis || 0), business: signature },
+    };
+  }
+  const nom = obj.clientName || obj.client || t('zwa_client');
+  const rang = avecRang ? _regleRangClient(obj) : 0;
+  const heures = Math.max(0, Math.floor((Date.now() - new Date(obj.date || Date.now()).getTime()) / 3600000));
+  return {
+    cible: decl + ':' + obj.id, oid: obj.id,
+    tel: obj.phone || obj.clientPhone || '',
+    nom, valeur: Number(obj.total) || 0, zone: obj.zone || obj.delivery || '', rang,
+    vars: {
+      client: nom,
+      ref: obj.ref || ('#' + String(obj.serverId || obj.id || '').slice(-6)),
+      total: fmt(obj.total || 0), sym: sym(),
+      zone: obj.zone || obj.delivery || '',
+      rang: rang ? String(rang) : '',
+      heures: String(heures),
+      business: signature,
+    },
+  };
+}
+
+function _regleCondOk(r, ctx) {
+  const c = r.cond || 'aucune';
+  const v = r.val;
+  if (c === 'aucune') return true;
+  if (c === 'montant_min') return ctx.valeur >= (Number(v) || 0);
+  if (c === 'montant_max') return ctx.valeur <= (Number(v) || 0);
+  if (c === 'zone') {
+    const z = String(v || '').toLowerCase().trim();
+    return !!z && String(ctx.zone || '').toLowerCase().includes(z);
+  }
+  if (c === 'premiere') return ctx.rang === 1;
+  if (c === 'fidele') return ctx.rang >= (Number(v) || 2);
+  if (c === 'palier') return ctx.rang === (Number(v) || 5);
+  return false;
+}
+function _regleVeutRang(r) {
+  return ['premiere', 'fidele', 'palier'].includes(r.cond) || String(r.texte || '').includes('{{rang}}');
+}
+
+// Une seule ligne de journal par règle, par jour et par motif : cinquante
+// commandes d'un visiteur malveillant ne doivent pas effacer tout le
+// journal, qui est partagé avec les autres intégrations. Le reste est
+// compté et affiché sur la carte de la règle.
+function _reglePlafondJournal(r, cle, quand) {
+  const jour = new Date().toISOString().slice(0, 10);
+  r.ignoresJour = (r.jourIgnores === jour ? (r.ignoresJour || 0) : 0) + 1;
+  r.jourIgnores = jour;
+  const marque = cle + ':' + jour;
+  if (r.plafondVu !== marque) {
+    r.plafondVu = marque;
+    _journalAuto({ integration:'regle', evenement:'regle', regle: r.id, date: quand || new Date().toISOString(),
+      etat:'plafond', message: r.nom + ' · ' + t(cle).replace('{0}', cle === 'zau_plafond' ? _REGLE_MAX_JOUR : _REGLE_MAX_PLANIF) });
+  }
+  _reglesSauve();
+}
+
+// Le point d'entrée : appelé à chaque moment d'une commande, à chaque
+// article qui passe sous son seuil, et par la veille pour les déclencheurs
+// qui ne dépendent que du temps.
+function _reglesDeclenche(decl, obj) {
+  if (!obj || !_regleEntreprise()) return;
+  const regles = _reglesCharge().filter(r => r && r.actif && r.decl === decl);
+  if (!regles.length) return;
+  // Un habitué relancé à la main depuis le Radar il y a moins d'une semaine
+  // n'est pas relancé une seconde fois par une règle : le Radar s'interdit
+  // déjà deux relances dans la semaine.
+  if (decl === 'client_silence' && obj.relance && Date.now() - new Date(obj.relance).getTime() < 7 * 86400000) return;
+  const ctx = _regleCtx(decl, obj, regles.some(_regleVeutRang));
+  const vus = _reglesVus();
+  const now = Date.now();
+  const quand = new Date(now).toISOString();
+  let planif = null, changeVus = false, changePlanif = false;
+  regles.forEach(r => {
+    if (decl === 'cmd_attente') {
+      const h = Math.max(1, Number(r.attenteH) || 2);
+      if (now - new Date(obj.date || 0).getTime() < h * 3600000) return;
+    }
+    if (!_regleCondOk(r, ctx)) return;
+    const m = vus[r.id] = vus[r.id] || {};
+    if (m[ctx.cible]) {
+      // Encore présenté : le souvenir est rafraîchi (une fois par jour au
+      // plus), sinon il s'effacerait et l'objet repartirait — commande
+      // restée en attente, habitué toujours absent.
+      if (_REGLE_TEMPS.includes(decl) && now - m[ctx.cible] > 86400000) { m[ctx.cible] = now; changeVus = true; }
+      return;
+    }
+    // « Commande en attente » porte déjà son délai (le seuil d'heures) : un
+    // second délai enverrait l'alerte après une confirmation éventuelle.
+    const delai = decl === 'cmd_attente' ? 0 : (Number(r.delai) || 0);
+    if (delai) {
+      planif = planif || _reglesPlanif();
+      if (planif.length >= _REGLE_MAX_PLANIF) { _reglePlafondJournal(r, 'zau_planifPleine', quand); return; }
+      planif.push({ id: 'rp_' + now.toString(36) + Math.random().toString(36).slice(2, 6),
+                    regle: r.id, decl, echeance: now + delai, quand, ctx });
+      changePlanif = true;
+    }
+    m[ctx.cible] = now;
+    changeVus = true;
+    if (!delai) _regleExecute(r, ctx, quand);
+  });
+  if (changeVus) _reglesVusSauve(vus);
+  if (changePlanif) _reglesPlanifSauve(planif);
+}
+
+function _reglesStockBas() {
+  if (!_regleEntreprise()) return;
+  if (!_reglesCharge().some(r => r && r.actif && r.decl === 'stock_bas')) return;
+  (S.articles || []).filter(a => a && (a.min || 0) > 0 && (a.stock || 0) < a.min)
+    .forEach(a => _reglesDeclenche('stock_bas', a));
+}
+
+// Telegram lit le message en Markdown : un « _ » ou un « * » écrit par le
+// commerçant ferait refuser tout l'envoi.
+function _regleMd(s) { return String(s == null ? '' : s).replace(/([_*`\[])/g, '\\$1'); }
+// Le titre est placé DANS une entité grasse (*…*) par _envoyerAuto, où
+// Telegram n'accepte pas d'échappement : on retire ces caractères.
+function _regleTitreTelegram(s) { return String(s == null ? '' : s).replace(/[*_`\[\]]/g, ' ').replace(/\s+/g, ' ').trim(); }
+// Une relance faite par une règle est une relance : le Radar clients doit
+// la connaître, sinon il invite le commerçant à relancer la même personne
+// le soir même.
+function _regleNoteRelance(cid) {
+  try {
+    const rr = _radarRelances();
+    rr[String(cid)] = new Date().toISOString();
+    localStorage.setItem('baro_radar_relances', JSON.stringify(rr));
+  } catch (_) {}
+}
+
+async function _regleExecute(r, ctx, quand) {
+  ctx = ctx || {};
+  const base = { integration:'regle', evenement:'regle', regle: r.id, date: quand || new Date().toISOString() };
+  // Tout ce qui empêche l'envoi est vérifié AVANT de compter : « exécutée »
+  // et le plafond ne comptent que des envois réellement tentés.
+  const texte = _waSansLignesVides(_regleNettoieJetons(_fillTemplate(r.texte || '', ctx.vars || {})));
+  if (!texte) { _journalAuto({ ...base, etat:'config', message: r.nom + ' · ' + t('zau_texteVide') }); return; }
+  const wa = r.act === 'wa_client' || r.act === 'wa_moi';
+  const cfgWa = _getWhatsAppConfig() || {};
+  let tel = '', cibles = [];
+  if (wa) {
+    tel = r.act === 'wa_client' ? ctx.tel : (cfgWa.confirmedPhone || cfgWa.phone);
+    if (!tel) {
+      _journalAuto({ ...base, etat:'config',
+        message: r.nom + ' · ' + t(r.act === 'wa_client' ? 'zau_sansTelClient' : 'zau_sansTelMoi') });
+      return;
+    }
+  } else {
+    const ids = r.act === 'telegram' ? ['telegram'] : ['zapier', 'make', 'n8n'];
+    cibles = (S.integrationsConfig || []).filter(x => x && x.connected && ids.includes(x.id));
+    if (!cibles.length) {
+      _journalAuto({ ...base, etat:'config',
+        message: r.nom + ' · ' + t(r.act === 'telegram' ? 'zau_sansTelegram' : 'zau_sansWebhook') });
+      return;
+    }
+  }
+  const jour = new Date().toISOString().slice(0, 10);
+  if (r.jour !== jour) { r.jour = jour; r.nbJour = 0; }
+  if ((r.nbJour || 0) >= _REGLE_MAX_JOUR) { _reglePlafondJournal(r, 'zau_plafond', base.date); return; }
+  r.nbJour = (r.nbJour || 0) + 1;
+  r.nb = (r.nb || 0) + 1;
+  r.dernier = base.date;
+  _reglesSauve();
+  if (r.decl === 'client_silence' && ctx.cid != null) _regleNoteRelance(ctx.cid);
+
+  if (wa) {
+    const res = await _waEnvoiCloud(tel, texte, cfgWa);
+    if (res.ok) {
+      try { _logWhatsAppSend(tel, texte, 'sent'); } catch (_) {}
+      _journalAuto({ ...base, etat:'ok', message: r.nom + (ctx.nom ? ' · ' + ctx.nom : '') });
+      return;
+    }
+    // Pas d'API, refus de Meta ou coupure : le message est gardé, jamais perdu.
+    _waFileAjoute({
+      id: 'waf_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+      moment: 'regle', regleNom: r.nom, phone: tel,
+      client: r.act === 'wa_client' ? (ctx.nom || '') : t('zau_moi'),
+      texte, etat: 'attente', date: base.date, raison: res.raison, detail: res.detail || '',
+    });
+    _journalAuto({ ...base, etat:'file', message: r.nom + (ctx.nom ? ' · ' + ctx.nom : '') });
+    try { render(); } catch (_) {}
+    return;
+  }
+  // Telegram et les webhooks : on attend leur réponse. Écrire « ✓ » avant
+  // de la connaître affichait un succès pour un jeton révoqué.
+  const etats = await Promise.all(cibles.map(x => {
+    const md = x.id === 'telegram';
+    const charge = {
+      source: 'BARO', evenement: 'regle', regle: r.nom, declencheur: r.decl,
+      titre: md ? _regleTitreTelegram(r.nom) : r.nom, detail: md ? _regleMd(texte) : texte,
+      boutique: (S.session && S.session.business) || '', donnees: ctx.vars || {}, date: base.date,
+    };
+    return Promise.resolve(_envoyerAuto(x, 'regle', charge)).catch(() => 'erreur');
+  }));
+  const pire = ['erreur', 'config', 'indetermine', 'ok'].find(z => etats.includes(z)) || 'indetermine';
+  _journalAuto({ ...base, etat: pire,
+    message: r.nom + ' → ' + cibles.map((x, i) => (x.name || x.id)
+      + (etats[i] && etats[i] !== 'ok' ? ' (' + t('zau_etat_' + etats[i]) + ')' : '')).join(', ') });
+}
+
+// Repartir de maintenant, pour toutes les règles actives : ce qui est déjà
+// en cours est marqué, et les envois programmés dont l'heure est passée
+// depuis plus d'un jour sont abandonnés — « votre commande est arrivée il
+// y a deux jours », envoyé cinq semaines plus tard, serait faux. Le
+// journal dit combien.
+function _reglesRepartir(cle) {
+  _reglesCharge().filter(r => r && r.actif).forEach(r => _regleBaseline(r));
+  const now = Date.now();
+  const planif = _reglesPlanif();
+  const garde = planif.filter(x => x && x.echeance > now - 86400000);
+  const n = planif.length - garde.length;
+  if (n) {
+    _reglesPlanifSauve(garde);
+    _journalAuto({ integration:'regle', evenement:'regle', date: new Date().toISOString(), etat:'config',
+                   message: t(cle).replace('{0}', n) });
+  }
+}
+
+// La veille : exécute ce qui est dû, et regarde les déclencheurs qui ne
+// dépendent que du temps. Toutes les minutes tant que l'app est ouverte,
+// et à chaque retour dans l'app.
+let _reglesTickEnCours = false;
+async function _reglesTick() {
+  if (_reglesTickEnCours || !S.session) return;
+  // Le forfait redescend puis remonte : ce qui s'est accumulé entre-temps ne
+  // doit pas partir d'un coup au retour. Même chose après une restauration
+  // de sauvegarde, qui ramène un état ancien.
+  let etat = null, restaure = false;
+  try { etat = localStorage.getItem('baro_regles_plan'); restaure = localStorage.getItem('baro_regles_rebase') === '1'; } catch (_) {}
+  if (!_regleEntreprise()) {
+    if (etat !== '0') { try { localStorage.setItem('baro_regles_plan', '0'); } catch (_) {} }
+    return;
+  }
+  if (etat === '0' || restaure) {
+    _reglesRepartir(restaure ? 'zau_repriseRestauration' : 'zau_reprisePlan');
+    try { localStorage.removeItem('baro_regles_rebase'); } catch (_) {}
+  }
+  if (etat !== '1') { try { localStorage.setItem('baro_regles_plan', '1'); } catch (_) {} }
+  if (!_reglesCharge().length && !_reglesPlanif().length) return;
+  _reglesTickEnCours = true;
+  try {
+    const now = Date.now();
+    const planif = _reglesPlanif();
+    const lot = planif.filter(x => x && x.echeance <= now).slice(0, 20);
+    if (lot.length) {
+      // On retire d'abord de la liste, puis on exécute : un second passage
+      // pendant un envoi lent ne doit pas partir deux fois.
+      _reglesPlanifSauve(planif.filter(x => !lot.includes(x)));
+      for (const x of lot) {
+        // La règle est relue à chaque envoi : supprimée, éteinte ou modifiée
+        // pendant qu'un envoi lent attend le réseau, elle ne part plus — ni
+        // avec l'ancienne condition, ni avec un déclencheur qui a changé.
+        const r = _reglesCharge().find(y => y && y.id === x.regle && y.actif);
+        if (!r || r.decl !== x.decl || !_regleCondOk(r, x.ctx || {})) continue;
+        await _regleExecute(r, x.ctx || {}, new Date().toISOString());
+      }
+    }
+    const regles = _reglesCharge();
+    if (regles.some(r => r && r.actif && r.decl === 'cmd_attente')) {
+      (S.boutiqueOrders || []).filter(o => o && (o.status === 'pending' || !o.status))
+        .forEach(o => _reglesDeclenche('cmd_attente', o));
+    }
+    if (regles.some(r => r && r.actif && r.decl === 'client_silence')) {
+      _radarClients().retard.forEach(cl => _reglesDeclenche('client_silence', cl));
+    }
+  } catch (_) {}
+  _reglesTickEnCours = false;
+}
+
+// Une nouvelle règle, une règle rallumée ou modifiée agit À PARTIR DE
+// MAINTENANT. Sans cela, « relancer un habitué qui décroche » écrirait
+// d'un coup aux quarante clients déjà en retard, et « commande oubliée »
+// signalerait des commandes vieilles de trois semaines. Seuls les
+// déclencheurs liés au temps sont concernés : les autres n'attendent que
+// de futurs événements. L'identifiant vient de _regleCtx, pour ne jamais
+// diverger de celui qu'utilise le moteur.
+function _regleBaseline(r) {
+  if (!r || !_REGLE_TEMPS.includes(r.decl)) return 0;
+  const vus = _reglesVus();
+  const m = vus[r.id] = vus[r.id] || {};
+  const now = Date.now();
+  let n = 0;
+  const marque = obj => { const k = _regleCtx(r.decl, obj, false).cible; if (!m[k]) n++; m[k] = now; };
+  if (r.decl === 'cmd_attente') {
+    const h = Math.max(1, Number(r.attenteH) || 2) * 3600000;
+    // Une commande qui n'a pas encore atteint le délai n'est pas marquée :
+    // elle doit pouvoir déclencher la règle le moment venu.
+    (S.boutiqueOrders || []).filter(o => o && (o.status === 'pending' || !o.status)
+      && now - new Date(o.date || 0).getTime() >= h).forEach(marque);
+  } else {
+    try { _radarClients().retard.forEach(marque); } catch (_) {}
+  }
+  _reglesVusSauve(vus);
+  return n;
+}
+
+// Six recettes, chacune réelle et branchée. Une fonction, pas une
+// constante : une constante figerait la langue du premier chargement.
+function BARO_REGLE_RECETTES() {
+  const cfa = /^(XOF|XAF)$/.test(String((S.session && S.session.currency) || 'XOF'));
+  return [
+    { id:'avis',    icone:'⭐', decl:'cmd_livree',     cond:'aucune',      act:'wa_client', delai:172800000 },
+    { id:'attente', icone:'⏳', decl:'cmd_attente',    cond:'aucune',      act:'wa_moi',    delai:0, attenteH:2 },
+    { id:'premier', icone:'🤝', decl:'cmd_confirmee',  cond:'premiere',    act:'wa_client', delai:3600000 },
+    { id:'grosse',  icone:'💰', decl:'cmd_recue',      cond:'montant_min', act:'wa_moi',    delai:0, val: cfa ? 50000 : 100 },
+    { id:'palier',  icone:'🎉', decl:'cmd_confirmee',  cond:'palier',      act:'wa_client', delai:0, val:5 },
+    { id:'silence', icone:'🎯', decl:'client_silence', cond:'aucune',      act:'wa_client', delai:0 },
+  ].map(x => ({ ...x, nom: t('zau_r_' + x.id), desc: t('zau_rd_' + x.id), texte: t('zau_rt_' + x.id) }));
+}
+
+// ── Les phrases de l'écran ──────────────────────────────────────────
+function _regleDeclLib(r) {
+  if (r.decl === 'cmd_attente') return t('zau_dl_cmd_attente').replace('{0}', Math.max(1, Number(r.attenteH) || 2));
+  return t('zau_dl_' + r.decl);
+}
+function _regleCondLib(r) {
+  const c = r.cond || 'aucune';
+  if (c === 'montant_min' && r.decl === 'client_silence') return t('zau_cl_montant_mois').replace('{0}', fmt(Number(r.val) || 0) + ' ' + sym());
+  if (c === 'montant_min' || c === 'montant_max') return t('zau_cl_' + c).replace('{0}', fmt(Number(r.val) || 0) + ' ' + sym());
+  if (c === 'zone') return t('zau_cl_zone').replace('{0}', String(r.val || ''));
+  if (c === 'fidele' || c === 'palier') return t('zau_cl_' + c).replace('{0}', Number(r.val) || (c === 'palier' ? 5 : 2));
+  return t('zau_cl_' + c);
+}
+function _regleResume(r) {
+  const e = _wafEsc;
+  const parts = [`<b>${t('zau_quand')}</b> ${e(_regleDeclLib(r))}`];
+  if ((r.cond || 'aucune') !== 'aucune') parts.push(`<b>${t('zau_si')}</b> ${e(_regleCondLib(r))}`);
+  parts.push(`<b>${t('zau_alors')}</b> ${e(t('zau_al_' + r.act))}`);
+  if (r.decl !== 'cmd_attente') parts.push(e(t(BARO_REGLE_DELAI_CLE[Number(r.delai) || 0] || 'zau_t0')));
+  return parts.join(' <span class="au-sep">·</span> ');
+}
+// L'aperçu parle avec les VRAIES données du commerçant quand il en a :
+// la dernière commande, le premier article suivi, le client le plus en
+// retard. Sinon, un exemple clairement fictif. Il montre exactement ce qui
+// partira — jetons inconnus retirés compris.
+function _regleApercuTexte(r) {
+  let obj = null;
+  if (r.decl === 'stock_bas') {
+    obj = (S.articles || []).find(a => a && (a.min || 0) > 0)
+       || { id: 0, name: t('zau_exArticle'), stock: 2, min: 10, unit: 'pcs' };
+  } else if (r.decl === 'client_silence') {
+    try { const rd = _radarClients(); obj = rd.retard[0] || rd.regulier[0] || null; } catch (_) {}
+    obj = obj || { id: 0, nom: 'Awa Kone', tel: '', depuis: 21, derniere: 0, parMois: 0 };
+  } else {
+    obj = (S.boutiqueOrders || [])[0]
+       || { id: 424242, clientName: 'Awa Kone', phone: '', total: 25000, zone: 'Cocody',
+            date: new Date(Date.now() - 3 * 3600000).toISOString() };
+  }
+  const ctx = _regleCtx(r.decl, obj, _regleVeutRang(r));
+  return _waSansLignesVides(_regleNettoieJetons(_fillTemplate(r.texte || '', ctx.vars || {}))) || t('zau_texteVide');
+}
+function _regleJetonsAvert(d) {
+  const j = _regleJetonsInconnus(d.decl, d.texte);
+  return j.length ? t('zau_jetonsInconnus').replace('{0}', j.map(x => '{{' + x + '}}').join(', ')) : '';
+}
+function _regleActAvert(act) {
+  const connecte = ids => (S.integrationsConfig || []).find(x => x && x.connected && ids.includes(x.id));
+  if (act === 'telegram') {
+    const tg = connecte(['telegram']);
+    if (!tg) return `<div class="au-avert">${t('zau_avertTelegram')}</div>`;
+    // Connecté ne suffit pas : sans identifiant de conversation, Telegram
+    // refuse tout envoi.
+    if (!String(tg.chatId || '').trim()) return `<div class="au-avert">${t('zau_avertTelegramChat')}</div>`;
+  }
+  if (act === 'webhook' && !connecte(['zapier', 'make', 'n8n'])) return `<div class="au-avert">${t('zau_avertWebhook')}</div>`;
+  if ((act === 'wa_client' || act === 'wa_moi') && !_getWhatsAppConfig()) return `<div class="au-avert">${t('zau_avertWa')}</div>`;
+  return '';
+}
+
+// ── L'écran des règles ──────────────────────────────────────────────
+function vAutomatisations() {
+  if (!_planHasFeature('advancedAnalytics')) {
+    return _vEnterpriseLock('⚙️', t('zau_titre'), t('zau_lockDesc'),
+      [t('zau_perk1'), t('zau_perk2'), t('zau_perk3'), t('zau_perk4')], 'more');
+  }
+  const e = _wafEsc;
+  const regles = _reglesCharge();
+  const actives = regles.filter(r => r && r.actif).length;
+  const total = regles.reduce((a, r) => a + ((r && r.nb) || 0), 0);
+  const planif = _reglesPlanif();
+  const journal = (S.autoJournal || []).filter(j => j && j.integration === 'regle');
+  const cfgWa = _getWhatsAppConfig();
+  const apiOk = !!(cfgWa && cfgWa.mode === 'business' && cfgWa.phoneId && cfgWa.token);
+  const etats = { ok:'✓', file:'⏳', config:'⚙', erreur:'✕', plafond:'⏸', indetermine:'?' };
+  const apercu = S.regleApercu;
+  const jour = new Date().toISOString().slice(0, 10);
+
+  const carte = r => {
+    const nbPlanif = planif.filter(x => x && x.regle === r.id).length;
+    const ignores = r.jourIgnores === jour ? (r.ignoresJour || 0) : 0;
+    return `
+    <div class="au-c${r.actif ? '' : ' off'}">
+      <div class="au-h">
+        <span class="au-ic">${BARO_REGLE_ICONE[r.decl] || '⚙️'}</span>
+        <span class="au-nom">${e(r.nom || t('zau_sansNom'))}</span>
+        <label class="au-sw" title="${e(t(r.actif ? 'zau_eteindre' : 'zau_allumer'))}">
+          <input type="checkbox" ${r.actif ? 'checked' : ''} onchange="regleBascule(${_jsArg(r.id)})">
+          <span class="au-sw-p"></span>
+        </label>
+      </div>
+      <div class="au-phrase">${_regleResume(r)}</div>
+      <div class="au-meta">${r.nb
+        ? e(t('zau_executee').replace('{0}', r.nb)) + (r.dernier ? ' · ' + fmtTimeAgo(r.dernier) : '')
+        : t('zau_jamais')}${nbPlanif ? ' · ' + e(t('zau_enAttenteN').replace('{0}', nbPlanif)) : ''}${ignores
+        ? ' · <span class="au-ign">' + e(t('zau_ignores').replace('{0}', ignores)) + '</span>' : ''}</div>
+      ${apercu === r.id ? `
+      <div class="au-apercu">
+        <div class="au-apercu-t">${t('zau_apercuT')}</div>
+        <div class="au-apercu-tx">${e(_regleApercuTexte(r))}</div>
+      </div>` : ''}
+      <div class="au-act">
+        <button class="btn btn-ghost" onclick="regleModifier(${_jsArg(r.id)})">${t('zau_modifier')}</button>
+        <button class="btn btn-ghost" onclick="regleApercu(${_jsArg(r.id)})">${t(apercu === r.id ? 'zau_masquer' : 'zau_apercu')}</button>
+        <button class="btn btn-ghost au-suppr" onclick="regleSupprimer(${_jsArg(r.id)})">${t('zau_supprimer')}</button>
+      </div>
+    </div>`;
+  };
+
+  return `
+  <div class="sub-hero sh-teinte" style="--sh-c1:#7C3AED;--sh-c2:#4F46E5">
+    <div class="page-header-row" style="margin-bottom:10px">
+      <button class="back-btn-dark" onclick="nav('more')">${IC.left}</button>
+      <div style="flex:1">
+        <div class="sub-hero-title">⚙️ ${t('zau_titre')}</div>
+        <div class="sub-hero-sub">${t('zau_sousTitre')}</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${actives}</div><div class="hero-stat-lbl">${t('zau_actives')}</div></div>
+      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${total}</div><div class="hero-stat-lbl">${t('zau_executions')}</div></div>
+      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${planif.length}</div><div class="hero-stat-lbl">${t('zau_planifiees')}</div></div>
+    </div>
+  </div>
+  <div class="container">
+    ${apiOk ? '' : `
+    <div class="au-note" onclick="nav('whatsapp-setup')">
+      <span>${t('zau_noteApi')}</span>
+      <span class="au-note-l">${t('zwf_brancher')} ›</span>
+    </div>`}
+
+    <div class="section-title" style="margin:4px 0 8px">${t('zau_vosRegles')}${regles.length ? ' (' + regles.length + ')' : ''}</div>
+    ${regles.length ? regles.map(carte).join('') : `
+    <div class="au-vide">
+      <div class="au-vide-ic">⚙️</div>
+      <div class="au-vide-t">${t('zau_videT')}</div>
+      <div class="au-vide-d">${t('zau_videD')}</div>
+    </div>`}
+    <button class="btn btn-primary" style="width:100%;margin:6px 0 20px" onclick="regleNouvelle()">+ ${t('zau_nouvelle')}</button>
+
+    <div class="section-title" style="margin:0 0 4px">${t('zau_recettes')}</div>
+    <div class="au-aide">${t('zau_recettesAide')}</div>
+    <div class="au-recettes">
+      ${BARO_REGLE_RECETTES().map(rc => `
+      <div class="au-rc">
+        <div class="au-rc-ic">${rc.icone}</div>
+        <div class="au-rc-t">${e(rc.nom)}</div>
+        <div class="au-rc-d">${e(rc.desc)}</div>
+        <button class="btn btn-ghost" onclick="regleRecette(${_jsArg(rc.id)})">${t('zau_utiliser')}</button>
+      </div>`).join('')}
+    </div>
+
+    ${journal.length ? `
+    <div class="section-title" style="margin:20px 0 8px">${t('zi_journal')}</div>
+    <div class="au-journal">
+      ${journal.slice(0, 15).map(j => `
+      <div class="au-jl au-j-${e(j.etat)}">
+        <span class="au-jl-e">${etats[j.etat] || '·'}</span>
+        <span class="au-jl-m">${e(j.message || '')}</span>
+        <span class="au-jl-d">${fmtTimeAgo(j.date)}</span>
+      </div>`).join('')}
+    </div>` : ''}
+
+    <div class="au-pied">${t('zau_piedTemps')}</div>
+  </div>`;
+}
+
+// ── L'éditeur : quatre choix, et un aperçu qui parle vrai ───────────
+function vAutomatisationEdit() {
+  if (!_planHasFeature('advancedAnalytics')) return vAutomatisations();
+  const d = S.regleEdit;
+  if (!d) return vAutomatisations();
+  const e = _wafEsc;
+  if (!BARO_REGLE_DECL.includes(d.decl)) d.decl = 'cmd_livree';
+  const conds = _regleConds(d.decl);
+  if (!conds.includes(d.cond)) d.cond = 'aucune';
+  const acts = _regleActs(d.decl);
+  if (!acts.includes(d.act)) d.act = acts[0];
+  const avecValeur = ['montant_min', 'montant_max', 'zone', 'fidele', 'palier'].includes(d.cond);
+  const opt = (v, lib, sel) => `<option value="${e(v)}"${sel ? ' selected' : ''}>${e(lib)}</option>`;
+  const condLib = cc => (cc === 'montant_min' && d.decl === 'client_silence') ? t('zau_co_montant_mois') : t('zau_co_' + cc);
+  const libValeur = d.cond === 'zone' ? t('zau_fValZone')
+    : (d.cond === 'fidele' || d.cond === 'palier') ? t('zau_fValNb')
+    : t('zau_fValMontant').replace('{0}', sym());
+  const jetons = _regleJetonsAvert(d);
+  return `
+  <div class="sub-hero sh-teinte" style="--sh-c1:#7C3AED;--sh-c2:#4F46E5">
+    <div class="page-header-row">
+      <button class="back-btn-dark" onclick="regleAnnuler()">${IC.left}</button>
+      <div style="flex:1">
+        <div class="sub-hero-title">${t(d.id ? 'zau_editT' : 'zau_nouvelleT')}</div>
+        <div class="sub-hero-sub">${t('zau_editSous')}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card au-ed">
+      <div class="bq-fld">
+        <label>${t('zau_fNom')}</label>
+        <input class="input" type="text" maxlength="60" value="${e(d.nom || '')}"
+               placeholder="${e(t('zau_fNomPh'))}" oninput="regleChamp('nom', this.value)">
+      </div>
+
+      <div class="au-etape"><span class="au-etape-n">1</span>${t('zau_quand')}</div>
+      <div class="bq-fld">
+        <label>${t('zau_fDecl')}</label>
+        <select class="input" onchange="regleChamp('decl', this.value, true)">
+          ${BARO_REGLE_DECL.map(k => opt(k, BARO_REGLE_ICONE[k] + ' ' + t('zau_do_' + k), d.decl === k)).join('')}
+        </select>
+      </div>
+      ${d.decl === 'cmd_attente' ? `
+      <div class="bq-fld">
+        <label>${t('zau_fHeures')}</label>
+        <input class="input" type="number" min="1" max="168" step="1" value="${Math.max(1, Number(d.attenteH) || 2)}"
+               oninput="regleChamp('attenteH', this.value)">
+      </div>` : ''}
+      ${d.decl === 'client_silence' ? `<div class="au-aide">${t('zau_aideSilence')}</div>` : ''}
+
+      <div class="au-etape"><span class="au-etape-n">2</span>${t('zau_si')}</div>
+      <div class="bq-fld">
+        <label>${t('zau_fCond')}</label>
+        <select class="input" onchange="regleChamp('cond', this.value, true)">
+          ${conds.map(cc => opt(cc, condLib(cc), d.cond === cc)).join('')}
+        </select>
+      </div>
+      ${avecValeur ? `
+      <div class="bq-fld">
+        <label>${e(libValeur)}</label>
+        <input class="input" type="${d.cond === 'zone' ? 'text' : 'number'}"
+               ${d.cond === 'zone' ? 'maxlength="40"' : 'min="1" step="1"'}
+               value="${e(d.val == null ? '' : d.val)}" oninput="regleChamp('val', this.value)">
+      </div>` : ''}
+
+      <div class="au-etape"><span class="au-etape-n">3</span>${t('zau_alors')}</div>
+      <div class="bq-fld">
+        <label>${t('zau_fAct')}</label>
+        <select class="input" onchange="regleChamp('act', this.value, true)">
+          ${acts.map(a => opt(a, t('zau_a_' + a), d.act === a)).join('')}
+        </select>
+      </div>
+      ${_regleActAvert(d.act)}
+      ${d.decl === 'cmd_attente' ? `<div class="au-aide">${t('zau_aideAttenteDelai')}</div>` : `
+      <div class="bq-fld">
+        <label>${t('zau_fDelai')}</label>
+        <select class="input" onchange="regleChamp('delai', this.value, true)">
+          ${BARO_REGLE_DELAIS.map(ms => opt(String(ms), t(BARO_REGLE_DELAI_CLE[ms]), (Number(d.delai) || 0) === ms)).join('')}
+        </select>
+      </div>`}
+
+      <div class="au-etape"><span class="au-etape-n">4</span>${t('zau_message')}</div>
+      <div class="bq-fld">
+        <textarea class="input" id="au-texte" rows="5" maxlength="900"
+                  oninput="regleChamp('texte', this.value)">${e(d.texte || '')}</textarea>
+        <div class="au-vars">
+          ${_regleVarsDe(d.decl).map(v => `<button type="button" class="au-var" onclick="regleInsereVar(${_jsArg(v)})">{{${v}}}</button>`).join('')}
+        </div>
+        <div class="au-avert" id="au-jetons"${jetons ? '' : ' hidden'}>${e(jetons)}</div>
+      </div>
+      <div class="au-apercu">
+        <div class="au-apercu-t">${t('zau_apercuT')}</div>
+        <div class="au-apercu-tx" id="au-apercu">${e(_regleApercuTexte(d))}</div>
+      </div>
+    </div>
+    <div class="au-pied" style="margin-top:10px">${t(_REGLE_TEMPS.includes(d.decl) ? 'zau_notePartir' : 'zau_noteFutur')}</div>
+    <div style="display:flex;gap:8px;margin:12px 0 26px">
+      <button class="btn btn-ghost" style="flex:1" onclick="regleAnnuler()">${t('zau_annuler')}</button>
+      <button class="btn btn-primary" style="flex:1" onclick="regleEnregistrer()">${t('zau_enregistrer')}</button>
+    </div>
+  </div>`;
+}
+
+// ── Les gestes ──────────────────────────────────────────────────────
+function _regleModele() {
+  return { id: null, nom: '', actif: true, decl: 'cmd_livree', cond: 'aucune', val: '',
+           act: 'wa_client', delai: 0, attenteH: 2, texte: t('zau_texteDefaut') };
+}
+function regleNouvelle() {
+  if (!_planHasFeature('advancedAnalytics')) { _showPlanFeatureModal('advancedAnalytics'); return; }
+  S.regleEdit = _regleModele();
+  nav('automatisation-edit');
+}
+// Une recette s'ouvre dans l'éditeur : le commerçant voit exactement ce
+// qu'elle fera avant de l'enregistrer. Rien ne s'arme dans son dos.
+function regleRecette(id) {
+  if (!_planHasFeature('advancedAnalytics')) { _showPlanFeatureModal('advancedAnalytics'); return; }
+  const rc = BARO_REGLE_RECETTES().find(x => x.id === id);
+  if (!rc) return;
+  S.regleEdit = { ..._regleModele(), nom: rc.nom, decl: rc.decl, cond: rc.cond,
+                  val: rc.val == null ? '' : rc.val, act: rc.act, delai: rc.delai,
+                  attenteH: rc.attenteH || 2, texte: rc.texte };
+  nav('automatisation-edit');
+}
+function regleModifier(id) {
+  const r = _reglesCharge().find(x => x && x.id === id);
+  if (!r) return;
+  S.regleEdit = JSON.parse(JSON.stringify(r));
+  nav('automatisation-edit');
+}
+function regleChamp(k, v, redessine) {
+  if (!S.regleEdit) return;
+  S.regleEdit[k] = v;
+  if (redessine) { render(); return; }
+  const ap = document.getElementById('au-apercu');
+  if (ap) ap.textContent = _regleApercuTexte(S.regleEdit);
+  const jt = document.getElementById('au-jetons');
+  if (jt) { const m = _regleJetonsAvert(S.regleEdit); jt.textContent = m; jt.hidden = !m; }
+}
+function regleInsereVar(v) {
+  const ta = document.getElementById('au-texte');
+  if (!ta || !S.regleEdit) return;
+  const tag = '{{' + v + '}}';
+  const a = ta.selectionStart == null ? ta.value.length : ta.selectionStart;
+  const b = ta.selectionEnd == null ? a : ta.selectionEnd;
+  ta.value = ta.value.slice(0, a) + tag + ta.value.slice(b);
+  ta.focus();
+  ta.selectionStart = ta.selectionEnd = a + tag.length;
+  regleChamp('texte', ta.value);
+}
+function regleAnnuler() { S.regleEdit = null; nav('automatisations'); }
+function regleEnregistrer() {
+  const d = S.regleEdit;
+  if (!d) return;
+  if (!_planHasFeature('advancedAnalytics')) { _showPlanFeatureModal('advancedAnalytics'); return; }
+  const nom = String(d.nom || '').trim();
+  if (!nom) { showToast(t('zau_errNom'), 'error'); return; }
+  if (!String(d.texte || '').trim()) { showToast(t('zau_errTexte'), 'error'); return; }
+  const decl = BARO_REGLE_DECL.includes(d.decl) ? d.decl : 'cmd_livree';
+  const conds = _regleConds(decl);
+  const cond = conds.includes(d.cond) ? d.cond : 'aucune';
+  if (['montant_min', 'montant_max', 'fidele', 'palier'].includes(cond)) {
+    const n = Number(d.val);
+    if (!isFinite(n) || n <= 0) { showToast(t('zau_errValeur'), 'error'); return; }
+  }
+  if (cond === 'zone' && !String(d.val || '').trim()) { showToast(t('zau_errValeur'), 'error'); return; }
+  const acts = _regleActs(decl);
+  const regles = _reglesCharge();
+  const i = d.id ? regles.findIndex(x => x && x.id === d.id) : -1;
+  // Les compteurs viennent de la règle VIVANTE, pas de la copie ouverte dans
+  // l'éditeur : pendant qu'on rédige, la règle a pu s'exécuter ; reprendre
+  // la copie remettrait le plafond du jour à zéro.
+  const vivant = i >= 0 ? regles[i] : null;
+  const propre = {
+    id: d.id || ('rg_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6)),
+    nom: nom.slice(0, 60),
+    actif: d.actif !== false,
+    decl, cond,
+    val: cond === 'aucune' || cond === 'premiere' ? '' : String(d.val == null ? '' : d.val).trim().slice(0, 40),
+    act: acts.includes(d.act) ? d.act : acts[0],
+    delai: decl === 'cmd_attente' ? 0 : (BARO_REGLE_DELAIS.includes(Number(d.delai)) ? Number(d.delai) : 0),
+    attenteH: Math.min(168, Math.max(1, Math.round(Number(d.attenteH) || 2))),
+    texte: String(d.texte).slice(0, 900),
+    nb: vivant ? (vivant.nb || 0) : 0,
+    dernier: vivant ? (vivant.dernier || null) : null,
+    jour: vivant ? (vivant.jour || null) : null,
+    nbJour: vivant ? (vivant.nbJour || 0) : 0,
+    jourIgnores: vivant ? (vivant.jourIgnores || null) : null,
+    ignoresJour: vivant ? (vivant.ignoresJour || 0) : 0,
+    plafondVu: vivant ? (vivant.plafondVu || null) : null,
+    cree: vivant ? (vivant.cree || new Date().toISOString()) : new Date().toISOString(),
+  };
+  // Un déclencheur, une condition ou un seuil changé : pour ce qui est déjà
+  // en cours, la règle repart de maintenant.
+  const cle = x => ['decl', 'cond', 'val', 'attenteH'].map(k => String(x[k] == null ? '' : x[k])).join('|');
+  const change = !vivant || cle(vivant) !== cle(propre);
+  if (i >= 0) regles[i] = propre; else regles.push(propre);
+  if (!_reglesSauve()) return;
+  const n = (change && propre.actif) ? _regleBaseline(propre) : 0;
+  try { logAudit('automatisations', i >= 0 ? 'regle_modifiee' : 'regle_creee', { regle: propre.nom }); } catch (_) {}
+  S.regleEdit = null;
+  haptic('success');
+  showToast(n ? t(n > 1 ? 'zau_okBaseline' : 'zau_okBaseline1').replace('{0}', n) : t(i >= 0 ? 'zau_okModif' : 'zau_okCree'));
+  nav('automatisations');
+}
+function regleBascule(id) {
+  const r = _reglesCharge().find(x => x && x.id === id);
+  if (!r) return;
+  r.actif = !r.actif;
+  if (r.actif) _regleBaseline(r);
+  // Éteinte, une règle ne garde rien en réserve : rallumée dans un mois,
+  // elle n'enverrait pas d'un coup ce qu'elle avait programmé.
+  else _reglesPlanifSauve(_reglesPlanif().filter(x => x && x.regle !== id));
+  _reglesSauve();
+  haptic('tap');
+  render();
+}
+function regleSupprimer(id) {
+  const r = _reglesCharge().find(x => x && x.id === id);
+  if (!r) return;
+  if (!confirm(t('zau_confirmSuppr').replace('{0}', r.nom || ''))) return;
+  S.regles = _reglesCharge().filter(x => x && x.id !== id);
+  _reglesSauve();
+  // Ce qui était programmé au nom de cette règle ne partira pas.
+  _reglesPlanifSauve(_reglesPlanif().filter(x => x && x.regle !== id));
+  const vus = _reglesVus(); delete vus[id]; _reglesVusSauve(vus);
+  try { logAudit('automatisations', 'regle_supprimee', { regle: r.nom }); } catch (_) {}
+  if (S.regleApercu === id) S.regleApercu = null;
+  haptic('tap');
+  render();
+}
+function regleApercu(id) { S.regleApercu = S.regleApercu === id ? null : id; render(); }
 
 // Trigger auto WhatsApp on sale/ship (appelé depuis les hooks de vente / livraison)
 function triggerWhatsAppAuto(kind, data) {
@@ -41856,7 +43192,7 @@ function vWhatsappFile() {
   const carte = (x, enAttente) => `
     <div class="waf-c${enAttente ? '' : ' partie'}">
       <div class="waf-h">
-        <span class="waf-q">${_wafEsc(MOM[x.moment] || x.moment || '')}</span>
+        <span class="waf-q">${_wafEsc(x.moment === 'regle' ? '⚙️ ' + (x.regleNom || t('zau_titre')) : (MOM[x.moment] || x.moment || ''))}</span>
         <span class="waf-d">${fmtTimeAgo(x.date)}</span>
       </div>
       <div class="waf-qui">${_wafEsc(x.client || '')} · ${_wafEsc(x.phone || '')}</div>
@@ -41890,6 +43226,10 @@ function vWhatsappFile() {
       <button class="btn btn-ghost" style="width:100%;margin-top:9px" onclick="nav('whatsapp-setup')">${t('zwf_brancher')}</button>
     </div>`}
 
+    ${(() => { let n = 0; try { n = Number(localStorage.getItem('baro_wa_file_perdus')) || 0; } catch (_) {}
+      return n ? `
+    <div class="au-avert" style="margin-bottom:10px">${t('zwf_fileSaturee').replace('{0}', n)}
+      <button class="int-journal-x" style="margin-left:6px" onclick="waFileComprisPerdus()">${t('zwf_compris')}</button></div>` : ''; })()}
     ${attente.length === 0 && partis.length === 0 ? `
     <div class="empty">
       <div class="empty-ico">${IC.inbox}</div>
@@ -43167,7 +44507,7 @@ async function comptaAutoPushSale(sale) {
 
 // Generate Yango delivery request for a boutique order
 function createYangoDelivery(orderId) {
-  const order = S.boutiqueOrders.find(o => o.id === orderId);
+  const order = _cmdParId(orderId);
   if (!order) { showToast('Commande introuvable', 'error'); return; }
   const cfg = _getDeliveryConfig('yango');
   if (!cfg) {
@@ -43203,7 +44543,7 @@ function createYangoDelivery(orderId) {
 
 // Generate Glovo delivery request for a boutique order
 function createGlovoDelivery(orderId) {
-  const order = S.boutiqueOrders.find(o => o.id === orderId);
+  const order = _cmdParId(orderId);
   if (!order) { showToast('Commande introuvable', 'error'); return; }
   const cfg = _getDeliveryConfig('glovo');
   if (!cfg) {

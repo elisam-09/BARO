@@ -6406,3 +6406,104 @@ body.dark .card.rc-resume {
 .rc-vide-ic { font-size: 40px; margin-bottom: 8px; }
 .rc-vide-t { font-size: 16px; font-weight: 800; color: var(--text-1); margin-bottom: 6px; }
 .rc-vide-l { font-size: 13px; color: var(--text-2); line-height: 1.55; max-width: 320px; margin: 0 auto; }
+
+/* ── WhatsApp : les interrupteurs et la file d'attente ──────────────── */
+/* Meme dessin que les declencheurs d'integration : un commercant qui a
+   compris l'un comprend l'autre sans reapprendre. */
+.wa-sw-aide { font-size: 11.5px; line-height: 1.5; color: var(--text-2); margin: -2px 0 9px; }
+.wa-sw {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; margin-bottom: 7px; cursor: pointer;
+  border: var(--bd-w) solid var(--border); border-radius: var(--r-md);
+  background: var(--card-bg);
+  transition: border-color .16s, background .16s;
+}
+.wa-sw:has(input:checked) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--card-bg));
+}
+.wa-sw input { margin: 2px 0 0 auto; width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--accent); }
+.wa-sw-tx { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.wa-sw-tx strong { font-size: 13px; font-weight: 700; color: var(--text-1); }
+.wa-sw-tx span { font-size: 11px; line-height: 1.45; color: var(--text-3); }
+.wa-astuce {
+  font-size: 11.5px; line-height: 1.55; color: var(--text-2);
+  padding: 9px 11px; margin-top: 8px;
+  border-radius: var(--r-sm);
+  background: var(--gray-1);
+  border-left: 2px solid var(--border);
+}
+.wa-astuce.on {
+  color: var(--text-1);
+  background: color-mix(in srgb, var(--success, #16A34A) 8%, var(--card-bg));
+  border-left-color: var(--success, #16A34A);
+}
+
+.waf-bandeau {
+  display: flex; align-items: center; gap: 11px;
+  padding: 12px 13px; margin-bottom: 10px; cursor: pointer;
+  border: var(--bd-w) solid var(--accent); border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--accent) 8%, var(--card-bg));
+  box-shadow: var(--sh-1);
+}
+.waf-bandeau:active { transform: scale(.985); }
+.waf-bandeau-n {
+  flex-shrink: 0; min-width: 28px; height: 28px; padding: 0 7px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--r-pill); background: var(--accent); color: var(--on-accent, #fff);
+  font-size: 13px; font-weight: 800;
+}
+.waf-bandeau-tx { display: flex; flex-direction: column; gap: 1px; min-width: 0; flex: 1; }
+.waf-bandeau-tx strong { font-size: 13px; font-weight: 800; color: var(--text-1); }
+.waf-bandeau-tx span { font-size: 11px; color: var(--text-3); }
+.waf-bandeau-fl { font-size: 19px; color: var(--accent); flex-shrink: 0; }
+
+.waf-c {
+  border: var(--bd-w) solid var(--border); border-radius: var(--r-lg);
+  background: var(--card-bg); padding: 12px 13px; margin-bottom: 9px;
+  box-shadow: var(--sh-1);
+}
+.waf-c.partie { opacity: .62; box-shadow: none; }
+.waf-h { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+.waf-q { font-size: 12px; font-weight: 800; color: var(--text-1); }
+.waf-d { margin-left: auto; font-size: 10.5px; color: var(--text-3); flex-shrink: 0; }
+.waf-qui { font-size: 11.5px; color: var(--text-2); margin-bottom: 7px; }
+.waf-tx {
+  font-size: 12.5px; line-height: 1.55; color: var(--text-1);
+  white-space: pre-wrap; word-break: break-word;
+  padding: 9px 11px; border-radius: var(--r-sm);
+  background: var(--gray-1);
+}
+.waf-pq { font-size: 10.5px; line-height: 1.45; color: var(--text-3); margin-top: 6px; }
+.waf-act { display: flex; gap: 8px; margin-top: 10px; }
+.waf-act .btn { flex: 1; }
+.waf-etat { font-size: 11px; font-weight: 700; color: var(--text-3); margin-top: 8px; }
+
+/* ── Héros teintés par la couleur d'un service ──────────────────────── */
+/* Douze écrans — toute la famille des intégrations — remplaçaient le fond
+   sombre du héros par un dégradé dont les couleurs portaient un suffixe
+   d'opacité (#25D366 25 = 15 %, 10 = 6 %). Le héros devenait presque
+   transparent et son texte blanc tombait à 1,12 de contraste sur le fond
+   clair de la page : invisible. La teinte du service est maintenant
+   composée SUR le fond sombre au lieu de le remplacer — la couleur reste
+   reconnaissable, le texte redevient lisible, et les douze écrans
+   retrouvent la profondeur du reste de l'app. */
+.sub-hero.sh-teinte {
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--sh-c1, var(--accent)) 32%, #14111f) 0%,
+      color-mix(in srgb, var(--sh-c2, var(--sh-c1, var(--accent))) 40%, #0c0a14) 100%);
+}
+/* Un modele lie a un moment n'a pas sa propre case : l'interrupteur du
+   moment commande, et la pastille dit lequel. */
+.wa-tpl-lie {
+  font-size: 9.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: var(--r-pill);
+  white-space: nowrap;   /* « armé » tenait sur trois lignes dans la pastille */
+  flex-shrink: 0;
+  color: var(--text-3); background: var(--gray-2, var(--gray-1));
+  border: 1px solid var(--border);
+}
+.wa-tpl-lie.on {
+  color: var(--on-accent, #fff); background: var(--accent); border-color: var(--accent);
+}

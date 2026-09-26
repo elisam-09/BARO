@@ -270,6 +270,58 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zwg_mettreVitrine: "Mettre en vitrine",
+    zwg_retirerVitrine: "Retirer de la vitrine",
+    zwg_connecte: "Connecté",
+    zwg_connecteDirect: "Connecté — publication directe active",
+    zwg_connecteSync: "Connecté — synchronisation dans les deux sens active",
+    zwg_pubDirecte: "Publication directe par l'API officielle",
+    zwg_waSousTitre: "Envoyez factures, confirmations et promotions automatiquement",
+    zwg_deuxModes: "Deux façons de fonctionner :",
+    zwg_astuce: "Astuce :",
+    zwg_visitesDemarrent: "Le comptage des visites démarre dès que la boutique est publiée et visitée.",
+    orderConfirmed: "Confirmée",
+    zwf_lieOn: "armé",
+    zwf_lieOff: "éteint",
+    zwf_titre: "Messages en attente",
+    zwf_sousTitre: "Écrits tout seuls, prêts à partir",
+    zwf_enAttente: "En attente",
+    zwf_dejaPartis: "Déjà partis",
+    zwf_envoyer: "Envoyer",
+    zwf_jeter: "Jeter",
+    zwf_parti: "✓ Parti",
+    zwf_jete: "Jeté",
+    zwf_ouvert: "WhatsApp ouvert avec le message",
+    zwf_videT: "Aucun message en attente",
+    zwf_videD: "Dès qu'une commande arrive, change d'état ou qu'un article passe sous son seuil, le message s'écrit ici tout seul.",
+    zwf_reglages: "Régler les envois automatiques",
+    zwf_pourquoi: "Sans l'API Cloud de Meta, aucun message ne peut partir seul : le navigateur refuse d'ouvrir WhatsApp sans un geste de votre part. BARO écrit donc le message et le garde ici — un tap et il part. Branchez l'API Cloud pour qu'ils partent sans vous.",
+    zwf_brancher: "Brancher l'API Cloud",
+    zwf_bandeauT: "Messages prêts à envoyer",
+    zwf_bandeauD: "Un tap chacun et ils partent",
+    zwf_aide: "Chaque interrupteur commande un message, et un seul. Fermé, rien ne part.",
+    zwf_avecApi: "✓ L'API Cloud est branchée : ces messages partent seuls, sans vous.",
+    zwf_sansApi: "Mode rapide : les messages s'écrivent seuls mais attendent un tap dans « Messages en attente ». Pour qu'ils partent sans vous, il faut l'API Cloud.",
+    zwf_fenetre: "💡 Quand le client vous écrit le premier, tout ce que vous lui envoyez dans les 24 h qui suivent est gratuit chez Meta. Le bouton de commande de votre vitrine ouvre justement cette fenêtre.",
+    zwf_m_recue: "Commande reçue",
+    zwf_md_recue: "Un accusé de réception part dès qu'une commande arrive",
+    zwf_m_confirmee: "Commande confirmée",
+    zwf_md_confirmee: "Le client sait que vous la préparez",
+    zwf_m_expediee: "Commande expédiée",
+    zwf_md_expediee: "Avec le suivi, quand vous la marquez en route",
+    zwf_m_livree: "Commande livrée",
+    zwf_md_livree: "Le mot de fin, et la demande d'avis",
+    zwf_m_annulee: "Commande annulée",
+    zwf_md_annulee: "Une annulation sans explication fait perdre un client",
+    zwf_m_stock: "Stock bas",
+    zwf_md_stock: "À vous, pas au client — trois articles au plus par jour",
+    zwa_lblRecue: "Accusé de réception",
+    zwa_mRecue: "Bonjour {{client}} 👋\n\nNous avons bien reçu votre commande {{ref}}.\nMontant : {{total}} {{sym}}\n\nNous vous confirmons son départ très vite.\n{{business}}",
+    zwa_lblAnnulee: "Commande annulée",
+    zwa_mAnnulee: "Bonjour {{client}},\n\nVotre commande {{ref}} a été annulée. Si c'est une erreur, répondez à ce message.\n\n{{business}}",
+    zwa_sansTel: "Commande sans numéro de téléphone — aucun message n'a pu partir",
+    zwa_client: "Client",
+    zwa_nouvellesCmd: "{0} nouvelle(s) commande(s) reçue(s) en ligne",
     zct_enDirect: "EN DIRECT",
     zct_bandeau: "Bandeau d'annonce (haut de page)",
     zct_bandeauPl: "ex : 🚚 Livraison gratuite dès 25 000 FCFA",
@@ -978,7 +1030,7 @@ const LANGS = {
     v_notesPrefs: "Notes, préférences…",
     v_metaApp: "Créez une App Meta Developers → ajoutez Facebook Login → générez un Page Access Token longue durée pour votre Page Business.",
     v_publiePromo: "Publie chaque nouvelle promo/soldes",
-    v_glovoApres: "Après connexion, un bouton \"Glovo Partners\" apparaît sur chaque commande boutique (onglet Boutique › Commandes). Un clic = coursier envoyé avec TOUS les détails (adresse, valeur, contact).",
+    v_glovoApres: "Après connexion, un bouton \"{0}\" apparaît sur chaque commande boutique (onglet Boutique › Commandes). Un clic = coursier envoyé avec TOUS les détails : adresse, valeur, contact.",
     v_confirmerNum: "Confirmer ce numéro (envoi d'un test)",
     v_waGroupe: "Ajoutez des clients (avec téléphone) pour leur envoyer un message groupé.",
     v_smsEnvoyez: "Envoyez SMS de confirmation, OTP, promo à vos clients",
@@ -3487,6 +3539,58 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zwg_mettreVitrine: "Put in the shop window",
+    zwg_retirerVitrine: "Remove from the shop window",
+    zwg_connecte: "Connected",
+    zwg_connecteDirect: "Connected — direct publishing active",
+    zwg_connecteSync: "Connected — two-way syncing active",
+    zwg_pubDirecte: "Direct publishing through the official API",
+    zwg_waSousTitre: "Send invoices, confirmations and promotions automatically",
+    zwg_deuxModes: "Two ways to work:",
+    zwg_astuce: "Tip:",
+    zwg_visitesDemarrent: "Visit counting starts as soon as the shop is published and visited.",
+    orderConfirmed: "Confirmed",
+    zwf_lieOn: "on",
+    zwf_lieOff: "off",
+    zwf_titre: "Pending messages",
+    zwf_sousTitre: "Written on their own, ready to go",
+    zwf_enAttente: "Pending",
+    zwf_dejaPartis: "Already sent",
+    zwf_envoyer: "Send",
+    zwf_jeter: "Discard",
+    zwf_parti: "✓ Sent",
+    zwf_jete: "Discarded",
+    zwf_ouvert: "WhatsApp opened with the message",
+    zwf_videT: "No pending messages",
+    zwf_videD: "As soon as an order arrives, changes state, or an item drops below its threshold, the message is written here on its own.",
+    zwf_reglages: "Set up automatic sending",
+    zwf_pourquoi: "Without Meta's Cloud API, no message can be sent on its own: the browser refuses to open WhatsApp without an action from you. So BARO writes the message and keeps it here — one tap and it goes. Connect the Cloud API to have them sent without you.",
+    zwf_brancher: "Connect the Cloud API",
+    zwf_bandeauT: "Messages ready to send",
+    zwf_bandeauD: "One tap each and they go",
+    zwf_aide: "Each switch controls one message, and only one. Off, nothing is sent.",
+    zwf_avecApi: "✓ The Cloud API is connected: these messages are sent on their own, without you.",
+    zwf_sansApi: "Quick mode: messages are written on their own but wait for a tap in “Pending messages”. For them to go without you, the Cloud API is required.",
+    zwf_fenetre: "💡 When a customer writes to you first, everything you send them in the next 24 hours is free at Meta. Your shop's order button opens exactly that window.",
+    zwf_m_recue: "Order received",
+    zwf_md_recue: "An acknowledgement goes out as soon as an order arrives",
+    zwf_m_confirmee: "Order confirmed",
+    zwf_md_confirmee: "The customer knows you are preparing it",
+    zwf_m_expediee: "Order shipped",
+    zwf_md_expediee: "With tracking, when you mark it on its way",
+    zwf_m_livree: "Order delivered",
+    zwf_md_livree: "The closing word, and the review request",
+    zwf_m_annulee: "Order cancelled",
+    zwf_md_annulee: "A cancellation without a word loses a customer",
+    zwf_m_stock: "Low stock",
+    zwf_md_stock: "To you, not the customer — at most three items a day",
+    zwa_lblRecue: "Acknowledgement",
+    zwa_mRecue: "Hello {{client}} 👋\n\nWe have received your order {{ref}}.\nAmount: {{total}} {{sym}}\n\nWe will confirm dispatch shortly.\n{{business}}",
+    zwa_lblAnnulee: "Order cancelled",
+    zwa_mAnnulee: "Hello {{client}},\n\nYour order {{ref}} has been cancelled. If this is a mistake, just reply to this message.\n\n{{business}}",
+    zwa_sansTel: "Order without a phone number — no message could be sent",
+    zwa_client: "Customer",
+    zwa_nouvellesCmd: "{0} new order(s) received online",
     zct_enDirect: "LIVE",
     zct_bandeau: "Announcement bar (top of page)",
     zct_bandeauPl: "e.g. 🚚 Free delivery over 25,000 CFA",
@@ -4195,7 +4299,7 @@ const LANGS = {
     v_notesPrefs: "Notes, preferences…",
     v_metaApp: "Create a Meta Developers app → add Facebook Login → generate a long-lived Page Access Token for your Business Page.",
     v_publiePromo: "Posts every new promotion or sale",
-    v_glovoApres: "Once connected, a “Glovo Partners” button appears on every shop order (Shop › Orders tab). One tap = a courier sent with ALL the details (address, value, contact).",
+    v_glovoApres: "Once connected, a “{0}” button appears on every shop order (Shop › Orders tab). One tap = a courier sent with ALL the details: address, value, contact.",
     v_confirmerNum: "Confirm this number (sends a test)",
     v_waGroupe: "Add customers (with a phone number) to send them a group message.",
     v_smsEnvoyez: "Send confirmation, one-time-code and promotional texts to your customers",
@@ -7346,7 +7450,10 @@ const S = {
   // Dépenses du commerce (loyer, électricité, transport, salaires…)
   expenses: JSON.parse(localStorage.getItem('baro_expenses') || '[]'),
   // Integrations state
-  integrationsConfig: JSON.parse(localStorage.getItem('baro_integrations') || '[]'),
+  // Ancienne cle 'stockr_integrations' : treize ecrans y ont ecrit sans que
+  // rien ne la relise. On la recupere au lieu de la perdre.
+  integrationsConfig: JSON.parse(localStorage.getItem('baro_integrations')
+                              || localStorage.getItem('stockr_integrations') || '[]'),
   // Journal des envois automatiques : relu au demarrage, sinon il
   // repartait vide a chaque ouverture et ne prouvait plus rien.
   autoJournal: JSON.parse(localStorage.getItem('baro_auto_journal') || '[]'),
@@ -7829,11 +7936,15 @@ async function _syncBoutiqueOrders() {
     const cur = S.boutiqueOrders || [];
     const localOnly = cur.filter(o => o && !String(o.id).startsWith('srv_'));
     const mapped = srv.map(o => ({ ...o, id: 'srv_' + o.id, serverId: o.id }));
-    const before = cur.filter(o => String(o.id).startsWith('srv_')).length;
+    const connus = new Set(cur.filter(o => String(o.id).startsWith('srv_')).map(o => String(o.id)));
+    const nouvelles = mapped.filter(o => !connus.has(String(o.id)));
     S.boutiqueOrders = [...mapped, ...localOnly].sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
     try { localStorage.setItem('baro_boutique_orders', JSON.stringify(S.boutiqueOrders)); } catch(_){}
-    const newCount = mapped.length - before;
-    if (newCount > 0) { showToast(`🛍️ ${newCount} nouvelle(s) commande(s) reçue(s) en ligne`, 'success'); render(); }
+    if (nouvelles.length) {
+      showToast('🛍️ ' + t('zwa_nouvellesCmd').replace('{0}', nouvelles.length), 'success');
+      nouvelles.forEach(o => _evtCommande('recue', o));
+      render();
+    }
   } catch (e) { /* hors-ligne / serveur absent : silencieux */ }
 }
 
@@ -8230,6 +8341,22 @@ const BARO_EVENEMENTS = [
 // promettre un envoi qui n'arrivera jamais.
 const BARO_CIBLES_AUTO = ['zapier', 'make', 'n8n', 'telegram'];
 
+// Une seule porte de sortie pour les integrations. Avant, chaque ecran
+// enregistrait dans la cle de son choix : la moitie des reglages
+// disparaissait au rechargement sans un mot.
+function _sauveIntegrations() {
+  try {
+    localStorage.setItem('baro_integrations', JSON.stringify(S.integrationsConfig || []));
+    // L'ancienne cle est videe : la laisser pleine ferait revivre de vieux
+    // reglages le jour ou la bonne cle serait effacee.
+    if (localStorage.getItem('stockr_integrations')) localStorage.removeItem('stockr_integrations');
+    return true;
+  } catch (_) {
+    if (typeof showToast === 'function') showToast(t('zu_memPleine'), 'error');
+    return false;
+  }
+}
+
 function _declencheursDe(id) {
   const e = (S.integrationsConfig || []).find(x => x.id === id);
   return (e && Array.isArray(e.declencheurs)) ? e.declencheurs : [];
@@ -8240,7 +8367,7 @@ function basculerDeclencheur(id, cle) {
   if (!Array.isArray(e.declencheurs)) e.declencheurs = [];
   const i = e.declencheurs.indexOf(cle);
   if (i >= 0) e.declencheurs.splice(i, 1); else e.declencheurs.push(cle);
-  localStorage.setItem('baro_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   haptic('tap');
   render();
 }
@@ -8310,6 +8437,9 @@ function logActivity(type, detail, extra = {}) {
   // Les envois partent après l'enregistrement local : une panne réseau ne
   // doit jamais empêcher l'activité d'être écrite.
   try { _declencherAuto(type, detail); } catch (_) {}
+  // Une vente ou un mouvement de stock peut faire passer un article sous
+  // son seuil : c'est le seul endroit par lequel les deux passent.
+  if (type === 'sale' || type === 'stock') { try { _evtStockBas(); } catch (_) {} }
 }
 function fmtTimeAgo(iso) {
   const diff = Date.now() - new Date(iso).getTime();
@@ -14149,7 +14279,7 @@ function _doRender() {
     'social-media': vSocialMedia, 'social-setup': vSocialSetup, 'payments-setup': vPayments,
     integrations: vIntegrations,
     'delivery-setup': vDeliverySetup,
-    'whatsapp-setup': vWhatsAppSetup,
+    'whatsapp-setup': vWhatsAppSetup, 'whatsapp-file': vWhatsappFile,
     'whatsapp-broadcast': vWhatsappBroadcast,
     'sms-setup': vSmsSetup,
     'sms-broadcast': vSmsBroadcast,
@@ -14251,7 +14381,7 @@ function _doRender() {
     if (gs) { gs.focus({ preventScroll: true }); gs.setSelectionRange(gs.value.length, gs.value.length); }
   }
 
-  const hideNav = ['detail','add','add-product','edit-product','pack-form','add-client','client-detail','notifications','catalog','add-supplier','supplier-detail','stock-history','purchase-orders','add-order','pricing','subscription','billing-setup','boutique','boutique-editor','boutique-appearance','boutique-domain','boutique-pixels','boutique-code','boutique-seo','boutique-analytics','boutique-hours','boutique-policies','boutique-faq','bulk-add','bulk-photos','marketing','social-media','social-setup','payments-setup','integrations','delivery-setup','whatsapp-setup','whatsapp-broadcast','sms-setup','sms-broadcast','email-broadcast','ecommerce-setup','sheets-setup','pos-setup','compta-setup','api-settings','spectra','clients','exports','team','add-team-member','audit-log','appearance','security','2fa-verify','onboarding','setup-wizard','creator'].includes(S.view);
+  const hideNav = ['detail','add','add-product','edit-product','pack-form','add-client','client-detail','notifications','catalog','add-supplier','supplier-detail','stock-history','purchase-orders','add-order','pricing','subscription','billing-setup','boutique','boutique-editor','boutique-appearance','boutique-domain','boutique-pixels','boutique-code','boutique-seo','boutique-analytics','boutique-hours','boutique-policies','boutique-faq','bulk-add','bulk-photos','marketing','social-media','social-setup','payments-setup','integrations','delivery-setup','whatsapp-setup','whatsapp-file','whatsapp-broadcast','sms-setup','sms-broadcast','email-broadcast','ecommerce-setup','sheets-setup','pos-setup','compta-setup','api-settings','spectra','clients','exports','team','add-team-member','audit-log','appearance','security','2fa-verify','onboarding','setup-wizard','creator'].includes(S.view);
   navEl.style.display = hideNav ? 'none' : '';
   if (!hideNav) navEl.innerHTML = renderNav();
 }
@@ -14515,7 +14645,7 @@ function _wizardCommit() {
     const entry = { id:'whatsapp-business', name:'WhatsApp Business', connected:true, value:w.wa, date:new Date().toISOString(), detail:{ mode:'quick', phone:w.wa, signature:(w.biz||S.session?.business||''), templates: tpls } };
     const i = S.integrationsConfig.findIndex(c => c.id === 'whatsapp-business');
     if (i >= 0) S.integrationsConfig[i] = entry; else S.integrationsConfig.push(entry);
-    try { localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig)); } catch(_){}
+    _sauveIntegrations();
   }
   try { logActivity('setup', 'Configuration guidée terminée'); } catch(_){}
 }
@@ -15459,7 +15589,7 @@ function vHome() {
       <div class="alert-banner" style="background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.22);cursor:pointer" onclick="nav('boutique')">
         <div class="alert-ico" style="background:rgba(16,185,129,0.15);color:#10B981;font-size:16px">🛒</div>
         <div style="flex:1;min-width:0">
-          <div class="alert-title" style="color:#10B981">${pending.length} commande${pending.length>1?'s':''} boutique à traiter</div>
+          <div class="alert-title" style="color:#10B981">${pending.length} ${t(pending.length > 1 ? 'w4_cmdsBoutique' : 'w4_cmdBoutique')}</div>
           <div class="alert-sub" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${pending.slice(0,3).map(o => `${o.clientName||'Client'} · ${fmt(o.total||0)} ${sym()}`).join(' · ')}</div>
         </div>
         <div class="alert-arrow">${IC.chevron}</div>
@@ -16166,8 +16296,8 @@ function vProducts() {
       <span style="font-size:10px;color:var(--text-3);font-weight:600;margin-right:4px">Trier :</span>
       <select class="input" style="padding:4px 24px 4px 8px;font-size:11px;height:26px;width:auto;flex:0 0 auto;background-image:none" onchange="S.productSort=this.value;render()">
         <option value="name" ${pSort==='name'?'selected':''}>Nom A-Z</option>
-        <option value="price-desc" ${pSort==='price-desc'?'selected':''}>Prix ↓</option>
-        <option value="price-asc" ${pSort==='price-asc'?'selected':''}>Prix ↑</option>
+        <option value="price-desc" ${pSort==='price-desc'?'selected':''}>${t('zd_prixDecroissant')}</option>
+        <option value="price-asc" ${pSort==='price-asc'?'selected':''}>${t('zd_prixCroissant')}</option>
         <option value="margin" ${pSort==='margin'?'selected':''}>Meilleure marge</option>
         <option value="best-seller" ${pSort==='best-seller'?'selected':''}>${t('zz8_meilleuresVentes')}</option>
       </select>
@@ -16271,7 +16401,7 @@ function vProducts() {
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
             <span class="status ${canMake?'st-ok':'st-out'}">${canMake?IC.check:IC.xmark} ${canMake?avail+' '+t('available'):t('unavailable')}</span>
             <div style="display:flex;gap:6px">
-              <button onclick="toggleBoutiqueProduct(${p.id})" title="${inShop?'Retirer de la boutique':'Ajouter à la boutique'}" style="background:${inShop?'var(--accent-light)':'none'};border:1px solid ${inShop?'var(--accent)':'var(--gray-3)'};border-radius:6px;padding:4px 8px;cursor:pointer;color:${inShop?'var(--accent)':'var(--text-2)'}">🛍️</button>
+              <button onclick="toggleBoutiqueProduct(${p.id})" title="${inShop ? t('zwg_retirerVitrine') : t('zwg_mettreVitrine')}" style="background:${inShop?'var(--accent-light)':'none'};border:1px solid ${inShop?'var(--accent)':'var(--gray-3)'};border-radius:6px;padding:4px 8px;cursor:pointer;color:${inShop?'var(--accent)':'var(--text-2)'}">🛍️</button>
               <button onclick="nav('edit-product',{editProductId:${p.id}})" style="background:none;border:1px solid var(--gray-3);border-radius:6px;padding:4px 8px;cursor:pointer;color:var(--text-2)">${IC.settings}</button>
               <button onclick="deleteProduct(${p.id})" style="background:none;border:1px solid var(--gray-3);border-radius:6px;padding:4px 8px;cursor:pointer;color:var(--text-2)">${IC.trash}</button>
             </div>
@@ -17799,7 +17929,7 @@ function vAdd() {
             : `<div style="width:72px;height:72px;border-radius:14px;background:var(--gray-1);border:2px dashed var(--gray-3);display:flex;align-items:center;justify-content:center;color:var(--text-3);font-size:24px">📷</div>`}
           <div style="display:flex;flex-direction:column;gap:6px">
             <button type="button" class="btn btn-ghost" style="width:auto;padding:8px 16px;font-size:12px" onclick="uploadFormImage()">${f.image?'Changer la photo':t('v_ajouterPhoto')}</button>
-            ${f.image?`<button type="button" class="btn" style="width:auto;padding:4px 12px;font-size:11px;background:none;border:none;color:var(--danger);cursor:pointer" onclick="S.form.image='';render()">Retirer</button>`:''}
+            ${f.image?`<button type="button" class="btn" style="width:auto;padding:4px 12px;font-size:11px;background:none;border:none;color:var(--danger);cursor:pointer" onclick="S.form.image='';render()">${t('zw_logoRetirer')}</button>`:''}
           </div>
         </div>
       </div>
@@ -17952,7 +18082,7 @@ function vAddProduct() {
             : `<div style="width:72px;height:72px;border-radius:14px;background:var(--gray-1);border:2px dashed var(--gray-3);display:flex;align-items:center;justify-content:center;color:var(--text-3);font-size:24px">📷</div>`}
           <div style="display:flex;flex-direction:column;gap:6px">
             <button type="button" class="btn btn-ghost" style="width:auto;padding:8px 16px;font-size:12px" onclick="uploadProductFormImage()">${S.productForm?.image?'Changer la photo':t('v_ajouterPhoto')}</button>
-            ${S.productForm?.image?`<button type="button" class="btn" style="width:auto;padding:4px 12px;font-size:11px;background:none;border:none;color:var(--danger);cursor:pointer" onclick="S.productForm.image='';render()">Retirer</button>`:''}
+            ${S.productForm?.image?`<button type="button" class="btn" style="width:auto;padding:4px 12px;font-size:11px;background:none;border:none;color:var(--danger);cursor:pointer" onclick="S.productForm.image='';render()">${t('zw_logoRetirer')}</button>`:''}
           </div>
         </div>
       </div>
@@ -18023,7 +18153,7 @@ function vEditProduct() {
             : `<div style="width:72px;height:72px;border-radius:14px;background:var(--gray-1);border:2px dashed var(--gray-3);display:flex;align-items:center;justify-content:center;color:var(--text-3);font-size:24px">📷</div>`}
           <div style="display:flex;flex-direction:column;gap:6px">
             <button type="button" class="btn btn-ghost" style="width:auto;padding:8px 16px;font-size:12px" onclick="uploadProductFormImage()">${(S.productForm?.image || p.image)?'Changer la photo':t('v_ajouterPhoto')}</button>
-            ${(S.productForm?.image || p.image)?`<button type="button" class="btn" style="width:auto;padding:4px 12px;font-size:11px;background:none;border:none;color:var(--danger);cursor:pointer" onclick="S.productForm=S.productForm||{};S.productForm.image='';S.productForm.imageCleared=true;render()">Retirer</button>`:''}
+            ${(S.productForm?.image || p.image)?`<button type="button" class="btn" style="width:auto;padding:4px 12px;font-size:11px;background:none;border:none;color:var(--danger);cursor:pointer" onclick="S.productForm=S.productForm||{};S.productForm.image='';S.productForm.imageCleared=true;render()">${t('zw_logoRetirer')}</button>`:''}
           </div>
         </div>
       </div>
@@ -27334,7 +27464,7 @@ function vMore() {
 
   // Alerts / rappels
   const alerts = [];
-  if (boutiquePending > 0) alerts.push({ icon:'🛒', color:'#4F46E5', text:`${boutiquePending} commande${boutiquePending>1?'s':''} boutique à traiter`, action:"nav('boutique')" });
+  if (boutiquePending > 0) alerts.push({ icon:'🛒', color:'#4F46E5', text:`${boutiquePending} ${t(boutiquePending > 1 ? 'w4_cmdsBoutique' : 'w4_cmdBoutique')}`, action:"nav('boutique')" });
   if (scheduledPostsCount > 0) alerts.push({ icon:'📅', color:'#e1306c', text:`${scheduledPostsCount} publication${scheduledPostsCount>1?'s':''} programmée${scheduledPostsCount>1?'s':''}`, action:"nav('social-media')" });
   if (pendingOrders > 0) alerts.push({ icon:'📦', color:'#059669', text:`${pendingOrders} commande${pendingOrders>1?'s':''} fournisseur en cours`, action:"nav('purchase-orders')" });
 
@@ -27840,7 +27970,7 @@ function vBoutique() {
       <div style="padding:10px 15px;border-top:1px solid var(--border);font-size:11px;color:var(--text-3);line-height:1.5">
         ${P.visits > 0
           ? `👁️ ${P.visits} visite${P.visits>1?'s':''} · ${((P.count/P.visits)*100).toFixed(1)}% de conversion`
-          : `Le comptage des visites démarre dès que la boutique est publiée et visitée.`}
+          : t('zwg_visitesDemarrent')}
       </div>
     </div>`;
     })()}
@@ -28192,12 +28322,12 @@ function vBoutique() {
         </div>
         <div style="text-align:right">
           <div style="font-weight:700;font-size:15px">${fmt(o.total||0)} ${sym()}</div>
-          <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--gray-4)'}20;color:${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--text-3)'}">${o.status==='pending'?'En attente':o.status==='confirmed'?'Confirmee':o.status==='delivered'?'Livree':'Annulee'}</span>
+          <span style="font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;background:${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--gray-4)'}20;color:${o.status==='pending'?'var(--warning)':o.status==='confirmed'?'var(--accent)':o.status==='delivered'?'var(--success)':'var(--text-3)'}">${o.status==='pending'?t('orderPending'):o.status==='confirmed'?t('orderConfirmed'):o.status==='delivered'?t('orderDelivered'):t('orderCancelled')}</span>
         </div>
       </div>
       ${o.status==='pending'?`
       <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${o.id},'confirmed')">Confirmer</button>
+        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${o.id},'confirmed')">${t('confirm')}</button>
         <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="updateOrderStatus(${o.id},'cancelled')">${t('cancel')}</button>
       </div>`:o.status==='confirmed'?`
       <div style="display:flex;gap:6px;margin-top:10px">
@@ -34634,7 +34764,7 @@ function vBoutiqueAnalytics() {
     <div class="card" style="margin-bottom:12px">
       <div class="card-title">${t('x2_etatCommandes')}</div>
       <div style="display:flex;gap:10px">
-        <div style="flex:1;text-align:center;padding:12px;border-radius:12px;background:var(--warning-light,rgba(245,158,11,.1))"><div style="font-size:22px;font-weight:900;color:var(--warning,#D97706)">${pending}</div><div style="font-size:12px;color:var(--text-3)">En attente</div></div>
+        <div style="flex:1;text-align:center;padding:12px;border-radius:12px;background:var(--warning-light,rgba(245,158,11,.1))"><div style="font-size:22px;font-weight:900;color:var(--warning,#D97706)">${pending}</div><div style="font-size:12px;color:var(--text-3)">${t('boutiquePending')}</div></div>
         <div style="flex:1;text-align:center;padding:12px;border-radius:12px;background:var(--success-light,rgba(16,185,129,.1))"><div style="font-size:22px;font-weight:900;color:var(--success,#059669)">${done}</div><div style="font-size:12px;color:var(--text-3)">${t('x2_livrees')}</div></div>
       </div>
     </div>` : ''}
@@ -34751,6 +34881,7 @@ function addBoutiqueOrder() {
   S.boutiqueOrders.unshift(order);
   localStorage.setItem('baro_boutique_orders', JSON.stringify(S.boutiqueOrders));
   logActivity('order', `Commande de ${clientName} — ${fmt(total)} ${sym()}`);
+  _evtCommande('recue', order);
   showToast('Commande ajoutee !');
   render();
 }
@@ -34760,6 +34891,9 @@ function updateOrderStatus(id, status) {
   order.status = status;
   order.updatedAt = new Date().toISOString();
   localStorage.setItem('baro_boutique_orders', JSON.stringify(S.boutiqueOrders));
+  // Chaque changement d'état est un moment où le client attend un mot.
+  _evtCommande({ confirmed:'confirmee', shipped:'expediee', delivered:'livree',
+                 cancelled:'annulee' }[status], order);
   // Commande venue du serveur → répercuter le statut en ligne
   if (order.serverId && !USE_LOCAL && S.token) { api('PUT', `/api/orders/${order.serverId}`, { status }).catch(() => {}); }
   // If confirmed, record as sale
@@ -38107,12 +38241,12 @@ function vSocialSetup() {
   const d = existing.detail || {};
   const connected = !!existing.connected;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,${meta.color}30,${meta.color}10)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:${meta.color};--sh-c2:${meta.color}">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('social-media')">${IC.left}</button>
       <div style="flex:1">
         <div class="sub-hero-title">${meta.logo} Connecter ${meta.name}</div>
-        <div class="sub-hero-sub">${connected?'✓ Connecté — publication directe active':'Publication directe via API officielle'}</div>
+        <div class="sub-hero-sub">${connected ? '✓ ' + t('zwg_connecteDirect') : t('zwg_pubDirecte')}</div>
       </div>
     </div>
     <div style="display:flex;gap:8px">
@@ -39259,7 +39393,7 @@ function vIntegrations() {
         ${connected ? `
           <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
             <button class="int-btn int-btn-solid" style="border-color:${it.color};background:${it.color}" onclick="ouvrirPanneauIntegration('${it.id}')">${t('zh_ouvrir')}</button>
-            <button class="int-btn int-btn-danger" onclick="disconnectIntegration('${it.id}','${it.name}')">Retirer</button>
+            <button class="int-btn int-btn-danger" onclick="disconnectIntegration('${it.id}','${it.name}')">${t('zw_logoRetirer')}</button>
           </div>
         ` : `
           <button class="int-btn" style="border-color:${it.color};background:${it.color}10;color:${it.color}" onclick="connectIntegration('${it.id}')">${t('zg_connecter')}</button>
@@ -40231,7 +40365,7 @@ function _majChatTelegram(v) {
   const e = (S.integrationsConfig || []).find(x => x.id === 'telegram');
   if (!e) return;
   e.chatId = String(v || '').trim();
-  try { localStorage.setItem('baro_integrations', JSON.stringify(S.integrationsConfig)); } catch (_) {}
+  _sauveIntegrations();
 }
 function viderJournalAuto() {
   S.autoJournal = [];
@@ -40414,7 +40548,7 @@ function _saveIntegration(id, name, displayValue, secretKey) {
   const entry = { id, name, connected:true, value:displayValue, key:secretKey||null, date:new Date().toISOString() };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('baro_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', `${name} connecte`);
   showToast(`${name} connecte avec succes !`);
   render();
@@ -40423,7 +40557,7 @@ function _saveIntegration(id, name, displayValue, secretKey) {
 function disconnectIntegration(id, name) {
   if (!confirm(`Deconnecter ${name} ?`)) return;
   S.integrationsConfig = S.integrationsConfig.filter(i => i.id !== id);
-  localStorage.setItem('baro_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   showToast(`${name} deconnecte`);
   render();
 }
@@ -40468,7 +40602,7 @@ function vDeliverySetup() {
   };
 
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,${meta.color}25,${meta.color}10)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:${meta.color};--sh-c2:${meta.color}">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
@@ -40587,7 +40721,7 @@ function vDeliverySetup() {
     ` : ''}
 
     <div class="card" style="margin-top:14px;background:#EFF6FF;border-color:#3B82F640;font-size:11px;color:#1E40AF;line-height:1.6">
-      💡 <strong>Astuce :</strong> ${t('v_glovoApres')} "${meta.name}" apparaît sur chaque commande boutique (onglet Boutique › Commandes). Un clic = coursier envoyé avec TOUS les détails (adresse, valeur, contact).
+      💡 <strong>${t('zwg_astuce')}</strong> ${t('v_glovoApres').replace('{0}', meta.name)}
       ${defaults.sandbox?'<br>🧪 <strong>'+t('w1_modeTest')+'</strong> '+t('w1_aucunFrais'):''}
     </div>
   </div>`;
@@ -40630,7 +40764,7 @@ function saveDeliverySetup(provider) {
   };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', `${name} associé (${storeName}, ${city})`);
   showToast(`✓ ${name} connecté — ${storeName}`);
   S.deliverySetupProvider = null;
@@ -40889,9 +41023,11 @@ function WHATSAPP_DEFAULT_TEMPLATES_() {
   if (_waTplCache && _waTplLang === _lang) return _waTplCache;
   _waTplLang = _lang;
   _waTplCache = [
+  { id:'order_received',  label:t('zwa_lblRecue'),       enabled:true,  body:t('zwa_mRecue') },
   { id:'order_confirm',   label:t('w1_lblConfirm'),      enabled:true,  body:t('u_mConfirm') },
   { id:'order_shipped',   label:t('w1_expedition'),        enabled:true,  body:t('u_mExped') },
   { id:'order_delivered', label:t('w1_livConfirmee'),          enabled:true,  body:t('u_mLivree') },
+  { id:'order_cancelled', label:t('zwa_lblAnnulee'),     enabled:false, body:t('zwa_mAnnulee') },
   { id:'payment_request', label:t('w1_lblPaiement'),          enabled:true,  body:t('u_mFacture') },
   { id:'low_stock_alert', label:t('w1_lblStockStaff'),  enabled:false, body:t('w1_mStock') },
   { id:'promo_push',      label:t('w1_promoNouv'),        enabled:false, body:t('u_mPromo') },
@@ -40910,15 +41046,17 @@ function vWhatsAppSetup() {
   const cfg = (S.integrationsConfig || []).find(c => c.id === 'whatsapp-business') || {};
   const d = cfg.detail || {};
   const connected = !!cfg.connected;
-  const tpls = Array.isArray(d.templates) && d.templates.length ? d.templates : WHATSAPP_DEFAULT_TEMPLATES_();
+  // Fusion, pas remplacement : un compte configuré avant l'ajout de
+  // « commande reçue » et « annulation » ne verrait jamais ces deux modèles.
+  const tpls = _waModeles(d);
   const biz = S.session?.business || 'Mon Commerce';
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#25D36625,#128C7E10)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#25D366;--sh-c2:#128C7E">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
         <div class="sub-hero-title">🟢 WhatsApp Business Cloud API</div>
-        <div class="sub-hero-sub">${connected ? '✓ Connecté — '+(d.phone||'')  : 'Envoyez factures, confirmations et promos automatiquement'}</div>
+        <div class="sub-hero-sub">${connected ? '✓ ' + t('zwg_connecte') + ' — ' + (d.phone || '') : t('zwg_waSousTitre')}</div>
       </div>
     </div>
     <div style="display:flex;gap:8px">
@@ -40932,7 +41070,7 @@ function vWhatsAppSetup() {
       <div style="display:flex;gap:10px;align-items:flex-start">
         <div style="font-size:24px">💡</div>
         <div style="flex:1;font-size:12px;color:var(--text-1);line-height:1.5">
-          <strong style="color:#128C7E">Deux modes de fonctionnement :</strong><br>
+          <strong style="color:#128C7E">${t('zwg_deuxModes')}</strong><br>
           <b>• ${t('zzb_waRapide')}</b> ${t('w1_ouvreWa')}<br>
           <b>• ${t('zzb_waPro')}</b> ${t('w1_envoiAuto')}
         </div>
@@ -41000,10 +41138,21 @@ function vWhatsAppSetup() {
       ${tpls.map((tpl,i) => `
         <div class="card" style="margin-bottom:8px;padding:10px;background:var(--gray-1);border-radius:8px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            ${(() => {
+              const m = BARO_MOMENTS_CMD.find(x => x.tpl === tpl.id);
+              const sw = m ? m.sw : (tpl.id === 'low_stock_alert' ? 'autoStock' : null);
+              if (!sw) return '';
+              const on = _waSwOn(d, sw);
+              return `
+            <span style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700">
+              ${tpl.label}
+              <span class="wa-tpl-lie${on ? ' on' : ''}">${t(on ? 'zwf_lieOn' : 'zwf_lieOff')}</span>
+            </span>`;
+            })() || `
             <label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;cursor:pointer">
               <input type="checkbox" class="wa-tpl-enabled" data-id="${tpl.id}" ${tpl.enabled?'checked':''}>
               ${tpl.label}
-            </label>
+            </label>`}
             <button class="btn btn-ghost" style="padding:3px 8px;font-size:10px" onclick="testWhatsAppTemplate('${tpl.id}')">🧪 Test</button>
           </div>
           <textarea class="input wa-tpl-body" data-id="${tpl.id}" rows="3" style="font-size:12px;font-family:monospace">${tpl.body.replace(/</g,'&lt;')}</textarea>
@@ -41011,20 +41160,35 @@ function vWhatsAppSetup() {
       `).join('')}
     </div>
 
+    ${_waEnAttente() ? `
+    <div class="waf-bandeau" onclick="nav('whatsapp-file')">
+      <span class="waf-bandeau-n">${_waEnAttente()}</span>
+      <span class="waf-bandeau-tx"><strong>${t('zwf_bandeauT')}</strong><span>${t('zwf_bandeauD')}</span></span>
+      <span class="waf-bandeau-fl">›</span>
+    </div>` : ''}
+
     <div class="card" style="margin-bottom:10px">
       <div class="card-title">${t('x1_declencheursAuto')}</div>
-      <label style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
-        <div><div style="font-weight:700;font-size:13px">${t('x1_envoiAutoVente')}</div><div style="font-size:11px;color:var(--text-3)">${t('w1_autoConfirm')}</div></div>
-        <input type="checkbox" id="wa-auto-sale" ${d.autoSale?'checked':''}>
+      <div class="wa-sw-aide">${t('zwf_aide')}</div>
+      ${BARO_MOMENTS_CMD.map(m => `
+      <label class="wa-sw">
+        <span class="wa-sw-tx">
+          <strong>${m.icone} ${t('zwf_m_' + m.cle)}</strong>
+          <span>${t('zwf_md_' + m.cle)}</span>
+        </span>
+        <input type="checkbox" id="wa-sw-${m.sw}" ${_waSwOn(d, m.sw) ? 'checked' : ''}>
+      </label>`).join('')}
+      <label class="wa-sw">
+        <span class="wa-sw-tx">
+          <strong>⚠️ ${t('zwf_m_stock')}</strong>
+          <span>${t('zwf_md_stock')}</span>
+        </span>
+        <input type="checkbox" id="wa-sw-autoStock" ${d.autoStock?'checked':''}>
       </label>
-      <label style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)">
-        <div><div style="font-weight:700;font-size:13px">${t('zza_envoiAutoLiv')}</div><div style="font-size:11px;color:var(--text-3)">${t('w1_autoExped')}</div></div>
-        <input type="checkbox" id="wa-auto-ship" ${d.autoShip?'checked':''}>
-      </label>
-      <label style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
-        <div><div style="font-weight:700;font-size:13px">${t('x1_alertesStaff')}</div><div style="font-size:11px;color:var(--text-3)">${t('y_autoStock')}</div></div>
-        <input type="checkbox" id="wa-auto-stock" ${d.autoStock?'checked':''}>
-      </label>
+      <div class="wa-astuce ${d.mode === 'business' ? 'on' : ''}">
+        ${d.mode === 'business' ? t('zwf_avecApi') : t('zwf_sansApi')}
+      </div>
+      <div class="wa-astuce">${t('zwf_fenetre')}</div>
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:12px">
@@ -41058,7 +41222,7 @@ function confirmWhatsAppNumber() {
       const cfg = (S.integrationsConfig||[]).find(c => c.id === 'whatsapp-business');
       if (cfg && cfg.detail && cfg.detail.phone === phone) {
         cfg.detail.confirmed = true; cfg.detail.confirmedPhone = phone;
-        localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+        _sauveIntegrations();
       }
       showToast('✓ Numéro confirmé — joignable sur WhatsApp', 'success');
       render();
@@ -41082,13 +41246,24 @@ function saveWhatsAppSetup() {
     phoneId: document.getElementById('wa-phoneId')?.value.trim() || '',
     waba:    document.getElementById('wa-waba')?.value.trim() || '',
     token:   document.getElementById('wa-token')?.value.trim() || '',
-    autoSale:  document.getElementById('wa-auto-sale')?.checked || false,
-    autoShip:  document.getElementById('wa-auto-ship')?.checked || false,
-    autoStock: document.getElementById('wa-auto-stock')?.checked || false,
+    autoOrder:  document.getElementById('wa-sw-autoOrder')?.checked || false,
+    autoSale:   document.getElementById('wa-sw-autoSale')?.checked || false,
+    autoShip:   document.getElementById('wa-sw-autoShip')?.checked || false,
+    autoDeliv:  document.getElementById('wa-sw-autoDeliv')?.checked || false,
+    autoCancel: document.getElementById('wa-sw-autoCancel')?.checked || false,
+    autoStock:  document.getElementById('wa-sw-autoStock')?.checked || false,
     templates: WHATSAPP_DEFAULT_TEMPLATES_().map(def => {
       const en = document.querySelector(`.wa-tpl-enabled[data-id="${def.id}"]`);
       const body = document.querySelector(`.wa-tpl-body[data-id="${def.id}"]`);
-      return { ...def, enabled: en ? en.checked : def.enabled, body: body ? body.value : def.body };
+      // Un modèle lié à un moment obéit à l'interrupteur de ce moment, et à
+      // lui seul. Avant, deux cases commandaient la même chose à deux
+      // endroits de l'écran : armer « Stock bas » ne suffisait pas, il
+      // fallait aussi cocher le modèle plus bas — et rien ne le disait.
+      const mom = BARO_MOMENTS_CMD.find(m => m.tpl === def.id);
+      const sw = mom ? mom.sw : (def.id === 'low_stock_alert' ? 'autoStock' : null);
+      const cocheSw = sw ? document.getElementById('wa-sw-' + sw) : null;
+      const actif = cocheSw ? cocheSw.checked : (en ? en.checked : def.enabled);
+      return { ...def, enabled: actif, body: body ? body.value : def.body };
     }),
     updatedAt: new Date().toISOString(),
   };
@@ -41099,7 +41274,7 @@ function saveWhatsAppSetup() {
   const entry = { id:'whatsapp-business', name:'WhatsApp Business', connected:true, value: phone, date: new Date().toISOString(), detail };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', `WhatsApp configuré (${mode})`);
   showToast('✓ WhatsApp Business configuré', 'success');
   nav('integrations');
@@ -41149,29 +41324,9 @@ function _fillTemplate(body, vars) {
 async function _sendWhatsAppMessage(phone, text, cfg) {
   cfg = cfg || _getWhatsAppConfig() || {};
   const cleanPhone = String(phone).replace(/[^\d+]/g, '').replace(/^\+/, '');
-  // Mode pro (Meta Cloud API) — direct send
-  if (cfg.mode === 'business' && cfg.phoneId && cfg.token) {
-    try {
-      const res = await fetch(`https://graph.facebook.com/v18.0/${cfg.phoneId}/messages`, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${cfg.token}`
-        },
-        body: JSON.stringify({
-          messaging_product: 'whatsapp',
-          to: cleanPhone,
-          type: 'text',
-          text: { body: text }
-        })
-      });
-      if (res.ok) {
-        _logWhatsAppSend(phone, text, 'sent');
-        return true;
-      }
-    } catch(e) { /* fallback */ }
-  }
+  // Mode pro (API Cloud de Meta) — même chemin que l'envoi automatique
+  const rc = await _waEnvoiCloud(phone, text, cfg);
+  if (rc.ok) { _logWhatsAppSend(phone, text, 'sent'); return true; }
   // Mode rapide (wa.me fallback)
   window.open(`https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`, '_blank');
   _logWhatsAppSend(phone, text, 'opened');
@@ -41183,6 +41338,198 @@ function _logWhatsAppSend(phone, text, status) {
   const log = JSON.parse(localStorage.getItem(key) || '[]');
   log.unshift({ id:'wa_'+Date.now().toString(36), phone, preview:text.slice(0,80), status, date:new Date().toISOString() });
   localStorage.setItem(key, JSON.stringify(log.slice(0, 200)));
+}
+
+// ══════════════════════════════════════════════════════════════
+// LES CINQ MOMENTS D'UNE COMMANDE
+// Chacun a son modèle et son interrupteur. Un message qui part sans avoir
+// été demandé coûte de l'argent au commerçant et de la patience au client.
+// ══════════════════════════════════════════════════════════════
+const BARO_MOMENTS_CMD = [
+  { cle:'recue',     tpl:'order_received',  sw:'autoOrder',  icone:'🛍️' },
+  { cle:'confirmee', tpl:'order_confirm',   sw:'autoSale',   icone:'✅' },
+  { cle:'expediee',  tpl:'order_shipped',   sw:'autoShip',   icone:'🚚' },
+  { cle:'livree',    tpl:'order_delivered', sw:'autoDeliv',  icone:'📬' },
+  { cle:'annulee',   tpl:'order_cancelled', sw:'autoCancel', icone:'✕'  },
+];
+
+// Les modèles enregistrés avant l'ajout de « commande reçue » et
+// « annulation » ne contiennent pas ces deux identifiants. Sans fusion,
+// les deux nouveaux moments resteraient muets chez les anciens comptes.
+function _waModeles(cfg) {
+  const def = WHATSAPP_DEFAULT_TEMPLATES_();
+  const gardes = Array.isArray(cfg && cfg.templates) ? cfg.templates : [];
+  return def.map(d => {
+    const g = gardes.find(x => x && x.id === d.id);
+    return g ? { ...d, enabled: g.enabled, body: g.body || d.body } : d;
+  });
+}
+
+// « Livrée » n'avait pas son propre interrupteur : autoShip commandait les
+// deux. Les comptes déjà configurés gardent donc ce comportement tant
+// qu'ils n'ont pas rouvert l'écran.
+function _waSwOn(cfg, sw) {
+  if (!cfg) return false;
+  if (cfg[sw] !== undefined) return !!cfg[sw];
+  if (sw === 'autoDeliv') return !!cfg.autoShip;
+  if (sw === 'autoOrder') return !!cfg.autoSale;
+  return false;
+}
+
+// L'appel direct à l'API Cloud de Meta. Isolé ici pour que l'envoi manuel
+// et l'envoi automatique empruntent exactement le même chemin.
+async function _waEnvoiCloud(phone, texte, cfg) {
+  const num = _waNormalize(phone);
+  if (!(cfg && cfg.mode === 'business' && cfg.phoneId && cfg.token)) {
+    return { ok:false, raison:'sans-api' };
+  }
+  try {
+    const res = await fetch(`https://graph.facebook.com/v18.0/${cfg.phoneId}/messages`, {
+      method:'POST', mode:'cors',
+      headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer ' + cfg.token },
+      body: JSON.stringify({ messaging_product:'whatsapp', to:num, type:'text', text:{ body:texte } }),
+    });
+    if (res.ok) return { ok:true };
+    let msg = 'HTTP ' + res.status;
+    try { const j = await res.json(); msg = (j && j.error && j.error.message) || msg; } catch (_) {}
+    return { ok:false, raison:'refus', detail:msg };
+  } catch (err) {
+    return { ok:false, raison:'reseau', detail:err && err.message ? err.message : String(err) };
+  }
+}
+
+// « Suivi : — » n'apprend rien au client et fait bâclé. Une ligne dont la
+// seule information manque est retirée du message avant l'envoi ; les
+// lignes qui portent autre chose qu'un champ vide sont gardées telles
+// quelles.
+function _waSansLignesVides(texte) {
+  return String(texte || '')
+    .split('\n')
+    .filter(ligne => !/^[^:\n]{1,28}:\s*[—–-]?\s*$/.test(ligne.trim()))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
+// ── La file d'attente ────────────────────────────────────────────────
+// Sans API Cloud, aucun message ne peut partir seul : le navigateur
+// bloque les fenêtres ouvertes hors d'un geste de l'utilisateur. Plutôt
+// que d'échouer en silence, le message est écrit et attend un seul tap.
+function _waFileCharge() {
+  if (!Array.isArray(S.waFile)) {
+    try { S.waFile = JSON.parse(localStorage.getItem('baro_wa_file') || '[]'); }
+    catch (_) { S.waFile = []; }
+  }
+  return S.waFile;
+}
+function _waFileSauve() {
+  try { localStorage.setItem('baro_wa_file', JSON.stringify(S.waFile || [])); return true; }
+  catch (_) { showToast(t('zu_memPleine'), 'error'); return false; }
+}
+function _waFileAjoute(entree) {
+  const f = _waFileCharge();
+  f.unshift(entree);
+  if (f.length > 60) S.waFile = f.slice(0, 60);
+  _waFileSauve();
+}
+function _waEnAttente() { return _waFileCharge().filter(x => x && x.etat === 'attente').length; }
+
+// ── Le point d'entrée unique ─────────────────────────────────────────
+// Appelé à chaque instant de la vie d'une commande. Ne fait rien tant que
+// l'interrupteur du moment est fermé : le coût est une lecture d'objet.
+function _evtCommande(cle, commande) {
+  try {
+    const moment = BARO_MOMENTS_CMD.find(m => m.cle === cle);
+    if (!moment || !commande) return;
+    const cfg = _getWhatsAppConfig();
+    if (!cfg || !_waSwOn(cfg, moment.sw)) return;
+    const tpl = _waModeles(cfg).find(x => x.id === moment.tpl);
+    // L'interrupteur du moment est le seul juge. Exiger en plus que le
+    // modèle soit coché plus bas dans l'écran faisait taire un moment armé
+    // sans que rien ne l'explique.
+    if (!tpl) return;
+    const tel = commande.phone || commande.clientPhone || '';
+    // L'heure est celle de l'événement, pas celle de la réponse du réseau.
+    // Mesuré : deux moments séparés de 900 ms se retrouvaient horodatés à
+    // 2 ms d'intervalle — et dans le mauvais ordre à l'écran — parce que
+    // la date était posée quand l'envoi échouait.
+    const quand = new Date().toISOString();
+    const base = { integration:'whatsapp-business', evenement:'cmd_' + cle, date:quand };
+    if (!tel) { _journalAuto({ ...base, etat:'config', message:t('zwa_sansTel') }); return; }
+    const nom = commande.clientName || commande.client || t('zwa_client');
+    const texte = _waSansLignesVides(_fillTemplate(tpl.body, {
+      client: nom,
+      ref: commande.ref || ('#' + String(commande.id || '').slice(-6)),
+      total: fmt(commande.total || 0),
+      sym: sym(),
+      business: cfg.signature || (S.session && S.session.business) || 'BARO',
+      // Vide, et non « — » : une ligne sans information est retirée plus
+      // bas plutôt qu'envoyée au client.
+      tracking: commande.tracking || '',
+      eta: commande.eta || '',
+      delivery: commande.zone || commande.delivery || '',
+      payment_link: commande.paymentLink || '',
+      article: '', stock: '', unit: '', promo_text: '', expires: '', gift: '',
+    }));
+    _waEnvoiCloud(tel, texte, cfg).then(r => {
+      if (r.ok) {
+        _logWhatsAppSend(tel, texte, 'sent');
+        _journalAuto({ ...base, etat:'ok', message:nom });
+        return;
+      }
+      // Pas d'API, refus de Meta ou coupure réseau : le message est gardé.
+      _waFileAjoute({
+        id: 'waf_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+        moment: cle, phone: tel, client: nom, texte,
+        etat: 'attente', date: quand,
+        raison: r.raison, detail: r.detail || '',
+      });
+      _journalAuto({ ...base, etat:'file',
+        message: nom + (r.detail ? ' · ' + r.detail : '') });
+      render();
+    });
+  } catch (_) { /* une commande ne doit jamais échouer à cause d'un message */ }
+}
+
+// ── Stock bas : le seul message qui va au commerçant, pas au client ──
+// Un seul avertissement par article et par jour : sans ce garde-fou, une
+// journée de ventes noierait le commerçant sous ses propres alertes.
+function _evtStockBas() {
+  try {
+    const cfg = _getWhatsAppConfig();
+    if (!cfg || !cfg.autoStock) return;
+    const tpl = _waModeles(cfg).find(x => x.id === 'low_stock_alert');
+    if (!tpl) return;   // autoStock est le seul juge, comme pour les moments
+    const dest = cfg.confirmedPhone || cfg.phone;
+    if (!dest) return;
+    const jour = new Date().toISOString().slice(0, 10);
+    let vus = {};
+    try { vus = JSON.parse(localStorage.getItem('baro_wa_stock_vu') || '{}'); } catch (_) {}
+    if (vus.jour !== jour) vus = { jour, ids: [] };
+    const bas = (S.articles || []).filter(a =>
+      a && (a.min || 0) > 0 && (a.stock || 0) < a.min && !vus.ids.includes(a.id));
+    if (!bas.length) return;
+    const base = { integration:'whatsapp-business', evenement:'stock_bas', date:new Date().toISOString() };
+    bas.slice(0, 3).forEach(a => {
+      vus.ids.push(a.id);
+      const texte = _fillTemplate(tpl.body, {
+        article: a.name || '', stock: String(a.stock || 0), unit: a.unit || '',
+        business: cfg.signature || (S.session && S.session.business) || 'BARO',
+        client:'', ref:'', total:'', sym:sym(), tracking:'', eta:'', delivery:'',
+        payment_link:'', promo_text:'', expires:'', gift:'',
+      });
+      _waEnvoiCloud(dest, texte, cfg).then(r => {
+        if (r.ok) { _journalAuto({ ...base, etat:'ok', message:a.name || '' }); return; }
+        _waFileAjoute({
+          id: 'waf_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5),
+          moment: 'stock', phone: dest, client: a.name || '', texte,
+          etat: 'attente', date: base.date, raison: r.raison, detail: r.detail || '',
+        });
+        _journalAuto({ ...base, etat:'file', message:a.name || '' });
+      });
+    });
+    try { localStorage.setItem('baro_wa_stock_vu', JSON.stringify(vus)); } catch (_) {}
+  } catch (_) {}
 }
 
 // Trigger auto WhatsApp on sale/ship (appelé depuis les hooks de vente / livraison)
@@ -41252,12 +41599,12 @@ function vSmsSetup() {
   const provider = SMS_PROVIDERS.find(p => p.id === d.provider) || SMS_PROVIDERS[0];
   const tpls = Array.isArray(d.templates) && d.templates.length ? d.templates : SMS_DEFAULT_TEMPLATES_();
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#F59E0B25,#D9770610)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#F59E0B;--sh-c2:#D97706">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
         <div class="sub-hero-title">📨 SMS API</div>
-        <div class="sub-hero-sub">${connected ? `✓ Connecté — ${provider.name}` : t('v_smsEnvoyez')}</div>
+        <div class="sub-hero-sub">${connected ? `✓ ${t('zwg_connecte')} — ${provider.name}` : t('v_smsEnvoyez')}</div>
       </div>
     </div>
     <div style="display:flex;gap:8px">
@@ -41353,7 +41700,7 @@ function saveSmsSetup() {
   const entry = { id:'sms-api', name:'SMS API ('+provider.name+')', connected:true, value: detail.from, date:new Date().toISOString(), detail };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', `SMS ${provider.name} configuré`);
   showToast('✓ Passerelle SMS configurée', 'success');
   nav('integrations');
@@ -41480,6 +41827,124 @@ function _waBcastState() {
   return S._waBcast;
 }
 
+// ══════════════════════════════════════════════════════════════
+// MESSAGES EN ATTENTE
+// Un envoi automatique sans API Cloud est impossible : le navigateur
+// bloque toute fenêtre ouverte hors d'un geste. Les messages sont donc
+// écrits, rangés ici, et partent d'un tap. Ce qui est parti reste visible
+// en dessous : sans trace, un envoi automatique est invérifiable.
+// ══════════════════════════════════════════════════════════════
+function _wafEsc(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function vWhatsappFile() {
+  const f = _waFileCharge();
+  // Tri par l'heure de l'événement, pas par l'ordre d'arrivée dans la
+  // file : deux envois lancés à 900 ms d'écart peuvent échouer dans
+  // l'ordre inverse selon la lenteur du réseau.
+  const parDate = (a, b) => new Date(b.date || 0) - new Date(a.date || 0);
+  const attente = f.filter(x => x && x.etat === 'attente').sort(parDate);
+  const partis  = f.filter(x => x && x.etat !== 'attente').sort(parDate).slice(0, 20);
+  const cfg = _getWhatsAppConfig();
+  const MOM = {};
+  BARO_MOMENTS_CMD.forEach(m => { MOM[m.cle] = m.icone + ' ' + t('zwf_m_' + m.cle); });
+  MOM.stock = '⚠️ ' + t('zwf_m_stock');
+
+  const carte = (x, enAttente) => `
+    <div class="waf-c${enAttente ? '' : ' partie'}">
+      <div class="waf-h">
+        <span class="waf-q">${_wafEsc(MOM[x.moment] || x.moment || '')}</span>
+        <span class="waf-d">${fmtTimeAgo(x.date)}</span>
+      </div>
+      <div class="waf-qui">${_wafEsc(x.client || '')} · ${_wafEsc(x.phone || '')}</div>
+      <div class="waf-tx">${_wafEsc(x.texte || '')}</div>
+      ${x.detail ? `<div class="waf-pq">${_wafEsc(x.detail)}</div>` : ''}
+      ${enAttente ? `
+      <div class="waf-act">
+        <button class="btn btn-primary" onclick="waFileEnvoyer('${_wafEsc(x.id)}')">${t('zwf_envoyer')}</button>
+        <button class="btn btn-ghost" onclick="waFileSupprimer('${_wafEsc(x.id)}')">${t('zwf_jeter')}</button>
+      </div>` : `<div class="waf-etat">${t(x.etat === 'envoye' ? 'zwf_parti' : 'zwf_jete')}</div>`}
+    </div>`;
+
+  return `
+  <div class="sub-hero sh-teinte" style="--sh-c1:#25D366;--sh-c2:#128C7E">
+    <div class="page-header-row" style="margin-bottom:10px">
+      <button class="back-btn-dark" onclick="nav('whatsapp-setup')">${IC.left}</button>
+      <div style="flex:1">
+        <div class="sub-hero-title">${t('zwf_titre')}</div>
+        <div class="sub-hero-sub">${t('zwf_sousTitre')}</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${attente.length}</div><div class="hero-stat-lbl">${t('zwf_enAttente')}</div></div>
+      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${cfg && cfg.mode === 'business' ? 'META' : 'wa.me'}</div><div class="hero-stat-lbl">Mode</div></div>
+    </div>
+  </div>
+  <div class="container">
+    ${(cfg && cfg.mode === 'business') ? '' : `
+    <div class="card" style="margin-bottom:10px;background:var(--warning-bg,#F59E0B12);border-color:#F59E0B40">
+      <div style="font-size:12px;line-height:1.55;color:var(--text-1)">${t('zwf_pourquoi')}</div>
+      <button class="btn btn-ghost" style="width:100%;margin-top:9px" onclick="nav('whatsapp-setup')">${t('zwf_brancher')}</button>
+    </div>`}
+
+    ${attente.length === 0 && partis.length === 0 ? `
+    <div class="empty">
+      <div class="empty-ico">${IC.inbox}</div>
+      <div class="empty-title">${t('zwf_videT')}</div>
+      <div class="empty-text">${t('zwf_videD')}</div>
+      <button class="btn btn-primary" style="width:auto;padding:11px 24px" onclick="nav('whatsapp-setup')">${t('zwf_reglages')}</button>
+    </div>` : ''}
+
+    ${attente.length ? `
+    <div class="section-title" style="margin:2px 0 8px">${t('zwf_enAttente')} (${attente.length})</div>
+    ${attente.map(x => carte(x, true)).join('')}` : ''}
+
+    ${partis.length ? `
+    <div class="section-title" style="margin:16px 0 8px;display:flex;justify-content:space-between;align-items:center">
+      <span>${t('zwf_dejaPartis')}</span>
+      <button class="int-journal-x" onclick="waFileViderPartis()">${t('zi_vider')}</button>
+    </div>
+    ${partis.map(x => carte(x, false)).join('')}` : ''}
+  </div>`;
+}
+
+// Un tap du commerçant : c'est le geste que le navigateur exige pour
+// ouvrir WhatsApp. C'est pour cela que l'envoi ne peut pas être
+// automatique sans l'API Cloud, et l'écran le dit.
+function waFileEnvoyer(id) {
+  const f = _waFileCharge();
+  const x = f.find(y => y && y.id === id);
+  if (!x) return;
+  window.open('https://wa.me/' + _waNormalize(x.phone) + '?text=' + encodeURIComponent(x.texte), '_blank');
+  x.etat = 'envoye';
+  x.envoyeLe = new Date().toISOString();
+  _waFileSauve();
+  try { _logWhatsAppSend(x.phone, x.texte, 'opened'); } catch (_) {}
+  haptic('success');
+  showToast(t('zwf_ouvert'));
+  render();
+}
+
+function waFileSupprimer(id) {
+  const f = _waFileCharge();
+  const x = f.find(y => y && y.id === id);
+  if (!x) return;
+  x.etat = 'jete';
+  _waFileSauve();
+  haptic('tap');
+  render();
+}
+
+function waFileViderPartis() {
+  S.waFile = _waFileCharge().filter(x => x && x.etat === 'attente');
+  _waFileSauve();
+  haptic('tap');
+  render();
+}
+
 function vWhatsappBroadcast() {
   const st = _waBcastState();
   const clients = (S.clients || []).filter(c => c.phone);
@@ -41487,7 +41952,7 @@ function vWhatsappBroadcast() {
   const sentCount = clients.filter(c => st.sent[c.id]).length;
   const pct = clients.length ? Math.round(sentCount / clients.length * 100) : 0;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#25D36625,#128C7E12)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#25D366;--sh-c2:#128C7E">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
@@ -41613,7 +42078,7 @@ function vSmsBroadcast() {
   const okCount = clients.filter(c => st.results[c.id] === 'sent').length;
   const failCount = clients.filter(c => st.results[c.id] === 'failed').length;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#4F46E525,#4338CA12)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#4F46E5;--sh-c2:#4338CA">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
@@ -41754,7 +42219,7 @@ function vEmailBroadcast() {
   const st = _emailBcastState();
   const clients = (S.clients || []).filter(c => c.email);
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#EA433525,#C5221F12)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#EA4335;--sh-c2:#C5221F">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('marketing')">${IC.left}</button>
       <div style="flex:1">
@@ -41843,12 +42308,12 @@ function vEcommerceSetup() {
   const productsCount = S.products.length;
   const alreadySynced = (d.synced || []).length;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,${meta.color}25,${meta.color}10)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:${meta.color};--sh-c2:${meta.color}">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
         <div class="sub-hero-title">${meta.logo} Synchronisation ${meta.name}</div>
-        <div class="sub-hero-sub">${connected ? '✓ Connecté — sync bidirectionnelle active' : t('v_ecomPush')}</div>
+        <div class="sub-hero-sub">${connected ? '✓ ' + t('zwg_connecteSync') : t('v_ecomPush')}</div>
       </div>
     </div>
     <div style="display:flex;gap:8px">
@@ -41945,7 +42410,7 @@ function saveEcommerceSetup(provider) {
   const entry = { id:provider, name:names[provider], connected:true, value:url||names[provider], date:new Date().toISOString(), detail };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', `${names[provider]} configuré`);
   showToast(`✓ ${names[provider]} connecté`, 'success');
   nav('integrations');
@@ -41997,7 +42462,7 @@ async function ecommerceSyncProducts(provider) {
   }
   // Update config synced list
   const ent = S.integrationsConfig.find(c => c.id === provider);
-  if (ent) { ent.detail.synced = synced; ent.detail.lastSyncAt = new Date().toISOString(); localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig)); }
+  if (ent) { ent.detail.synced = synced; ent.detail.lastSyncAt = new Date().toISOString(); _sauveIntegrations(); }
   logActivity('integration', `Sync ${provider}: ${success} OK, ${errors} erreurs`);
   showToast(`Sync ${provider} : ${success} OK, ${errors} erreurs`, errors>0?'warn':'success');
   render();
@@ -42139,7 +42604,7 @@ function vSheetsSetup() {
   const d = cfg.detail || {};
   const connected = !!cfg.connected;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#34A85330,#0F9D5810)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#34A853;--sh-c2:#0F9D58">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
@@ -42231,7 +42696,7 @@ function saveSheetsSetup() {
   const entry = { id:'google-sheets', name:'Google Sheets', connected:true, value:sheetId.slice(0,12)+'…', date:new Date().toISOString(), detail };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', 'Google Sheets connecté');
   showToast('✓ Google Sheets connecté', 'success');
   nav('integrations');
@@ -42264,7 +42729,7 @@ async function sheetsAppendRow(values) {
   if (res.ok) {
     cfg.pushedCount = (cfg.pushedCount||0) + 1;
     cfg.lastPush = new Date().toISOString();
-    const ent = S.integrationsConfig.find(c=>c.id==='google-sheets'); if (ent) { ent.detail = cfg; localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig)); }
+    const ent = S.integrationsConfig.find(c=>c.id==='google-sheets'); if (ent) { ent.detail = cfg; _sauveIntegrations(); }
   }
   return res.ok;
 }
@@ -42312,7 +42777,7 @@ function vPosSetup() {
     {id:'generic',  name:t('v_imprimante'), endpoint:'http://192.168.1.X:9100'},
   ];
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#4B5EFC30,#2E3A9610)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#4B5EFC;--sh-c2:#2E3A96">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
@@ -42401,7 +42866,7 @@ function savePosSetup() {
   const entry = { id:'pos', name:'Caisse POS', connected:true, value:detail.model, date:new Date().toISOString(), detail };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', 'Caisse POS configurée');
   showToast('✓ Caisse configurée', 'success');
   nav('integrations');
@@ -42455,7 +42920,7 @@ async function posPrintLines(lines, cfg) {
     });
     if (res.ok || res.type === 'opaque') {
       cfg.printedCount = (cfg.printedCount||0) + 1;
-      const ent = S.integrationsConfig.find(c=>c.id==='pos'); if (ent) { ent.detail = cfg; localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig)); }
+      const ent = S.integrationsConfig.find(c=>c.id==='pos'); if (ent) { ent.detail = cfg; _sauveIntegrations(); }
       showToast('🖨 Ticket envoyé', 'success');
       return true;
     }
@@ -42533,7 +42998,7 @@ function vComptaSetup() {
     {id:'webhook',name:t('v_webhookPerso'),    endpoint:'https://votre-compta.com/api/ventes'},
   ];
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#F59E0B30,#D9770610)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#F59E0B;--sh-c2:#D97706">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="nav('integrations')">${IC.left}</button>
       <div style="flex:1">
@@ -42626,7 +43091,7 @@ function saveComptaSetup() {
   const entry = { id:'comptabilite', name:'Comptabilité OHADA', connected:true, value:detail.provider, date:new Date().toISOString(), detail };
   if (existing >= 0) S.integrationsConfig[existing] = entry;
   else S.integrationsConfig.push(entry);
-  localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig));
+  _sauveIntegrations();
   logActivity('integration', 'Comptabilité configurée');
   showToast('✓ Comptabilité connectée', 'success');
   nav('integrations');
@@ -42674,7 +43139,7 @@ async function comptaPushSale(sale) {
     if (res.ok) {
       cfg.pushedCount = (cfg.pushedCount||0) + 1;
       cfg.lastPush = new Date().toISOString();
-      const ent = S.integrationsConfig.find(c=>c.id==='comptabilite'); if (ent) { ent.detail = cfg; localStorage.setItem('stockr_integrations', JSON.stringify(S.integrationsConfig)); }
+      const ent = S.integrationsConfig.find(c=>c.id==='comptabilite'); if (ent) { ent.detail = cfg; _sauveIntegrations(); }
       return true;
     }
   } catch(e) { /* silent */ }

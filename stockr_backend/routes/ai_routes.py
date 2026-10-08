@@ -7,7 +7,8 @@
 #
 # La clé reste sur ce serveur : le navigateur ne la voit jamais. Le
 # fournisseur se choisit dans stockr_backend/.env :
-#   ANTHROPIC_API_KEY  -> Claude   (modèle : AI_MODEL, par défaut claude-opus-5-5)
+#   ANTHROPIC_API_KEY  -> Claude   (modèle : AI_MODEL, par défaut claude-opus-5-5 ;
+#                                   AI_MODEL_VISION / AI_MODEL_CHAT pour un modèle par usage)
 #   GEMINI_API_KEY     -> Gemini   (offre gratuite de Google, en secours)
 # Sans aucune clé, /status le dit, et l'app garde ses moteurs locaux
 # (code-barres, lecture du texte, reconnaissance hors ligne).
@@ -100,11 +101,19 @@ def _reste(user, kind):
 
 
 # ── Claude ──────────────────────────────────────────────────────────────
-def _claude(systeme, messages, max_tokens):
+def _modele_claude(genre):
+    # Un modèle par usage si le propriétaire le veut : reconnaître une
+    # bouteille de Coca n'a pas besoin du modèle le plus cher.
+    return (os.environ.get('AI_MODEL_' + genre.upper())
+            or os.environ.get('AI_MODEL')
+            or 'claude-opus-5-5')
+
+
+def _claude(systeme, messages, max_tokens, genre):
     import anthropic
 
     client = anthropic.Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'], timeout=60.0, max_retries=1)
-    modele = os.environ.get('AI_MODEL', 'claude-opus-5-5')
+    modele = _modele_claude(genre)
     args = dict(
         model=modele,
         max_tokens=max_tokens,
@@ -203,10 +212,10 @@ def _gemini(systeme, messages, max_tokens):
     return texte, None
 
 
-def _appeler(systeme, messages, max_tokens):
+def _appeler(systeme, messages, max_tokens, genre):
     f = _fournisseur()
     if f == 'claude':
-        return _claude(systeme, messages, max_tokens)
+        return _claude(systeme, messages, max_tokens, genre)
     if f == 'gemini':
         return _gemini(systeme, messages, max_tokens)
     return None, 'indisponible'
@@ -263,7 +272,7 @@ def vision(current_user):
         {'type': 'text', 'text': consigne},
     ]}]
     try:
-        texte, err = _appeler(_PROMPT_VISION, messages, 2000)
+        texte, err = _appeler(_PROMPT_VISION, messages, 2000, 'vision')
     except Exception as e:  # réseau, clé invalide, fournisseur en panne
         return jsonify({'error': 'fournisseur', 'detail': type(e).__name__}), 502
     if err:
@@ -313,7 +322,7 @@ def chat(current_user):
     if not messages or messages[-1]['role'] != 'user' or total > _MAX_TEXTE:
         return jsonify({'error': 'messages'}), 400
     try:
-        texte, err = _appeler(_prompt_assistant(d.get('lang') or 'fr', str(d.get('context') or '')), messages, 1200)
+        texte, err = _appeler(_prompt_assistant(d.get('lang') or 'fr', str(d.get('context') or '')), messages, 1200, 'chat')
     except Exception as e:
         return jsonify({'error': 'fournisseur', 'detail': type(e).__name__}), 502
     if err:

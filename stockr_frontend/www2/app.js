@@ -270,6 +270,86 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zia_quotaVision: "Analyses IA du jour épuisées ({0} par jour avec votre forfait). Spectra continue avec sa reconnaissance locale.",
+    zia_quotaChat: "Questions IA du jour épuisées ({0} par jour avec votre forfait). Voici ce que disent vos chiffres en attendant :",
+    zia_rienVu: "L'IA n'a reconnu aucun produit. Reprenez la photo plus près, bien éclairée.",
+    zia_reseau: "Pas de connexion internet : la reconnaissance IA reprendra dès le retour du réseau.",
+    zia_refus: "L'IA n'a pas pu analyser cette image. Essayez une autre photo.",
+    zia_indispo: "L'IA est momentanément indisponible. Réessayez dans un instant.",
+    zia_cleInvalide: "Clé {0} refusée : vérifiez-la dans Spectra AI.",
+    zia_plusDeModele: "{0} ne propose plus de modèle capable de lire une photo. Utilisez une clé Google Gemini.",
+    zia_integreeActive: "IA vision intégrée",
+    zia_analysesRestantes: "{0}/{1} analyses IA aujourd'hui · rien à configurer",
+    zia_integreeTitre: "IA intégrée active",
+    zia_integreeTexte: "Spectra et l'assistant utilisent l'IA de BARO : rien à configurer. Votre forfait {0} inclut {1} analyses de photo et {2} questions par jour.",
+    zia_clesFacultatives: "Les clés ci-dessous sont facultatives : elles prennent le relais quand le quota du jour est atteint.",
+    zia_integreeOff: "L'IA intégrée n'est pas disponible pour le moment. Vous pouvez utiliser votre propre clé gratuite ci-dessous.",
+    zia_assistant: "Sova · Assistant",
+    zia_assistantSub: "Connaît votre stock, vos ventes et vos marges",
+    zia_assistantSubLocal: "Répond avec vos vrais chiffres",
+    zia_bonjour: "Bonjour {0} 👋",
+    zia_intro: "Je surveille votre commerce et je vous préviens avant une décision qui coûte de l'argent. Posez-moi une question :",
+    zia_s1: "Quel est mon bénéfice net ce mois ?",
+    zia_s2: "Quels articles sont en stock bas ?",
+    zia_s3: "Quels sont mes produits les plus vendus ?",
+    zia_s4: "Qu'est-ce qui périme bientôt ?",
+    zia_s5: "Donne-moi 3 idées pour vendre plus",
+    zia_ecrire: "Écrivez votre question…",
+    zia_effacer: "Effacer",
+    zia_restantes: "{0} questions IA restantes aujourd'hui",
+    zia_localNet: "Ce mois : chiffre d'affaires {0}, marge {1}, dépenses {2} → **bénéfice net {3}**.",
+    zia_localCA: "Chiffre d'affaires : aujourd'hui {0}, ce mois {1} ({2} ventes).",
+    zia_localBas: "{0} article(s) en stock bas : {1}. Pensez à réapprovisionner.",
+    zia_localBasOk: "Aucun article en stock bas. 👍",
+    zia_localPerim: "{0} article(s) périment sous 30 jours : {1}. Écoulez-les en priorité.",
+    zia_localPerimOk: "Aucun article ne périme dans les 30 jours.",
+    zia_localTop: "Vos meilleures ventes ce mois : {0}.",
+    zia_localTopVide: "Pas encore de vente ce mois pour établir un classement.",
+    zia_localClients: "Vous avez {0} client(s) enregistré(s). Ouvrez Clients pour relancer les meilleurs sur WhatsApp.",
+    zia_localAide: "Je réponds déjà sur votre **bénéfice**, votre **chiffre d'affaires**, le **stock bas**, les **péremptions**, les **meilleures ventes** et vos **clients**.",
+    zia_localPlus: "Les réponses libres à toute question demandent l'IA en ligne, indisponible pour le moment.",
+    zia_veilleTitre: "Sova a vérifié votre commerce",
+    zia_veilleOk: "Rien d'inquiétant aujourd'hui : prix, marges, stock et péremptions sont en ordre.",
+    zia_rPrixT: "{0} article(s) vendu(s) sous le prix d'achat",
+    zia_rPrixD: "{0} : chaque vente vous fait perdre de l'argent.",
+    zia_rPerteT: "Ventes à perte cette semaine : {0}",
+    zia_rPerteD: "{0} vente(s) sous le prix d'achat en 7 jours.",
+    zia_rRuptT: "{0} rupture(s) imminente(s)",
+    zia_rRuptD: "{0} : environ {1} de ventes en jeu sur 7 jours.",
+    zia_rPerimT: "{0} article(s) périment dans 7 jours",
+    zia_rPerimD: "{0} : faites une promotion avant la date.",
+    zia_rDortT: "{0} immobilisés dans du stock qui dort",
+    zia_rDortD: "{0} article(s) sans vente depuis 45 jours : {1}.",
+    zia_rChargesT: "Ce mois, les dépenses dépassent la marge",
+    zia_rChargesD: "Marge {0}, dépenses {1} : il manque {2} pour être à l'équilibre.",
+    zia_corriger: "Corriger",
+    zia_voir: "Voir",
+    zia_demander: "Demander à Sova",
+    zia_nonReconnu: "Produit non reconnu",
+    zia_nonReconnuD: "L'IA n'a pas reconnu ce produit (photo floue, angle difficile ou produit rare). Reprenez une photo nette et bien éclairée.",
+    zia_creerArticle: "Créer l'article",
+    zia_avecPhoto: " (avec la photo scannée)",
+    zia_reessayer: "Réessayer un scan",
+    zia_activerVision: "Activer l'IA vision",
+    zia_activerSpectra: "Activer Spectra AI →",
+    zia_reconnus: "Spectra AI : {0} produit(s) reconnu(s)",
+    zia_reconnu: "Spectra : « {0} » reconnu",
+    zia_test: "Test en cours…",
+    zia_cleOk: "Clé valide : l'IA répond.",
+    zia_cleKo: "Échec : vérifiez la clé.",
+    zia_colle: "Collez d'abord une clé.",
+    zia_cleEnreg: "{0} enregistré. Testez la clé pour confirmer.",
+    zia_supprCle: "Supprimer cette clé ?",
+    zia_cleSuppr: "Clé supprimée",
+    zia_actif: "Activé : {0}",
+    zia_colleUne: "Collez",
+    zia_commeLens: ", reconnaissance de n'importe quel produit, comme Google Lens.",
+    zia_gCle: "Clé Google refusée : vérifiez-la dans Spectra AI.",
+    zia_gPays: "Gemini gratuit n'est pas proposé dans votre pays. Activez la facturation Google, ou utilisez le scan code-barres.",
+    zia_gFactu: "L'offre gratuite Gemini demande d'activer la facturation Google (carte bancaire).",
+    zia_gQuota: "Trop de demandes : attendez une minute puis réessayez.",
+    zia_gModele: "Aucun modèle compatible sur cette clé : recréez-la sur Google AI Studio.",
+    zia_gApi: "Activez l'API « Generative Language » sur votre clé Google (ou créez-la sur aistudio.google.com).",
     zsg_sova: "Sova te prévient",
     zsg_revoir: "Revoir",
     zsg_continuer: "Continuer",
@@ -3768,6 +3848,86 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zia_quotaVision: "Today's AI analyses are used up ({0} a day on your plan). Spectra carries on with on-device recognition.",
+    zia_quotaChat: "Today's AI questions are used up ({0} a day on your plan). Here is what your numbers say meanwhile:",
+    zia_rienVu: "The AI did not recognise any product. Retake the photo closer, in good light.",
+    zia_reseau: "No internet connection: AI recognition resumes as soon as you are back online.",
+    zia_refus: "The AI could not analyse this image. Try another photo.",
+    zia_indispo: "The AI is briefly unavailable. Try again in a moment.",
+    zia_cleInvalide: "{0} key rejected: check it in Spectra AI.",
+    zia_plusDeModele: "{0} no longer offers a model that can read photos. Use a Google Gemini key.",
+    zia_integreeActive: "Built-in AI vision",
+    zia_analysesRestantes: "{0}/{1} AI analyses left today · nothing to set up",
+    zia_integreeTitre: "Built-in AI is on",
+    zia_integreeTexte: "Spectra and the assistant use BARO's AI: nothing to set up. Your {0} plan includes {1} photo analyses and {2} questions a day.",
+    zia_clesFacultatives: "The keys below are optional: they take over once the daily quota is reached.",
+    zia_integreeOff: "The built-in AI is not available right now. You can use your own free key below.",
+    zia_assistant: "Sova · Assistant",
+    zia_assistantSub: "Knows your stock, sales and margins",
+    zia_assistantSubLocal: "Answers with your real numbers",
+    zia_bonjour: "Hello {0} 👋",
+    zia_intro: "I watch over your shop and warn you before a decision that costs money. Ask me anything:",
+    zia_s1: "What is my net profit this month?",
+    zia_s2: "Which items are running low?",
+    zia_s3: "What are my best sellers?",
+    zia_s4: "What expires soon?",
+    zia_s5: "Give me 3 ideas to sell more",
+    zia_ecrire: "Type your question…",
+    zia_effacer: "Clear",
+    zia_restantes: "{0} AI questions left today",
+    zia_localNet: "This month: revenue {0}, margin {1}, expenses {2} → **net profit {3}**.",
+    zia_localCA: "Revenue: today {0}, this month {1} ({2} sales).",
+    zia_localBas: "{0} item(s) running low: {1}. Time to restock.",
+    zia_localBasOk: "No item is running low. 👍",
+    zia_localPerim: "{0} item(s) expire within 30 days: {1}. Sell them first.",
+    zia_localPerimOk: "Nothing expires in the next 30 days.",
+    zia_localTop: "Your best sellers this month: {0}.",
+    zia_localTopVide: "No sales yet this month to rank.",
+    zia_localClients: "You have {0} saved customer(s). Open Customers to follow up with your best ones on WhatsApp.",
+    zia_localAide: "I can already answer about your **profit**, **revenue**, **low stock**, **expiry dates**, **best sellers** and **customers**.",
+    zia_localPlus: "Free-form answers to any question need the online AI, which is unavailable right now.",
+    zia_veilleTitre: "Sova checked your shop",
+    zia_veilleOk: "Nothing worrying today: prices, margins, stock and expiry dates are in order.",
+    zia_rPrixT: "{0} item(s) priced below cost",
+    zia_rPrixD: "{0}: every sale loses money.",
+    zia_rPerteT: "Sales at a loss this week: {0}",
+    zia_rPerteD: "{0} sale(s) below cost in 7 days.",
+    zia_rRuptT: "{0} item(s) about to run out",
+    zia_rRuptD: "{0}: about {1} of sales at stake over 7 days.",
+    zia_rPerimT: "{0} item(s) expire within 7 days",
+    zia_rPerimD: "{0}: run a promotion before the date.",
+    zia_rDortT: "{0} tied up in stock that isn't selling",
+    zia_rDortD: "{0} item(s) with no sale in 45 days: {1}.",
+    zia_rChargesT: "This month, expenses exceed your margin",
+    zia_rChargesD: "Margin {0}, expenses {1}: {2} short of breaking even.",
+    zia_corriger: "Fix it",
+    zia_voir: "View",
+    zia_demander: "Ask Sova",
+    zia_nonReconnu: "Product not recognised",
+    zia_nonReconnuD: "The AI did not recognise this product (blurry photo, awkward angle or rare product). Retake a sharp, well-lit photo.",
+    zia_creerArticle: "Create the item",
+    zia_avecPhoto: " (with the scanned photo)",
+    zia_reessayer: "Scan again",
+    zia_activerVision: "Turn on AI vision",
+    zia_activerSpectra: "Turn on Spectra AI →",
+    zia_reconnus: "Spectra AI: {0} product(s) recognised",
+    zia_reconnu: "Spectra: “{0}” recognised",
+    zia_test: "Testing…",
+    zia_cleOk: "Key works: the AI answers.",
+    zia_cleKo: "Failed: check the key.",
+    zia_colle: "Paste a key first.",
+    zia_cleEnreg: "{0} saved. Test the key to confirm.",
+    zia_supprCle: "Delete this key?",
+    zia_cleSuppr: "Key deleted",
+    zia_actif: "On: {0}",
+    zia_colleUne: "Paste",
+    zia_commeLens: ", recognition of any product, like Google Lens.",
+    zia_gCle: "Google key rejected: check it in Spectra AI.",
+    zia_gPays: "Free Gemini isn't offered in your country. Enable Google billing, or use barcode scanning.",
+    zia_gFactu: "Gemini's free tier requires enabling Google billing (bank card).",
+    zia_gQuota: "Too many requests: wait a minute and try again.",
+    zia_gModele: "No compatible model on this key: create a new one in Google AI Studio.",
+    zia_gApi: "Enable the Generative Language API on your Google key (or create it at aistudio.google.com).",
     zsg_sova: "Sova is warning you",
     zsg_revoir: "Review",
     zsg_continuer: "Continue",
@@ -8080,7 +8240,7 @@ function _uid()             { return S.session?.id; }
 // déçoit l'utilisateur — on les masque partout : menu, accueil et navigation
 // directe. Ce n'est PAS une suppression : vider ce Set les réactive telles
 // quelles, sans rien réécrire.
-const LAUNCH_HIDDEN = new Set(['ai-chat', 'video-library']);
+const LAUNCH_HIDDEN = new Set(['video-library']);
 function _isHidden(id) { return LAUNCH_HIDDEN.has(id); }
 
 // ── ${t('x_securite2')} : toute ouverture d'onglet externe reçoit 'noopener' ──────────
@@ -16226,7 +16386,7 @@ function vHome() {
         </div>` : ''}
       </div>
       <div style="display:flex;gap:8px">
-        ${_isHidden('ai-chat') ? '' : `<button class="hero-btn" onclick="nav('ai-chat')" title="${t('zx_baroIa')}" style="position:relative;font-size:17px">🤖</button>`}
+        ${_isHidden('ai-chat') ? '' : `<button class="hero-btn" onclick="nav('ai-chat')" title="${t('zia_assistant')}" aria-label="${t('zia_assistant')}" style="position:relative;font-size:17px">🦉</button>`}
         ${__hasTeam ? `<button class="hero-btn" onclick="openMemberSwitcher()" title="${t('zx_changerMembre')}" style="position:relative">👥</button>` : ''}
         <button class="hero-btn" onclick="nav('notifications')" style="position:relative">${IC.bell}${low.length>0?`<span style="position:absolute;top:-2px;right:-2px;width:18px;height:18px;border-radius:50%;background:var(--danger);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center">${low.length}</span>`:''}</button>
         <button class="hero-btn" onclick="nav('settings')">${IC.settings}</button>
@@ -18142,7 +18302,7 @@ function vSova() {
           <button class="sova-back-btn" onclick="nav('home')">${IC.left}</button>
           <div class="sova-brand"><span class="sova-owl">${OWL}</span><span class="sova-brand-name">SOVA</span></div>
         </div>
-        <div class="sova-tagline">Intelligence de stock</div>
+        <button class="sova-ask-btn" onclick="nav('ai-chat')">🦉 ${t('zia_demander')}</button>
       </div>
       <div class="sova-tabs">${tabs.map(tab=>`<button class="sova-tab ${S.sovaTab===tab.id?'active':''}" onclick="S.sovaTab='${tab.id}';render()">${tab.label}</button>`).join('')}</div>
     </div>
@@ -22019,6 +22179,56 @@ async function _geminiListModels(apiKey) {
     return out;
   }
 }
+// ── IA intégrée : le serveur BARO porte la clé (Claude ou Gemini) ──
+// Le commerçant n'a rien à configurer ; un quota quotidien par forfait borne
+// la facture du propriétaire. Sans clé côté serveur, /status le dit et
+// Spectra garde ses moteurs locaux. Appel direct, pas api() : une IA
+// indisponible ne doit jamais faire basculer toute l'app en mode hors ligne.
+let _iaStatutCache = null, _iaStatutQuand = 0, _iaEnCours = false;
+function _iaPossible() { return !!(S.token && !USE_LOCAL && navigator.onLine !== false); }
+async function _iaFetch(chemin, corps, delai) {
+  const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const minuteur = ctrl ? setTimeout(() => ctrl.abort(), delai || 70000) : null;
+  try {
+    const res = await fetch(API_BASE + chemin, {
+      method: corps ? 'POST' : 'GET',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.token },
+      body: corps ? JSON.stringify(corps) : undefined,
+      ...(ctrl ? { signal: ctrl.signal } : {}),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, data: data || {} };
+  } catch (e) {
+    return { ok: false, status: 0, data: {} };
+  } finally {
+    if (minuteur) clearTimeout(minuteur);
+  }
+}
+async function _iaStatut(force) {
+  if (!_iaPossible()) return null;
+  if (!force && _iaStatutQuand && Date.now() - _iaStatutQuand < 10 * 60000) return _iaStatutCache;
+  const r = await _iaFetch('/api/ai/status', null, 8000);
+  if (r.ok) { _iaStatutCache = r.data; _iaStatutQuand = Date.now(); }
+  // Serveur pas encore mis à jour : pas d'IA intégrée, sans insister.
+  else if (r.status === 404) { _iaStatutCache = { available: false }; _iaStatutQuand = Date.now(); }
+  // Réseau ou serveur en panne : on garde l'état connu et on réessaie dans une minute.
+  else _iaStatutQuand = Date.now() - 9 * 60000;
+  return _iaStatutCache;
+}
+function _iaDispo() { return !!(_iaPossible() && _iaStatutCache && _iaStatutCache.available); }
+function _iaMajReste(genre, reste) {
+  if (_iaStatutCache && _iaStatutCache[genre] && typeof reste === 'number') _iaStatutCache[genre].left = reste;
+}
+// Appelée par les écrans qui affichent l'état de l'IA : rafraîchit en tâche
+// de fond, et ne redessine que si quelque chose a changé (pas de clignement).
+function _iaRafraichir() {
+  if (_iaEnCours || !_iaPossible() || (_iaStatutQuand && Date.now() - _iaStatutQuand < 10 * 60000)) return;
+  _iaEnCours = true;
+  const avant = JSON.stringify(_iaStatutCache);
+  _iaStatut(true).then(() => { if (JSON.stringify(_iaStatutCache) !== avant) render(); })
+    .finally(() => { _iaEnCours = false; });
+}
+
 // ── Prompt partagé par tous les fournisseurs IA vision ──
 const _SPECTRA_PROMPT = `You are Spectra, an elite product recognition AI for African retail SMBs (BARO app).
 Analyze this image like Google Lens and identify EVERY commercial product.
@@ -22045,41 +22255,79 @@ For EACH product return:
 Return STRICTLY a valid JSON array only, no markdown:
 [{"exact_name":"...","brand":"...","category":"gaming","quantity":1,"bbox":[5,10,40,80],"confidence":92}]`;
 
-// Convertit une image/canvas/vidéo en base64 JPEG + dimensions
+// Convertit une image/canvas/vidéo en base64 JPEG + dimensions d'origine.
+// 1024 px suffisent pour lire une étiquette ; une photo de téléphone en fait
+// 4000 : l'envoyer telle quelle coûte 15 fois plus de données et de temps.
+// Les cadres rendus par l'IA sont en pourcentages : on les ramène aux
+// dimensions d'origine, celles de l'image affichée.
 function _spectraImgToBase64(imgOrCanvas) {
-  const canvas = imgOrCanvas instanceof HTMLCanvasElement
-    ? imgOrCanvas
-    : (() => {
-        const c = document.createElement('canvas');
-        c.width = imgOrCanvas.naturalWidth || imgOrCanvas.videoWidth || imgOrCanvas.width;
-        c.height = imgOrCanvas.naturalHeight || imgOrCanvas.videoHeight || imgOrCanvas.height;
-        c.getContext('2d').drawImage(imgOrCanvas, 0, 0);
-        return c;
-      })();
-  return { base64: canvas.toDataURL('image/jpeg', 0.85).split(',')[1], w: canvas.width, h: canvas.height };
+  const w0 = imgOrCanvas.naturalWidth || imgOrCanvas.videoWidth || imgOrCanvas.width || 1;
+  const h0 = imgOrCanvas.naturalHeight || imgOrCanvas.videoHeight || imgOrCanvas.height || 1;
+  const k = Math.min(1, 1024 / Math.max(w0, h0));
+  const c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(w0 * k));
+  c.height = Math.max(1, Math.round(h0 * k));
+  const ctx = c.getContext('2d');
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(imgOrCanvas, 0, 0, c.width, c.height);
+  return { base64: c.toDataURL('image/jpeg', 0.85).split(',')[1], w: w0, h: h0 };
+}
+
+// Retrouve l'article du catalogue que l'IA a vu. L'ancien test « le nom
+// contient le premier mot » rattachait n'importe quelle « Huile » à la
+// première huile du stock. Ordre : nom proposé par l'IA parmi le catalogue,
+// nom identique, puis ressemblance mot à mot (au moins 60 % des mots).
+function _spectraNormNom(s) {
+  return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ').replace(/(\d)\s+(cl|ml|l|g|kg|mg)\b/g, '$1$2').trim();
+}
+function _spectraMatchCatalogue(nom, suggestion) {
+  const arts = S.articles || [];
+  if (suggestion) {
+    const ns = _spectraNormNom(suggestion);
+    const a = ns && arts.find(x => _spectraNormNom(x.name) === ns);
+    if (a) return a;
+  }
+  const nn = _spectraNormNom(nom);
+  if (!nn) return null;
+  const exact = arts.find(x => _spectraNormNom(x.name) === nn);
+  if (exact) return exact;
+  const mots = v => new Set(_spectraNormNom(v).split(' ').filter(m => m.length > 1));
+  const m1 = mots(nom);
+  if (!m1.size) return null;
+  let meilleur = null, score = 0;
+  for (const a of arts) {
+    const m2 = mots(a.name);
+    if (!m2.size) continue;
+    let communs = 0;
+    m1.forEach(m => { if (m2.has(m)) communs++; });
+    const sc = communs / Math.max(m1.size, m2.size);
+    if (sc > score) { score = sc; meilleur = a; }
+  }
+  return score >= 0.6 ? meilleur : null;
 }
 
 // Normalise la sortie JSON de n'importe quelle IA → format détection Spectra
 function _normalizeAIProducts(products, imgW, imgH, providerLabel) {
-  const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-  return products.map((p, i) => {
-    const name = p.exact_name || p.name || 'Produit';
-    const nn = norm(name);
-    const match = (S.articles||[]).find(a => norm(a.name) === nn)
-               || (S.articles||[]).find(a => nn.includes(norm(a.name)) || norm(a.name).includes(nn.split(' ')[0]));
+  return products.filter(p => p && (p.exact_name || p.name)).map((p, i) => {
+    const name = String(p.exact_name || p.name);
+    const match = _spectraMatchCatalogue(name, p.catalog_match);
+    const q = Math.round(Number(p.quantity));
+    const conf = Math.round(Number(p.confidence));
+    const b = Array.isArray(p.bbox) ? p.bbox.map(Number) : [];
     return {
       id: `ai_${Date.now()}_${i}`,
       cocoClass: p.category || 'object',
-      detected_name: name,
+      detected_name: match ? match.name : name,
       matched_name: match ? match.name : name,
       matched_id: match ? match.id : null,
       brand: p.brand || '',
       category: p.category || 'other',
-      quantity: p.quantity || 1,
-      confidence: p.confidence || 88,
+      quantity: q > 0 ? q : 1,
+      confidence: conf > 0 && conf <= 100 ? conf : 85,
       refined_by: providerLabel || 'Spectra AI',
       ai_powered: true,
-      boxes: [[ (p.bbox?.[0]||0)*imgW/100, (p.bbox?.[1]||0)*imgH/100, (p.bbox?.[2]||50)*imgW/100, (p.bbox?.[3]||50)*imgH/100 ]],
+      boxes: [[ (b[0]||0)*imgW/100, (b[1]||0)*imgH/100, (b[2]||50)*imgW/100, (b[3]||50)*imgH/100 ]],
     };
   });
 }
@@ -22093,20 +22341,45 @@ function _extractJSONArray(text) {
 }
 
 // ── Fournisseurs OpenAI-compatibles (Groq, OpenRouter) ──
+// Les modèles changent tous les quelques mois (ceux qu'on avait écrits en dur
+// ont tous été retirés) : on demande au fournisseur ce qu'il propose, et la
+// liste écrite ici ne sert qu'en dernier recours.
 const _AI_PROVIDERS = {
   groq: {
-    label: 'Groq (Llama Vision)',
+    label: 'Groq',
     url: 'https://api.groq.com/openai/v1/chat/completions',
-    models: ['meta-llama/llama-4-scout-17b-16e-instruct', 'meta-llama/llama-4-maverick-17b-128e-instruct'],
+    modelsUrl: 'https://api.groq.com/openai/v1/models',
+    vision: m => /vision|scout|maverick|llava|-vl\b/i.test(m.id || '') && m.active !== false,
+    models: ['meta-llama/llama-4-scout-17b-16e-instruct'],
     detect: k => /^gsk_/.test(k),
   },
   openrouter: {
     label: 'OpenRouter',
     url: 'https://openrouter.ai/api/v1/chat/completions',
-    models: ['meta-llama/llama-3.2-11b-vision-instruct:free', 'qwen/qwen2.5-vl-72b-instruct:free', 'google/gemini-2.0-flash-exp:free'],
+    modelsUrl: 'https://openrouter.ai/api/v1/models',
+    vision: m => ((m.architecture && m.architecture.input_modalities) || []).includes('image'),
+    gratuit: m => /:free$/.test(m.id || ''),
+    models: [],
     detect: k => /^sk-or-/.test(k),
   },
 };
+const _visionModelesCache = {};
+async function _visionModeles(providerId, apiKey) {
+  if (_visionModelesCache[providerId]) return _visionModelesCache[providerId];
+  const prov = _AI_PROVIDERS[providerId];
+  try {
+    const r = await fetch(prov.modelsUrl, { headers: { 'Authorization': 'Bearer ' + apiKey } });
+    if (r.ok) {
+      const d = await r.json();
+      let liste = (d.data || []).filter(prov.vision);
+      // OpenRouter : les modèles gratuits d'abord (une clé sans crédit n'a que ceux-là).
+      if (prov.gratuit) liste.sort((a, b) => (prov.gratuit(b) ? 1 : 0) - (prov.gratuit(a) ? 1 : 0));
+      const ids = liste.map(m => m.id).slice(0, 4);
+      if (ids.length) return (_visionModelesCache[providerId] = ids);
+    }
+  } catch (_) {}
+  return prov.models;
+}
 
 async function _visionOpenAICompat(providerId, apiKey, imgOrCanvas) {
   const prov = _AI_PROVIDERS[providerId];
@@ -22122,8 +22395,10 @@ async function _visionOpenAICompat(providerId, apiKey, imgOrCanvas) {
     }],
     temperature: 0.2, max_tokens: 1500,
   };
+  const modeles = await _visionModeles(providerId, apiKey);
+  if (!modeles.length) { _spectraLastAiError = tpar('zia_plusDeModele', prov.label); return null; }
   let lastErr = '';
-  for (const model of prov.models) {
+  for (const model of modeles) {
     try {
       const resp = await fetch(prov.url, {
         method: 'POST',
@@ -22134,89 +22409,82 @@ async function _visionOpenAICompat(providerId, apiKey, imgOrCanvas) {
         const data = await resp.json();
         const text = data?.choices?.[0]?.message?.content || '';
         const products = _extractJSONArray(text);
-        if (products && products.length) return _normalizeAIProducts(products, w, h, prov.label);
-        lastErr = 'Aucun produit détecté.';
+        if (products && products.length) return _normalizeAIProducts(products, w, h, 'Spectra AI · ' + prov.label);
+        lastErr = t('zia_rienVu');
         continue;
       }
-      let msg = 'Erreur ' + resp.status;
-      try { const e = await resp.json(); msg = e?.error?.message || msg; } catch(_){}
-      lastErr = msg;
-      if (resp.status === 401) { lastErr = 'Clé ' + prov.label + ' invalide.'; break; }
-    } catch(e) { lastErr = 'Réseau : ' + (e.message || e); }
+      if (resp.status === 401 || resp.status === 403) { lastErr = tpar('zia_cleInvalide', prov.label); break; }
+      lastErr = resp.status === 429 ? t('zia_gQuota') : t('zia_indispo');
+    } catch(e) { lastErr = navigator.onLine === false ? t('zia_reseau') : t('zia_indispo'); }
   }
-  _spectraLastAiError = lastErr || (prov.label + ' n\'a pas répondu.');
+  _spectraLastAiError = lastErr || t('zia_indispo');
   return null;
 }
 
-// ── IA vision GRATUITE SANS CLÉ (Pollinations) — moteur par défaut ──
-// Endpoint OpenAI-compatible, libre d'accès, CORS navigateur, mondial.
-// Permet de reconnaître n'importe quel produit SANS aucune configuration.
-async function _visionPollinations(imgOrCanvas) {
-  try {
-    const { base64, w, h } = _spectraImgToBase64(imgOrCanvas);
-    const resp = await fetch('https://text.pollinations.ai/openai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'openai',
-        messages: [{
-          role: 'user',
-          content: [
-            { type: 'text', text: _SPECTRA_PROMPT },
-            { type: 'image_url', image_url: { url: 'data:image/jpeg;base64,' + base64 } },
-          ],
-        }],
-        temperature: 0.2,
-        referrer: 'baro-app',
-      }),
-    });
-    if (!resp.ok) {
-      _spectraLastAiError = 'IA gratuite saturée — réessaie dans 1 min, ou ajoute une clé Groq pour la fiabilité.';
-      return null;
-    }
-    const data = await resp.json().catch(() => null);
-    const text = data?.choices?.[0]?.message?.content || (typeof data === 'string' ? data : '');
-    const products = _extractJSONArray(text);
-    if (products && products.length) return _normalizeAIProducts(products, w, h, 'Spectra AI (gratuit)');
-    _spectraLastAiError = 'Produit non identifié — réessaie avec une photo plus nette.';
-    return null;
-  } catch(e) {
-    _spectraLastAiError = 'IA gratuite indisponible (vérifie ta connexion).';
-    return null;
-  }
-}
-
-// ── Orchestrateur : clés configurées d'abord (fiables), puis IA gratuite sans clé ──
+// ── Orchestrateur ──
 function _spectraConfiguredProviders() {
   const out = [];
   const groq = (localStorage.getItem('stockr_groq_key')||'').trim();
   const or   = (localStorage.getItem('stockr_openrouter_key')||'').trim();
   const gem  = (localStorage.getItem('stockr_gemini_key')||'').trim();
+  // Gemini d'abord : c'est le seul des trois dont les modèles gratuits lisent
+  // encore les photos de façon fiable.
+  if (gem)  out.push('gemini');
   if (groq) out.push('groq');
   if (or)   out.push('openrouter');
-  if (gem)  out.push('gemini');
   return out;
 }
-// hasAI = une clé fournisseur est configurée (l'IA keyless n'est plus garantie)
 function _spectraHasOwnKey() { return _spectraConfiguredProviders().length > 0; }
-function _spectraHasAI() { return _spectraHasOwnKey(); }
+function _spectraHasAI() { return _iaDispo() || _spectraHasOwnKey(); }
+
+// L'IA intégrée du serveur : le catalogue part avec la photo pour que la
+// réponse reprenne les noms exacts du stock (pas de doublon « Coca 33cl » /
+// « Coca-Cola 33 cl »).
+async function _spectraVisionServeur(img) {
+  const st = await _iaStatut();
+  if (!st || !st.available) return null;
+  if (st.vision && st.vision.left <= 0) { _spectraLastAiError = tpar('zia_quotaVision', st.vision.max); return null; }
+  const { base64, w, h } = _spectraImgToBase64(img);
+  const noms = [...new Set([...(S.articles || []), ...(S.products || [])].map(a => a && a.name).filter(Boolean))].slice(0, 300);
+  const r = await _iaFetch('/api/ai/vision', { image: base64, catalog: noms, lang: _lang });
+  if (r.ok) {
+    _iaMajReste('vision', r.data.left);
+    const produits = _extractJSONArray(r.data.text || '');
+    if (produits && produits.length) {
+      const res = _normalizeAIProducts(produits, w, h, r.data.provider === 'gemini' ? 'Spectra AI · Gemini' : 'Spectra AI · Claude');
+      if (res.length) return res;
+    }
+    _spectraLastAiError = t('zia_rienVu');
+    return null;
+  }
+  if (r.status === 429) { _iaMajReste('vision', 0); _spectraLastAiError = tpar('zia_quotaVision', r.data.max || (st.vision && st.vision.max) || ''); }
+  else if (r.status === 0) _spectraLastAiError = navigator.onLine === false ? t('zia_reseau') : t('zia_indispo');
+  else if (r.data.error === 'refus') _spectraLastAiError = t('zia_refus');
+  else _spectraLastAiError = t('zia_indispo');
+  return null;
+}
 
 async function _spectraVisionAI(imgOrCanvas) {
   _spectraLastAiError = null;
-  // 1) Fournisseurs avec clé (plus fiables / précis) en priorité
+  // Hors ligne : les moteurs locaux prennent le relais. Le message ne
+  // s'affiche que s'ils ne trouvent rien non plus.
+  if (navigator.onLine === false) { _spectraLastAiError = t('zia_reseau'); return null; }
+  // 1) L'IA intégrée de BARO (rien à configurer)
+  try {
+    const res = await _spectraVisionServeur(imgOrCanvas);
+    if (res && res.length) { _spectraLastAiError = null; return res; }
+  } catch (_) {}
+  const erreurServeur = _spectraLastAiError;
+  // 2) La clé personnelle du commerçant, s'il en a mis une
   for (const p of _spectraConfiguredProviders()) {
     try {
       let res = null;
       if (p === 'gemini') res = await _spectraGeminiVision(imgOrCanvas);
       else res = await _visionOpenAICompat(p, localStorage.getItem('stockr_' + p + '_key').trim(), imgOrCanvas);
       if (res && res.length) { _spectraLastAiError = null; return res; }
-    } catch(e) { _spectraLastAiError = e.message || String(e); }
+    } catch(e) { _spectraLastAiError = t('zia_indispo'); }
   }
-  // 2) IA GRATUITE SANS CLÉ (toujours tentée) → reconnaît n'importe quel produit
-  try {
-    const free = await _visionPollinations(imgOrCanvas);
-    if (free && free.length) { _spectraLastAiError = null; return free; }
-  } catch(e) { _spectraLastAiError = e.message || String(e); }
+  if (!_spectraLastAiError) _spectraLastAiError = erreurServeur;
   return null;
 }
 
@@ -22241,12 +22509,11 @@ async function _spectraGeminiVision(imgOrCanvas) {
     });
     // Liste de modèles à essayer : d'abord ceux RÉELLEMENT dispo sur cette clé
     // (interrogés via ListModels), puis le choisi, puis des fallbacks connus.
-    const chosen = localStorage.getItem('stockr_gemini_model') || 'gemini-2.0-flash';
+    const chosen = localStorage.getItem('stockr_gemini_model') || 'gemini-flash-latest';
     const discovered = await _geminiListModels(apiKey);
     const models = [...new Set([
       ...discovered,                          // modèles confirmés dispo (priorité)
-      'gemini-2.0-flash', 'gemini-2.5-flash', 'gemini-2.0-flash-001',
-      'gemini-flash-latest', 'gemini-2.0-flash-lite'
+      'gemini-flash-latest', 'gemini-2.5-flash'
     ])].filter(Boolean);
     let data = null, lastErr = discovered.__error || '';
     for (const m of models) {
@@ -22265,15 +22532,15 @@ async function _spectraGeminiVision(imgOrCanvas) {
     }
     if (!data) {
       // Message clair pour l'utilisateur (clé invalide, quota, API non activée…)
-      let friendly = lastErr;
-      if (/API key not valid|API_KEY_INVALID/i.test(lastErr)) friendly = 'Clé API invalide — vérifiez-la dans Spectra AI.';
-      else if (/location is not supported|user location|not available in your|country/i.test(lastErr)) friendly = 'Gemini gratuit indisponible dans ton pays. Solutions : active la facturation Google (carte requise, quota gratuit conservé), ou utilise le scan code-barres/local de Spectra.';
-      else if (/billing|prepay|free_tier|free tier|FAILED_PRECONDITION/i.test(lastErr)) friendly = 'Le palier gratuit Gemini exige d\'activer la facturation Google (carte). Sinon, utilise le scan code-barres + dictionnaire local de Spectra.';
-      else if (/quota|RESOURCE_EXHAUSTED|rate.?limit|429|exceeded/i.test(lastErr)) friendly = 'Trop de requêtes — attends 1 minute puis réessaie (limite gratuite par minute).';
-      else if (/not found|is not found|NOT_FOUND/i.test(lastErr)) friendly = 'Aucun modèle IA compatible sur cette clé — recrée une clé sur Google AI Studio.';
-      else if (/PERMISSION_DENIED|SERVICE_DISABLED|has not been used|disabled/i.test(lastErr)) friendly = 'Active l\'API « Generative Language » sur ta clé Google (ou crée la clé sur aistudio.google.com).';
-      else if (/Réseau/i.test(lastErr)) friendly = 'Pas de connexion internet — l\'IA vision nécessite internet.';
-      _spectraLastAiError = friendly || 'Spectra AI n\'a pas répondu.';
+      let friendly = t('zia_indispo');
+      if (/API key not valid|API_KEY_INVALID/i.test(lastErr)) friendly = t('zia_gCle');
+      else if (/location is not supported|user location|not available in your|country/i.test(lastErr)) friendly = t('zia_gPays');
+      else if (/billing|prepay|free_tier|free tier|FAILED_PRECONDITION/i.test(lastErr)) friendly = t('zia_gFactu');
+      else if (/quota|RESOURCE_EXHAUSTED|rate.?limit|429|exceeded/i.test(lastErr)) friendly = t('zia_gQuota');
+      else if (/not found|is not found|NOT_FOUND/i.test(lastErr)) friendly = t('zia_gModele');
+      else if (/PERMISSION_DENIED|SERVICE_DISABLED|has not been used|disabled/i.test(lastErr)) friendly = t('zia_gApi');
+      else if (/Réseau/i.test(lastErr)) friendly = t('zia_reseau');
+      _spectraLastAiError = friendly;
       console.warn('[Spectra AI] échec:', lastErr);
       return null;
     }
@@ -22281,47 +22548,17 @@ async function _spectraGeminiVision(imgOrCanvas) {
     // Extract JSON array (strip markdown code fences if any)
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (!jsonMatch) {
-      _spectraLastAiError = 'L\'IA n\'a détecté aucun produit sur cette image.';
+      _spectraLastAiError = t('zia_rienVu');
       return null;
     }
     const products = JSON.parse(jsonMatch[0]);
     if (!Array.isArray(products) || products.length === 0) {
-      _spectraLastAiError = 'L\'IA n\'a reconnu aucun produit — réessaie avec une photo plus nette.';
+      _spectraLastAiError = t('zia_rienVu');
       return null;
     }
-    // Convert to spectra detection format (champs attendus par l'écran de confirmation)
-    const imgW = canvas.width;
-    const imgH = canvas.height;
-    return products.map((p, i) => {
-      const name = p.exact_name || p.name || 'Produit';
-      // Match auto avec un article/produit existant (par nom approximatif)
-      const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-      const nn = norm(name);
-      let match = (S.articles||[]).find(a => norm(a.name) === nn)
-               || (S.articles||[]).find(a => nn.includes(norm(a.name)) || norm(a.name).includes(nn.split(' ')[0]));
-      return {
-        id: `ai_${Date.now()}_${i}`,
-        cocoClass: p.category || 'object',
-        detected_name: name,
-        matched_name: match ? match.name : name,
-        matched_id: match ? match.id : null,
-        brand: p.brand || '',
-        category: p.category || 'other',
-        quantity: p.quantity || 1,
-        confidence: p.confidence || 85,
-        refined_by: 'Spectra AI (Gemini)',
-        ai_powered: true,
-        source: 'gemini',
-        boxes: [[
-          (p.bbox?.[0] || 0) * imgW / 100,
-          (p.bbox?.[1] || 0) * imgH / 100,
-          (p.bbox?.[2] || 50) * imgW / 100,
-          (p.bbox?.[3] || 50) * imgH / 100
-        ]],
-      };
-    });
+    return _normalizeAIProducts(products, canvas.width, canvas.height, 'Spectra AI · Gemini');
   } catch (e) {
-    _spectraLastAiError = 'Erreur Spectra AI : ' + (e.message || e);
+    _spectraLastAiError = t('zia_indispo');
     console.warn('[Spectra AI] error:', e.message);
     return null;
   }
@@ -22463,7 +22700,7 @@ async function spectraDetectFromImage(img, opts){
   // PRIORITÉ 1 : IA Vision (Groq / OpenRouter / Gemini) si une clé est configurée
   const aiResults = await _spectraVisionAI(img);
   if (aiResults && aiResults.length > 0) {
-    showToast(`🤖 Spectra AI : ${aiResults.length} produit(s) reconnu(s)`, 'success');
+    showToast('🤖 ' + tpar('zia_reconnus', aiResults.length), 'success');
     return aiResults;
   }
 
@@ -22472,7 +22709,7 @@ async function spectraDetectFromImage(img, opts){
   try {
     const fullOcrHit = await _spectraFullImageOCR(img);
     if (fullOcrHit) {
-      showToast(`📖 Spectra : "${fullOcrHit.matched_name}" reconnu`, 'success');
+      showToast('📖 ' + tpar('zia_reconnu', fullOcrHit.matched_name), 'success');
       return [fullOcrHit];
     }
   } catch(e){}
@@ -22505,7 +22742,7 @@ async function spectraDetectFromImage(img, opts){
   if (detections.length === 0) {
     const ff = await _classifyFullImage(img);
     if (ff) {
-      showToast(`🔍 Spectra : "${ff.detected_name}" reconnu`, 'success');
+      showToast('🔍 ' + tpar('zia_reconnu', ff.detected_name), 'success');
       return [ff];
     }
   }
@@ -26250,13 +26487,28 @@ function vSpectraAISetup() {
   <div class="sub-hero" style="background:linear-gradient(135deg,#7C3AED,#4285F4)">
     <button class="back-btn-dark" style="margin-bottom:14px" onclick="nav('spectra')">${IC.left}</button>
     <div class="sub-hero-title">✨ Spectra AI — Vision</div>
-    <div class="sub-hero-sub">${isActive ? '🟢 Activé : ' + active.map(p=>provName[p]).join(', ') : t('v_spChoisis')}</div>
+    <div class="sub-hero-sub">${_iaDispo() ? '🟢 ' + t('zia_integreeTitre') : isActive ? '🟢 ' + tpar('zia_actif', active.map(p=>provName[p]).join(', ')) : t('v_spChoisis')}</div>
   </div>
   <div class="container">
+    ${(() => {
+      _iaRafraichir();
+      const st = _iaStatutCache;
+      if (_iaDispo()) return `
+    <div class="card" style="margin-bottom:12px;border-left:4px solid var(--success)">
+      <div style="font-size:14px;font-weight:800;margin-bottom:6px">✅ ${t('zia_integreeTitre')}</div>
+      <div style="font-size:12.5px;color:var(--text-2);line-height:1.55">${tpar('zia_integreeTexte', _planLabel(st.plan), st.vision ? st.vision.max : '—', st.chat ? st.chat.max : '—')}</div>
+      <div style="font-size:12px;color:var(--text-3);line-height:1.5;margin-top:8px">${t('zia_clesFacultatives')}</div>
+    </div>`;
+      if (st && st.available === false) return `
+    <div class="card" style="margin-bottom:12px;border-left:4px solid var(--warning)">
+      <div style="font-size:12.5px;color:var(--text-2);line-height:1.55">${t('zia_integreeOff')}</div>
+    </div>`;
+      return '';
+    })()}
     <div class="card" style="margin-bottom:12px;border-left:4px solid ${isActive?'var(--success)':'var(--accent)'}">
       <div style="font-size:14px;font-weight:800;margin-bottom:6px">${isActive ? '✅ IA vision active' : t('v_spActive')}</div>
       <div style="font-size:12.5px;color:var(--text-2);line-height:1.55">
-        Colle <strong>${t('x4_uneSeuleCle')}</strong> ${t('v_spNimporte')}
+        ${t('zia_colleUne')} <strong>${t('x4_uneSeuleCle')}</strong> ${t('v_spNimporte')}
       </div>
     </div>
 
@@ -26274,14 +26526,14 @@ function vSpectraAISetup() {
       <div style="display:flex;gap:6px;margin-top:8px">
         <button class="btn btn-primary" style="flex:1;background:${p.color};border-color:${p.color};font-size:12px;padding:9px" onclick="saveAIKey('${p.id}')">${t('w7_enregistrer')}</button>
         ${p.key?`<button class="btn btn-ghost" style="font-size:12px;padding:9px" onclick="testAIKey('${p.id}')">🧪 ${t('zza_tester')}</button>
-        <button class="btn btn-ghost" style="font-size:12px;padding:9px;color:var(--danger)" onclick="if(confirm('Supprimer cette clé ?')){localStorage.removeItem('stockr_${p.id}_key');showToast('Clé supprimée');render()}">🗑️</button>`:''}
+        <button class="btn btn-ghost" style="font-size:12px;padding:9px;color:var(--danger)" onclick="if(confirm(t('zia_supprCle'))){localStorage.removeItem('stockr_${p.id}_key');showToast(t('zia_cleSuppr'));render()}">🗑️</button>`:''}
       </div>
     </div>`).join('')}
 
     <div class="card" style="margin-top:6px;background:var(--gray-1);text-align:center;padding:16px">
       <div style="font-size:12px;color:var(--text-2);line-height:1.6">
         💡 <strong>${t('x4_sansCle')}</strong>${t('v_spHorsLigne')}<br>
-        <strong>${t('x4_avecUneIA')}</strong>, reconnaissance de n'importe quel produit comme Google Lens.
+        <strong>${t('x4_avecUneIA')}</strong>${t('zia_commeLens')}
       </div>
       <div style="font-size:11px;color:var(--text-3);margin-top:8px">${t('x4_clesRestentApp2')}</div>
     </div>
@@ -26291,7 +26543,7 @@ function vSpectraAISetup() {
 // Enregistre une clé IA (auto-détecte le bon fournisseur même si collée au mauvais endroit)
 function saveAIKey(providerId) {
   let key = (document.getElementById('aikey-' + providerId)?.value || '').trim();
-  if (!key) { showToast('Colle une clé d\'abord', 'error'); return; }
+  if (!key) { showToast(t('zia_colle'), 'error'); return; }
   // Auto-détection : si la clé correspond à un autre fournisseur, on corrige
   let realProvider = providerId;
   if (/^gsk_/.test(key)) realProvider = 'groq';
@@ -26299,8 +26551,9 @@ function saveAIKey(providerId) {
   else if (/^AIza/.test(key)) realProvider = 'gemini';
   localStorage.setItem('stockr_' + realProvider + '_key', key);
   if (realProvider === 'gemini') { _geminiModelsCache = null; try { localStorage.removeItem('stockr_gemini_model'); } catch(_){} }
+  delete _visionModelesCache[realProvider];
   const names = { groq:'Groq', openrouter:'OpenRouter', gemini:'Gemini' };
-  showToast(`🤖 ${names[realProvider]} activé ! Teste la clé pour confirmer.`, 'success');
+  showToast('🤖 ' + tpar('zia_cleEnreg', names[realProvider]), 'success');
   render();
 }
 
@@ -26310,7 +26563,7 @@ function saveGeminiKey() {
   if (el) { const v = el.value; localStorage.setItem('stockr_gemini_key', (v||'').trim()); _geminiModelsCache=null; try{localStorage.removeItem('stockr_gemini_model');}catch(_){} showToast('🤖 Gemini activé !','success'); render(); }
 }
 async function testAIKey(providerId) {
-  showToast('🧪 Test en cours…', 'info');
+  showToast('🧪 ' + t('zia_test'), 'info');
   const canvas = document.createElement('canvas');
   canvas.width = 240; canvas.height = 240;
   const ctx = canvas.getContext('2d');
@@ -26322,14 +26575,14 @@ async function testAIKey(providerId) {
   try {
     if (providerId === 'gemini') res = await _spectraGeminiVision(img);
     else res = await _visionOpenAICompat(providerId, (localStorage.getItem('stockr_'+providerId+'_key')||'').trim(), img);
-  } catch(e) { _spectraLastAiError = e.message; }
-  if (res && res.length > 0) showToast('✅ Clé valide — IA opérationnelle !', 'success');
-  else if (_spectraLastAiError && /aucun produit|détecté aucun/i.test(_spectraLastAiError)) showToast('✅ Clé valide — l\'IA répond bien', 'success');
-  else showToast('❌ ' + (_spectraLastAiError || 'Échec — vérifie la clé'), 'error');
+  } catch(e) { _spectraLastAiError = t('zia_indispo'); }
+  // « Aucun produit » sur une image de test veut dire que l'IA a bien répondu.
+  if ((res && res.length > 0) || _spectraLastAiError === t('zia_rienVu')) showToast('✅ ' + t('zia_cleOk'), 'success');
+  else showToast('❌ ' + (_spectraLastAiError || t('zia_cleKo')), 'error');
 }
 
 async function testGeminiKey() {
-  showToast('🧪 Test en cours...', 'info');
+  showToast('🧪 ' + t('zia_test'), 'info');
   // Créer une image test simple (carré rouge) pour vérifier la clé
   const canvas = document.createElement('canvas');
   canvas.width = 200; canvas.height = 200;
@@ -26341,14 +26594,8 @@ async function testGeminiKey() {
   img.src = canvas.toDataURL();
   await new Promise(r => img.onload = r);
   const result = await _spectraGeminiVision(img);
-  if (result && result.length > 0) {
-    showToast(`✅ Clé valide — IA opérationnelle !`, 'success');
-  } else if (_spectraLastAiError && /aucun produit|détecté aucun/i.test(_spectraLastAiError)) {
-    // L'IA a répondu (clé OK) mais l'image test ne contient pas de vrai produit → c'est NORMAL
-    showToast('✅ Clé valide — l\'IA répond correctement', 'success');
-  } else {
-    showToast('❌ ' + (_spectraLastAiError || 'Clé invalide ou quota dépassé'), 'error');
-  }
+  if ((result && result.length > 0) || _spectraLastAiError === t('zia_rienVu')) showToast('✅ ' + t('zia_cleOk'), 'success');
+  else showToast('❌ ' + (_spectraLastAiError || t('zia_cleKo')), 'error');
 }
 
 // ── OAUTH SETUP (Google + Apple Sign-In) ────────
@@ -27947,96 +28194,236 @@ function vMetierGuide() {
 // ═══════════════════════════════════════════════════════════════
 const _AI_CHAT_MODELS = {
   groq: ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'],
-  openrouter: ['meta-llama/llama-3.3-70b-instruct:free', 'google/gemini-2.0-flash-exp:free'],
+  openrouter: ['meta-llama/llama-3.3-70b-instruct:free'],
 };
 function _aiChatProvider() {
   const groq = (localStorage.getItem('stockr_groq_key') || '').trim();
-  if (groq) return { id: 'groq', key: groq, url: _AI_PROVIDERS.groq.url, models: _AI_CHAT_MODELS.groq };
+  if (groq) return { id: 'groq', label: 'Groq', key: groq, url: _AI_PROVIDERS.groq.url, models: _AI_CHAT_MODELS.groq };
   const or = (localStorage.getItem('stockr_openrouter_key') || '').trim();
-  if (or) return { id: 'openrouter', key: or, url: _AI_PROVIDERS.openrouter.url, models: _AI_CHAT_MODELS.openrouter };
+  if (or) return { id: 'openrouter', label: 'OpenRouter', key: or, url: _AI_PROVIDERS.openrouter.url, models: _AI_CHAT_MODELS.openrouter };
   return null;
 }
-// Résumé compact et RÉEL du business (nourrit l'IA — jamais de données inventées)
+
+// ── Veille de Sova : ce qui coûte de l'argent EN CE MOMENT ──
+// Calculée sur les vraies données, à chaque ouverture de l'assistant. Les
+// gardes (_sovaGarde) préviennent au moment d'une décision ; la veille
+// rattrape ce qui est déjà en place (un prix sous le coût saisi il y a un
+// mois, un stock qui dort).
+function _sovaRisques() {
+  const out = [];
+  const money = n => `${fmt(_arrondiDevise(n || 0))} ${sym()}`;
+  const now = Date.now(), DAY = 86400000;
+  const arts = S.articles || [];
+  const ventes = S.sales || [];
+  const bt = (typeof getBusinessType === 'function') ? getBusinessType() : 'reseller';
+  // 1. Articles vendus tels quels à un prix sous le prix d'achat
+  if (bt !== 'maker') {
+    const sous = arts.filter(a => Number(a.price) > 0 && Number(a.purchasePrice) > 0 && Number(a.price) < Number(a.purchasePrice));
+    if (sous.length) out.push({
+      niveau: 'haut', ico: '🔻',
+      titre: tpar('zia_rPrixT', sous.length),
+      detail: tpar('zia_rPrixD', sous.slice(0, 3).map(a => `${a.name} (${money(a.price)} < ${money(a.purchasePrice)})`).join(', ')),
+      action: `S.selectedId=${_jsArg(sous[0].id)};nav('detail')`, bouton: t('zia_corriger'),
+    });
+  }
+  // 2. Ventes à perte des 7 derniers jours
+  const pertes = ventes.filter(v => now - new Date(v.date).getTime() < 7 * DAY && Number(v.profit) < 0);
+  if (pertes.length) out.push({
+    niveau: 'haut', ico: '📉',
+    titre: tpar('zia_rPerteT', money(pertes.reduce((a, v) => a + Number(v.profit), 0))),
+    detail: tpar('zia_rPerteD', pertes.length),
+    action: "nav('sales')", bouton: t('zia_voir'),
+  });
+  // 3. Ruptures imminentes sur des articles qui se vendent
+  let crit = [];
+  try { crit = (_sovaComputeLocal().predictions || []).filter(p => p.status === 'critical' && p.daily_demand > 0.01); } catch (_) {}
+  if (crit.length) {
+    const enjeu = crit.reduce((a, p) => {
+      const art = arts.find(x => String(x.id) === String(p.article_id));
+      return a + p.daily_demand * 7 * ((art && Number(art.price)) || 0);
+    }, 0);
+    out.push({
+      niveau: 'moyen', ico: '⏳',
+      titre: tpar('zia_rRuptT', crit.length),
+      detail: tpar('zia_rRuptD', crit.slice(0, 3).map(p => p.article_name).join(', '), money(enjeu)),
+      action: "S.sovaTab='alerts';nav('sova')", bouton: t('zia_voir'),
+    });
+  }
+  // 4. Péremption dans les 7 jours, avec du stock
+  const perim = arts.filter(a => a.expiry && (a.stock || 0) > 0).filter(a => {
+    const d = (new Date(a.expiry).getTime() - now) / DAY;
+    return d >= -1 && d <= 7;
+  });
+  if (perim.length) out.push({
+    niveau: 'moyen', ico: '⏱️',
+    titre: tpar('zia_rPerimT', perim.length),
+    detail: tpar('zia_rPerimD', perim.slice(0, 3).map(a => a.name).join(', ')),
+    action: "nav('peremptions')", bouton: t('zia_voir'),
+  });
+  // 5. Stock qui dort : rien vendu ni consommé en 45 jours. Seulement quand
+  // l'historique couvre 45 jours, et pas pour un article ajouté récemment.
+  const plusVieille = ventes.reduce((m, v) => { const x = new Date(v.date).getTime(); return x && x < m ? x : m; }, now);
+  if (now - plusVieille >= 45 * DAY) {
+    const dort = arts.filter(a => (a.stock || 0) > 0
+      && !(a.createdAt && now - new Date(a.createdAt).getTime() < 45 * DAY)
+      && _sovaVentesArticle(a, 45) === 0);
+    const val = dort.reduce((x, a) => x + (a.stock || 0) * (Number(a.purchasePrice) || 0), 0);
+    if (dort.length && val > 0) out.push({
+      niveau: 'bas', ico: '💤',
+      titre: tpar('zia_rDortT', money(val)),
+      detail: tpar('zia_rDortD', dort.length, dort.slice(0, 3).map(a => a.name).join(', ')),
+      action: "S.sovaTab='insights';nav('sova')", bouton: t('zia_voir'),
+    });
+  }
+  // 6. Ce mois, les dépenses mangent plus que la marge
+  const debutMois = new Date(); debutMois.setDate(1); debutMois.setHours(0, 0, 0, 0);
+  const margeMois = ventes.filter(v => new Date(v.date) >= debutMois).reduce((a, v) => a + (Number(v.profit) || 0), 0);
+  const depMois = (S.expenses || []).filter(e => new Date(e.date) >= debutMois).reduce((a, e) => a + (Number(e.amount) || 0), 0);
+  if (depMois > 0 && depMois > margeMois) out.push({
+    niveau: 'moyen', ico: '⚖️',
+    titre: t('zia_rChargesT'),
+    detail: tpar('zia_rChargesD', money(margeMois), money(depMois), money(depMois - margeMois)),
+    action: "nav('financial')", bouton: t('zia_voir'),
+  });
+  return out;
+}
+
+// Résumé compact et RÉEL du commerce, envoyé avec chaque question (jamais de
+// données inventées). Le bénéfice net est la marge moins les dépenses — pas
+// le chiffre d'affaires moins les dépenses, comme avant.
 function _baroBizContext() {
-  const S_ = S; const money = n => `${fmt(Math.round(n||0))} ${sym()}`;
+  const money = n => `${fmt(_arrondiDevise(n || 0))} ${sym()}`;
   const now = new Date();
   const dayStart = new Date(); dayStart.setHours(0,0,0,0);
   const monthStart = new Date(); monthStart.setDate(1); monthStart.setHours(0,0,0,0);
   const weekStart = new Date(now - 7*86400000);
-  const sales = S_.sales || [];
-  const inRange = (from) => sales.filter(s => new Date(s.date) >= from);
-  const sum = arr => arr.reduce((a,s)=>a+(s.total||0),0);
-  const profit = arr => arr.reduce((a,s)=>a+(s.profit||0),0);
-  const caToday = sum(inRange(dayStart)), caWeek = sum(inRange(weekStart)), caMonth = sum(inRange(monthStart));
-  const arts = S_.articles || [];
-  const stockVal = arts.reduce((a,x)=>a+(x.stock||0)*(x.price||0),0);
-  const low = arts.filter(a => a.min>0 && (a.stock||0)<=a.min).map(a=>`${a.name} (${fmtQty(a.stock)}/${a.min})`);
-  const soon = arts.filter(a => a.expiry).map(a=>({n:a.name,d:a.expiry})).filter(x=>{const dd=(new Date(x.d)-now)/86400000; return dd>=0&&dd<=30;}).map(x=>`${x.n} (${x.d})`);
-  // top produits du mois
-  const byName = {}; inRange(monthStart).forEach(s=>{const n=s.productName||'?';if(!byName[n])byName[n]={q:0,ca:0};byName[n].q+=(s.qty||0);byName[n].ca+=(s.total||0);});
-  const tops = Object.entries(byName).sort((a,b)=>b[1].ca-a[1].ca).slice(0,5).map(([n,v])=>`${n}: ${v.q} vendu(s), ${money(v.ca)}`);
-  const expenses = (S_.expenses||[]).filter(e=>new Date(e.date)>=monthStart).reduce((a,e)=>a+(e.amount||0),0);
-  const net = caMonth - expenses;
-  const clients = S_.clients||[];
-  const bt = (typeof getBusinessType==='function')?getBusinessType():'reseller';
-  const btLabel = {reseller:'Revendeur/Boutique',maker:'Fabricant/Restaurant'}[bt]||bt;
-  const boutiquePending = (S_.boutiqueOrders||[]).filter(o=>o.status==='pending'||!o.status).length;
+  const sales = S.sales || [];
+  const inRange = from => sales.filter(v => new Date(v.date) >= from);
+  const ca = arr => arr.reduce((a,v) => a + (Number(v.total) || 0), 0);
+  const marge = arr => arr.reduce((a,v) => a + (Number(v.profit) || 0), 0);
+  const mois = inRange(monthStart);
+  const arts = S.articles || [];
+  const valAchat = arts.reduce((a,x) => a + (x.stock || 0) * (Number(x.purchasePrice) || 0), 0);
+  const valVente = arts.reduce((a,x) => a + (x.stock || 0) * (Number(x.price) || 0), 0);
+  const low = arts.filter(a => a.min > 0 && (a.stock || 0) <= a.min).map(a => `${a.name} (${fmtQty(a.stock)}/${a.min})`);
+  const soon = arts.filter(a => a.expiry && (a.stock || 0) > 0).filter(a => { const dd = (new Date(a.expiry) - now) / 86400000; return dd >= 0 && dd <= 30; }).map(a => `${a.name} (${a.expiry})`);
+  const parNom = {};
+  mois.forEach(v => { const n = v.productName || '?'; if (!parNom[n]) parNom[n] = { q: 0, ca: 0, m: 0 }; parNom[n].q += Number(v.qty) || 0; parNom[n].ca += Number(v.total) || 0; parNom[n].m += Number(v.profit) || 0; });
+  const tops = Object.entries(parNom).sort((a,b) => b[1].ca - a[1].ca).slice(0, 8).map(([n,v]) => `${n}: ${fmtQty(v.q)} vendu(s), CA ${money(v.ca)}, marge ${money(v.m)}`);
+  const depenses = (S.expenses || []).filter(e => new Date(e.date) >= monthStart);
+  const totDep = depenses.reduce((a,e) => a + (Number(e.amount) || 0), 0);
+  const parCat = {};
+  depenses.forEach(e => { const c = e.category || '—'; parCat[c] = (parCat[c] || 0) + (Number(e.amount) || 0); });
+  const bt = (typeof getBusinessType === 'function') ? getBusinessType() : 'reseller';
+  const btLabel = { reseller: 'revendeur (boutique)', maker: 'fabricant (restaurant, atelier)', mixed: 'mixte (revend et fabrique)' }[bt] || bt;
   const L = [];
-  L.push(`Commerce: ${S_.session?.business||'—'} (${btLabel}). Devise: ${sym()}.`);
-  L.push(`Chiffre d'affaires — aujourd'hui: ${money(caToday)}, 7 jours: ${money(caWeek)}, ce mois: ${money(caMonth)}.`);
-  L.push(`Bénéfice ce mois: brut ${money(profit(inRange(monthStart)))}, dépenses ${money(expenses)}, NET ${money(net)}.`);
-  L.push(`Ventes ce mois: ${inRange(monthStart).length}. Total historique: ${sales.length} vente(s).`);
-  L.push(`Stock: ${arts.length} article(s), valeur ${money(stockVal)}.`);
-  L.push(low.length?`Stock BAS (${low.length}): ${low.slice(0,10).join('; ')}.`:`Aucun article en stock bas.`);
-  if (soon.length) L.push(`Périment sous 30 j (${soon.length}): ${soon.slice(0,10).join('; ')}.`);
-  L.push(tops.length?`Top ventes du mois: ${tops.join(' | ')}.`:`Aucune vente ce mois.`);
-  L.push(`Clients: ${clients.length}. Équipe: ${(S_.teamMembers||[]).length} membre(s).`);
-  if (boutiquePending) L.push(`Commandes boutique en attente: ${boutiquePending}.`);
+  L.push(`Commerce : ${S.session?.business || '—'} — ${btLabel}. Devise : ${sym()}. Date : ${now.toISOString().slice(0,10)}.`);
+  L.push(`Chiffre d'affaires — aujourd'hui ${money(ca(inRange(dayStart)))}, 7 jours ${money(ca(inRange(weekStart)))}, ce mois ${money(ca(mois))} (${mois.length} ventes).`);
+  L.push(`Ce mois — marge sur les ventes ${money(marge(mois))}, dépenses ${money(totDep)}, bénéfice net ${money(marge(mois) - totDep)}.`);
+  if (Object.keys(parCat).length) L.push(`Dépenses du mois par catégorie : ${Object.entries(parCat).map(([c,v]) => `${c} ${money(v)}`).join(', ')}.`);
+  L.push(`Stock : ${arts.length} article(s), valeur ${money(valAchat)} au prix d'achat, ${money(valVente)} au prix de vente.`);
+  L.push(low.length ? `Stock bas (${low.length}) : ${low.slice(0, 12).join('; ')}.` : `Aucun article en stock bas.`);
+  if (soon.length) L.push(`Périment sous 30 jours (${soon.length}) : ${soon.slice(0, 12).join('; ')}.`);
+  L.push(tops.length ? `Meilleures ventes du mois : ${tops.join(' | ')}.` : `Aucune vente ce mois.`);
+  // Catalogue : de quoi répondre aux questions de prix et de marge
+  const cat = arts.slice(0, 60).map(a => `${a.name} — vente ${money(a.price)}, achat ${Number(a.purchasePrice) > 0 ? money(a.purchasePrice) : '?'}, stock ${fmtQty(a.stock)} ${a.unit || ''}`.trim());
+  if (cat.length) L.push(`Articles (${arts.length}${arts.length > 60 ? ', 60 premiers' : ''}) : ${cat.join(' | ')}.`);
+  const prods = (S.products || []).slice(0, 30).map(p => `${p.name} — vente ${money(p.price)}`);
+  if (prods.length) L.push(`Produits fabriqués : ${prods.join(' | ')}.`);
+  const clients = S.clients || [];
+  L.push(`Clients : ${clients.length}. Équipe : ${(S.teamMembers || []).length} membre(s).`);
+  const enAttente = (S.boutiqueOrders || []).filter(o => o.status === 'pending' || !o.status).length;
+  if (enAttente) L.push(`Commandes du site en attente : ${enAttente}.`);
+  let risques = [];
+  try { risques = _sovaRisques(); } catch (_) {}
+  risques.forEach(r => L.push(`ALERTE — ${r.titre} : ${r.detail}`));
   return L.join('\n');
 }
+// Pour la clé personnelle (Groq/OpenRouter) : même consigne que sur le serveur.
 function _aiSystemPrompt() {
-  return `Tu es BARO IA, l'assistant business intelligent de l'application BARO (gestion de stock & vente pour commerçants d'Afrique de l'Ouest, Côte d'Ivoire).
-Tu connais les données RÉELLES du commerçant (ci-dessous). Réponds de façon concrète, chaleureuse et actionnable, en français simple (le commerçant n'est pas technicien). Utilise la devise indiquée. Sois bref (3-6 phrases max sauf si on te demande un détail). Si une donnée n'est pas dans le contexte, dis-le honnêtement au lieu d'inventer. Propose des actions concrètes quand c'est pertinent (ex: "réapprovisionne X", "relance ce client sur WhatsApp"). Tu peux donner des conseils de vente, de marge, de gestion, de marketing adaptés à un petit commerce africain.
+  return `You are Sova, the business assistant built into BARO, a stock and sales app for small shops in West Africa. The shopkeeper is not a technician: be concrete, warm and brief (3 to 6 sentences unless asked for detail). ${_lang === 'en' ? 'Always answer in English.' : 'Réponds toujours en français simple.'} Use ONLY the real data below; if something is not in it, say so instead of guessing. When a decision would lose money, say it plainly with the numbers before anything else. Suggest one or two concrete actions when relevant.
 
-DONNÉES RÉELLES DU COMMERCE :
+REAL SHOP DATA:
 ${_baroBizContext()}`;
 }
-// Repli LOCAL déterministe (sans clé IA) — répond aux questions fréquentes en CALCULANT sur les vraies données
+// Réponses calculées sur place, sans IA : sur les vraies données, dans la
+// langue de l'app. null = question hors de portée du calcul local.
 function _aiLocalAnswer(q) {
-  const t = (q||'').toLowerCase();
-  const money = n => `${fmt(Math.round(n||0))} ${sym()}`;
-  const sales = S.sales||[]; const now = new Date();
+  const question = (q || '').toLowerCase();
+  const money = n => `${fmt(_arrondiDevise(n || 0))} ${sym()}`;
+  const sales = S.sales || []; const now = new Date();
   const mStart = new Date(); mStart.setDate(1); mStart.setHours(0,0,0,0);
   const dStart = new Date(); dStart.setHours(0,0,0,0);
-  const inR = f => sales.filter(s=>new Date(s.date)>=f);
-  const sum = a => a.reduce((x,s)=>x+(s.total||0),0);
-  if (/(bénéf|benef|gagn|profit|net)/.test(t)) {
-    const ca=sum(inR(mStart)); const dep=(S.expenses||[]).filter(e=>new Date(e.date)>=mStart).reduce((a,e)=>a+(e.amount||0),0);
-    return `Ce mois : chiffre d'affaires ${money(ca)}, dépenses ${money(dep)}, **bénéfice net ${money(ca-dep)}**. Ouvre le Bilan pour le détail.`;
+  const inR = f => sales.filter(v => new Date(v.date) >= f);
+  const sum = a => a.reduce((x,v) => x + (Number(v.total) || 0), 0);
+  if (/(idée|idee|idea|conseil|advice|astuce|tip)/.test(question)) return null;
+  if (/(bénéf|benef|gagn|profit|net|marge|margin|earn)/.test(question)) {
+    const mois = inR(mStart);
+    const marge = mois.reduce((x,v) => x + (Number(v.profit) || 0), 0);
+    const dep = (S.expenses || []).filter(e => new Date(e.date) >= mStart).reduce((a,e) => a + (Number(e.amount) || 0), 0);
+    return tpar('zia_localNet', money(sum(mois)), money(marge), money(dep), money(marge - dep));
   }
-  if (/(vend|chiffre|ca |vente|aujour|jour)/.test(t)) {
-    return `Chiffre d'affaires : aujourd'hui ${money(sum(inR(dStart)))}, ce mois ${money(sum(inR(mStart)))} (${inR(mStart).length} ${t('w4_ventesN')}).`;
+  if (/(stock bas|rupture|réappro|reappro|manqu|faible|low|run out|running|restock)/.test(question)) {
+    const low = (S.articles || []).filter(a => a.min > 0 && (a.stock || 0) <= a.min);
+    return low.length ? tpar('zia_localBas', low.length, low.slice(0,8).map(a => a.name + ' (' + fmtQty(a.stock) + ')').join(', ')) : t('zia_localBasOk');
   }
-  if (/(stock bas|rupture|réappro|reappro|manqu|faible)/.test(t)) {
-    const low=(S.articles||[]).filter(a=>a.min>0&&(a.stock||0)<=a.min);
-    return low.length?`${low.length} article(s) en stock bas : ${low.slice(0,8).map(a=>a.name+' ('+fmtQty(a.stock)+')').join(', ')}. Pense à réapprovisionner.`:`Bonne nouvelle : aucun article en stock bas. 👍`;
+  if (/(périm|perim|expir|péremption|peremption)/.test(question)) {
+    const soon = (S.articles || []).filter(a => a.expiry && (a.stock || 0) > 0).filter(a => { const dd = (new Date(a.expiry) - now) / 86400000; return dd >= 0 && dd <= 30; });
+    return soon.length ? tpar('zia_localPerim', soon.length, soon.slice(0,8).map(a => a.name + ' (' + a.expiry + ')').join(', ')) : t('zia_localPerimOk');
   }
-  if (/(périm|perim|expir|péremption|date)/.test(t)) {
-    const soon=(S.articles||[]).filter(a=>a.expiry).filter(a=>{const dd=(new Date(a.expiry)-now)/86400000;return dd>=0&&dd<=30;});
-    return soon.length?`${soon.length} article(s) périment sous 30 jours : ${soon.slice(0,8).map(a=>a.name+' ('+a.expiry+')').join(', ')}. Écoule-les en priorité (promo ?).`:`Aucun article proche de la péremption sous 30 jours.`;
+  if (/(top|meilleur|plus vendu|populaire|best|popular)/.test(question)) {
+    const parNom = {};
+    inR(mStart).forEach(v => { const n = v.productName || '?'; parNom[n] = (parNom[n] || 0) + (Number(v.qty) || 0); });
+    const top = Object.entries(parNom).sort((a,b) => b[1] - a[1]).slice(0, 5);
+    return top.length ? tpar('zia_localTop', top.map(([n,qte]) => n + ' (' + fmtQty(qte) + ')').join(', ')) : t('zia_localTopVide');
   }
-  if (/(top|meilleur|plus vendu|populaire)/.test(t)) {
-    const byName={}; inR(mStart).forEach(s=>{const n=s.productName||'?';byName[n]=(byName[n]||0)+(s.qty||0);});
-    const top=Object.entries(byName).sort((a,b)=>b[1]-a[1]).slice(0,5);
-    return top.length?`Tes meilleures ventes ce mois : ${top.map(([n,q])=>n+' ('+q+')').join(', ')}.`:`Pas encore de vente ce mois pour établir un classement.`;
+  if (/(client|customer)/.test(question)) return tpar('zia_localClients', (S.clients || []).length);
+  if (/(vend|chiffre|ca |vente|aujour|jour|revenue|sales|sold|today|turnover)/.test(question)) {
+    return tpar('zia_localCA', money(sum(inR(dStart))), money(sum(inR(mStart))), inR(mStart).length);
   }
-  if (/(client)/.test(t)) return `Tu as ${(S.clients||[]).length} ${t('w4_clientsN')} enregistré(s). Va dans Clients pour relancer les meilleurs sur WhatsApp.`;
-  return null; // pas de réponse locale → on invite à activer l'IA
+  return null;
 }
 function _aiPush(role, content) {
   if (!S.aiChat) S.aiChat = [];
   S.aiChat.push({ role, content, t: Date.now() });
   if (S.aiChat.length > 40) S.aiChat = S.aiChat.slice(-40);
+}
+function _aiScrollBas() {
+  setTimeout(() => { const sc = document.getElementById('ai-scroll'); if (sc) sc.scrollTop = sc.scrollHeight; }, 30);
+}
+// Ordre : l'IA intégrée (serveur), puis la clé personnelle, puis le calcul
+// local. Chaque échec le dit, et donne quand même la réponse calculée.
+async function _aiRepondre(msg) {
+  const local = _aiLocalAnswer(msg);
+  const avecLocal = txt => txt + (local ? '\n\n' + local : '');
+  const historique = (S.aiChat || [])
+    .filter(m => m.role === 'user' || m.role === 'assistant')
+    .slice(-12).map(m => ({ role: m.role, content: String(m.content || '').slice(0, 2000) }));
+  const cle = _aiChatProvider();
+  const st = await _iaStatut();
+  if (st && st.available) {
+    if (st.chat && st.chat.left <= 0) return tpar('zia_quotaChat', st.chat.max) + '\n\n' + (local || t('zia_localAide'));
+    const r = await _iaFetch('/api/ai/chat', { messages: historique, context: _baroBizContext(), lang: _lang });
+    if (r.ok && r.data.text) { _iaMajReste('chat', r.data.left); return r.data.text; }
+    if (r.status === 429) { _iaMajReste('chat', 0); return tpar('zia_quotaChat', r.data.max || (st.chat && st.chat.max) || '') + '\n\n' + (local || t('zia_localAide')); }
+    if (!cle) return avecLocal('⚠️ ' + (navigator.onLine === false ? t('zia_reseau') : t('zia_indispo')));
+  }
+  if (cle && navigator.onLine !== false) {
+    const messages = [{ role: 'system', content: _aiSystemPrompt() }, ...historique];
+    for (const model of cle.models) {
+      try {
+        const resp = await fetch(cle.url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + cle.key },
+          body: JSON.stringify({ model, messages, temperature: 0.4, max_tokens: 700 }),
+        });
+        if (resp.ok) { const d = await resp.json(); const a = d?.choices?.[0]?.message?.content || ''; if (a) return a; }
+        else if (resp.status === 401 || resp.status === 403) return avecLocal('⚠️ ' + tpar('zia_cleInvalide', cle.label));
+      } catch (_) {}
+    }
+    return avecLocal('⚠️ ' + t('zia_indispo'));
+  }
+  return local || (t('zia_localAide') + '\n\n_' + t('zia_localPlus') + '_');
 }
 async function sendAiMessage(preset) {
   const inp = document.getElementById('ai-input');
@@ -28044,99 +28431,88 @@ async function sendAiMessage(preset) {
   if (!msg || S._aiBusy) return;
   if (inp) inp.value = '';
   _aiPush('user', msg);
-  S._aiBusy = true; render();
-  setTimeout(() => { const sc = document.getElementById('ai-scroll'); if (sc) sc.scrollTop = sc.scrollHeight; }, 30);
-  const prov = _aiChatProvider();
-  if (!prov) {
-    // Repli local honnête
-    const local = _aiLocalAnswer(msg);
-    _aiPush('assistant', local
-      ? local + `\n\n_💡 Pour des réponses libres à toute question, active l'IA (clé Groq gratuite) — bouton ⚙️ en haut._`
-      : `Je peux déjà répondre sur ton **bénéfice**, ton **chiffre d'affaires**, ton **stock bas**, tes **péremptions**, tes **meilleures ventes** et tes **clients** — pose-moi l'une de ces questions.\n\nPour discuter librement de TOUT (conseils, idées, rédaction…), active l'IA complète : appuie sur ⚙️ en haut et colle une clé **Groq gratuite** (30 sec).`);
-    S._aiBusy = false; render();
-    setTimeout(() => { const sc = document.getElementById('ai-scroll'); if (sc) sc.scrollTop = sc.scrollHeight; }, 30);
-    return;
+  S._aiBusy = true; render(); _aiScrollBas();
+  try {
+    _aiPush('assistant', await _aiRepondre(msg));
+  } catch (e) {
+    _aiPush('assistant', '⚠️ ' + t('zia_indispo'));
+  } finally {
+    // Sans ce finally, une erreur laissait l'assistant bloqué sur « écrit… ».
+    S._aiBusy = false; render(); _aiScrollBas();
   }
-  // Appel LLM réel
-  const history = (S.aiChat || []).filter(m => m.role !== 'system').slice(-12).map(m => ({ role: m.role, content: m.content }));
-  const messages = [{ role: 'system', content: _aiSystemPrompt() }, ...history];
-  let answer = '', lastErr = '';
-  for (const model of prov.models) {
-    try {
-      const resp = await fetch(prov.url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + prov.key },
-        body: JSON.stringify({ model, messages, temperature: 0.4, max_tokens: 700 }),
-      });
-      if (resp.ok) { const d = await resp.json(); answer = d?.choices?.[0]?.message?.content || ''; if (answer) break; }
-      else { try { const e = await resp.json(); lastErr = e?.error?.message || ('Erreur ' + resp.status); } catch(_) { lastErr = 'Erreur ' + resp.status; }
-        if (resp.status === 401) { lastErr = 'Clé IA invalide — vérifie-la dans ⚙️.'; break; } }
-    } catch(e) { lastErr = e.message || 'Réseau indisponible'; }
-  }
-  _aiPush('assistant', answer || `⚠️ ${lastErr || 'IA momentanément indisponible'}. ${_aiLocalAnswer(msg) || 'Réessaie dans un instant.'}`);
-  S._aiBusy = false; render();
-  setTimeout(() => { const sc = document.getElementById('ai-scroll'); if (sc) sc.scrollTop = sc.scrollHeight; }, 30);
 }
-function _aiSetupKey() {
-  const cur = (localStorage.getItem('stockr_groq_key') || '').trim();
-  const k = prompt('Clé IA gratuite (Groq — commence par gsk_, ou OpenRouter sk-or-).\n\nObtiens-la en 30 s sur console.groq.com/keys (gratuit, sans carte).\n\nColle-la ici :', cur);
-  if (k === null) return;
-  const key = k.trim();
-  if (!key) { localStorage.removeItem('stockr_groq_key'); showToast('Clé retirée', 'info'); render(); return; }
-  if (/^gsk_/.test(key)) localStorage.setItem('stockr_groq_key', key);
-  else if (/^sk-or-/.test(key)) localStorage.setItem('stockr_openrouter_key', key);
-  else { showToast('Clé non reconnue (attendu gsk_… ou sk-or-…)', 'error'); return; }
-  showToast('🤖 IA activée !', 'success'); render();
-}
+// Les clés personnelles se règlent au même endroit que celles de Spectra
+// (fini la fenêtre native du navigateur).
+function _aiSetupKey() { nav('spectra-ai-setup'); }
 function clearAiChat() { S.aiChat = []; render(); }
 function vAiChat() {
+  _iaRafraichir();
   const chat = S.aiChat || [];
-  const hasKey = !!_aiChatProvider();
-  const suggestions = [
-    '💰 Quel est mon bénéfice net ce mois ?',
-    '📉 Quels articles sont en stock bas ?',
-    '🔥 Quels sont mes produits les plus vendus ?',
-    '⏱️ Qu\'est-ce qui périme bientôt ?',
-    '💡 Donne-moi 3 idées pour vendre plus',
-  ];
-  const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  const fmtMsg = s => esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/_(.+?)_/g,'<i style="color:var(--text-3)">$1</i>').replace(/\n/g,'<br>');
+  const ia = _iaDispo() ? _iaStatutCache : null;
+  const cle = !!_aiChatProvider();
+  const suggestions = [['💰', 'zia_s1'], ['📉', 'zia_s2'], ['🔥', 'zia_s3'], ['⏱️', 'zia_s4'], ['💡', 'zia_s5']];
+  const esc = v => String(v == null ? '' : v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const fmtMsg = v => esc(v)
+    .replace(/^#{1,4}\s*(.+)$/gm, '<b>$1</b>')
+    .replace(/^\s*[-*•]\s+/gm, '• ')
+    .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
+    .replace(/(^|[\s(])_([^_\n]+?)_(?=[\s.,!?)]|$)/gm, '$1<i style="color:var(--text-3)">$2</i>')
+    .replace(/\n/g, '<br>');
+  const prenom = S.session?.name ? esc(S.session.name.split(' ')[0]) : '';
+  let risques = [];
+  try { risques = _sovaRisques(); } catch (_) {}
+  const veille = `
+    <div class="card sia-veille">
+      <div class="sia-veille-tete"><span class="sia-chouette">🦉</span><div class="sia-veille-titre">${t('zia_veilleTitre')}</div></div>
+      ${risques.length ? risques.map(r => `
+      <div class="sia-risque">
+        <div class="sia-risque-ico">${r.ico}</div>
+        <div style="flex:1;min-width:0">
+          <div class="sia-risque-t ${r.niveau === 'haut' ? 'haut' : ''}">${esc(r.titre)}</div>
+          <div class="sia-risque-d">${esc(r.detail)}</div>
+        </div>
+        <button class="btn btn-ghost sia-risque-btn" onclick="${r.action}">${r.bouton}</button>
+      </div>`).join('') : `<div class="sia-risque-d" style="margin-top:2px">${t('zia_veilleOk')}</div>`}
+    </div>`;
+  const etat = ia
+    ? `<span class="sia-etat">✨ ${tpar('zia_restantes', ia.chat ? ia.chat.left : '—')}</span>`
+    : `<button class="back-btn-dark" style="width:auto;padding:0 12px;font-size:12px" onclick="_aiSetupKey()">⚙️ ${cle ? t('x3_iaVisionActive') : t('v_activer')}</button>`;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#6366F1,#0EA5E9)">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#2a2116;--sh-c2:#8A6729">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px">
       <button class="back-btn-dark" onclick="nav('home')">${IC.left}</button>
-      <div style="display:flex;gap:8px">
-        ${chat.length?`<button class="back-btn-dark" style="width:auto;padding:0 12px;font-size:12px" onclick="clearAiChat()">🗑️ Effacer</button>`:''}
-        <button class="back-btn-dark" style="width:auto;padding:0 12px;font-size:12px" onclick="_aiSetupKey()">⚙️ ${hasKey?'IA activée':t('v_activer')}</button>
+      <div style="display:flex;gap:8px;align-items:center;min-width:0">
+        ${chat.length ? `<button class="back-btn-dark" style="width:auto;padding:0 12px;font-size:12px" onclick="clearAiChat()">🗑️ ${t('zia_effacer')}</button>` : ''}
+        ${etat}
       </div>
     </div>
-    <div class="sub-hero-title">🤖 BARO IA</div>
-    <div class="sub-hero-sub">${hasKey?'Assistant intelligent — connaît votre commerce':'Assistant business — répond sur vos données'}</div>
+    <div class="sub-hero-title">🦉 ${t('zia_assistant')}</div>
+    <div class="sub-hero-sub">${ia || cle ? t('zia_assistantSub') : t('zia_assistantSubLocal')}</div>
   </div>
   <div class="container" style="display:flex;flex-direction:column;height:calc(100vh - 260px);min-height:340px">
     <div id="ai-scroll" style="flex:1;overflow-y:auto;padding:4px 0 8px;-webkit-overflow-scrolling:touch">
       ${chat.length === 0 ? `
-        <div style="text-align:center;padding:14px 8px 18px">
-          <div style="font-size:46px;margin-bottom:8px">🤖</div>
-          <div style="font-size:15px;font-weight:800;color:var(--text-1);margin-bottom:4px">Bonjour ${S.session?.name?esc(S.session.name.split(' ')[0]):''} 👋</div>
-          <div style="font-size:13px;color:var(--text-3);line-height:1.55;margin-bottom:6px">Je connais votre stock, vos ventes et vos finances. Posez-moi une question :</div>
+        <div style="text-align:center;padding:10px 8px 14px">
+          <div style="font-size:15px;font-weight:800;color:var(--text-1);margin-bottom:4px">${prenom ? tpar('zia_bonjour', prenom) : t('zia_bonjour').replace(' {0}', '')}</div>
+          <div style="font-size:13px;color:var(--text-3);line-height:1.55">${t('zia_intro')}</div>
         </div>
+        ${veille}
         <div style="display:flex;flex-direction:column;gap:8px">
-          ${suggestions.map(s=>`<button class="card" style="text-align:left;padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-1);cursor:pointer;border:1px solid var(--border)" onclick="sendAiMessage(${JSON.stringify(s.replace(/^[^\s]+\s/,'')).replace(/"/g,'&quot;')})">${esc(s)}</button>`).join('')}
+          ${suggestions.map(([ico, k]) => `<button class="card" style="text-align:left;padding:12px 14px;font-size:13px;font-weight:600;color:var(--text-1);cursor:pointer;border:1px solid var(--border)" onclick="sendAiMessage(${_jsArg(t(k))})">${ico} ${esc(t(k))}</button>`).join('')}
         </div>
       ` : chat.map(m => m.role === 'user' ? `
         <div style="display:flex;justify-content:flex-end;margin-bottom:10px">
-          <div style="max-width:82%;background:linear-gradient(135deg,var(--accent),#6366F1);color:#fff;padding:10px 14px;border-radius:16px 16px 4px 16px;font-size:13.5px;line-height:1.5;box-shadow:0 2px 8px rgba(79,70,229,.25)">${fmtMsg(m.content)}</div>
+          <div class="sia-bulle-moi">${fmtMsg(m.content)}</div>
         </div>` : `
         <div style="display:flex;gap:8px;margin-bottom:10px">
-          <div style="width:30px;height:30px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#6366F1,#0EA5E9);display:flex;align-items:center;justify-content:center;font-size:15px">🤖</div>
-          <div style="max-width:82%;background:var(--surface);border:1px solid var(--border);color:var(--text-1);padding:10px 14px;border-radius:16px 16px 16px 4px;font-size:13.5px;line-height:1.55">${fmtMsg(m.content)}</div>
+          <div class="sia-avatar">🦉</div>
+          <div class="sia-bulle-sova">${fmtMsg(m.content)}</div>
         </div>`).join('')}
-      ${S._aiBusy ? `<div style="display:flex;gap:8px;margin-bottom:10px"><div style="width:30px;height:30px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,#6366F1,#0EA5E9);display:flex;align-items:center;justify-content:center;font-size:15px">🤖</div><div style="background:var(--surface);border:1px solid var(--border);padding:12px 16px;border-radius:16px;font-size:13px;color:var(--text-3)">${t('y3_ecrit')}</div></div>` : ''}
+      ${S._aiBusy ? `<div style="display:flex;gap:8px;margin-bottom:10px"><div class="sia-avatar">🦉</div><div class="sia-bulle-sova" style="color:var(--text-3)">${t('y3_ecrit')}</div></div>` : ''}
     </div>
     <div style="display:flex;gap:8px;padding:8px 0 4px;border-top:1px solid var(--border)">
-      <input id="ai-input" class="input" type="text" placeholder="Écrivez votre question…" style="flex:1;min-width:0" onkeydown="if(event.key==='Enter')sendAiMessage()" ${S._aiBusy?'disabled':''}>
-      <button class="btn btn-primary" style="flex:0 0 52px;width:52px;padding:0;font-size:18px" onclick="sendAiMessage()" ${S._aiBusy?'disabled':''}>➤</button>
+      <input id="ai-input" class="input" type="text" placeholder="${t('zia_ecrire')}" style="flex:1;min-width:0" onkeydown="if(event.key==='Enter')sendAiMessage()" ${S._aiBusy ? 'disabled' : ''}>
+      <button class="btn btn-primary" style="flex:0 0 52px;width:52px;padding:0;font-size:18px" onclick="sendAiMessage()" aria-label="${t('zia_demander')}" ${S._aiBusy ? 'disabled' : ''}>➤</button>
     </div>
   </div>`;
 }
@@ -28289,7 +28665,7 @@ function vMore() {
 
   const items = [
     { id:'today',           icon:'☀️',          label:t('w3_maJournee'),                     sub:t('w3_maJourneeSub'), color:'#F59E0B', badge:(()=>{try{return _todayActionsCount()||null;}catch(_){return null;}})() },
-    { id:'ai-chat',         icon:'🤖',          label:'BARO IA — Assistant',            sub:t('w3_posezQuestions'), color:'#6366F1' },
+    { id:'ai-chat',         icon:'🦉',          label:t('zia_assistant'),            sub:t('w3_posezQuestions'), color:'#8A6729' },
     { id:'metier-guide',    icon:'💡',          label:t('w3_baroMetier'),           sub:'Pharmacie · restau · services…', color:'#0EA5E9' },
     canAdmin ? { id:'multi-store', icon:'🏬',    label:t('w3_multiPoints'),          sub:`${(S.locations||[]).length} ${t('w4_emplacements')}`, color:'#7C3AED' } : null,
     canAdmin ? { id:'team',  icon:IC.users,      label:t('w3_equipe'),                         sub:`${teamCount} ${t('w4_collaborateurs')}`, color:'#7C73FF', badge: teamCount || null } : null,
@@ -45188,36 +45564,35 @@ function vSpectraEnhanced() {
 
   if (S.spectra.step === 'noresult') {
     const hasAI = _spectraHasAI();
+    const esc = v => String(v == null ? '' : v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     return `
-    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">Produit non reconnu</div><div class="sub-hero-sub">${t('y3_pasIdentifie')}</div></div></div></div>
+    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('zia_nonReconnu')}</div><div class="sub-hero-sub">${t('y3_pasIdentifie')}</div></div></div></div>
     <div class="container" style="padding:18px">
       ${S.spectra.capturedImage ? `<img src="${S.spectra.capturedImage}" style="width:100%;max-height:200px;object-fit:cover;border-radius:16px;margin-bottom:16px;border:1px solid var(--border)">` : ''}
-      ${!hasAI ? `
+      ${_spectraLastAiError ? `
+      <div class="card" style="margin-bottom:12px;border-left:4px solid var(--warning);background:rgba(245,158,11,.06)">
+        <div style="font-size:13px;font-weight:700;color:var(--text-1);line-height:1.5">${esc(_spectraLastAiError)}</div>
+        ${_spectraHasOwnKey() && !_iaDispo() ? `<button class="btn btn-ghost" style="margin-top:10px;font-size:12px;padding:8px" onclick="nav('spectra-ai-setup')">${t('x3_verifierMaCle')}</button>` : ''}
+      </div>` : hasAI ? `
+      <div class="card" style="margin-bottom:12px">
+        <div style="font-size:13px;color:var(--text-2);line-height:1.55">${t('zia_nonReconnuD')}</div>
+      </div>` : `
       <div class="card" style="border:1.5px solid var(--accent);background:linear-gradient(135deg,rgba(124,115,255,.10),rgba(66,133,244,.05));margin-bottom:12px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
           <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#4285F4,#7C3AED);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">✨</div>
-          <div><div style="font-size:15px;font-weight:800">Active l'IA vision (gratuit)</div><div style="font-size:12px;color:var(--text-3)">${t('y3_commeGoogleLens')}</div></div>
+          <div><div style="font-size:15px;font-weight:800">${t('zia_activerVision')}</div><div style="font-size:12px;color:var(--text-3)">${t('y3_commeGoogleLens')}</div></div>
         </div>
         <div style="font-size:12.5px;color:var(--text-2);line-height:1.55;margin-bottom:12px">
           ${t('y3_reconnaissanceLocale').replace('{0}','<strong>'+t('y3_iaVisionGemini')+'</strong>').replace('{1}','<strong>'+t('y3_ps5Iphone')+'</strong>')}
         </div>
-        <button class="btn btn-primary" style="background:linear-gradient(135deg,#4285F4,#7C3AED)" onclick="nav('spectra-ai-setup')">Activer Spectra AI →</button>
-      </div>` : `
-      ${_spectraLastAiError ? `
-      <div class="card" style="margin-bottom:12px;border-left:4px solid var(--danger);background:rgba(239,68,68,.05)">
-        <div style="font-size:13px;font-weight:700;color:var(--danger);margin-bottom:4px">⚠️ Spectra AI : ${_spectraLastAiError}</div>
-        <div style="font-size:12px;color:var(--text-2);line-height:1.5">${t('x3_verifieTaCle')}</div>
-        <button class="btn btn-ghost" style="margin-top:10px;font-size:12px;padding:8px" onclick="nav('spectra-ai-setup')">${t('x3_verifierMaCle')}</button>
-      </div>` : `
-      <div class="card" style="margin-bottom:12px">
-        <div style="font-size:13px;color:var(--text-2);line-height:1.55">L'IA n'a pas reconnu ce produit (image floue, sous un angle difficile, ou produit rare). Réessaie avec une photo plus nette et bien éclairée.</div>
-      </div>`}`}
+        <button class="btn btn-primary" style="background:linear-gradient(135deg,#4285F4,#7C3AED)" onclick="nav('spectra-ai-setup')">${t('zia_activerSpectra')}</button>
+      </div>`}
       <div class="card" style="margin-bottom:12px">
         <div class="card-title">${t('w8_ajouterManuel')}</div>
         <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">${t('y3_creerToiMeme')}</div>
-        <button class="btn btn-ghost" onclick="spectraToAddForm()">${IC.plus} Créer l'article${S.spectra.capturedImage?' (avec la photo scannée)':''}</button>
+        <button class="btn btn-ghost" onclick="spectraToAddForm()">${IC.plus} ${t('zia_creerArticle')}${S.spectra.capturedImage ? t('zia_avecPhoto') : ''}</button>
       </div>
-      <button class="btn btn-ghost" style="width:100%" onclick="spectraReset()">${IC.camera} Réessayer un scan</button>
+      <button class="btn btn-ghost" style="width:100%" onclick="spectraReset()">${IC.camera} ${t('zia_reessayer')}</button>
     </div>`;
   }
 
@@ -45345,6 +45720,19 @@ function vSpectraEnhanced() {
   </div>
   <div class="container">
     ${(() => {
+      _iaRafraichir();
+      if (_iaDispo()) {
+        const v = _iaStatutCache.vision || {};
+        return `
+        <div class="spectra-ai-banner on" onclick="nav('spectra-ai-setup')">
+          <div class="spectra-ai-ic">✨</div>
+          <div style="flex:1;min-width:0">
+            <div class="spectra-ai-title">${t('zia_integreeActive')} <span class="spectra-ai-dot"></span></div>
+            <div class="spectra-ai-sub">${tpar('zia_analysesRestantes', v.left != null ? v.left : '—', v.max != null ? v.max : '—')}</div>
+          </div>
+          <div style="color:#34d399">${IC.chevron}</div>
+        </div>`;
+      }
       const ownKey = _spectraHasOwnKey();
       if (ownKey) {
         return `
@@ -45384,7 +45772,7 @@ function vSpectraEnhanced() {
       </div>`;
     })()}
 
-    <details class="spectra-tuto" ${_spectraHasOwnKey()||localStorage.getItem('baro_spectra_tuto_seen')?'':'open'} ontoggle="if(this.open)localStorage.setItem('baro_spectra_tuto_seen','1')">
+    ${_iaDispo() ? '' : `<details class="spectra-tuto" ${_spectraHasOwnKey()||localStorage.getItem('baro_spectra_tuto_seen')?'':'open'} ontoggle="if(this.open)localStorage.setItem('baro_spectra_tuto_seen','1')">
       <summary class="spectra-tuto-sum">
         <span>${t('z_activerIa')} <span style="font-weight:500;color:var(--text-3)">Groq gratuit · 2 min</span></span>
         <span class="spectra-tuto-chev">${IC.chevron}</span>
@@ -45405,7 +45793,7 @@ function vSpectraEnhanced() {
         <button class="btn btn-primary" style="margin-top:6px;background:linear-gradient(135deg,#F55036,#7C3AED)" onclick="event.preventDefault();nav('spectra-ai-setup')">${t('z_activerMtn')}</button>
         <div style="font-size:11px;color:var(--text-3);margin-top:10px;line-height:1.5">${t('x3_sansCleSpectra')} <strong>${t('x3_codeBarresDico')}</strong> ${t('zy_dico300')}</div>
       </div>
-    </details>
+    </details>`}
 
     <div class="section-hd"><span class="section-lbl" style="color:#7c3aed;font-weight:800;letter-spacing:.5px">✦ ${t('zzb_modeScan')}</span></div>
     <div class="spectra-mode-grid">

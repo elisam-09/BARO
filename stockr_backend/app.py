@@ -54,6 +54,12 @@ def create_app():
                 db.session.commit()
             except Exception:
                 db.session.rollback()
+        # Coût de revient des produits composés
+        try:
+            db.session.execute(text('ALTER TABLE product ADD COLUMN purchase_price FLOAT DEFAULT 0'))
+            db.session.commit()
+        except Exception:
+            db.session.rollback()
         # Suivi de commande côté client (code secret public)
         try:
             db.session.execute(text('ALTER TABLE shop_order ADD COLUMN track_code VARCHAR(16)'))

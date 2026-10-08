@@ -6,6 +6,9 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     price = db.Column(db.Float, nullable=False, default=0)
+    # Coût de revient : sans lui, l'app renvoyait le coût d'un produit
+    # composé au serveur, qui l'ignorait — la modification ne tenait pas.
+    purchase_price = db.Column(db.Float, nullable=True, default=0)
     photo_url = db.Column(db.String(500), nullable=True)
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -48,6 +51,7 @@ class Product(db.Model):
             'id': self.id,
             'name': self.name,
             'price': self.price,
+            'purchase_price': self.purchase_price or 0,
             'photo_url': self.photo_url,
             'composition': self.get_composition_details(),
             'producible_quantity': self.producible_quantity(),

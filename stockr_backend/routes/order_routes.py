@@ -95,8 +95,14 @@ def create_public_order(shop_id):
     try:
         from routes.push_routes import notify_user
         who = order.customer_name or 'Un client'
+        # La devise du commerçant, et le montant sans le tronquer : « 23 F »
+        # pour une commande de 23,50 € était faux deux fois.
+        owner = User.query.get(shop_id)
+        devise = (owner.currency if owner and owner.currency else 'XOF')
+        montant = f'{total:,.0f}' if devise in ('XOF', 'XAF', 'NGN') else f'{total:,.2f}'
+        symbole = {'XOF': 'FCFA', 'XAF': 'FCFA', 'EUR': '€', 'USD': '$', 'GBP': '£'}.get(devise, devise)
         notify_user(shop_id, '🛍️ Nouvelle commande',
-                    f'{who} — {int(total):,} F ({len(items)} article(s))'.replace(',', ' '),
+                    f'{who} — {montant} {symbole} ({len(items)} article(s))'.replace(',', ' '),
                     '/?view=boutique')
     except Exception:
         pass

@@ -20,6 +20,7 @@ def create_product(current_user):
     product = Product(
         name=data['name'],
         price=data.get('price', 0),
+        purchase_price=data.get('purchase_price', 0) or 0,
         photo_url=data.get('photo_url'),
         user_id=current_user.id  # ← LIAISON IMPORTANTE
     )
@@ -59,6 +60,7 @@ def update_product(current_user, product_id):
     data = request.json
     if 'name' in data: product.name = data['name']
     if 'price' in data: product.price = data['price']
+    if 'purchase_price' in data: product.purchase_price = data['purchase_price'] or 0
     if 'composition' in data:
         # Vider via l'ORM pour garder le cache SQLAlchemy cohérent
         product.composition.clear()

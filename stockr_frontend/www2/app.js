@@ -270,6 +270,10 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zsy_supprime: "« {0} » supprimé",
+    zsy_convertis: "{0} montants convertis en {1}",
+    zsy_deviseSeule: "Devise changée — montants inchangés",
+    zsy_tauxInvalide: "Entrez un taux valide",
     zqs_marge: "marge {0} %",
     zqs_fermer: "Fermer",
     zqs_dispo: "dispo",
@@ -3733,6 +3737,10 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zsy_supprime: "“{0}” deleted",
+    zsy_convertis: "{0} amounts converted to {1}",
+    zsy_deviseSeule: "Currency changed — amounts unchanged",
+    zsy_tauxInvalide: "Enter a valid rate",
     zqs_marge: "margin {0}%",
     zqs_fermer: "Close",
     zqs_dispo: "available",
@@ -7311,7 +7319,7 @@ function generateInvoicePDF(sales) {
   y += 14; let grandTotal = 0; let totalProfit = 0; let totalCost = 0;
   doc.setTextColor(30, 30, 30); doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
   sales.forEach((s, i) => {
-    const unitPrice = s.qty > 0 ? Math.round(s.total / s.qty) : 0;
+    const unitPrice = s.qty > 0 ? _arrondiDevise(s.total / s.qty) : 0;
     grandTotal += s.total;
     totalProfit += (s.profit || 0);
     totalCost += (s.total - (s.profit||0));
@@ -7355,7 +7363,7 @@ function generateInvoicePDF(sales) {
     doc.setTextColor(100, 100, 100);
   }
   if (taxRate > 0) {
-    const tva = Math.round(grandTotal * taxRate / 100);
+    const tva = _arrondiDevise(grandTotal * taxRate / 100);
     doc.text(`TVA (${taxRate}%)`, 155, y, { align: 'right' });
     doc.text(fmtPDF(tva) + ' ' + _pdfTexte(sym), 192, y, { align: 'right' }); y += 7;
     grandTotal += tva;
@@ -7520,7 +7528,7 @@ function shareViaWhatsApp(sales) {
     `━━━━━━━━━━━━━━━━━━━━━━━━━`,
   ];
   sales.forEach(s => {
-    const u = s.qty > 0 ? Math.round(s.total / s.qty) : 0;
+    const u = s.qty > 0 ? _arrondiDevise(s.total / s.qty) : 0;
     lines.push(`▸ ${s.productName}`);
     lines.push(`   ${s.qty} × ${fmt(u)} = *${fmt(s.total)} ${csym}*`);
   });
@@ -8339,6 +8347,13 @@ async function _syncBoutiqueOrders() {
     const localOnly = cur.filter(o => o && !String(o.id).startsWith('srv_'));
     const mapped = srv.map(o => {
       const m = { ...o, id: 'srv_' + o.id, serverId: o.id };
+      // Le serveur ne connaît pas la devise : une commande d'avant un
+      // changement de devise est relue au taux de la conversion.
+      const __f = _facteurConversion(m.date);
+      if (__f !== 1) {
+        m.total = _arrondiDevise((Number(m.total) || 0) * __f);
+        m.items = (m.items || []).map(it => ({ ...it, price: _arrondiDevise((Number(it && it.price) || 0) * __f) }));
+      }
       // Le serveur écrit l'heure UTC sans le dire (« 2026-09-26T10:00:00 ») :
       // lue telle quelle, elle devient une heure LOCALE. En France l'été, une
       // commande qui arrive paraissait déjà vieille de deux heures.
@@ -8397,6 +8412,80 @@ function _normalizeProducts(list) {
   if (!Array.isArray(list)) return [];
   list.forEach(p => { if (p && !Array.isArray(p.composition)) p.composition = []; });
   return list;
+}
+
+// ══════════════════════════════════════════════════════════════
+// SYNCHRO — ce que le commerçant modifie ne doit plus être défait.
+// Le serveur fait foi pour ce qu'il connaît. Mais il ne reçoit pas tout
+// (coût d'un produit, devise), et plusieurs écrans ne lui envoyaient rien
+// (prix modifié dans la fiche, suppression, conversion de devise) : à la
+// synchro suivante, sa valeur ancienne écrasait la nouvelle.
+//
+//  1. SURCHARGES : chaque champ modifié localement est noté. À la synchro,
+//     la valeur locale l'emporte tant que le serveur ne renvoie pas la
+//     même ; dès qu'il la renvoie, la surcharge s'efface d'elle-même.
+//  2. SUPPRESSIONS : un article supprimé est noté ; il n'est ni réaffiché
+//     ni recréé sur le serveur, et la suppression y est retentée.
+//  3. REGISTRE DES CONVERSIONS : le serveur stocke des nombres sans devise.
+//     Une dépense ou une commande datée d'avant un changement de devise est
+//     convertie à la lecture, au taux de chaque conversion survenue depuis.
+// ══════════════════════════════════════════════════════════════
+function _lireJSON(cle, defaut) {
+  try { const v = JSON.parse(localStorage.getItem(cle) || 'null'); return v == null ? defaut : v; }
+  catch (_) { return defaut; }
+}
+function _ecrireJSON(cle, v) { try { localStorage.setItem(cle, JSON.stringify(v)); } catch (_) {} }
+
+function _surchargeNote(type, id, champs) {
+  if (id == null) return;
+  const m = _lireJSON('baro_surcharges', {});
+  const k = type + ':' + id;
+  m[k] = Object.assign(m[k] || {}, champs);
+  _ecrireJSON('baro_surcharges', m);
+}
+function _surchargesAppliquer(liste, type) {
+  const m = _lireJSON('baro_surcharges', {});
+  let change = false;
+  (liste || []).forEach(o => {
+    if (!o) return;
+    const k = type + ':' + o.id, sc = m[k];
+    if (!sc) return;
+    Object.keys(sc).forEach(ch => {
+      const v = sc[ch];
+      const egal = (typeof v === 'number' && typeof o[ch] === 'number') ? Math.abs(v - o[ch]) < 1e-6 : String(o[ch]) === String(v);
+      // Le serveur a rattrapé la valeur locale : la surcharge n'a plus d'objet.
+      if (egal) { delete sc[ch]; change = true; } else o[ch] = v;
+    });
+    if (!Object.keys(sc).length) { delete m[k]; change = true; }
+  });
+  if (change) _ecrireJSON('baro_surcharges', m);
+}
+
+function _articlesSupprimes() { const l = _lireJSON('baro_suppr_articles', []); return Array.isArray(l) ? l.map(String) : []; }
+function _noteSuppression(id) {
+  const l = _articlesSupprimes();
+  if (!l.includes(String(id))) l.push(String(id));
+  _ecrireJSON('baro_suppr_articles', l.slice(-500));
+}
+
+function _conversions() { const l = _lireJSON('baro_conversions', []); return Array.isArray(l) ? l : []; }
+// Un montant enregistré par le serveur à la date d est divisé par le taux de
+// chaque conversion survenue APRÈS d. Sans cela, une dépense de 50 000 FCFA
+// d'avant le passage au dollar revenait « 50 000 $ » à chaque synchro.
+function _facteurConversion(d) {
+  const t0 = new Date(d || 0).getTime() || 0;
+  let f = 1;
+  _conversions().forEach(c => { if (c && c.taux > 0 && new Date(c.date).getTime() > t0) f /= c.taux; });
+  return f;
+}
+function _arrondiDevise(v) {
+  const dec = _decimalesDe((S.session && S.session.currency) || 'XOF');
+  const p = Math.pow(10, dec);
+  return Math.round((Number(v) || 0) * p) / p;
+}
+function _convLecture(v, d) {
+  const f = _facteurConversion(d);
+  return f === 1 ? v : _arrondiDevise((Number(v) || 0) * f);
 }
 
 function articleFromAPI(a) {
@@ -8506,14 +8595,33 @@ async function loadData() {
     // ${t('z_depenses')} : le serveur fait foi pour ce qu'il connaît ; les saisies
     // hors-ligne (sans serverId) sont conservées telles quelles.
     if (Array.isArray(srvExps)) {
-      const srv = srvExps.map(e => ({ id: 'srv_' + e.id, serverId: e.id, label: e.label, amount: e.amount, category: e.category || 'Autre', date: e.date }));
+      const srv = srvExps.map(e => ({ id: 'srv_' + e.id, serverId: e.id, label: e.label, amount: _convLecture(e.amount, e.date), category: e.category || 'Autre', date: e.date }));
       const localOnly = (S.expenses || []).filter(e => e && !e.serverId && !String(e.id).startsWith('srv_'));
       S.expenses = [...srv, ...localOnly].sort((a, b) => new Date(b.date) - new Date(a.date));
       try { localStorage.setItem('baro_expenses', JSON.stringify(S.expenses)); } catch(_){}
     }
-    const apiArts    = (arts  || []).map(articleFromAPI);
+    // Un article supprimé ici n'est jamais réaffiché ; s'il existe encore sur
+    // le serveur, la suppression y est retentée.
+    const __suppr = new Set(_articlesSupprimes());
+    const __tousArts = (arts || []).map(articleFromAPI);
+    if (__suppr.size) {
+      __tousArts.filter(a => __suppr.has(String(a.id))).forEach(a => { api('DELETE', '/api/articles/' + a.id).catch(() => {}); });
+      // Le serveur ne le renvoie plus : la suppression est acquise, on l'oublie.
+      const __encore = new Set(__tousArts.map(a => String(a.id)));
+      _ecrireJSON('baro_suppr_articles', [...__suppr].filter(id => __encore.has(id)));
+    }
+    const apiArts    = __tousArts.filter(a => !__suppr.has(String(a.id)));
     const apiProds   = (prods || []).map(productFromAPI);
-    const apiSales   = (sales || []).map(saleFromAPI);
+    // Une vente garde le total enregistré au moment de la vente : le
+    // recalculer avec le prix actuel réécrivait le chiffre d'affaires passé
+    // à chaque changement de prix.
+    const __ventesLocales = {};
+    (local.sales || []).forEach(v => { if (v && v.id != null) __ventesLocales[String(v.id)] = v; });
+    const apiSales   = (sales || []).map(saleFromAPI).map(v => {
+      const loc = __ventesLocales[String(v.id)];
+      if (loc && typeof loc.total === 'number') { v.total = loc.total; if (typeof loc.profit === 'number') v.profit = loc.profit; }
+      return v;
+    });
     const apiClients = clients || [];
     // Préserver TOUT ce que l'API/le shim local ne stocke pas : photos, prix
     // d'achat/vente, catégorie, EAN, péremption, vitrine, variantes, avis…
@@ -8530,6 +8638,9 @@ async function loadData() {
     };
     apiArts.forEach(__applyExtras);
     apiProds.forEach(__applyExtras);
+    // Ce qui a été modifié ici et que le serveur n'a pas encore rattrapé.
+    _surchargesAppliquer(apiArts, 'a');
+    _surchargesAppliquer(apiProds, 'p');
     // ── RÈGLE D'OR (Lot 133) : le serveur COMPLÈTE, il n'efface JAMAIS ──
     // Avant : S.articles = apiArts remplaçait tout → un article/vente/client créé
     // hors-ligne (ou via le repli local) DISPARAISSAIT dès que le serveur renvoyait
@@ -8537,7 +8648,7 @@ async function loadData() {
     // conservé, puis les articles locaux sont renvoyés au serveur en arrière-plan.
     const __ids = list => new Set(list.map(x => String(x.id)));
     const artIds = __ids(apiArts), prodIds = __ids(apiProds), saleIds = __ids(apiSales), cliIds = __ids(apiClients);
-    const localOnlyArts = local.articles.filter(a => a && a.id != null && !artIds.has(String(a.id)));
+    const localOnlyArts = local.articles.filter(a => a && a.id != null && !artIds.has(String(a.id)) && !__suppr.has(String(a.id)));
     S.dataLoading = false;
     S.articles    = [...apiArts,    ...localOnlyArts];
     S.products    = _normalizeProducts([...apiProds,   ...local.products.filter(p => p && p.id != null && !prodIds.has(String(p.id)))]);
@@ -10583,7 +10694,7 @@ function saveCashClose() {
   const d = _cashCloseData(dstr);
   const counted = Number(S.cashCounted);
   if (S.cashCounted === '' || S.cashCounted == null || isNaN(counted)) { showToast('Entrez le montant compté dans le tiroir', 'error'); return; }
-  const variance = Math.round(counted - d.expectedCash);
+  const variance = _arrondiDevise(counted - d.expectedCash);
   const rec = { id: Date.now(), date: d.day.toISOString(), totalCA: d.totalCA, totalProfit: d.totalProfit, count: d.count, byMethod: d.byMethod, cashSales: d.cashSales, expenses: d.totalExp, opening: d.opening, counted, expected: d.expectedCash, variance, at: new Date().toISOString(), by: (S.session && S.session.name) || '' };
   S.cashCloses.unshift(rec);
   try { localStorage.setItem('baro_cashcloses', JSON.stringify(S.cashCloses)); } catch(_){}
@@ -10721,7 +10832,10 @@ function vCashClose() {
 function _credits() { if (!Array.isArray(S.credits)) S.credits = JSON.parse(localStorage.getItem('baro_credits') || '[]'); return S.credits; }
 function _saveCredits() { try { localStorage.setItem('baro_credits', JSON.stringify(S.credits || [])); } catch(_){} }
 function _creditPaid(c) { return (c.payments || []).reduce((s, p) => s + (p.amount || 0), 0); }
-function _creditReste(c) { return Math.max(0, (c.amount || 0) - _creditPaid(c)); }
+// Arrondi à la précision de la devise : en euros ou en dollars, 16,67 − (10
+// + 6,67) laisse 0,000…2 en virgule flottante, et un crédit soldé restait
+// « ouvert » pour toujours.
+function _creditReste(c) { return Math.max(0, _arrondiDevise((c.amount || 0) - _creditPaid(c))); }
 function _creditsStats() {
   const list = _credits();
   const open = list.filter(c => _creditReste(c) > 0);
@@ -11690,16 +11804,17 @@ async function deleteArticle(id) {
   if (typeof requirePermission === 'function' && !requirePermission('stock') && !requirePermission('all', true)) return;
   const art = S.articles.find(a => a.id === id);
   if (!art) return;
-  try {
-    await api('DELETE', `/api/articles/${id}`);
-    S.products.forEach(p => { p.composition = p.composition.filter(c => c.id !== id); });
-    S.articles = S.articles.filter(a => a.id !== id);
-    if (typeof logAudit === 'function') logAudit('stock', 'delete_article', { name: art.name, id });
-    showToast(`"${art.name}" supprimé`);
-    nav('pantry');
-  } catch(e) {
-    showToast(e.message, 'error');
-  }
+  // Noté AVANT l'appel : hors ligne ou serveur en panne, l'article ne doit
+  // pas revenir à la prochaine synchro. La suppression sera retentée.
+  _noteSuppression(id);
+  try { await api('DELETE', `/api/articles/${id}`); } catch (_) { /* retentée à la synchro */ }
+  S.products.forEach(p => { p.composition = p.composition.filter(c => c.id !== id); });
+  S.articles = S.articles.filter(a => a.id !== id);
+  _saveArticles();
+  try { localStorage.setItem('stockr_products', JSON.stringify(S.products)); } catch (_) {}
+  if (typeof logAudit === 'function') logAudit('stock', 'delete_article', { name: art.name, id });
+  showToast(t('zsy_supprime').replace('{0}', art.name));
+  nav('pantry');
 }
 
 // Persiste les clients dans les DEUX stockages historiques pour éviter toute dérive
@@ -12004,7 +12119,7 @@ function exportSalesCSV() {
   rows.push(['#', 'Date', 'Heure', 'N° Facture', 'Produit', 'Quantité', 'Prix unitaire', 'Total', 'Bénéfice', 'Client', 'Paiement', 'Promo', 'Statut']);
   S.sales.forEach((s,i) => {
     const d = new Date(s.date);
-    const unit = s.qty > 0 ? Math.round(s.total / s.qty) : 0;
+    const unit = s.qty > 0 ? _arrondiDevise(s.total / s.qty) : 0;
     rows.push([
       i+1,
       d.toLocaleDateString(_loc()),
@@ -12745,7 +12860,12 @@ async function saveEditProduct() {
     });
     p.name  = data.name;
     p.price = data.price;
-    p.purchasePrice = data.purchase_price || 0;
+    // Le serveur actuel ignore le coût d'un produit et renvoie l'ancien :
+    // reprendre sa réponse annulait la modification à la seconde même. La
+    // valeur saisie fait foi, et elle est notée pour les synchros suivantes.
+    const __cout = parseFloat(costEl?.value) || 0;
+    p.purchasePrice = __cout;
+    _surchargeNote('p', p.id, { purchasePrice: __cout });
     p.composition = (data.composition || []).map(c => ({ id: c.article.id, qty: c.quantity_used }));
     if (S.productForm?.image) p.image = S.productForm.image;
     else if (S.productForm?.imageCleared) p.image = '';
@@ -13200,7 +13320,7 @@ async function confirmCart() {
       if (promo) {
         promoDiscount = promo.discount;
         promoName = promo.name;
-        const discount = Math.round(lineTotal * promoDiscount / 100);
+        const discount = _arrondiDevise(lineTotal * promoDiscount / 100);
         lineTotal -= discount;
         lineProfit -= discount;
       }
@@ -13904,34 +14024,62 @@ function _reveillerCollections() {
   if (!Array.isArray(S.devis))          S.devis          = charger('baro_devis', '[]');
 }
 
+// Tous les montants du commerçant, avec leurs VRAIS noms de champs. L'ancienne
+// liste visait des champs qui n'existent pas (cost, costPrice, paid, diff) et
+// en oubliait une douzaine : prix de vente, coût des produits, remboursements,
+// caisse, lignes de commande, devis, packs, frais par zone…
+// `lignes` : tableaux imbriqués ; `dicos` : objets { clé: montant }.
 function _collectionsMonetaires() {
   _reveillerCollections();
   const bc = S.boutiqueConfig || {};
+  if (!Array.isArray(S.devis)) S.devis = _lireJSON('baro_devis', []);
   return [
-    { liste: S.articles,       champs: ['price', 'purchasePrice'] },
-    { liste: S.products,       champs: ['price', 'cost', 'costPrice'] },
-    { liste: S.sales,          champs: ['total', 'profit'] },
-    { liste: S.credits,        champs: ['amount', 'paid'] },
+    { liste: S.articles,       champs: ['price', 'purchasePrice', 'sellPrice'] },
+    { liste: S.products,       champs: ['price', 'purchasePrice'] },
+    { liste: S.sales,          champs: ['total', 'profit', 'unitPrice', 'unitCost'],
+      lignes: [{ cle: 'items', champs: ['price', 'unitPrice', 'unitCost', 'total', 'purchasePrice'] }] },
+    { liste: S.credits,        champs: ['amount'], lignes: [{ cle: 'payments', champs: ['amount'] }] },
     { liste: S.expenses,       champs: ['amount'] },
-    { liste: S.cashCloses,     champs: ['expected', 'counted', 'diff'] },
-    { liste: S.boutiqueOrders, champs: ['total'] },
+    { liste: S.cashCloses,     champs: ['totalCA', 'totalProfit', 'cashSales', 'expenses', 'opening', 'counted', 'expected', 'variance'],
+      dicos: ['byMethod'] },
+    { liste: S.boutiqueOrders, champs: ['total', 'deliveryFee', 'discount'], lignes: [{ cle: 'items', champs: ['price'] }] },
+    { liste: S.purchaseOrders, champs: ['total', 'unitCost', 'price'], lignes: [{ cle: 'items', champs: ['price', 'unitCost', 'total'] }] },
     { liste: S.packs,          champs: ['price'] },
-    { liste: S.devis,          champs: ['total', 'amount'] },
-    { liste: [bc],             champs: ['deliveryFees', 'freeDeliveryFrom', 'freeDeliveryThreshold'] },
+    { liste: S.devis,          champs: ['total', 'amount'], lignes: [{ cle: 'items', champs: ['price'] }] },
+    { liste: [bc],             champs: ['deliveryFees', 'freeDeliveryFrom', 'freeDeliveryThreshold'], dicos: ['zoneFees'] },
   ];
+}
+// Parcourt chaque montant numérique et l'envoie à f(objet, clé).
+function _parcourirMontants(f) {
+  for (const col of _collectionsMonetaires()) {
+    for (const o of (col.liste || [])) {
+      if (!o) continue;
+      for (const ch of col.champs) if (typeof o[ch] === 'number') f(o, ch);
+      for (const lg of (col.lignes || [])) {
+        for (const it of (Array.isArray(o[lg.cle]) ? o[lg.cle] : [])) {
+          if (!it) continue;
+          for (const ch of lg.champs) if (typeof it[ch] === 'number') f(it, ch);
+        }
+      }
+      for (const dc of (col.dicos || [])) {
+        const m = o[dc];
+        if (m && typeof m === 'object') Object.keys(m).forEach(k => { if (typeof m[k] === 'number') f(m, k); });
+      }
+    }
+  }
 }
 
 function _compterMontants() {
   let n = 0;
-  for (const c of _collectionsMonetaires()) {
-    for (const o of (c.liste || [])) {
-      if (!o) continue;
-      for (const ch of c.champs) if (typeof o[ch] === 'number' && o[ch] !== 0) n++;
-    }
-  }
+  _parcourirMontants((o, ch) => { if (o[ch] !== 0) n++; });
   // Les promotions à montant fixe sont aussi de l'argent
   for (const p of (S.promotions || [])) if (p && p.type === 'fixed' && typeof p.value === 'number') n++;
   return n;
+}
+
+function _envoyerDeviseServeur(code) {
+  if (USE_LOCAL || !S.token || !code) return;
+  api('PUT', '/api/auth/profile', { currency: code }).catch(() => {});
 }
 
 function changeCurrency(code) {
@@ -13943,6 +14091,7 @@ function changeCurrency(code) {
     S.session.currency = code;
     S.session.currency_symbol = getCurrencySymbol(code);
     _persistSession();
+    _envoyerDeviseServeur(code);
     showToast(t('infoUpdated'));
     render();
     return;
@@ -13970,7 +14119,7 @@ async function applyCurrencyConversion(convertir) {
   let taux = 1;
   if (convertir) {
     taux = parseFloat(String(c.taux).replace(',', '.'));
-    if (!isFinite(taux) || taux <= 0) { showToast('Entrez un taux valide', 'error'); return; }
+    if (!isFinite(taux) || taux <= 0) { showToast(t('zsy_tauxInvalide'), 'error'); return; }
   }
   if (convertir) {
     try {
@@ -13989,15 +14138,36 @@ async function applyCurrencyConversion(convertir) {
       const f = Math.pow(10, dec);
       return Math.round(r * f) / f;
     };
-    for (const col of _collectionsMonetaires()) {
-      for (const o of (col.liste || [])) {
-        if (!o) continue;
-        for (const ch of col.champs) if (typeof o[ch] === 'number') o[ch] = arrondi(o[ch]);
-      }
-    }
+    _parcourirMontants((o, ch) => { o[ch] = arrondi(o[ch]); });
     for (const p of (S.promotions || [])) {
       if (p && p.type === 'fixed' && typeof p.value === 'number') p.value = arrondi(p.value);
     }
+    // Les seuils « montant » des règles d'automatisation : sans cela, une
+    // règle « commande ≥ 50 000 » devenait « ≥ 50 000 $ » et ne partait plus.
+    try {
+      _reglesCharge().forEach(r => {
+        if (r && (r.cond === 'montant_min' || r.cond === 'montant_max') && isFinite(Number(r.val)) && r.val !== '') {
+          r.val = String(arrondi(Number(r.val)));
+        }
+      });
+      _reglesSauve();
+    } catch (_) {}
+    // Fidélité : les points par unité suivent la devise (un achat équivalent
+    // rapporte autant de points), et les paliers « montant dépensé » aussi.
+    try {
+      const lc = S.loyaltyConfig;
+      if (lc && typeof lc === 'object') {
+        if (typeof lc.pointsPerFcfa === 'number') lc.pointsPerFcfa = lc.pointsPerFcfa * taux;
+        if (lc.tierMode === 'spent' && Array.isArray(lc.tiers)) lc.tiers.forEach(tr => { if (tr && typeof tr.min === 'number') tr.min = arrondi(tr.min); });
+        localStorage.setItem('baro_loyalty', JSON.stringify(lc));
+      }
+    } catch (_) {}
+    // L'objectif du jour, quand il est un montant.
+    try {
+      const typeObj = localStorage.getItem('stockr_goal_type') || 'revenue';
+      const obj = Number(localStorage.getItem('stockr_daily_goal')) || 0;
+      if (obj > 0 && (typeObj === 'revenue' || typeObj === 'profit')) localStorage.setItem('stockr_daily_goal', String(arrondi(obj)));
+    } catch (_) {}
     try { _saveArticles(); } catch (_) {}
     try { _saveProducts(); } catch (_) {}
     try { _saveSales(); } catch (_) {}
@@ -14007,15 +14177,36 @@ async function applyCurrencyConversion(convertir) {
     try { localStorage.setItem('baro_boutique_orders', JSON.stringify(S.boutiqueOrders || [])); } catch (_) {}
     try { localStorage.setItem('baro_boutique', JSON.stringify(S.boutiqueConfig || {})); } catch (_) {}
     try { localStorage.setItem('baro_promotions', JSON.stringify(S.promotions || [])); } catch (_) {}
+    try { localStorage.setItem('baro_orders', JSON.stringify(S.purchaseOrders || [])); } catch (_) {}
+    try { if (typeof persistPacks === 'function') persistPacks(); } catch (_) {}
+    try { localStorage.setItem('baro_devis', JSON.stringify(S.devis || [])); } catch (_) {}
+    // Le registre : ce que le serveur renverra d'avant cette date sera relu
+    // à ce taux (dépenses, commandes de la vitrine).
+    const reg = _conversions();
+    reg.push({ date: new Date().toISOString(), de: c.de, vers: c.vers, taux });
+    _ecrireJSON('baro_conversions', reg);
+    // Les prix des articles et des produits sont notés et envoyés au serveur :
+    // sans cela, la synchro suivante remettait les anciens chiffres.
+    (S.articles || []).forEach(a => {
+      _surchargeNote('a', a.id, { price: a.price || 0, purchasePrice: a.purchasePrice || 0, sellPrice: a.sellPrice || 0 });
+      try { _pushArticleMeta(a); } catch (_) {}
+    });
+    (S.products || []).forEach(pr => {
+      _surchargeNote('p', pr.id, { price: pr.price || 0, purchasePrice: pr.purchasePrice || 0 });
+      if (!USE_LOCAL && S.token && pr.id != null && Number(pr.id) <= 1e10) {
+        api('PUT', `/api/products/${pr.id}`, { price: pr.price || 0, purchase_price: pr.purchasePrice || 0 }).catch(() => {});
+      }
+    });
   }
 
   S.session.currency = c.vers;
   S.session.currency_symbol = getCurrencySymbol(c.vers);
   _persistSession();
+  _envoyerDeviseServeur(c.vers);
   S.currencyChange = null;
   showToast(convertir
-    ? `${c.nbMontants} montants convertis en ${getCurrencySymbol(c.vers)}`
-    : `Devise changée — montants inchangés`);
+    ? t('zsy_convertis').replace('{0}', c.nbMontants).replace('{1}', getCurrencySymbol(c.vers))
+    : t('zsy_deviseSeule'));
   nav('settings');
 }
 
@@ -18078,11 +18269,18 @@ function vDetail() {
   </div>`;
 }
 
+// Les champs que le serveur connaît : modifiés ici, ils lui sont envoyés, et
+// notés pour qu'une synchro ne les défasse pas avant qu'il les ait reçus.
+const _CHAMPS_ARTICLE_SERVEUR = ['price', 'purchasePrice', 'sellPrice', 'category', 'ean', 'description'];
 function updateArticleField(id, field, value) {
   const art = S.articles.find(a => a.id === id);
   if (!art) return;
   art[field] = value;
   _saveArticles();
+  if (_CHAMPS_ARTICLE_SERVEUR.includes(field)) {
+    _surchargeNote('a', id, { [field]: value });
+    try { _pushArticleMeta(art); } catch (_) {}
+  }
   showToast(t('infoUpdated'));
 }
 
@@ -28002,7 +28200,7 @@ function generateDevisPDF(devis) {
   doc.setFontSize(9); doc.setTextColor(100,100,100);
   doc.text('Sous-total', 155, y, {align:'right'}); doc.text(fmtPDF(total)+ ' ' + _pdfTexte(sym), 192, y, {align:'right'}); y += 7;
   let grand = total;
-  if (taxRate>0) { const tva=Math.round(total*taxRate/100); doc.text(`TVA (${taxRate}%)`,155,y,{align:'right'}); doc.text(fmtPDF(tva)+ ' ' + _pdfTexte(sym),192,y,{align:'right'}); y+=7; grand+=tva; }
+  if (taxRate>0) { const tva=_arrondiDevise(total*taxRate/100); doc.text(`TVA (${taxRate}%)`,155,y,{align:'right'}); doc.text(fmtPDF(tva)+ ' ' + _pdfTexte(sym),192,y,{align:'right'}); y+=7; grand+=tva; }
   y += 2;
   doc.setFillColor(124,58,237); doc.roundedRect(108,y-2,86,16,2,2,'F');
   doc.setTextColor(255,255,255); doc.setFontSize(8); doc.text('TOTAL ESTIME', 113, y+4);
@@ -32185,7 +32383,7 @@ var baroMode=BARO_DELOFF?'pickup':'delivery';
   var prevCount=0;
   var toastT=null;
   window.baroToast=function(msg){var t=document.getElementById('baro-toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('show');},1800);};
-  function fmtn(n){return Math.round(n).toLocaleString(${_locSite});}
+  function fmtn(n){var d=${_decimalesDe((S.session&&S.session.currency)||'XOF')};var p=Math.pow(10,d);return (Math.round(n*p)/p).toLocaleString(${_locSite},{minimumFractionDigits:d,maximumFractionDigits:d});}
   function item(id){for(var i=0;i<BARO_ITEMS.length;i++)if(BARO_ITEMS[i].id===id)return BARO_ITEMS[i];return null;}
   function baseFee(){var z=(document.getElementById('ck-zone')||{}).value;return (BARO_ZONEFEES&&BARO_ZONEFEES[z]!=null)?BARO_ZONEFEES[z]:BARO_FEES;}
   function curFee(){if(BARO_DELOFF||baroMode==='pickup')return 0;if(BARO_FREESHIP>0&&total()>=BARO_FREESHIP)return 0;return baseFee();}
@@ -32199,7 +32397,7 @@ var baroMode=BARO_DELOFF?'pickup':'delivery';
       :'<div class="ck-pickup-card"><div class="ck-pickup-addr">🏬 Retrait sur place — l\\'adresse vous sera confirmée sur WhatsApp</div></div>';}else{pi.style.display='none';}}
     var fr=document.getElementById('ck-feerow');if(fr)fr.style.display=(m==='pickup')?'none':'';
     if(navigator.vibrate)navigator.vibrate(8);renderCk();};
-  function discount(){if(!appliedPromo)return 0;var sub=total();var d=appliedPromo.type==='fixed'?appliedPromo.value:sub*appliedPromo.value/100;return Math.min(Math.round(d),sub);}
+  function discount(){if(!appliedPromo)return 0;var sub=total();var d=appliedPromo.type==='fixed'?appliedPromo.value:sub*appliedPromo.value/100;var pr=Math.pow(10,${_decimalesDe((S.session&&S.session.currency)||'XOF')});return Math.min(Math.round(d*pr)/pr,sub);}
   window.baroPromo=function(){
     var inp=document.getElementById('ck-promo-inp');var code=(inp?inp.value:'').trim().toUpperCase();
     if(!code){return;}
@@ -32573,7 +32771,7 @@ window.BARO_VARSEL=window.BARO_VARSEL||{};
   var IT=${itemsJSON};var cur=null;var sel={};var qvQty=1;
   function find(id){for(var i=0;i<IT.length;i++)if(IT[i].id===id)return IT[i];return null;}
   window.baroQVQty=function(d){qvQty=Math.max(1,Math.min(99,qvQty+d));var q=document.getElementById('qv-qty');if(q)q.textContent=qvQty;qvUpdTotal();};
-  function fmtn(n){return Math.round(n).toLocaleString(${_locSite});}
+  function fmtn(n){var d=${_decimalesDe((S.session&&S.session.currency)||'XOF')};var p=Math.pow(10,d);return (Math.round(n*p)/p).toLocaleString(${_locSite},{minimumFractionDigits:d,maximumFractionDigits:d});}
   function qvUpdTotal(){var b=document.getElementById('qv-bar-tot');if(b&&cur)b.textContent=fmtn((cur.price||0)*qvQty)+' ${sym()}';}
   function setMain(src,name){var iw=document.getElementById('qv-img');iw.innerHTML=src?'<img src="'+src+'" alt="">':'<div class="qv-ph">'+((name||'?').charAt(0).toUpperCase())+'</div>';var im=iw.querySelector('img');if(im){im.style.opacity='0';requestAnimationFrame(function(){im.style.transition='opacity .25s ease';im.style.opacity='1';});}}
   window.baroQVThumb=function(i){var it=cur;if(!it)return;var imgs=(it.imgs&&it.imgs.length)?it.imgs:[it.img];setMain(imgs[i],it.name);document.querySelectorAll('#qv-thumbs .qv-thumb').forEach(function(t,k){t.classList.toggle('on',k===i);});};
@@ -36147,7 +36345,7 @@ function _applyPromoValue(price, promo) {
   if (!promo) return price;
   if (promo.type === 'fixed') return Math.max(0, price - promo.value);
   const disc = promo.value || promo.discount || 0;
-  return Math.round(price * (1 - disc/100));
+  return _arrondiDevise(price * (1 - disc/100));
 }
 
 // Valide un code promo pour un client/produit et renvoie la promo applicable

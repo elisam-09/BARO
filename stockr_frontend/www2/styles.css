@@ -6725,3 +6725,98 @@ body.dark .sub-hero.sh-teinte {
 .bo-total{font-size:14px;font-weight:800;color:var(--text-1);padding:8px 0 2px;font-variant-numeric:tabular-nums}
 .bo-err{font-size:12.5px;font-weight:700;color:var(--danger);min-height:2px}
 @media (max-width:360px){.bo-ligne{flex-direction:column;gap:0}}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Lot 314 — l'app sur un vrai téléphone
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* Boutons écrasés. .btn-primary et .btn-ghost ont width:100 %. Dans une
+   rangée où un voisin a flex:1, le bouton sans flex prenait 100 % comme
+   base et réduisait l'autre à rien (overflow:hidden met son minimum à 0) :
+   « Confirmer » devenait « firm ». 23 rangées étaient construites ainsi.
+   Le bouton sans flex reprend sa largeur naturelle, le flex:1 prend le
+   reste — et aucun bouton ne descend plus sous la largeur de son mot le
+   plus long. */
+:is(div, form, footer, section)[style*="display:flex"]:has(> .btn[style*="flex:1"], > .btn[style*="flex: 1"]) > .btn:not([style*="flex"]) {
+  width: auto;
+  flex: 0 0 auto;
+}
+.btn-primary, .btn-ghost { min-width: min-content; }
+
+/* Actions d'une commande reçue */
+.cmd-actions { display: flex; gap: 8px; margin-top: 12px; }
+.cmd-actions-wrap { flex-wrap: wrap; }
+.cmd-actions .btn { font-size: 13px; padding: 10px 14px; min-height: 42px; }
+.cmd-actions .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* Intégrations : une description sur une ligne empêchait la carte de
+   rétrécir (+18 px à 360 px de large). */
+.integration-card > div { min-width: 0; }
+
+/* Générateur de vitrine : « Generate the HTML » ne tenait pas sur une ligne. */
+.bgen-btn-primary, .bgen-btn-ghost { white-space: normal; line-height: 1.2; text-align: center; }
+
+/* ── Plein écran sur tout appareil tactile ──────────────────────────────
+   Au-delà de 520 px (téléphone en paysage, pliable, tablette), l'app
+   s'affichait dans un cadre de téléphone noir, coins arrondis, plafonnée
+   à 932 px de haut. Sur un appareil tactile, elle occupe l'écran : une
+   colonne centrée sur le fond de l'app, sans cadre. */
+@media (pointer: coarse) {
+  body { background: var(--bg); align-items: flex-start; }
+  #app { border-radius: 0; box-shadow: none; max-width: 640px; height: 100svh; max-height: none; }
+}
+@media (max-width: 520px) {
+  #app { max-height: none; }
+}
+@supports (height: 100dvh) {
+  @media (max-width: 520px), (pointer: coarse) { #app { height: 100dvh; } }
+}
+
+/* Barre du bas : au-dessus de la barre d'accueil de l'iPhone (app installée) */
+#nav {
+  height: calc(68px + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+}
+#view { padding-bottom: calc(68px + env(safe-area-inset-bottom)); }
+.nav-label { font-size: 10px; letter-spacing: 0; }
+
+/* Cibles tactiles : beaucoup de boutons et de puces mesuraient 21 à 29 px
+   de haut, sous la taille d'un doigt. */
+@media (pointer: coarse) {
+  .btn { min-height: 38px; }
+  .filter-chip, .chip, .bq-pick-chip { min-height: 34px; }
+  .int-btn { min-height: 36px; }
+}
+
+/* ── Couleurs : un fond qui a de la matière ─────────────────────────────
+   Le thème clair était en gris neutre pur (#F2F2F2, blanc, #E0E0E0) :
+   c'est ce qui donnait l'impression d'une app terne. Le fond devient un
+   ivoire chaud (mêlé à la couleur de marque, il virait au gris rosé :
+   essayé et écarté), les cartes un blanc cassé, les traits et le texte se réchauffent. Contraste
+   du texte tertiaire : 5,6 sur carte, 5,0 sur fond (AA). */
+html:not([data-theme="dark"]) {
+  --bg:      #F4F1EA;
+  --surface: #FFFEFB;
+  --card-bg: #FFFEFB;
+  --gray-1:  #EFEBE3;
+  --gray-2:  #E6E0D5;
+  --border:  #E3DCCF;
+  --text:    #16130F;
+  --text-1:  #16130F;
+  --text-2:  #47413A;
+  --text-3:  #6E675C;
+}
+/* En sombre, les en-têtes ne gardaient que 20 à 40 % de la couleur de la
+   marque : un bleu nuit uniforme. Ils en gardent davantage. */
+[data-theme="dark"] .sub-hero:not(.sh-teinte),
+body.dark .sub-hero:not(.sh-teinte) {
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--accent-hero, var(--accent)) 30%, #0f1115) 0%,
+    color-mix(in srgb, var(--accent-hero, var(--accent)) 55%, #181B23) 100%) !important;
+}
+
+/* Choix de police : un nom long (« IBM Plex Mono ») élargissait sa
+   colonne et poussait la grille hors de l'écran (+18 px à 412 px). */
+.pol { min-width: 0; }
+.pol-n { font-size: 10px; }

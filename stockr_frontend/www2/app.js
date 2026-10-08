@@ -15475,6 +15475,7 @@ function _doRender() {
   const prevScroll = viewEl.scrollTop;
   try {
     viewEl.innerHTML = (map[S.view] || vHome)();
+    setTimeout(_majCouleurBarre, 0);
   } catch(e) {
     console.error('[BARO] Crash dans la vue "' + S.view + '":', e);
     const __viewErr = String(e && e.message || e);
@@ -27690,6 +27691,62 @@ function resetAppearance() {
   render();
 }
 
+// Sur Android, la barre d'état et la barre d'adresse prennent la couleur
+// de <meta name="theme-color">. Elle était fixée à un indigo foncé : une
+// bande d'une autre couleur au-dessus de chaque en-tête, et une barre
+// violette au-dessus du thème sombre. Elle suit maintenant le haut de
+// l'écran affiché.
+function _couleurDe(cs) {
+  const lire = txt => {
+    const m = /rgba?\(([^)]+)\)/.exec(txt || '');
+    if (m) { const p = m[1].split(',').map(x => parseFloat(x)); return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 }; }
+    const c = /color\(srgb ([\d.]+) ([\d.]+) ([\d.]+)(?: \/ ([\d.]+))?\)/.exec(txt || '');
+    if (c) return { r: c[1] * 255, g: c[2] * 255, b: c[3] * 255, a: c[4] != null ? parseFloat(c[4]) : 1 };
+    return null;
+  };
+  return lire(cs.backgroundImage) || lire(cs.backgroundColor);
+}
+function _majCouleurBarre() {
+  try {
+    const meta = document.querySelector('meta[name="theme-color"]');
+    const app = document.getElementById('app');
+    if (!meta || !app) return;
+    // Le fond se lit sur la variable : juste après un changement de thème,
+    // la couleur calculée de #app peut être celle de l'ancien thème.
+    const hexFond = /^#([0-9a-f]{6})$/i.exec(getComputedStyle(app).getPropertyValue('--bg').trim());
+    const fond = hexFond
+      ? { r: parseInt(hexFond[1].slice(0, 2), 16), g: parseInt(hexFond[1].slice(2, 4), 16), b: parseInt(hexFond[1].slice(4, 6), 16), a: 1 }
+      : (_couleurDe(getComputedStyle(app)) || { r: 242, g: 242, b: 242, a: 1 });
+    // Ce qui est affiché tout en haut de l'écran, quel que soit l'écran :
+    // on descend dans la vue vers l'élément le plus profond qui couvre le
+    // haut, et on garde le dernier fond opaque rencontré. (Pas de
+    // elementFromPoint : pendant une transition, la vue ignore le pointeur
+    // et la recherche retombait sur le fond de l'app.)
+    const view = document.getElementById('view');
+    let c = null;
+    if (view) {
+      const vr = view.getBoundingClientRect();
+      // 20 px sous le bord : l'animation d'entrée décale l'écran de 8 px.
+      const y = vr.top + 20, x = vr.left + vr.width / 2;
+      let el = view;
+      for (let n = 0; n < 6 && el; n++) {
+        const k = _couleurDe(getComputedStyle(el));
+        if (k && k.a >= 0.5) c = k;
+        el = [...el.children].find(ch => { const q = ch.getBoundingClientRect(); return q.height > 0 && q.top <= y && q.bottom > y && q.left <= x && q.right > x; });
+      }
+    }
+    if (!c) c = fond;
+    const hex = '#' + [c.r, c.g, c.b].map(v => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+    if (meta.getAttribute('content') !== hex) meta.setAttribute('content', hex);
+  } catch (_) {}
+}
+
+let _barreMinuteur = null;
+document.addEventListener('scroll', ev => {
+  if (!ev.target || ev.target.id !== 'view' || _barreMinuteur) return;
+  _barreMinuteur = setTimeout(() => { _barreMinuteur = null; _majCouleurBarre(); }, 120);
+}, { capture: true, passive: true });
+
 function applyAppearance() {
   const a = S.appearance || {};
   const root = document.documentElement;
@@ -27752,6 +27809,7 @@ function applyAppearance() {
   if (navEl) {
     navEl.style.setProperty('background', (resolved === 'dark' ? 'rgba(18,21,29,' : 'rgba(255,255,255,') + gAlpha + ')', 'important');
   }
+  setTimeout(_majCouleurBarre, 0);
   // Rayon des coins : Doux / Standard / Net
   const rScale = a.radius === 'soft' ? 1.35 : a.radius === 'sharp' ? 0.6 : 1;
   root.style.setProperty('--r-scale', String(rScale));
@@ -29806,14 +29864,14 @@ function vBoutique() {
         </div>
       </div>
       ${st.cle === 'pending' ? `
-      <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'confirmed')">${t('confirm')}</button>
-        <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'cancelled')">${t('cancel')}</button>
+      <div class="cmd-actions">
+        <button class="btn btn-primary" style="flex:1 1 auto" onclick="updateOrderStatus(${id},'confirmed')">${IC.check} ${t('confirm')}</button>
+        <button class="btn btn-ghost" style="flex:0 0 auto;width:auto" onclick="updateOrderStatus(${id},'cancelled')">${t('cancel')}</button>
       </div>` : (st.cle === 'confirmed' || st.cle === 'preparing' || st.cle === 'shipped') ? `
-      <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
-        ${st.cle !== 'shipped' ? `<button class="btn btn-ghost" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'shipped')">🚚 ${t('zcm_marquerRoute')}</button>` : ''}
-        <button class="btn btn-primary" style="flex:1;font-size:12px;padding:8px" onclick="updateOrderStatus(${id},'delivered')">${t('zcm_marquerLivree')}</button>
-        <button class="btn btn-ghost" style="font-size:12px;padding:8px" onclick="contactOrderClient(${id})">${t('zcm_contacter')}</button>
+      <div class="cmd-actions cmd-actions-wrap">
+        ${st.cle !== 'shipped' ? `<button class="btn btn-ghost" style="flex:1 1 130px" onclick="updateOrderStatus(${id},'shipped')">🚚 ${t('zcm_marquerRoute')}</button>` : ''}
+        <button class="btn btn-primary" style="flex:1 1 130px" onclick="updateOrderStatus(${id},'delivered')">${t('zcm_marquerLivree')}</button>
+        <button class="btn btn-ghost" style="flex:1 1 100%" onclick="contactOrderClient(${id})">${IC.whatsapp || ''} ${t('zcm_contacter')}</button>
       </div>
       ${st.cle !== 'shipped' ? `
       <div style="display:flex;gap:6px;margin-top:6px">
@@ -37430,9 +37488,9 @@ function vBannerForm() {
           </label>
         </div>
       </div>
-      <div style="display:flex;gap:8px">
-        <div class="form-group" style="flex:1"><label class="form-label">${t('w9_debut')}</label><input class="input" type="date" id="bn-start" value="${draft.startDate||today}"></div>
-        <div class="form-group" style="flex:1"><label class="form-label">${t('zza_fin')}</label><input class="input" type="date" id="bn-end" value="${draft.endDate||plus30}"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="form-group" style="flex:1 1 140px;min-width:0"><label class="form-label">${t('w9_debut')}</label><input class="input" type="date" id="bn-start" value="${draft.startDate||today}"></div>
+        <div class="form-group" style="flex:1 1 140px;min-width:0"><label class="form-label">${t('zza_fin')}</label><input class="input" type="date" id="bn-end" value="${draft.endDate||plus30}"></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
         <div><div style="font-weight:700;font-size:13px">Bouton fermer</div><div style="font-size:11px;color:var(--text-3)">${t('w9_visiteurMasquer')}</div></div>
@@ -37610,9 +37668,9 @@ function vPopupForm() {
     </div>
 
     <div class="card" style="margin-bottom:10px">
-      <div style="display:flex;gap:8px">
-        <div class="form-group" style="flex:1"><label class="form-label">${t('w9_debut')}</label><input class="input" type="date" id="pp-start" value="${draft.startDate||today}"></div>
-        <div class="form-group" style="flex:1"><label class="form-label">${t('zza_fin')}</label><input class="input" type="date" id="pp-end" value="${draft.endDate||plus30}"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <div class="form-group" style="flex:1 1 140px;min-width:0"><label class="form-label">${t('w9_debut')}</label><input class="input" type="date" id="pp-start" value="${draft.startDate||today}"></div>
+        <div class="form-group" style="flex:1 1 140px;min-width:0"><label class="form-label">${t('zza_fin')}</label><input class="input" type="date" id="pp-end" value="${draft.endDate||plus30}"></div>
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
         <div><div style="font-weight:700;font-size:13px">${t('w9_afficherUneFois')}</div><div style="font-size:11px;color:var(--text-3)">${t('w9_parVisiteur')}</div></div>

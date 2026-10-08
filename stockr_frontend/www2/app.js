@@ -270,6 +270,70 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zsv_unite: "{0} unité",
+    zsv_excellent: "Excellent",
+    zsv_attention: "Attention",
+    zsv_critique: "Critique",
+    zsv_ruptures: "{0} rupture(s) imminente(s)",
+    zsv_aSurveiller: "{0} article(s) à surveiller",
+    zsv_observe: "Sova observe",
+    zsv_couverture: "Couverture de stock · jours restants",
+    zsv_j: "{0} j",
+    zsv_jPlus: "30 j +",
+    zsv_projection: "Projection sur 14 jours",
+    zsv_iStarsT: "Misez dessus : vos meilleures ventes",
+    zsv_iStarsD: "Mettez-les en avant et ne les laissez jamais manquer",
+    zsv_iStarsTag: "{0} · {1} % du CA",
+    zsv_iRiseT: "En pleine croissance",
+    zsv_iRiseD: "La demande grimpe : commandez plus et profitez-en maintenant",
+    zsv_iRiseTag: "+{0} % cette semaine",
+    zsv_iMargeT: "Grosses marges à pousser",
+    zsv_iMargeD: "Vous gagnez beaucoup dessus : vendez-en davantage",
+    zsv_iMargeTag: "{0} % de marge",
+    zsv_iFaibleT: "Marges faibles : renégociez",
+    zsv_iFaibleD: "Beaucoup de volume, peu de profit : négociez le prix d'achat ou montez le prix",
+    zsv_iFaibleTag: "seulement {0} % de marge",
+    zsv_iBaisseT: "En déclin : surveillez",
+    zsv_iBaisseD: "Les ventes baissent : promotion, mise en avant, ou moins de stock",
+    zsv_iBaisseTag: "{0} % cette semaine",
+    zsv_iDortT: "Ça dort : pensez à déstocker",
+    zsv_iDortD: "Pas de vente depuis longtemps : bradez, rendez au fournisseur ou arrêtez",
+    zsv_jamaisVendu: "jamais vendu · {0} immobilisés",
+    zsv_joursSansVente: "{0} j sans vente",
+    zsv_besoinVentes: "Sova a besoin de quelques ventes pour vous dire quoi pousser, garder ou laisser.",
+    zsv_pasAlerte: "Pas d'alerte",
+    zsv_actionAvant: "{0} : {1} {2} avant le {3}",
+    zsv_joursRestants: "Jours restants",
+    zsv_commanderVite: "Commander vite",
+    zsv_reappro: "Réapprovisionner",
+    zsv_unites: "{0} unités",
+    zsv_dispo: "{0} dispo",
+    zsv_enStock: "En stock",
+    zsv_demandeJ: "Demande / jour",
+    zsv_tendance: "Tendance",
+    zsv_avantLe: "{0} {1} · avant le {2}",
+    zsv_risqueRupture: "Risque de rupture",
+    zsv_in_excellent_1: "Tout roule, {0} : votre stock tient la route.",
+    zsv_in_excellent_2: "{0}, vos rayons sont bien garnis.",
+    zsv_in_excellent_3: "Rien à signaler, {0}. Sova veille.",
+    zsv_in_good_1: "{0}, ça tient bien. Quelques détails à surveiller.",
+    zsv_in_good_2: "Bonne santé globale, {0}.",
+    zsv_in_good_3: "{0}, votre stock est stable.",
+    zsv_in_warning_one_1: "{0}, un article mérite votre attention.",
+    zsv_in_warning_one_2: "Attention, {0} : Sova a repéré quelque chose.",
+    zsv_in_warning_one_3: "{0}, un signal faible à ne pas ignorer.",
+    zsv_in_warning_multi_1: "{0}, quelques articles réclament votre vigilance.",
+    zsv_in_warning_multi_2: "Sova a plusieurs choses à vous dire, {0}.",
+    zsv_in_warning_multi_3: "{0}, le tableau est bon, mais pas tout à fait.",
+    zsv_in_critical_one_1: "{0}, agissez vite : une rupture approche.",
+    zsv_in_critical_one_2: "Sova sonne l'alarme, {0}.",
+    zsv_in_critical_one_3: "{0}, un article va manquer : il faut commander.",
+    zsv_in_critical_multi_1: "{0}, plusieurs ruptures sont imminentes.",
+    zsv_in_critical_multi_2: "Alerte, {0} : plusieurs articles vont manquer.",
+    zsv_in_critical_multi_3: "{0}, le stock souffre : Sova vous dit quoi commander.",
+    zsv_in_neutral_1: "{0}, Sova analyse vos données.",
+    zsv_in_neutral_2: "{0}, Sova apprend vos habitudes.",
+    zsv_in_neutral_3: "{0}, enregistrez des ventes pour que Sova s'affûte.",
     zia_quotaVision: "Analyses IA du jour épuisées ({0} par jour avec votre forfait). Spectra continue avec sa reconnaissance locale.",
     zia_quotaChat: "Questions IA du jour épuisées ({0} par jour avec votre forfait). Voici ce que disent vos chiffres en attendant :",
     zia_rienVu: "L'IA n'a reconnu aucun produit. Reprenez la photo plus près, bien éclairée.",
@@ -279,7 +343,7 @@ const LANGS = {
     zia_cleInvalide: "Clé {0} refusée : vérifiez-la dans Spectra AI.",
     zia_plusDeModele: "{0} ne propose plus de modèle capable de lire une photo. Utilisez une clé Google Gemini.",
     zia_integreeActive: "IA vision intégrée",
-    zia_analysesRestantes: "{0}/{1} analyses IA aujourd'hui · rien à configurer",
+    zia_analysesRestantes: "{0}/{1} analyses IA restantes aujourd'hui · rien à configurer",
     zia_integreeTitre: "IA intégrée active",
     zia_integreeTexte: "Spectra et l'assistant utilisent l'IA de BARO : rien à configurer. Votre forfait {0} inclut {1} analyses de photo et {2} questions par jour.",
     zia_clesFacultatives: "Les clés ci-dessous sont facultatives : elles prennent le relais quand le quota du jour est atteint.",
@@ -350,7 +414,7 @@ const LANGS = {
     zia_gQuota: "Trop de demandes : attendez une minute puis réessayez.",
     zia_gModele: "Aucun modèle compatible sur cette clé : recréez-la sur Google AI Studio.",
     zia_gApi: "Activez l'API « Generative Language » sur votre clé Google (ou créez-la sur aistudio.google.com).",
-    zsg_sova: "Sova te prévient",
+    zsg_sova: "Sova vous prévient",
     zsg_revoir: "Revoir",
     zsg_continuer: "Continuer",
     zsg_perteT: "Cette vente vous fait perdre {0}",
@@ -2754,7 +2818,7 @@ const LANGS = {
     y1_prestation: "🧾 Prestation",
     y1_rejoindreEquipe: "👥 Rejoindre l'équipe d'une boutique",
     y1_especes: "Espèces",
-    y1_sovaAnalyse: "SOVA a analysé tes {0}. Voici tes opportunités :",
+    y1_sovaAnalyse: "Sova a analysé vos {0}. Voici vos opportunités :",
     y1_pointezCamera: "Pointez la caméra vers vos produits…",
     y1_metsUriSur: "Dans ton fournisseur, mets l'{0} sur :",
     x5_codesPromo: "Codes promo & réductions",
@@ -3848,6 +3912,70 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zsv_unite: "{0} unit",
+    zsv_excellent: "Excellent",
+    zsv_attention: "Watch",
+    zsv_critique: "Critical",
+    zsv_ruptures: "{0} item(s) about to run out",
+    zsv_aSurveiller: "{0} item(s) to watch",
+    zsv_observe: "Sova is watching",
+    zsv_couverture: "Stock cover · days left",
+    zsv_j: "{0} d",
+    zsv_jPlus: "30 d+",
+    zsv_projection: "14-day projection",
+    zsv_iStarsT: "Back them: your best sellers",
+    zsv_iStarsD: "Feature them and never let them run out",
+    zsv_iStarsTag: "{0} · {1}% of revenue",
+    zsv_iRiseT: "Growing fast",
+    zsv_iRiseD: "Demand is climbing: order more and make the most of it",
+    zsv_iRiseTag: "+{0}% this week",
+    zsv_iMargeT: "High margins to push",
+    zsv_iMargeD: "You earn a lot on these: sell more of them",
+    zsv_iMargeTag: "{0}% margin",
+    zsv_iFaibleT: "Thin margins: renegotiate",
+    zsv_iFaibleD: "High volume, little profit: negotiate the cost or raise the price",
+    zsv_iFaibleTag: "only {0}% margin",
+    zsv_iBaisseT: "Declining: keep an eye on it",
+    zsv_iBaisseD: "Sales are dropping: run a promotion, feature it, or carry less",
+    zsv_iBaisseTag: "{0}% this week",
+    zsv_iDortT: "Not selling: consider clearing it",
+    zsv_iDortD: "No sales for a long time: discount it, return it to the supplier, or stop stocking it",
+    zsv_jamaisVendu: "never sold · {0} tied up",
+    zsv_joursSansVente: "{0} days without a sale",
+    zsv_besoinVentes: "Sova needs a few sales to tell you what to push, keep or drop.",
+    zsv_pasAlerte: "No alerts",
+    zsv_actionAvant: "{0}: {1} {2} by {3}",
+    zsv_joursRestants: "Days left",
+    zsv_commanderVite: "Order now",
+    zsv_reappro: "Restock",
+    zsv_unites: "{0} units",
+    zsv_dispo: "{0} available",
+    zsv_enStock: "In stock",
+    zsv_demandeJ: "Demand / day",
+    zsv_tendance: "Trend",
+    zsv_avantLe: "{0} {1} · by {2}",
+    zsv_risqueRupture: "Stock-out risk",
+    zsv_in_excellent_1: "All good, {0}: your stock is holding up.",
+    zsv_in_excellent_2: "{0}, your shelves are well stocked.",
+    zsv_in_excellent_3: "Nothing to report, {0}. Sova is watching.",
+    zsv_in_good_1: "{0}, things are holding well. A few details to watch.",
+    zsv_in_good_2: "Healthy overall, {0}.",
+    zsv_in_good_3: "{0}, your stock is stable.",
+    zsv_in_warning_one_1: "{0}, one item needs your attention.",
+    zsv_in_warning_one_2: "Heads up, {0}: Sova spotted something.",
+    zsv_in_warning_one_3: "{0}, a weak signal worth noticing.",
+    zsv_in_warning_multi_1: "{0}, a few items need watching.",
+    zsv_in_warning_multi_2: "Sova has a few things to tell you, {0}.",
+    zsv_in_warning_multi_3: "{0}, the picture is good, but not quite.",
+    zsv_in_critical_one_1: "{0}, act fast: an item is about to run out.",
+    zsv_in_critical_one_2: "Sova is sounding the alarm, {0}.",
+    zsv_in_critical_one_3: "{0}, an item is running out: time to order.",
+    zsv_in_critical_multi_1: "{0}, several items are about to run out.",
+    zsv_in_critical_multi_2: "Alert, {0}: several items will run out.",
+    zsv_in_critical_multi_3: "{0}, your stock is hurting: Sova shows what to order.",
+    zsv_in_neutral_1: "{0}, Sova is analysing your data.",
+    zsv_in_neutral_2: "{0}, Sova is learning your habits.",
+    zsv_in_neutral_3: "{0}, record some sales so Sova can sharpen up.",
     zia_quotaVision: "Today's AI analyses are used up ({0} a day on your plan). Spectra carries on with on-device recognition.",
     zia_quotaChat: "Today's AI questions are used up ({0} a day on your plan). Here is what your numbers say meanwhile:",
     zia_rienVu: "The AI did not recognise any product. Retake the photo closer, in good light.",
@@ -6332,7 +6460,7 @@ const LANGS = {
     y1_prestation: "🧾 Service",
     y1_rejoindreEquipe: "👥 Join a shop's team",
     y1_especes: "Cash",
-    y1_sovaAnalyse: "SOVA analysed your {0}. Here are your opportunities:",
+    y1_sovaAnalyse: "Sova analysed your {0}. Here are your opportunities:",
     y1_pointezCamera: "Point the camera at your products…",
     y1_metsUriSur: "In your provider, set the {0} to:",
     x5_codesPromo: "Promo codes & discounts",
@@ -18033,62 +18161,106 @@ let _c_SOVA_INTROS = null, _l_SOVA_INTROS = null;
 function SOVA_INTROS_() {
   if (_c_SOVA_INTROS && _l_SOVA_INTROS === _lang) return _c_SOVA_INTROS;
   _l_SOVA_INTROS = _lang;
-  _c_SOVA_INTROS = {
-  excellent: [n=>`${t('z_toutSePorte')}, ${n} !`, n=>t('zy_sovaRespire').replace('{0}', n), n=>t('zy_sovaBeau').replace('{0}', n), n=>t('zy_sovaRoule'), n=>`${n}, tes étagères sont heureuses.`],
-  good: [n=>`${n}, ça tient bien. Quelques détails à surveiller.`, n=>`Bonne santé globale, ${n}.`, n=>`Presque parfait, ${n} — juste quelques nuages.`, n=>`${n}, tes stocks sont stables.`, n=>`Tout va bien, ${n}. SOVA reste aux aguets.`],
-  warning_one: [n=>`${n}, un article mérite ton attention.`, n=>`Attention, ${n} — SOVA a repéré quelque chose.`, n=>`${n}, un signal faible à ne pas ignorer.`, n=>`Presque tout va bien, ${n}. Mais il y a un "mais".`, n=>`${n}, un article te glisse entre les doigts.`],
-  warning_multi: [n=>`${n}, quelques articles réclament ta vigilance.`, n=>`SOVA a des choses à te dire, ${n}.`, n=>`${n}, le tableau est bon — mais pas tout à fait.`, n=>`Quelques signaux, ${n}.`, n=>`${n}, SOVA a repéré plusieurs points à surveiller.`],
-  critical_one: [n=>`${n}, agis vite — une rupture approche.`, n=>`SOVA sonne l'alarme, ${n}.`, n=>`${n}, il faut commander. Maintenant.`, n=>`Un article risque de te faire faux bond, ${n}.`, n=>`${n}, SOVA a vu ce que tu n'as pas encore vu.`],
-  critical_multi: [n=>`${n}, plusieurs ruptures sont imminentes.`, n=>`Alerte rouge, ${n}. SOVA a besoin que tu agisses.`, n=>`${n}, le stock souffre. SOVA est là.`, n=>`Plusieurs articles critiques, ${n}.`, n=>`${n}, SOVA a les yeux grands ouverts.`],
-  neutral: [n=>`${n}, SOVA analyse tes données.`, n=>`Bonjour ${n} — SOVA apprend tes habitudes.`, n=>`${n}, enregistre des ventes pour que SOVA s'affûte.`, n=>`Pas encore assez de données, ${n}. SOVA observe.`, n=>`${n}, SOVA prend ses marques.`],
-};
+  _c_SOVA_INTROS = {};
+  ['excellent', 'good', 'warning_one', 'warning_multi', 'critical_one', 'critical_multi', 'neutral']
+    .forEach(c => { _c_SOVA_INTROS[c] = [1, 2, 3].map(i => t('zsv_in_' + c + '_' + i)); });
   return _c_SOVA_INTROS;
 }
-function sovaIntro(key, name) { const arr = SOVA_INTROS_()[key]||SOVA_INTROS_().neutral; return arr[new Date().getDate()%arr.length](name||'toi'); }
+function sovaIntro(key, name) {
+  const arr = SOVA_INTROS_()[key] || SOVA_INTROS_().neutral;
+  let txt = arr[new Date().getDate() % arr.length];
+  if (name) return txt.split('{0}').join(name);
+  // Sans prénom : on retire l'apostrophe au lieu d'écrire « toi ».
+  txt = txt.replace(/\{0\},\s*/, '').replace(/,\s*\{0\}/, '').replace(/\s*\{0\}/, '').trim();
+  return txt.charAt(0).toUpperCase() + txt.slice(1);
+}
+function _sovaEsc(v) { return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
 function sovaChartCoverage(preds) {
-  const items = preds.filter(p=>p.daily_demand>0.01&&p.days_remaining!==null).sort((a,b)=>(a.days_remaining||99)-(b.days_remaining||99)).slice(0,12);
+  const items = preds.filter(p => p.daily_demand > 0.01 && p.days_remaining !== null)
+    .sort((a, b) => (a.days_remaining ?? 99) - (b.days_remaining ?? 99)).slice(0, 12);
   if (!items.length) return '';
-  const maxDays=30;
-  return `<div class="sova-chart-card"><div class="sova-chart-title">Couverture de stock · jours restants</div><div class="sova-coverage-list">${items.map((p,i)=>{const days=Math.min(p.days_remaining||0,maxDays);const pct=Math.max(2,(days/maxDays)*100);const fill=days<3?'#fca5a5':days<7?'#fde68a':'#a7f3d0';const bord=days<3?'#ef4444':days<7?'#f59e0b':'#10b981';return `<div class="sova-cov-row" style="animation-delay:${i*0.05}s"><div class="sova-cov-name">${p.article_name}</div><div class="sova-cov-track"><div class="sova-cov-bar" style="width:${pct}%;background:${fill};border-right:2px solid ${bord}"></div></div><div class="sova-cov-days" style="color:${bord}">${days<maxDays?(p.days_remaining||0).toFixed(1)+'j':'30j+'}</div></div>`;}).join('')}</div></div>`;
+  const maxDays = 30;
+  return `<div class="sova-chart-card"><div class="sova-chart-title">${t('zsv_couverture')}</div><div class="sova-coverage-list">${items.map(p => {
+    const jours = p.days_remaining || 0;
+    const days = Math.min(jours, maxDays);
+    const pct = Math.max(3, (days / maxDays) * 100);
+    const fill = days < 3 ? '#fca5a5' : days < 7 ? '#fde68a' : '#a7f3d0';
+    const bord = days < 3 ? '#ef4444' : days < 7 ? '#f59e0b' : '#10b981';
+    return `<div class="sova-cov-row"><div class="sova-cov-name">${_sovaEsc(p.article_name)}</div><div class="sova-cov-track"><div class="sova-cov-bar" style="width:${pct}%;background:${fill};border-right:2px solid ${bord}"></div></div><div class="sova-cov-days" style="color:${bord}">${jours < maxDays ? tpar('zsv_j', jours) : t('zsv_jPlus')}</div></div>`;
+  }).join('')}</div></div>`;
 }
 
 function sovaChartForecast(sel) {
-  if(!sel||sel.daily_demand<=0.01) return '';
-  const W=260,H=90,DAYS=14,maxY=Math.max(sel.current_stock*1.15,sel.reorder_point*1.5,0.1);
-  const pts=[];for(let d=0;d<=DAYS;d++){pts.push(`${(d/DAYS)*W},${H-(Math.max(0,sel.current_stock-sel.daily_demand*d)/maxY)*H}`);}
-  const rpY=H-(sel.reorder_point/maxY)*H,rDay=Math.min(sel.days_remaining||DAYS,DAYS),rX=(rDay/DAYS)*W;
-  return `<div class="sova-forecast-wrap"><div class="sova-forecast-title">Projection 14 jours</div><svg class="sova-forecast-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" width="100%" height="80">${sel.reorder_point>0&&rpY>0&&rpY<H?`<line x1="0" y1="${rpY.toFixed(1)}" x2="${W}" y2="${rpY.toFixed(1)}" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="5,3"/>`:''}${rDay<DAYS?`<line x1="${rX.toFixed(1)}" y1="0" x2="${rX.toFixed(1)}" y2="${H}" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,2"/>`:''}` +
-  `<polygon points="0,${H} ${pts.join(' ')} ${((Math.min(rDay,DAYS)/DAYS)*W).toFixed(1)},${H}" fill="rgba(138,103,41,0.09)"/><polyline points="${pts.join(' ')}" fill="none" stroke="#8A6729" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+  if (!sel || sel.daily_demand <= 0.01) return '';
+  const W = 260, H = 90, DAYS = 14, maxY = Math.max(sel.current_stock * 1.15, sel.reorder_point * 1.5, 0.1);
+  const pts = []; for (let d = 0; d <= DAYS; d++) { pts.push(`${(d / DAYS) * W},${H - (Math.max(0, sel.current_stock - sel.daily_demand * d) / maxY) * H}`); }
+  const rpY = H - (sel.reorder_point / maxY) * H, rDay = Math.min(sel.days_remaining ?? DAYS, DAYS), rX = (rDay / DAYS) * W;
+  return `<div class="sova-forecast-wrap"><div class="sova-forecast-title">${t('zsv_projection')}</div><svg class="sova-forecast-svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" width="100%" height="80">${sel.reorder_point > 0 && rpY > 0 && rpY < H ? `<line x1="0" y1="${rpY.toFixed(1)}" x2="${W}" y2="${rpY.toFixed(1)}" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="5,3"/>` : ''}${rDay < DAYS ? `<line x1="${rX.toFixed(1)}" y1="0" x2="${rX.toFixed(1)}" y2="${H}" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="3,2"/>` : ''}` +
+  `<polygon points="0,${H} ${pts.join(' ')} ${((Math.min(rDay, DAYS) / DAYS) * W).toFixed(1)},${H}" fill="rgba(138,103,41,0.09)"/><polyline points="${pts.join(' ')}" fill="none" stroke="#8A6729" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
 }
 
 // ══════════════════════════════════════════════════════════════
 // SOVA — moteur de prévision CÔTÉ CLIENT (fonctionne hors-ligne)
-// Calcule depuis S.articles + S.sales : demande/j, jours restants,
-// tendance, probabilité de rupture, action, plan de demain, score.
+// Les ventes sont rattachées à l'article par son identifiant, et la
+// consommation d'un ingrédient passe par la composition des produits
+// vendus. Avant, tout passait par le nom : renommer un article ou vendre
+// un plat effaçait sa demande, et Sova le croyait « sans données ».
 // ══════════════════════════════════════════════════════════════
+function _sovaAgregats(now, DAY) {
+  const parArt = {}, parProd = {}, parArtVente = {};
+  const neuf = () => ({ qty30: 0, l7: 0, p7: 0, last: 0, total: 0 });
+  const ajoute = (o, q, ts) => {
+    const age = now - ts;
+    o.total += q;
+    if (age < 30 * DAY) o.qty30 += q;
+    if (age < 7 * DAY) o.l7 += q;
+    else if (age < 14 * DAY) o.p7 += q;
+    o.last = Math.max(o.last, ts);
+  };
+  const prodParId = {}, prodParNom = {}, artParNom = {};
+  (S.products || []).forEach(p => { prodParId[String(p.id)] = p; if (p.name) prodParNom[p.name] = p; });
+  (S.articles || []).forEach(a => { if (a.name) artParNom[a.name] = a; });
+  (S.sales || []).forEach(v => {
+    const ts = new Date(v.date).getTime();
+    if (!ts) return;
+    const q = Number(v.qty) || 0;
+    if (v.articleId != null && v.articleId !== '') {
+      const k = String(v.articleId);
+      ajoute(parArt[k] || (parArt[k] = neuf()), q, ts);
+      ajoute(parArtVente[k] || (parArtVente[k] = neuf()), q, ts);
+      return;
+    }
+    const pr = (v.productId != null && prodParId[String(v.productId)]) || prodParNom[v.productName];
+    if (pr) {
+      ajoute(parProd[pr.name] || (parProd[pr.name] = neuf()), q, ts);
+      (pr.composition || []).forEach(c => {
+        const k = String(c.id);
+        ajoute(parArt[k] || (parArt[k] = neuf()), q * (Number(c.qty) || 1), ts);
+      });
+      return;
+    }
+    const a = artParNom[v.productName];
+    if (a) {
+      const k = String(a.id);
+      ajoute(parArt[k] || (parArt[k] = neuf()), q, ts);
+      ajoute(parArtVente[k] || (parArtVente[k] = neuf()), q, ts);
+    }
+  });
+  return { parArt, parProd, parArtVente };
+}
+
 function _sovaComputeLocal() {
   const now = Date.now(), DAY = 86400000;
   const sales = S.sales || [];
   const articles = S.articles || [];
   const bt = (typeof getBusinessType === 'function') ? getBusinessType() : 'reseller';
-
-  // Agrégat des ventes par nom de produit (fenêtre 30j + 7j/7j précédents)
-  const byName = {};
-  sales.forEach(s => {
-    const k = s.productName || (s.articleId != null ? 'art' + s.articleId : '?');
-    if (!byName[k]) byName[k] = { qty30: 0, l7: 0, p7: 0, last: 0 };
-    const ts = new Date(s.date).getTime(), age = now - ts, o = byName[k];
-    if (age < 30 * DAY) o.qty30 += s.qty || 0;
-    if (age < 7 * DAY) o.l7 += s.qty || 0;
-    else if (age < 14 * DAY) o.p7 += s.qty || 0;
-    o.last = Math.max(o.last, ts);
-  });
+  const { parArt, parProd, parArtVente } = _sovaAgregats(now, DAY);
 
   const predictions = articles.map(a => {
-    const s = byName[a.name] || null;
+    const s = parArt[String(a.id)] || null;
     const dd = s ? s.qty30 / 30 : 0;                       // demande quotidienne moyenne
-    const stock = a.stock || 0;
+    const stock = Number(a.stock) || 0;
     const lead = a.lead || a.leadTime || a.lead_time_days || 5;
     const daysRemaining = dd > 0.01 ? Math.floor(stock / dd) : null;
     const reorderPoint = Math.max(0, Math.ceil(dd * lead));
@@ -18107,7 +18279,7 @@ function _sovaComputeLocal() {
       : '';
     let action = null;
     if ((status === 'critical' || status === 'warning') && orderQty > 0) {
-      action = { verb: status === 'critical' ? 'Commander vite' : 'Réapprovisionner', quantity: orderQty, unit: a.unit || 'pce', before, urgency: status === 'critical' ? 'high' : 'medium' };
+      action = { verb: status === 'critical' ? t('zsv_commanderVite') : t('zsv_reappro'), quantity: orderQty, unit: a.unit || 'pce', before, urgency: status === 'critical' ? 'high' : 'medium' };
     }
     return {
       article_id: a.id, article_name: a.name, unit: a.unit || 'pce',
@@ -18121,46 +18293,49 @@ function _sovaComputeLocal() {
 
   const crit = predictions.filter(p => p.status === 'critical').length;
   const warn = predictions.filter(p => p.status === 'warning').length;
-  // Une rupture imminente doit faire passer le score sous "Excellent" (honnêteté)
+  // Une rupture imminente doit faire passer le score sous « Excellent » (honnêteté)
   let score = Math.max(5, Math.min(100, Math.round(100 - (crit * 22 + warn * 8))));
   if (!sales.length && !articles.length) score = 50;
-  const introKey = crit > 1 ? 'critical_multi' : crit === 1 ? 'critical_one'
+  const introKey = (!sales.length) ? 'neutral'
+    : crit > 1 ? 'critical_multi' : crit === 1 ? 'critical_one'
     : warn > 1 ? 'warning_multi' : warn === 1 ? 'warning_one'
     : score >= 80 ? 'excellent' : 'good';
 
   const revRiskArticles = predictions.filter(p => p.status === 'critical').map(p => {
     const a = articles.find(x => x.id === p.article_id);
-    return { name: p.article_name, amount: Math.round((p.daily_demand || 0) * 7 * ((a && a.price) || 0)) };
+    return { name: p.article_name, amount: _arrondiDevise((p.daily_demand || 0) * 7 * ((a && a.price) || 0)) };
   }).filter(x => x.amount > 0).sort((a, b) => b.amount - a.amount).slice(0, 5);
-  const revRisk = revRiskArticles.reduce((s, x) => s + x.amount, 0);
+  const revRisk = revRiskArticles.reduce((x, r) => x + r.amount, 0);
 
   return {
     score, intro_key: introKey,
     revenue_at_risk: revRisk, revenue_at_risk_articles: revRiskArticles,
     producible: [], blocked: [],
-    tomorrow: _sovaTomorrowPlan(byName, now, DAY, bt),
+    tomorrow: _sovaTomorrowPlan(parArtVente, parProd, now, DAY, bt),
     predictions,
   };
 }
-function _sovaTomorrowPlan(byName, now, DAY, bt) {
+// Demain : ce qui se VEND (un ingrédient consommé par les plats n'y figure pas).
+function _sovaTomorrowPlan(parArtVente, parProd, now, DAY, bt) {
   const tmr = new Date(now + DAY);
   let weekday = tmr.toLocaleDateString(_loc(), { weekday: 'long' });
   weekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
   const plan = [];
-  if (bt === 'reseller') {
+  if (bt !== 'maker') {
     (S.articles || []).forEach(a => {
-      const s = byName[a.name]; if (!s) return;
+      const s = parArtVente[String(a.id)]; if (!s) return;
       const dd = s.qty30 / 30; if (dd < 0.2) return;
       plan.push({ product_name: a.name, expected_qty: Math.max(1, Math.round(dd)), ingredients: [] });
     });
-  } else {
+  }
+  if (bt !== 'reseller') {
     (S.products || []).forEach(p => {
-      const s = byName[p.name]; const dd = s ? s.qty30 / 30 : 0;
+      const s = parProd[p.name]; const dd = s ? s.qty30 / 30 : 0;
       if (dd < 0.2) return;
       const qty = Math.max(1, Math.round(dd));
       const ingredients = (p.composition || []).map(c => {
-        const art = (S.articles || []).find(a => a.id === c.id);
-        const needed = (c.qty || 0) * qty, available = art ? (art.stock || 0) : 0;
+        const art = (S.articles || []).find(a => String(a.id) === String(c.id));
+        const needed = (Number(c.qty) || 0) * qty, available = art ? (Number(art.stock) || 0) : 0;
         return { article_name: art ? art.name : '?', needed, unit: art ? (art.unit || 'pce') : '', available, sufficient: available >= needed };
       });
       plan.push({ product_name: p.name, expected_qty: qty, ingredients });
@@ -18171,23 +18346,25 @@ function _sovaTomorrowPlan(byName, now, DAY, bt) {
 }
 
 function vSova() {
-  let d=S.predictions;
-  // PWA hors-ligne : le backend renvoie [] → on calcule les prévisions localement
-  if (!d || (Array.isArray(d) && d.length === 0)) { try { d = _sovaComputeLocal(); } catch(e){ console.warn('sova local', e); d = S.predictions; } }
-  const isNew=d&&!Array.isArray(d);
-  const score=isNew?(d.score??50):50,introKey=isNew?(d.intro_key||'neutral'):'neutral';
-  const revRisk=isNew?(d.revenue_at_risk||0):0,revRiskList=isNew?(d.revenue_at_risk_articles||[]):[];
-  const producible=isNew?(d.producible||[]):[];const blocked=isNew?(d.blocked||[]):[];const tomorrow=isNew?(d.tomorrow||null):null;
-  const preds=isNew?(d.predictions||[]):(Array.isArray(d)?d:[]);
-  const name=S.session?.name?.split(' ')[0]||'';
-  const introText=sovaIntro(introKey,name);
-  const scoreColor=score>=80?'#22c55e':score>=60?'#f59e0b':'#ef4444';
-  const scoreLabel=score>=80?'Excellent':score>=60?'Attention':'Critique';
-  const alertPreds=preds.filter(p=>p.status==='critical'||p.status==='warning');
-  const criticalPreds=preds.filter(p=>p.status==='critical');
-  const warningPreds=preds.filter(p=>p.status==='warning');
-  const tabs=[{id:'overview',label:t('zz_apercu')},{id:'insights',label:t('z_idees')},{id:'alerts',label:`${t('alerts')}${alertPreds.length>0?' · '+alertPreds.length:''}`},{id:'tomorrow',label:t('zzf_demain')},{id:'articles',label:t('articles')}];
-  const R=40,C=2*Math.PI*R,dash=(score/100)*C;
+  // Toujours calculé ici : à jour avec les dernières ventes, hors ligne, et
+  // dans la langue de l'app (les prévisions du serveur étaient en français
+  // et rattachaient les ventes par le nom).
+  let d;
+  try { d = _sovaComputeLocal(); } catch (e) { console.warn('sova local', e); d = { score: 50, intro_key: 'neutral', predictions: [] }; }
+  const score = d.score ?? 50, introKey = d.intro_key || 'neutral';
+  const tomorrow = d.tomorrow || null;
+  const preds = d.predictions || [];
+  const name = S.session?.name?.split(' ')[0] || '';
+  const introText = sovaIntro(introKey, _sovaEsc(name));
+  const scoreColor = score >= 80 ? '#22c55e' : score >= 60 ? '#f59e0b' : '#ef4444';
+  const scoreLabel = score >= 80 ? t('zsv_excellent') : score >= 60 ? t('zsv_attention') : t('zsv_critique');
+  const alertPreds = preds.filter(p => p.status === 'critical' || p.status === 'warning');
+  const criticalPreds = preds.filter(p => p.status === 'critical');
+  const warningPreds = preds.filter(p => p.status === 'warning');
+  const tabs = [{ id: 'overview', label: t('zz_apercu') }, { id: 'insights', label: t('z_idees') }, { id: 'alerts', label: `${t('alerts')}${alertPreds.length > 0 ? ' · ' + alertPreds.length : ''}` }, { id: 'tomorrow', label: t('zzf_demain') }, { id: 'articles', label: t('articles') }];
+  const R = 40, C = 2 * Math.PI * R, dash = (score / 100) * C;
+  const esc = _sovaEsc;
+  const jours = n => tpar('zsv_j', n);
 
   function tabOverview() {
     return `<div class="sova-score-card">
@@ -18203,98 +18380,115 @@ function vSova() {
       <div class="sova-score-right">
         <div class="sova-score-label" style="color:${scoreColor}">${scoreLabel}</div>
         <div class="sova-intro-text">${introText}</div>
-        ${criticalPreds.length>0?`<div class="sova-score-detail sova-critical-dot">${criticalPreds.length} rupture${criticalPreds.length>1?'s':''} imminente${criticalPreds.length>1?'s':''}</div>`:''}
-        ${warningPreds.length>0?`<div class="sova-score-detail sova-warning-dot">${warningPreds.length} article${warningPreds.length>1?'s':''} à surveiller</div>`:''}
+        ${criticalPreds.length > 0 ? `<div class="sova-score-detail sova-critical-dot">${tpar('zsv_ruptures', criticalPreds.length)}</div>` : ''}
+        ${warningPreds.length > 0 ? `<div class="sova-score-detail sova-warning-dot">${tpar('zsv_aSurveiller', warningPreds.length)}</div>` : ''}
       </div>
     </div>
-    ${preds.length>0?sovaChartCoverage(preds):`<div class="sova-empty"><div class="sova-empty-title">SOVA observe</div><div class="sova-empty-sub">${t('w9_enregistreVentes')}</div></div>`}`;
+    ${preds.some(p => p.daily_demand > 0.01) ? sovaChartCoverage(preds) : `<div class="sova-empty"><div class="sova-empty-title">${t('zsv_observe')}</div><div class="sova-empty-sub">${t('w9_enregistreVentes')}</div></div>`}`;
   }
 
-  // ── Onglet IDÉES : recommandations business calculées sur les vraies ventes ──
+  // ── Onglet IDÉES : recommandations calculées sur les vraies ventes ──
   function tabInsights() {
     const now = Date.now(), DAY = 86400000;
     const sales = S.sales || [];
     if (sales.length < 3) {
-      return `<div class="sova-empty"><div class="sova-empty-title">💡 ${t('zy_pasAssezVentes')}</div><div class="sova-empty-sub">SOVA a besoin de quelques ventes pour te conseiller sur quoi pousser, garder ou laisser.</div></div>`;
+      return `<div class="sova-empty"><div class="sova-empty-title">💡 ${t('zy_pasAssezVentes')}</div><div class="sova-empty-sub">${t('zsv_besoinVentes')}</div></div>`;
     }
-    // Stats par produit (nom)
     const st = {};
-    sales.forEach(s => {
-      const k = s.productName || '?';
-      if (!st[k]) st[k] = { name:k, qty:0, rev:0, profit:0, l7:0, p7:0, last:0 };
-      st[k].qty += s.qty||0; st[k].rev += s.total||0; st[k].profit += s.profit||0;
-      const age = now - new Date(s.date).getTime();
-      if (age < 7*DAY) st[k].l7 += s.qty||0;
-      else if (age < 14*DAY) st[k].p7 += s.qty||0;
-      st[k].last = Math.max(st[k].last, new Date(s.date).getTime());
+    const artId = {}, prodId = {};
+    (S.articles || []).forEach(a => { artId[String(a.id)] = a; });
+    (S.products || []).forEach(p => { prodId[String(p.id)] = p; });
+    sales.forEach(v => {
+      // Par identifiant quand la vente en a un : un article renommé garde son
+      // historique, sous son nom d'aujourd'hui.
+      const art = v.articleId != null && v.articleId !== '' ? artId[String(v.articleId)] : null;
+      const prod = !art && v.productId != null ? prodId[String(v.productId)] : null;
+      const k = art ? 'a' + art.id : prod ? 'p' + prod.id : 'n' + (v.productName || '?');
+      if (!st[k]) st[k] = { name: art ? art.name : prod ? prod.name : (v.productName || '?'), qty: 0, rev: 0, profit: 0, l7: 0, p7: 0, last: 0 };
+      st[k].qty += Number(v.qty) || 0; st[k].rev += Number(v.total) || 0; st[k].profit += Number(v.profit) || 0;
+      const ts = new Date(v.date).getTime(), age = now - ts;
+      if (age < 7 * DAY) st[k].l7 += Number(v.qty) || 0;
+      else if (age < 14 * DAY) st[k].p7 += Number(v.qty) || 0;
+      st[k].last = Math.max(st[k].last, ts);
     });
     const arr = Object.values(st);
-    const totalRev = arr.reduce((s,a)=>s+a.rev,0) || 1;
-    // Croisement avec stock (articles/produits) pour marge & dormants
-    const findItem = name => (S.articles||[]).find(a=>a.name===name) || (S.products||[]).find(p=>p.name===name);
+    const totalRev = arr.reduce((x, a) => x + a.rev, 0) || 1;
     arr.forEach(a => {
-      const it = findItem(a.name);
-      a.stock = it ? (it.stock!=null?it.stock:'—') : '—';
-      a.marginPct = a.rev>0 ? Math.round((a.profit/a.rev)*100) : 0;
-      a.trend = a.p7>0 ? Math.round(((a.l7-a.p7)/a.p7)*100) : (a.l7>0?100:0);
-      a.daysSince = a.last ? Math.floor((now-a.last)/DAY) : 999;
+      a.marginPct = a.rev > 0 ? Math.round((a.profit / a.rev) * 100) : 0;
+      a.trend = a.p7 > 0 ? Math.round(((a.l7 - a.p7) / a.p7) * 100) : (a.l7 > 0 ? 100 : 0);
+      a.daysSince = a.last ? Math.floor((now - a.last) / DAY) : 999;
     });
 
-    // 🚀 Best-sellers à pousser (top CA, vente récente)
-    const stars = [...arr].filter(a=>a.l7>0||a.daysSince<14).sort((x,y)=>y.rev-x.rev).slice(0,3);
-    // 📈 En croissance forte
-    const rising = [...arr].filter(a=>a.trend>=25 && a.l7>=1).sort((x,y)=>y.trend-x.trend).slice(0,3);
-    // 📉 En déclin
-    const falling = [...arr].filter(a=>a.trend<=-30 && a.p7>=2).sort((x,y)=>x.trend-y.trend).slice(0,3);
-    // 💤 Dorment (vendus avant mais plus rien depuis 30j)
-    const sleeping = [...arr].filter(a=>a.daysSince>=30).sort((x,y)=>y.daysSince-x.daysSince).slice(0,4);
-    // 💰 Forte marge + bonnes ventes → pousser ; ⚠ faible marge + gros volume → renégocier
-    const highMargin = [...arr].filter(a=>a.marginPct>=35 && a.qty>=2).sort((x,y)=>y.marginPct-x.marginPct).slice(0,3);
-    const lowMargin = [...arr].filter(a=>a.marginPct>0 && a.marginPct<15 && a.qty>=3).sort((x,y)=>x.marginPct-y.marginPct).slice(0,3);
+    const stars = [...arr].filter(a => a.l7 > 0 || a.daysSince < 14).sort((x, y) => y.rev - x.rev).slice(0, 3);
+    const rising = [...arr].filter(a => a.trend >= 25 && a.l7 >= 1).sort((x, y) => y.trend - x.trend).slice(0, 3);
+    const falling = [...arr].filter(a => a.trend <= -30 && a.p7 >= 2).sort((x, y) => x.trend - y.trend).slice(0, 3);
+    const highMargin = [...arr].filter(a => a.marginPct >= 35 && a.qty >= 2).sort((x, y) => y.marginPct - x.marginPct).slice(0, 3);
+    const lowMargin = [...arr].filter(a => a.marginPct > 0 && a.marginPct < 15 && a.qty >= 3).sort((x, y) => x.marginPct - y.marginPct).slice(0, 3);
+    // 💤 Dorment : vendus avant mais plus rien depuis 30 j, et les articles
+    // JAMAIS vendus (l'ancien calcul ne voyait que ce qui s'était vendu un jour).
+    const sleeping = [...arr].filter(a => a.daysSince >= 30).sort((x, y) => y.daysSince - x.daysSince)
+      .map(a => ({ name: a.name, tag: tpar('zsv_joursSansVente', a.daysSince) }));
+    const plusVieille = sales.reduce((m, v) => { const x = new Date(v.date).getTime(); return x && x < m ? x : m; }, now);
+    if (now - plusVieille >= 30 * DAY) {
+      const { parArt } = _sovaAgregats(now, DAY);
+      (S.articles || []).filter(a => (Number(a.stock) || 0) > 0 && !parArt[String(a.id)]
+          && !(a.createdAt && now - new Date(a.createdAt).getTime() < 30 * DAY))
+        .map(a => ({ a, val: (Number(a.stock) || 0) * (Number(a.purchasePrice) || 0) }))
+        .sort((x, y) => y.val - x.val)
+        .forEach(({ a, val }) => sleeping.push({ name: a.name, tag: tpar('zsv_jamaisVendu', `${fmt(_arrondiDevise(val))} ${sym()}`) }));
+    }
 
     const card = (emoji, color, title, sub, rows) => rows.length ? `
       <div class="sova-insight-card" style="border-left:3px solid ${color}">
         <div class="sova-insight-head"><span class="sova-insight-emoji">${emoji}</span><div><div class="sova-insight-title">${title}</div><div class="sova-insight-sub">${sub}</div></div></div>
-        ${rows.map(r=>`<div class="sova-insight-row"><span class="sova-insight-name">${r.name}</span><span class="sova-insight-tag" style="color:${color}">${r.tag}</span></div>`).join('')}
+        ${rows.map(r => `<div class="sova-insight-row"><span class="sova-insight-name">${esc(r.name)}</span><span class="sova-insight-tag" style="color:${color}">${r.tag}</span></div>`).join('')}
       </div>` : '';
 
     const sections = [
-      card('🚀','#22c55e','Mise dessus — tes best-sellers','Mets-les en avant en boutique, garde-les toujours en stock',
-        stars.map(a=>({name:a.name, tag:`${fmt(a.rev)} ${sym()} · ${Math.round(a.rev/totalRev*100)}% du CA`}))),
-      card('📈','#16a34a','En pleine croissance','La demande grimpe — commande plus, profites-en maintenant',
-        rising.map(a=>({name:a.name, tag:`+${a.trend}% cette semaine`}))),
-      card('💰','#7C3AED','Grosses marges à pousser','Tu gagnes beaucoup dessus — vends-en davantage',
-        highMargin.map(a=>({name:a.name, tag:`${a.marginPct}% de marge`}))),
-      card('⚠️','#f59e0b','Marges faibles — renégocie','Gros volume mais peu de profit : négocie le prix d\'achat ou augmente le prix',
-        lowMargin.map(a=>({name:a.name, tag:`seulement ${a.marginPct}% de marge`}))),
-      card('📉','#ef4444','En déclin — surveille','Les ventes baissent : promo, mise en avant, ou réduis le stock',
-        falling.map(a=>({name:a.name, tag:`${a.trend}% cette semaine`}))),
-      card('💤','#9ca3af','Ça dort — envisage de laisser','Aucune vente depuis longtemps : déstocke, brade, ou arrête',
-        sleeping.map(a=>({name:a.name, tag:`${a.daysSince>900?'jamais vendu':a.daysSince+'j sans vente'}`}))),
+      card('🚀', '#22c55e', t('zsv_iStarsT'), t('zsv_iStarsD'),
+        stars.map(a => ({ name: a.name, tag: tpar('zsv_iStarsTag', `${fmt(_arrondiDevise(a.rev))} ${sym()}`, Math.round(a.rev / totalRev * 100)) }))),
+      card('📈', '#16a34a', t('zsv_iRiseT'), t('zsv_iRiseD'),
+        rising.map(a => ({ name: a.name, tag: tpar('zsv_iRiseTag', a.trend) }))),
+      card('💰', '#7C3AED', t('zsv_iMargeT'), t('zsv_iMargeD'),
+        highMargin.map(a => ({ name: a.name, tag: tpar('zsv_iMargeTag', a.marginPct) }))),
+      card('⚠️', '#f59e0b', t('zsv_iFaibleT'), t('zsv_iFaibleD'),
+        lowMargin.map(a => ({ name: a.name, tag: tpar('zsv_iFaibleTag', a.marginPct) }))),
+      card('📉', '#ef4444', t('zsv_iBaisseT'), t('zsv_iBaisseD'),
+        falling.map(a => ({ name: a.name, tag: tpar('zsv_iBaisseTag', a.trend) }))),
+      card('💤', '#9ca3af', t('zsv_iDortT'), t('zsv_iDortD'), sleeping.slice(0, 5)),
     ].filter(Boolean).join('');
 
-    return `<div class="sova-insights-intro">${t('y1_sovaAnalyse').replace('{0}','<strong>'+sales.length+' '+t('w4_ventesN')+'</strong>')}</div>${sections || `<div class="sova-empty"><div class="sova-empty-title">${t('w9_toutEquilibre')}</div><div class="sova-empty-sub">${t('w9_continueVendre')}</div></div>`}`;
+    return `<div class="sova-insights-intro">${t('y1_sovaAnalyse').replace('{0}', '<strong>' + sales.length + ' ' + t('w4_ventesN') + '</strong>')}</div>${sections || `<div class="sova-empty"><div class="sova-empty-title">${t('w9_toutEquilibre')}</div><div class="sova-empty-sub">${t('w9_continueVendre')}</div></div>`}`;
   }
 
   function tabAlerts() {
-    if(alertPreds.length===0) return `<div class="sova-empty"><div class="sova-empty-title">Pas d'alerte</div><div class="sova-empty-sub">${t('w9_toutApprovisionne')}</div></div>`;
-    return alertPreds.map((p,i)=>{const isCrit=p.status==='critical';const probColor=p.rupture_probability>=70?'#ef4444':p.rupture_probability>=40?'#f59e0b':'#22c55e';return `<div class="sova-alert-card ${isCrit?'sova-alert-critical':'sova-alert-warning'}" style="animation-delay:${i*0.05}s"><div class="sova-alert-top"><div><div class="sova-alert-name">${p.article_name}</div><div class="sova-alert-msg">${p.action?`${p.action.verb} — ${p.action.quantity} ${p.action.unit} avant le ${p.action.before}`:p.message||''}</div></div><div class="sova-alert-risk" style="color:${probColor}">${p.rupture_probability?.toFixed(0)||'—'}%</div></div><div class="sova-alert-stats"><div class="sova-alert-stat"><div class="sova-alert-stat-label">Stock</div><div class="sova-alert-stat-val">${p.current_stock} ${p.unit}</div></div>${p.days_remaining!=null?`<div class="sova-alert-stat"><div class="sova-alert-stat-label">Jours restants</div><div class="sova-alert-stat-val">${p.days_remaining}j</div></div>`:''}<div class="sova-alert-stat"><div class="sova-alert-stat-label">${t('w9_aCommander')}</div><div class="sova-alert-stat-val">${p.order_quantity} ${p.unit}</div></div></div><div class="sova-conf-bar"><div class="sova-conf-fill" style="width:${p.confidence}%"></div></div></div>`;}).join('');
+    if (alertPreds.length === 0) return `<div class="sova-empty"><div class="sova-empty-title">${t('zsv_pasAlerte')}</div><div class="sova-empty-sub">${t('w9_toutApprovisionne')}</div></div>`;
+    return alertPreds.map((p, i) => {
+      const isCrit = p.status === 'critical';
+      const probColor = p.rupture_probability >= 70 ? '#ef4444' : p.rupture_probability >= 40 ? '#f59e0b' : '#22c55e';
+      return `<div class="sova-alert-card ${isCrit ? 'sova-alert-critical' : 'sova-alert-warning'}" style="animation-delay:${i * 0.05}s">
+        <div class="sova-alert-top"><div><div class="sova-alert-name">${esc(p.article_name)}</div><div class="sova-alert-msg">${p.action ? tpar('zsv_actionAvant', p.action.verb, fmtQty(p.action.quantity), p.action.unit, p.action.before) : ''}</div></div><div class="sova-alert-risk" style="color:${probColor}" title="${t('zsv_risqueRupture')}">${p.rupture_probability != null ? p.rupture_probability.toFixed(0) : '—'}%</div></div>
+        <div class="sova-alert-stats"><div class="sova-alert-stat"><div class="sova-alert-stat-label">${t('zsv_enStock')}</div><div class="sova-alert-stat-val">${fmtQty(p.current_stock)} ${p.unit}</div></div>${p.days_remaining != null ? `<div class="sova-alert-stat"><div class="sova-alert-stat-label">${t('zsv_joursRestants')}</div><div class="sova-alert-stat-val">${jours(p.days_remaining)}</div></div>` : ''}<div class="sova-alert-stat"><div class="sova-alert-stat-label">${t('w9_aCommander')}</div><div class="sova-alert-stat-val">${fmtQty(p.order_quantity)} ${p.unit}</div></div></div>
+        <div class="sova-conf-bar"><div class="sova-conf-fill" style="width:${p.confidence}%"></div></div>
+      </div>`;
+    }).join('');
   }
 
   function tabTomorrow() {
-    if(!tomorrow||!tomorrow.plan||tomorrow.plan.length===0) return `<div class="sova-empty"><div class="sova-empty-title">${t('w9_pasAssezDonnees')}</div><div class="sova-empty-sub">${t('w9_sovaQuelquesJours')}</div></div>`;
-    return `<div class="sova-tomorrow-header"><div class="sova-tomorrow-day">${tomorrow.weekday}</div><div class="sova-tomorrow-sub">${t('w9_planProduction')}</div></div>${tomorrow.plan.map((item,i)=>`<div class="sova-plan-card" style="animation-delay:${i*0.06}s"><div class="sova-plan-top"><div class="sova-plan-name">${item.product_name}</div><div class="sova-plan-qty">${item.expected_qty} unités</div></div><div class="sova-plan-ingredients">${(item.ingredients||[]).map(ing=>`<div class="sova-plan-ing ${ing.sufficient?'':'sova-ing-warn'}"><span class="sova-ing-name">${ing.article_name}</span><span class="sova-ing-need">${ing.needed.toFixed(2)} ${ing.unit}</span><span class="sova-ing-avail">${ing.sufficient?'✓':'!'} ${ing.available.toFixed(2)} dispo</span></div>`).join('')}</div></div>`).join('')}`;
+    if (!tomorrow || !tomorrow.plan || tomorrow.plan.length === 0) return `<div class="sova-empty"><div class="sova-empty-title">${t('w9_pasAssezDonnees')}</div><div class="sova-empty-sub">${t('w9_sovaQuelquesJours')}</div></div>`;
+    return `<div class="sova-tomorrow-header"><div class="sova-tomorrow-day">${tomorrow.weekday}</div><div class="sova-tomorrow-sub">${t('w9_planProduction')}</div></div>${tomorrow.plan.map((item, i) => `<div class="sova-plan-card" style="animation-delay:${i * 0.06}s"><div class="sova-plan-top"><div class="sova-plan-name">${esc(item.product_name)}</div><div class="sova-plan-qty">${tpar(item.expected_qty > 1 ? 'zsv_unites' : 'zsv_unite', item.expected_qty)}</div></div><div class="sova-plan-ingredients">${(item.ingredients || []).map(ing => `<div class="sova-plan-ing ${ing.sufficient ? '' : 'sova-ing-warn'}"><span class="sova-ing-name">${esc(ing.article_name)}</span><span class="sova-ing-need">${fmtQty(ing.needed)} ${ing.unit}</span><span class="sova-ing-avail">${ing.sufficient ? '✓' : '!'} ${tpar('zsv_dispo', fmtQty(ing.available))}</span></div>`).join('')}</div></div>`).join('')}`;
   }
 
   function tabArticles() {
-    const filtered=preds.filter(p=>p.status!=='no_data');
-    if(filtered.length===0) return `<div class="sova-empty"><div class="sova-empty-title">${t('w9_pasDonnees')}</div><div class="sova-empty-sub">${t('w9_premieresVentes')}</div></div>`;
-    const sel=S.sovaArticle?filtered.find(p=>p.article_id===S.sovaArticle)||filtered[0]:filtered[0];
-    return `<div class="sova-art-selector">${filtered.map(p=>`<button class="sova-art-chip ${sel&&sel.article_id===p.article_id?'active':''}" onclick="S.sovaArticle=${p.article_id};render()"><span class="sova-art-dot sova-dot-${p.status}"></span>${p.article_name}</button>`).join('')}</div>${sel?`<div class="sova-detail-card"><div class="sova-detail-name">${sel.article_name}</div><div class="sova-detail-grid"><div class="sova-detail-kpi"><div class="sova-detail-kpi-val">${sel.current_stock} <span style="font-size:14px">${sel.unit}</span></div><div class="sova-detail-kpi-label">En stock</div></div><div class="sova-detail-kpi"><div class="sova-detail-kpi-val">${sel.daily_demand>0.01?sel.daily_demand?.toFixed(2):'—'}</div><div class="sova-detail-kpi-label">Demande/j</div></div><div class="sova-detail-kpi"><div class="sova-detail-kpi-val" style="color:${sel.trend_pct>0?'#22c55e':sel.trend_pct<0?'#ef4444':'#9ca3af'}">${sel.daily_demand>0.01&&sel.trend_pct!==0?(sel.trend_pct>=0?'+':'')+sel.trend_pct+'%':'—'}</div><div class="sova-detail-kpi-label">Tendance</div></div><div class="sova-detail-kpi"><div class="sova-detail-kpi-val">${sel.days_remaining!==null&&sel.daily_demand>0.01?sel.days_remaining+'j':'∞'}</div><div class="sova-detail-kpi-label">Jours restants</div></div></div>${sovaChartForecast(sel)}${sel.action?`<div class="sova-action-banner sova-action-${sel.action.urgency}"><div class="sova-action-verb">${sel.action.verb}</div><div class="sova-action-detail">${sel.action.quantity} ${sel.action.unit} · avant le ${sel.action.before}</div></div>`:''}</div>`:''}`;
+    const filtered = preds.filter(p => p.status !== 'no_data');
+    if (filtered.length === 0) return `<div class="sova-empty"><div class="sova-empty-title">${t('w9_pasDonnees')}</div><div class="sova-empty-sub">${t('w9_premieresVentes')}</div></div>`;
+    const sel = (S.sovaArticle != null && filtered.find(p => String(p.article_id) === String(S.sovaArticle))) || filtered[0];
+    const actif = p => sel && String(sel.article_id) === String(p.article_id);
+    return `<div class="sova-art-selector">${filtered.map(p => `<button class="sova-art-chip ${actif(p) ? 'active' : ''}" onclick="S.sovaArticle=${_jsArg(p.article_id)};render()"><span class="sova-art-dot sova-dot-${p.status}"></span>${esc(p.article_name)}</button>`).join('')}</div>${sel ? `<div class="sova-detail-card"><div class="sova-detail-name">${esc(sel.article_name)}</div><div class="sova-detail-grid"><div class="sova-detail-kpi"><div class="sova-detail-kpi-val">${fmtQty(sel.current_stock)} <span style="font-size:14px">${sel.unit}</span></div><div class="sova-detail-kpi-label">${t('zsv_enStock')}</div></div><div class="sova-detail-kpi"><div class="sova-detail-kpi-val">${sel.daily_demand > 0.01 ? fmtQty(Math.round(sel.daily_demand * 100) / 100) : '—'}</div><div class="sova-detail-kpi-label">${t('zsv_demandeJ')}</div></div><div class="sova-detail-kpi"><div class="sova-detail-kpi-val" style="color:${sel.trend_pct > 0 ? '#22c55e' : sel.trend_pct < 0 ? '#ef4444' : '#9ca3af'}">${sel.daily_demand > 0.01 && sel.trend_pct !== 0 ? (sel.trend_pct >= 0 ? '+' : '') + sel.trend_pct + '%' : '—'}</div><div class="sova-detail-kpi-label">${t('zsv_tendance')}</div></div><div class="sova-detail-kpi"><div class="sova-detail-kpi-val">${sel.days_remaining !== null && sel.daily_demand > 0.01 ? jours(sel.days_remaining) : '∞'}</div><div class="sova-detail-kpi-label">${t('zsv_joursRestants')}</div></div></div>${sovaChartForecast(sel)}${sel.action ? `<div class="sova-action-banner sova-action-${sel.action.urgency}"><div class="sova-action-verb">${sel.action.verb}</div><div class="sova-action-detail">${tpar('zsv_avantLe', fmtQty(sel.action.quantity), sel.action.unit, sel.action.before)}</div></div>` : ''}</div>` : ''}`;
   }
 
-  const tabContent=S.sovaTab==='overview'?tabOverview():S.sovaTab==='insights'?tabInsights():S.sovaTab==='alerts'?tabAlerts():S.sovaTab==='tomorrow'?tabTomorrow():tabArticles();
-  const OWL=`<svg width="44" height="44" viewBox="0 0 466 466" fill="#8A6729" xmlns="http://www.w3.org/2000/svg"><path d="M139.8,45c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5c-12.253,0-23.152,5.907-30,15.023C102.953,35.907,92.053,30,79.8,30c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5c12.406,0,22.5,10.094,22.5,22.5c0,4.143,3.357,7.5,7.5,7.5s7.5-3.357,7.5-7.5C117.3,55.094,127.394,45,139.8,45z"/><path d="M422.411,424.297L200.338,96.142c-5.44-8.039-13.984-14.288-24.005-17.705c0.642-12.645,0.967-26.383,0.967-40.937v-30c0-4.143-3.357-7.5-7.5-7.5h-120c-4.143,0-7.5,3.357-7.5,7.5v30c0,57.634,5.026,100.198,15.819,133.955c11.204,35.041,28.415,59.516,45.405,80.706c3.173,5.901,6.513,11.827,9.749,17.563c18.762,33.257,38.02,67.4,45.635,128.945c0.011,0.503,0.07,0.993,0.176,1.467c1.819,15.173,2.938,31.993,3.171,50.864h-52.454c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5h60h60c4.143,0,7.5-3.357,7.5-7.5c0-19.311-2.089-36.706-5.754-52.5h20.321c4.143,0,7.5-3.357,7.5-7.5v-65.549c0-4.143-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.357-7.5,7.5V391h-16.913c-16.582-52.774-51.15-86.389-80.492-114.912c-11.674-11.348-22.7-22.066-31.316-32.786C76.087,194.048,57.299,150.686,57.299,37.5V15h105v22.5c0,16.614-0.43,32.124-1.277,46.099c-0.225,3.711,2.303,7.027,5.941,7.793c8.797,1.853,16.63,6.771,20.952,13.157l133.232,196.875c-6.405,0.715-12.873,1.077-19.335,1.077c-94.841,0-172-77.159-172-172c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5c0,103.112,83.888,187,187,187c9.625,0,19.265-0.744,28.726-2.201l79.451,117.404c2.321,3.432,6.984,4.331,10.414,2.008C423.834,432.39,424.733,427.727,422.411,424.297z"/></svg>`;
+  const tabContent = S.sovaTab === 'insights' ? tabInsights() : S.sovaTab === 'alerts' ? tabAlerts() : S.sovaTab === 'tomorrow' ? tabTomorrow() : S.sovaTab === 'articles' ? tabArticles() : tabOverview();
+  const OWL = `<svg width="44" height="44" viewBox="0 0 466 466" fill="#8A6729" xmlns="http://www.w3.org/2000/svg"><path d="M139.8,45c4.143,0,7.5-3.357,7.5-7.5s-3.357-7.5-7.5-7.5c-12.253,0-23.152,5.907-30,15.023C102.953,35.907,92.053,30,79.8,30c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5c12.406,0,22.5,10.094,22.5,22.5c0,4.143,3.357,7.5,7.5,7.5s7.5-3.357,7.5-7.5C117.3,55.094,127.394,45,139.8,45z"/><path d="M422.411,424.297L200.338,96.142c-5.44-8.039-13.984-14.288-24.005-17.705c0.642-12.645,0.967-26.383,0.967-40.937v-30c0-4.143-3.357-7.5-7.5-7.5h-120c-4.143,0-7.5,3.357-7.5,7.5v30c0,57.634,5.026,100.198,15.819,133.955c11.204,35.041,28.415,59.516,45.405,80.706c3.173,5.901,6.513,11.827,9.749,17.563c18.762,33.257,38.02,67.4,45.635,128.945c0.011,0.503,0.07,0.993,0.176,1.467c1.819,15.173,2.938,31.993,3.171,50.864h-52.454c-4.143,0-7.5,3.357-7.5,7.5s3.357,7.5,7.5,7.5h60h60c4.143,0,7.5-3.357,7.5-7.5c0-19.311-2.089-36.706-5.754-52.5h20.321c4.143,0,7.5-3.357,7.5-7.5v-65.549c0-4.143-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.357-7.5,7.5V391h-16.913c-16.582-52.774-51.15-86.389-80.492-114.912c-11.674-11.348-22.7-22.066-31.316-32.786C76.087,194.048,57.299,150.686,57.299,37.5V15h105v22.5c0,16.614-0.43,32.124-1.277,46.099c-0.225,3.711,2.303,7.027,5.941,7.793c8.797,1.853,16.63,6.771,20.952,13.157l133.232,196.875c-6.405,0.715-12.873,1.077-19.335,1.077c-94.841,0-172-77.159-172-172c0-4.143-3.357-7.5-7.5-7.5s-7.5,3.357-7.5,7.5c0,103.112,83.888,187,187,187c9.625,0,19.265-0.744,28.726-2.201l79.451,117.404c2.321,3.432,6.984,4.331,10.414,2.008C423.834,432.39,424.733,427.727,422.411,424.297z"/></svg>`;
   return `<div class="sova-wrap">
     <div class="sova-header">
       <div class="sova-header-top">
@@ -18304,7 +18498,7 @@ function vSova() {
         </div>
         <button class="sova-ask-btn" onclick="nav('ai-chat')">🦉 ${t('zia_demander')}</button>
       </div>
-      <div class="sova-tabs">${tabs.map(tab=>`<button class="sova-tab ${S.sovaTab===tab.id?'active':''}" onclick="S.sovaTab='${tab.id}';render()">${tab.label}</button>`).join('')}</div>
+      <div class="sova-tabs">${tabs.map(tab => `<button class="sova-tab ${(S.sovaTab || 'overview') === tab.id ? 'active' : ''}" onclick="S.sovaTab='${tab.id}';render()">${tab.label}</button>`).join('')}</div>
     </div>
     <div class="sova-content container">${tabContent}</div>
   </div>`;
@@ -28512,7 +28706,7 @@ function vAiChat() {
     </div>
     <div style="display:flex;gap:8px;padding:8px 0 4px;border-top:1px solid var(--border)">
       <input id="ai-input" class="input" type="text" placeholder="${t('zia_ecrire')}" style="flex:1;min-width:0" onkeydown="if(event.key==='Enter')sendAiMessage()" ${S._aiBusy ? 'disabled' : ''}>
-      <button class="btn btn-primary" style="flex:0 0 52px;width:52px;padding:0;font-size:18px" onclick="sendAiMessage()" aria-label="${t('zia_demander')}" ${S._aiBusy ? 'disabled' : ''}>➤</button>
+      <button class="btn btn-primary sia-envoyer" style="flex:0 0 52px;width:52px;padding:0;font-size:18px" onclick="sendAiMessage()" aria-label="${t('zia_demander')}" ${S._aiBusy ? 'disabled' : ''}>➤</button>
     </div>
   </div>`;
 }

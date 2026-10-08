@@ -270,6 +270,14 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zqs_marge: "marge {0} %",
+    zqs_fermer: "Fermer",
+    zqs_dispo: "dispo",
+    zqs_paiement: "Paiement",
+    zqs_client: "Client (optionnel)",
+    zqs_total: "Total",
+    zqs_perte: "Perte",
+    zqs_alertePerte: "⚠️ Vendu sous le prix d'achat : vous perdez {0} par unité. Vérifiez le prix avant de confirmer.",
     zau_planifPleine: "trop d'envois programmés ({0}) : celui-ci n'a pas été accepté",
     zau_ignores: "{0} ignoré(s) aujourd'hui",
     zau_etat_erreur: "refusé",
@@ -3725,6 +3733,14 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zqs_marge: "margin {0}%",
+    zqs_fermer: "Close",
+    zqs_dispo: "available",
+    zqs_paiement: "Payment",
+    zqs_client: "Customer (optional)",
+    zqs_total: "Total",
+    zqs_perte: "Loss",
+    zqs_alertePerte: "⚠️ Sold below cost: you lose {0} per unit. Check the price before confirming.",
     zau_planifPleine: "too many scheduled sends ({0}): this one was not accepted",
     zau_ignores: "{0} skipped today",
     zau_etat_erreur: "refused",
@@ -7172,6 +7188,17 @@ function setLang(l) { _lang = l; localStorage.setItem('baro_lang', l); render();
 // ── Facture & WhatsApp ────────────────────────
 function _invNum(id) { return 'INV-' + String(id).slice(-6).toUpperCase(); }
 
+// Les PDF utilisent Helvetica standard (jeu WinAnsi) : ni l'espace fine
+// insécable que le français met entre les milliers (U+202F), ni ₦ ni ₵.
+// Sans ce passage, une ligne de montants pouvait sortir corrompue — et
+// la facture appelait fmtPDF, qui n'existait pas : aucun fichier ne sortait.
+function _pdfTexte(s) {
+  return String(s == null ? '' : s)
+    .replace(/[   ]/g, ' ')
+    .replace(/₦/g, 'NGN').replace(/₵/g, 'GHS');
+}
+function fmtPDF(n) { return _pdfTexte(fmt(n)); }
+
 function generateInvoicePDF(sales) {
   if (!Array.isArray(sales)) sales = [sales];
  if (typeof window.jspdf === 'undefined') { showToast(t('pdfOffline'), 'error'); return; }
@@ -7294,9 +7321,9 @@ function generateInvoicePDF(sales) {
     if (i % 2 === 1) { doc.setFillColor(249, 250, 251); doc.rect(16, y - 5, 178, lineHeight, 'F'); }
     doc.text(s.productName.length > 40 ? s.productName.substring(0, 40) + '...' : s.productName, 20, y);
     doc.text(String(s.qty), 120, y, { align: 'center' });
-    doc.text(fmt(unitPrice) + ' ' + sym, 155, y, { align: 'right' });
+    doc.text(fmtPDF(unitPrice) + ' ' + _pdfTexte(sym), 155, y, { align: 'right' });
     doc.setFont('helvetica', 'bold');
-    doc.text(fmt(s.total) + ' ' + sym, 192, y, { align: 'right' });
+    doc.text(fmtPDF(s.total) + ' ' + _pdfTexte(sym), 192, y, { align: 'right' });
     doc.setFont('helvetica', 'normal');
     if (pack && pack.items?.length) {
       doc.setFontSize(7); doc.setTextColor(120, 120, 120); doc.setFont('helvetica', 'italic');
@@ -7319,7 +7346,7 @@ function generateInvoicePDF(sales) {
   const taxRate = parseFloat(S.session?.tax_rate) || 0;
   doc.setFontSize(9); doc.setTextColor(100, 100, 100); doc.setFont('helvetica', 'normal');
   doc.text('Sous-total', 155, y, { align: 'right' });
-  doc.text(fmt(grandTotal) + ' ' + sym, 192, y, { align: 'right' }); y += 7;
+  doc.text(fmtPDF(grandTotal) + ' ' + _pdfTexte(sym), 192, y, { align: 'right' }); y += 7;
   if (sales[0]?.promoName && sales[0]?.promoDiscount) {
     doc.setTextColor(220, 38, 38);
     doc.text(`Promo "${sales[0].promoName}" (-${sales[0].promoDiscount}%)`, 155, y, { align: 'right' });
@@ -7330,7 +7357,7 @@ function generateInvoicePDF(sales) {
   if (taxRate > 0) {
     const tva = Math.round(grandTotal * taxRate / 100);
     doc.text(`TVA (${taxRate}%)`, 155, y, { align: 'right' });
-    doc.text(fmt(tva) + ' ' + sym, 192, y, { align: 'right' }); y += 7;
+    doc.text(fmtPDF(tva) + ' ' + _pdfTexte(sym), 192, y, { align: 'right' }); y += 7;
     grandTotal += tva;
   }
 
@@ -12250,7 +12277,7 @@ function generateStockReportPDF() {
   const lowStock = S.articles.filter(a => a.stock > 0 && a.min > 0 && a.stock < a.min).length;
   const stockValue = S.articles.reduce((s,a) => s + (a.stock||0) * (a.purchasePrice||0), 0);
   doc.setTextColor(30,30,30); doc.setFontSize(9);
-  doc.text(`Total articles : ${total}   ·   Ruptures : ${outOfStock}   ·   Stock bas : ${lowStock}   ·   Valeur stock : ${fmt(stockValue)} ${sym()}`, 16, y);
+  doc.text(`Total articles : ${total}   ·   Ruptures : ${outOfStock}   ·   Stock bas : ${lowStock}   ·   Valeur stock : ${fmtPDF(stockValue)} ${_pdfTexte(sym())}`, 16, y);
   y += 10;
   // En-tête tableau
   doc.setFillColor(79,70,229); doc.rect(16, y-5, 178, 9, 'F');
@@ -12271,7 +12298,7 @@ function generateStockReportPDF() {
     doc.text(`${fmtQty(a.stock)} ${a.unit||''}`, 120, y, { align:'center' });
     doc.setTextColor(30,30,30);
     doc.text(String(a.min || '—'), 145, y, { align:'center' });
-    doc.text(fmt((a.stock||0) * (a.purchasePrice||0)) + ' ' + sym(), 190, y, { align:'right' });
+    doc.text(fmtPDF((a.stock||0) * (a.purchasePrice||0)) + ' ' + _pdfTexte(sym()), 190, y, { align:'right' });
     y += 7;
   });
   if (S.articles.length > 40) {
@@ -12367,7 +12394,7 @@ function generateSalesReportPDF(period = 'all') {
       doc.text(`${i+1}. ${name.slice(0,50)}`, 20, y);
       doc.text(`${d.qty} u`, 135, y, { align:'center' });
       doc.setFont('helvetica','bold');
-      doc.text(fmt(d.total) + ' ' + sym(), 190, y, { align:'right' });
+      doc.text(fmtPDF(d.total) + ' ' + _pdfTexte(sym()), 190, y, { align:'right' });
       doc.setFont('helvetica','normal');
       y += 7;
     });
@@ -12391,7 +12418,7 @@ function generateSalesReportPDF(period = 'all') {
     doc.text(s.productName.slice(0,32), 55, y);
     doc.text(String(s.qty), 125, y, { align:'center' });
     doc.setFont('helvetica','bold');
-    doc.text(fmt(s.total) + ' ' + sym(), 190, y, { align:'right' });
+    doc.text(fmtPDF(s.total) + ' ' + _pdfTexte(sym()), 190, y, { align:'right' });
     doc.setFont('helvetica','normal');
     y += 7;
   });
@@ -12438,7 +12465,7 @@ function generateClientsReportPDF() {
     doc.text((c.phone||'').slice(0,16), 70, y);
     doc.text(String(c.orderCount), 115, y, { align:'center' });
     doc.setFont('helvetica','bold');
-    doc.text(fmt(c.totalSpent) + ' ' + sym(), 150, y, { align:'right' });
+    doc.text(fmtPDF(c.totalSpent) + ' ' + _pdfTexte(sym()), 150, y, { align:'right' });
     doc.setFont('helvetica','normal');
     doc.text(c.tier?.name || '-', 190, y, { align:'right' });
     y += 7;
@@ -12589,7 +12616,7 @@ function generateBilanReportPDF() {
     if (i%2) { doc.setFillColor(249,250,251); doc.rect(110, ty-4, 84, 7, 'F'); }
     doc.setTextColor(40,40,40); doc.text(String(name).slice(0,26), 113, ty);
     doc.text(fmtQty(st.qty), 165, ty, {align:'center'});
-    doc.setFont('helvetica','bold'); doc.text(`${fmt(st.rev)}`, 191, ty, {align:'right'});
+    doc.setFont('helvetica','bold'); doc.text(`${fmtPDF(st.rev)}`, 191, ty, {align:'right'});
     doc.setFont('helvetica','normal');
     ty += 7;
   });
@@ -13008,34 +13035,39 @@ function _qsBody() {
   const total = price * qs.qty, profit = (price - cost) * qs.qty;
   const max = Math.max(1, Math.floor(a.stock));
   const pms = _salePayChips();
-  const clientsOpts = (S.clients||[]).map(c=>`<option value="${c.id}" ${qString(s.clientId)===String(c.id)?'selected':''}>${(c.name||'Client').replace(/"/g,'&quot;')}</option>`).join('');
+  const clientsOpts = (S.clients||[]).map(c=>`<option value="${_wafEsc(c.id)}" ${String(qs.clientId)===String(c.id)?'selected':''}>${_wafEsc(c.name||t('zwa_client'))}</option>`).join('');
+  // Une vente à perte ne passe plus sans un mot : la marge et le bénéfice
+  // s'affichent avec leur vrai signe, en rouge quand ils sont négatifs.
+  const margePct = price > 0 ? Math.round(((price - cost) / price) * 100) : 0;
+  const perte = cost > 0 && price < cost;
   return `
     <div class="qs-head">
       ${itemAvatar(a, 'flex:0 0 auto')}
       <div style="flex:1;min-width:0">
-        <div class="qs-title">${a.name}</div>
-        <div class="qs-sub">${fmtQty(a.stock)} ${a.unit||'pcs'} · ${fmt(price)} ${sym()}/u${cost>0?` · marge +${Math.round(((price-cost)/price)*100)}%`:''}</div>
+        <div class="qs-title">${_wafEsc(a.name)}</div>
+        <div class="qs-sub">${fmtQty(a.stock)} ${_wafEsc(a.unit||'pcs')} · ${fmt(price)} ${sym()}/u${cost>0?` · <span style="${perte ? 'color:var(--danger);font-weight:800' : ''}">${t('zqs_marge').replace('{0}', (margePct > 0 ? '+' : '') + margePct)}</span>`:''}</div>
       </div>
-      <button class="qs-x" onclick="closeQuickSell()" aria-label="Fermer">✕</button>
+      <button class="qs-x" onclick="closeQuickSell()" aria-label="${_wafEsc(t('zqs_fermer'))}">✕</button>
     </div>
     <div class="qs-label">${t('x1_quantite')}</div>
     <div class="qs-qtyrow">
       <button class="qs-step" onclick="_qsSetQty(-1)">−</button>
       <input class="qs-qty" type="number" inputmode="numeric" value="${qs.qty}" min="1" max="${max}" onchange="_qsSetQtyVal(this.value)">
       <button class="qs-step" onclick="_qsSetQty(1)">+</button>
-      <div class="qs-max">/ ${max} dispo</div>
+      <div class="qs-max">/ ${max} ${t('zqs_dispo')}</div>
     </div>
-    <div class="qs-label">Paiement</div>
+    <div class="qs-label">${t('zqs_paiement')}</div>
     <div class="qs-pms">
       ${pms.map(([k,l])=>`<button class="qs-pm ${qs.pay===k?'active':''}" onclick="_qsSetPay('${k}')">${l}</button>`).join('')}
     </div>
     ${(S.clients||[]).length ? `
-    <div class="qs-label">Client (optionnel)</div>
+    <div class="qs-label">${t('zqs_client')}</div>
     <select class="input qs-client" onchange="_qsSetClient(this.value)"><option value="">${t('x1_aucunTiret')}</option>${clientsOpts}</select>` : ''}
     <div class="qs-totals">
-      <div class="qs-trow"><span>Total</span><b>${fmt(total)} ${sym()}</b></div>
-      ${cost>0?`<div class="qs-trow qs-profit"><span>${t('x1_benefice')}</span><b>+${fmt(profit)} ${sym()}</b></div>`:''}
+      <div class="qs-trow"><span>${t('zqs_total')}</span><b>${fmt(total)} ${sym()}</b></div>
+      ${cost>0?`<div class="qs-trow qs-profit"${perte ? ' style="color:var(--danger)"' : ''}><span>${t(perte ? 'zqs_perte' : 'x1_benefice')}</span><b>${perte ? '−' + fmt(-profit) : '+' + fmt(profit)} ${sym()}</b></div>`:''}
     </div>
+    ${perte ? `<div class="qs-alerte">${t('zqs_alertePerte').replace('{0}', fmt(cost - price) + ' ' + sym())}</div>` : ''}
     <button class="btn btn-primary qs-confirm" onclick="quickSellConfirm()">${t('x1_confirmerVente')}</button>
   `;
 }
@@ -27960,21 +27992,21 @@ function generateDevisPDF(devis) {
     if (i%2===1) { doc.setFillColor(250,248,255); doc.rect(16,y-5,178,9,'F'); }
     doc.text((it.name||'').substring(0,42), 20, y);
     doc.text(String(it.qty||0), 120, y, {align:'center'});
-    doc.text(fmt(it.price||0)+' '+sym, 155, y, {align:'right'});
-    doc.setFont('helvetica','bold'); doc.text(fmt(lineTot)+' '+sym, 192, y, {align:'right'}); doc.setFont('helvetica','normal');
+    doc.text(fmtPDF(it.price||0)+ ' ' + _pdfTexte(sym), 155, y, {align:'right'});
+    doc.setFont('helvetica','bold'); doc.text(fmtPDF(lineTot)+ ' ' + _pdfTexte(sym), 192, y, {align:'right'}); doc.setFont('helvetica','normal');
     y += 9;
   });
   // Total
   y += 2; doc.setDrawColor(124,58,237); doc.setLineWidth(0.8); doc.line(16,y,194,y); y += 8;
   const taxRate = parseFloat(S.session?.tax_rate)||0;
   doc.setFontSize(9); doc.setTextColor(100,100,100);
-  doc.text('Sous-total', 155, y, {align:'right'}); doc.text(fmt(total)+' '+sym, 192, y, {align:'right'}); y += 7;
+  doc.text('Sous-total', 155, y, {align:'right'}); doc.text(fmtPDF(total)+ ' ' + _pdfTexte(sym), 192, y, {align:'right'}); y += 7;
   let grand = total;
-  if (taxRate>0) { const tva=Math.round(total*taxRate/100); doc.text(`TVA (${taxRate}%)`,155,y,{align:'right'}); doc.text(fmt(tva)+' '+sym,192,y,{align:'right'}); y+=7; grand+=tva; }
+  if (taxRate>0) { const tva=Math.round(total*taxRate/100); doc.text(`TVA (${taxRate}%)`,155,y,{align:'right'}); doc.text(fmtPDF(tva)+ ' ' + _pdfTexte(sym),192,y,{align:'right'}); y+=7; grand+=tva; }
   y += 2;
   doc.setFillColor(124,58,237); doc.roundedRect(108,y-2,86,16,2,2,'F');
   doc.setTextColor(255,255,255); doc.setFontSize(8); doc.text('TOTAL ESTIME', 113, y+4);
-  doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.text(fmt(grand)+' '+sym, 192, y+11, {align:'right'});
+  doc.setFontSize(14); doc.setFont('helvetica','bold'); doc.text(fmtPDF(grand)+ ' ' + _pdfTexte(sym), 192, y+11, {align:'right'});
   // Note validité + accord
   y += 26;
   doc.setTextColor(120,120,120); doc.setFontSize(8); doc.setFont('helvetica','normal');

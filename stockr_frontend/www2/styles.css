@@ -6625,3 +6625,11 @@ body.dark .card.rc-resume {
 }
 .au-ign { color: #B45309; font-weight: 700; }
 .au-avert[hidden] { display: none !important; }
+
+/* Vente rapide : une vente à perte ne passe plus sans un mot. */
+.qs-alerte {
+  margin: 10px 0 4px; padding: 9px 11px; border-radius: var(--r-sm);
+  font-size: 12px; line-height: 1.5; font-weight: 600; color: var(--text-1);
+  background: color-mix(in srgb, var(--danger, #DC2626) 10%, var(--card-bg));
+  border-left: 3px solid var(--danger, #DC2626);
+}

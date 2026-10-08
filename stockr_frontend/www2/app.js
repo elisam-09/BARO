@@ -270,6 +270,37 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zsg_sova: "Sova te prévient",
+    zsg_revoir: "Revoir",
+    zsg_continuer: "Continuer",
+    zsg_perteT: "Cette vente vous fait perdre {0}",
+    zsg_perteL: "{0} : vendu {1} {3}, acheté {2} {3}",
+    zsg_perteD: "Le prix de vente est sous le prix d'achat. Si c'est voulu (déstockage, cadeau), continuez ; sinon, corrigez le prix.",
+    zsg_vendreQuandMeme: "Vendre quand même",
+    zsg_prixT: "Nouveau prix pour « {0} »",
+    zsg_prixSousCout: "Vous vendriez à {0} {2} un article acheté {1} {2} : chaque vente serait à perte.",
+    zsg_prixSaut: "Le prix passe de {0} à {1} {2} ({3} %). Faute de frappe ?",
+    zsg_prixD: "Un prix faux se répète à chaque vente de la journée.",
+    zsg_garderPrix: "Garder ce prix",
+    zsg_annulerPrix: "Annuler",
+    zsg_remiseT: "Cette remise fait vendre {0} produit(s) à perte",
+    zsg_remiseL: "{0} : {1} {3} après remise, coûte {2} {3}",
+    zsg_remiseD: "Ajustez la remise ou retirez ces produits de la liste.",
+    zsg_remiseTous: "Aucun produit n'est coché : la remise s'applique à TOUS vos produits.",
+    zsg_creerQuandMeme: "Créer quand même",
+    zsg_supprT: "Supprimer « {0} » ?",
+    zsg_supprStockVal: "Il reste {0} {1} en stock, soit environ {2} {3} au prix d'achat.",
+    zsg_supprStock: "Il reste {0} {1} en stock.",
+    zsg_supprProduits: "Il entre dans {0} produit(s) : leurs compositions seront mises à jour.",
+    zsg_supprCommande: "{0} commande(s) fournisseur en cours le concernent.",
+    zsg_supprD: "Si ce stock est perdu ou périmé, enregistrez plutôt une perte : votre bilan restera juste.",
+    zsg_supprimer: "Supprimer",
+    zsg_garder: "Garder",
+    zsg_cmdT: "Commander « {0} » ?",
+    zsg_cmdRien: "Il ne s'est pas vendu depuis 60 jours.",
+    zsg_cmdCouvre: "Les {0} en stock couvrent déjà environ {1} jours de ventes.",
+    zsg_cmdD: "Commander ce qui ne part pas immobilise votre argent sur une étagère.",
+    zsg_commanderQuandMeme: "Commander quand même",
     zsy_supprime: "« {0} » supprimé",
     zsy_convertis: "{0} montants convertis en {1}",
     zsy_deviseSeule: "Devise changée — montants inchangés",
@@ -3737,6 +3768,37 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zsg_sova: "Sova is warning you",
+    zsg_revoir: "Review",
+    zsg_continuer: "Continue",
+    zsg_perteT: "This sale loses you {0}",
+    zsg_perteL: "{0}: sold at {1} {3}, bought at {2} {3}",
+    zsg_perteD: "The selling price is below the purchase price. If that is intended (clearance, gift), continue; otherwise, fix the price.",
+    zsg_vendreQuandMeme: "Sell anyway",
+    zsg_prixT: "New price for “{0}”",
+    zsg_prixSousCout: "You would sell at {0} {2} an item bought at {1} {2}: every sale would lose money.",
+    zsg_prixSaut: "The price goes from {0} to {1} {2} ({3}%). A typo?",
+    zsg_prixD: "A wrong price repeats with every sale of the day.",
+    zsg_garderPrix: "Keep this price",
+    zsg_annulerPrix: "Cancel",
+    zsg_remiseT: "This discount makes {0} product(s) sell at a loss",
+    zsg_remiseL: "{0}: {1} {3} after discount, costs {2} {3}",
+    zsg_remiseD: "Adjust the discount or remove these products from the list.",
+    zsg_remiseTous: "No product is ticked: the discount applies to ALL your products.",
+    zsg_creerQuandMeme: "Create anyway",
+    zsg_supprT: "Delete “{0}”?",
+    zsg_supprStockVal: "{0} {1} are still in stock, about {2} {3} at purchase price.",
+    zsg_supprStock: "{0} {1} are still in stock.",
+    zsg_supprProduits: "It is used in {0} product(s): their compositions will be updated.",
+    zsg_supprCommande: "{0} pending supplier order(s) concern it.",
+    zsg_supprD: "If this stock is lost or expired, record a loss instead: your accounts stay right.",
+    zsg_supprimer: "Delete",
+    zsg_garder: "Keep",
+    zsg_cmdT: "Order “{0}”?",
+    zsg_cmdRien: "It has not sold in 60 days.",
+    zsg_cmdCouvre: "The {0} in stock already cover about {1} days of sales.",
+    zsg_cmdD: "Ordering what does not sell ties your money up on a shelf.",
+    zsg_commanderQuandMeme: "Order anyway",
     zsy_supprime: "“{0}” deleted",
     zsy_convertis: "{0} amounts converted to {1}",
     zsy_deviseSeule: "Currency changed — amounts unchanged",
@@ -7538,7 +7600,7 @@ function shareViaWhatsApp(sales) {
   }
   lines.push(`💰 Sous-total : ${fmt(total)} ${csym}`);
   if (taxRate > 0) {
-    const tva = Math.round(total * taxRate / 100);
+    const tva = _arrondiDevise(total * taxRate / 100);
     lines.push(`📊 TVA (${taxRate}%) : ${fmt(tva)} ${csym}`);
     lines.push(`✨ *TOTAL TTC : ${fmt(total + tva)} ${csym}* ✨`);
   } else {
@@ -10672,7 +10734,14 @@ function _cashCloseData(dateStr) {
   });
   const totalExp = expenses.reduce((a, e) => a + (e.amount || 0), 0);
   const opening = Number(S.cashOpeningFloat) || 0;
-  const expectedCash = opening + cashSales - totalExp;
+  // Une perte (produits périmés, casse) est une charge, pas une sortie du
+  // tiroir : la déduire des espèces attendues créait un faux excédent égal
+  // à la perte, et le commerçant finissait par soupçonner un employé.
+  // Une dépense payée par Mobile Money ne sort pas non plus du tiroir.
+  const sortiesTiroir = expenses
+    .filter(e => e && e.category !== 'Perte' && (!e.paymentMethod || e.paymentMethod === 'cash'))
+    .reduce((a, e) => a + (e.amount || 0), 0);
+  const expectedCash = opening + cashSales - sortiesTiroir;
   const totalProfit = sales.reduce((a, s) => a + (s.profit || 0), 0);
   return { ds, day, sales, expenses, byMethod, totalCA, totalProfit, cashSales, totalExp, opening, expectedCash, count: sales.length };
 }
@@ -10685,7 +10754,7 @@ function _cashRecalc() {
   const vEl = document.getElementById('cash-variance');
   if (vEl) {
     if (S.cashCounted === '' || S.cashCounted == null || isNaN(counted)) { vEl.textContent = '—'; vEl.style.color = 'var(--text-3)'; }
-    else { const varc = Math.round(counted - d.expectedCash); vEl.textContent = (varc > 0 ? '+' : '') + fmt(varc) + ' ' + sym(); vEl.style.color = varc === 0 ? 'var(--success)' : (varc > 0 ? 'var(--accent)' : 'var(--danger)'); }
+    else { const varc = _arrondiDevise(counted - d.expectedCash); vEl.textContent = (varc > 0 ? '+' : '') + fmt(varc) + ' ' + sym(); vEl.style.color = varc === 0 ? 'var(--success)' : (varc > 0 ? 'var(--accent)' : 'var(--danger)'); }
   }
 }
 function saveCashClose() {
@@ -10715,7 +10784,7 @@ function _cashCloseMessage() {
   lines.push(`Dépenses : −${fmt(d.totalExp)} ${sym()}`);
   lines.push(`Espèces attendues : ${fmt(d.expectedCash)} ${sym()}`);
   if (!(S.cashCounted === '' || S.cashCounted == null || isNaN(counted))) {
-    const varc = Math.round(counted - d.expectedCash);
+    const varc = _arrondiDevise(counted - d.expectedCash);
     lines.push(`Espèces comptées : ${fmt(counted)} ${sym()}`);
     lines.push(`Écart : ${varc > 0 ? '+' : ''}${fmt(varc)} ${sym()}${varc === 0 ? ' ✅' : ''}`);
   }
@@ -11902,7 +11971,7 @@ function recordSale() {
   // Apply promo
   const promo = _getActivePromo(product.id);
   let promoName = null, promoDiscount = 0;
-  if (promo) { promoDiscount = promo.discount; promoName = promo.name; saleTotal = Math.round(saleTotal * (100 - promoDiscount) / 100); }
+  if (promo) { promoDiscount = promo.discount; promoName = promo.name; saleTotal = _arrondiDevise(saleTotal * (100 - promoDiscount) / 100); }
   const __sale = { id: Date.now(), productId: product.id, productName: product.name, qty, total: saleTotal, profit: saleTotal - saleCost, date: new Date().toISOString(), paymentMethod: payMethod, clientId, clientName: client?.name || clientName || null, promoName, promoDiscount };
   S.sales.unshift(__sale);
   // Hooks intégrations temps réel
@@ -12969,6 +13038,98 @@ function clearMultiCart() {
   S.multiCart = {};
   render();
 }
+// ══════════════════════════════════════════════════════════════
+// SOVA TE PRÉVIENT — avant chaque décision qui coûte de l'argent.
+// Des contrôles calculés sur VOS données, au moment du geste : ils marchent
+// sans clé IA et sans réseau. Un seul écran, avec les vrais chiffres, et le
+// bouton par défaut est toujours le choix prudent.
+// ══════════════════════════════════════════════════════════════
+// t() avec paramètres : toutes les occurrences de {0}, {1}… sont remplacées.
+// String.replace n'en remplace qu'une : « acheté 1 200 {3} » restait à l'écran.
+function tpar(cle, ...vals) { return vals.reduce((s, v, i) => s.split('{' + i + '}').join(String(v)), t(cle)); }
+
+function _sovaGarde(o) {
+  return new Promise(resolve => {
+    const e = _wafEsc;
+    document.querySelectorAll('.sg-voile').forEach(x => x.remove());
+    const v = document.createElement('div');
+    v.className = 'sg-voile';
+    v.innerHTML = `
+      <div class="sg-feuille" role="alertdialog" aria-modal="true" aria-labelledby="sg-t">
+        <div class="sg-tete"><span class="sg-sova">✦ ${e(t('zsg_sova'))}</span></div>
+        <div class="sg-ic">${o.icone || '⚠️'}</div>
+        <div class="sg-t" id="sg-t">${e(o.titre)}</div>
+        ${(o.lignes || []).length ? `<ul class="sg-l">${o.lignes.map(l => `<li>${e(l)}</li>`).join('')}</ul>` : ''}
+        ${o.detail ? `<div class="sg-d">${e(o.detail)}</div>` : ''}
+        <div class="sg-act">
+          <button type="button" class="btn btn-primary sg-non">${e(o.non || t('zsg_revoir'))}</button>
+          <button type="button" class="btn btn-ghost sg-oui">${e(o.oui || t('zsg_continuer'))}</button>
+        </div>
+      </div>`;
+    const fin = ok => { v.remove(); document.removeEventListener('keydown', clavier); resolve(ok); };
+    const clavier = ev => { if (ev.key === 'Escape') fin(false); };
+    v.querySelector('.sg-non').onclick = () => fin(false);
+    v.querySelector('.sg-oui').onclick = () => fin(true);
+    v.addEventListener('click', ev => { if (ev.target === v) fin(false); });
+    document.addEventListener('keydown', clavier);
+    document.body.appendChild(v);
+    setTimeout(() => { const b = v.querySelector('.sg-non'); if (b) b.focus(); }, 30);
+  });
+}
+
+// Une vente dont au moins une ligne part sous son prix d'achat.
+async function _sovaGardeVente(lignes) {
+  const pertes = (lignes || []).filter(l => l && l.cout > 0 && l.prix < l.cout);
+  if (!pertes.length) return true;
+  const total = _arrondiDevise(pertes.reduce((a, l) => a + (l.cout - l.prix) * (l.qte || 1), 0));
+  return _sovaGarde({
+    icone: '📉',
+    titre: t('zsg_perteT').replace('{0}', fmt(total) + ' ' + sym()),
+    lignes: pertes.slice(0, 5).map(l => tpar('zsg_perteL', l.nom || '', fmt(_arrondiDevise(l.prix)), fmt(_arrondiDevise(l.cout)), sym())),
+    detail: t('zsg_perteD'),
+    oui: t('zsg_vendreQuandMeme'),
+  });
+}
+
+// Un prix qui passe sous le coût, ou qui saute de plus de 40 % d'un coup
+// (une faute de frappe à 5 000 au lieu de 500 coûte cher sur une journée).
+async function _sovaGardePrix(art, champ, valeur) {
+  if (!art || !(valeur >= 0)) return true;
+  const L = [];
+  const vente = champ === 'purchasePrice' ? (art.sellPrice || art.price || 0) : valeur;
+  const cout = champ === 'purchasePrice' ? valeur : (art.purchasePrice || 0);
+  if (cout > 0 && vente > 0 && vente < cout) {
+    L.push(tpar('zsg_prixSousCout', fmt(vente), fmt(cout), sym()));
+  }
+  const avant = Number(art[champ]) || 0;
+  if (avant > 0 && valeur > 0 && Math.abs(valeur - avant) / avant >= 0.4) {
+    const pct = Math.round((valeur - avant) / avant * 100);
+    L.push(tpar('zsg_prixSaut', fmt(avant), fmt(valeur), sym(), (pct > 0 ? '+' : '') + pct));
+  }
+  if (!L.length) return true;
+  return _sovaGarde({ icone: '🏷️', titre: t('zsg_prixT').replace('{0}', art.name || ''), lignes: L,
+                      detail: t('zsg_prixD'), oui: t('zsg_garderPrix'), non: t('zsg_annulerPrix') });
+}
+
+// Ventes d'un article sur une période : directes, et à travers les produits
+// qui le contiennent.
+function _sovaVentesArticle(art, jours) {
+  const depuis = Date.now() - jours * 86400000;
+  let q = 0;
+  (S.sales || []).forEach(v => {
+    if (!v || new Date(v.date).getTime() < depuis) return;
+    if (v.articleId != null && String(v.articleId) === String(art.id)) { q += Number(v.qty) || 0; return; }
+    if (v.productId != null) {
+      const pr = (S.products || []).find(x => String(x.id) === String(v.productId));
+      const c = pr && (pr.composition || []).find(x => String(x.id) === String(art.id));
+      if (c) q += (Number(v.qty) || 0) * (Number(c.qty) || 1);
+      return;
+    }
+    if (!v.articleId && !v.productId && v.productName === art.name) q += Number(v.qty) || 0;
+  });
+  return q;
+}
+
 async function confirmMultiSale(opts = {}) {
   if (!S.multiCart || !Object.keys(S.multiCart).length) { showToast('Panier vide', 'error'); return; }
   if (!_checkPlanLimit('salesPerMonth', _salesThisMonth(), 'ventes ce mois')) return;
@@ -13003,6 +13164,19 @@ async function confirmMultiSale(opts = {}) {
   const payMethod = opts.payMethod || (pmSel ? pmSel.value : 'cash');
   // Panier multi = un même cartId → groupé « Panier · N articles » dans l'historique
   const _multiCartId = Object.keys(S.multiCart).length > 1 ? 'cart_' + Date.now() : null;
+  // Sova regarde la vente AVANT de toucher au stock. La vente rapide a déjà
+  // affiché la perte en rouge dans sa feuille : elle n'est pas redemandée.
+  if (!opts.sansGarde) {
+    const __lignes = [];
+    for (const [itemId, qty] of Object.entries(S.multiCart)) {
+      const it = sellable.find(i => i.id === itemId);
+      if (!it) continue;
+      let prix = it.price || 0;
+      if (it.kind === 'product') { const pr = _getActivePromo(it.productId); if (pr) prix = prix * (1 - (pr.discount || 0) / 100); }
+      __lignes.push({ nom: it.name || '', prix, cout: it.purchasePrice || 0, qte: qty });
+    }
+    if (!(await _sovaGardeVente(__lignes))) return;
+  }
 
   let total = 0, newSales = [];
   for (const [itemId, qty] of Object.entries(S.multiCart)) {
@@ -13013,7 +13187,7 @@ async function confirmMultiSale(opts = {}) {
     let promoName = null, promoDiscount = 0;
     if (it.kind === 'product') {
       const promo = _getActivePromo(it.productId);
-      if (promo) { promoDiscount = promo.discount; promoName = promo.name; const d = Math.round(lineTotal*promoDiscount/100); lineTotal -= d; lineProfit -= d; }
+      if (promo) { promoDiscount = promo.discount; promoName = promo.name; const d = _arrondiDevise(lineTotal*promoDiscount/100); lineTotal -= d; lineProfit -= d; }
     }
     try {
       let saleData = null;
@@ -13203,7 +13377,7 @@ async function quickSellConfirm() {
   const clientId = qs.clientId || null;
   S.multiCart = { ['art_'+qs.id]: qs.qty };
   closeQuickSell();
-  await confirmMultiSale({ clientId, payMethod });
+  await confirmMultiSale({ clientId, payMethod, sansGarde: true });
 }
 
 // ── Prestation / service : encaisser sans stock (coiffure, couture, réparation…) ──
@@ -13266,6 +13440,8 @@ async function confirmCart() {
   const __m = (typeof getCurrentMember === 'function') ? getCurrentMember() : null;
   const pmSel = $('sale-payment');
   const payMethod = pmSel ? pmSel.value : 'cash';
+  if (!(await _sovaGardeVente(S.cart.map(it => ({ nom: it.productName || '', prix: Number(it.unitPrice) || 0,
+                                                    cout: Number(it.unitCost) || 0, qte: Number(it.qty) || 1 }))))) return;
   try {
     const cartId = 'cart_' + Date.now();
     let total = 0, count = 0, newSales = [];
@@ -14465,7 +14641,7 @@ function showReceiptBanner(sales, total, payInfo) {
   const _shareableProv = ['wave','paypal','orange','moov','mtn'];
   const _payLinkBtn = (payInfo && payInfo.provider && _shareableProv.includes(payInfo.provider)
       && (S.paymentMethods||[]).some(m => m.provider === payInfo.provider && m.active))
-    ? `<button class="rb-btn rb-pay" onclick="sendSalePaymentLink('${payInfo.provider}',${payInfo.clientId||'null'},${Math.round(total)})">${IC.dollar} Lien paiement</button>`
+    ? `<button class="rb-btn rb-pay" onclick="sendSalePaymentLink('${payInfo.provider}',${payInfo.clientId||'null'},${_arrondiDevise(total)})">${IC.dollar} Lien paiement</button>`
     : '';
   el.innerHTML = `
     <div class="receipt-banner-left">
@@ -18216,11 +18392,11 @@ function vDetail() {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <div class="form-group">
           <label class="form-label">${t('zz9_prixAchat')} (${sym()})</label>
-          <input class="input" type="number" step="10" min="0" value="${art.purchasePrice||0}" onchange="updateArticleField(${art.id},'purchasePrice',parseFloat(this.value)||0);render()">
+          <input class="input" type="number" step="any" min="0" inputmode="decimal" value="${art.purchasePrice||0}" onchange="updateArticleField(${art.id},'purchasePrice',parseFloat(this.value)||0)">
         </div>
         <div class="form-group">
           <label class="form-label">${t('zz8_prixVente')} (${sym()})</label>
-          <input class="input" type="number" step="10" min="0" value="${art.price||0}" onchange="updateArticleField(${art.id},'price',parseFloat(this.value)||0);render()">
+          <input class="input" type="number" step="any" min="0" inputmode="decimal" value="${art.price||0}" onchange="updateArticleField(${art.id},'price',parseFloat(this.value)||0)">
         </div>
       </div>
       <div class="form-group">
@@ -18272,9 +18448,13 @@ function vDetail() {
 // Les champs que le serveur connaît : modifiés ici, ils lui sont envoyés, et
 // notés pour qu'une synchro ne les défasse pas avant qu'il les ait reçus.
 const _CHAMPS_ARTICLE_SERVEUR = ['price', 'purchasePrice', 'sellPrice', 'category', 'ean', 'description'];
-function updateArticleField(id, field, value) {
+async function updateArticleField(id, field, value) {
   const art = S.articles.find(a => a.id === id);
   if (!art) return;
+  if ((field === 'price' || field === 'sellPrice' || field === 'purchasePrice') && typeof value === 'number') {
+    // Refusé : rien n'est écrit, et la fiche reprend l'ancien prix à l'écran.
+    if (!(await _sovaGardePrix(art, field, value))) { render(); return; }
+  }
   art[field] = value;
   _saveArticles();
   if (_CHAMPS_ARTICLE_SERVEUR.includes(field)) {
@@ -18282,17 +18462,34 @@ function updateArticleField(id, field, value) {
     try { _pushArticleMeta(art); } catch (_) {}
   }
   showToast(t('infoUpdated'));
+  render();
 }
 
-function confirmDelete(id) {
+// Supprimer un article qui a encore du stock, une commande en cours ou des
+// produits qui l'utilisent : Sova dit ce qui part avec lui.
+async function confirmDelete(id) {
   const art = S.articles.find(a=>a.id===id);
   if (!art) return;
-  // Confirmation simple
-  const usedIn = S.products.filter(p=>p.composition.some(c=>c.id===id));
-  const msg = usedIn.length>0
-    ? `Supprimer "${art.name}" ? Il est utilisé dans ${usedIn.length} produit(s) — ces compositions seront mises à jour.`
-    : `Supprimer "${art.name}" ?`;
-  if (confirm(msg)) deleteArticle(id);
+  const L = [];
+  const stock = Number(art.stock) || 0;
+  if (stock > 0) {
+    const valeur = _arrondiDevise(stock * (Number(art.purchasePrice) || 0));
+    L.push(valeur > 0
+      ? tpar('zsg_supprStockVal', fmtQty(stock), art.unit || '', fmt(valeur), sym())
+      : tpar('zsg_supprStock', fmtQty(stock), art.unit || ''));
+  }
+  const usedIn = S.products.filter(p=>(p.composition||[]).some(c=>c.id===id));
+  if (usedIn.length) L.push(t('zsg_supprProduits').replace('{0}', usedIn.length));
+  const enCours = (S.purchaseOrders || []).filter(o => o && o.status === 'pending' && String(o.articleId) === String(id)).length;
+  if (enCours) L.push(t('zsg_supprCommande').replace('{0}', enCours));
+  const ok = await _sovaGarde({
+    icone: L.length ? '🗑️' : '🗑️',
+    titre: t('zsg_supprT').replace('{0}', art.name || ''),
+    lignes: L,
+    detail: stock > 0 ? t('zsg_supprD') : '',
+    oui: t('zsg_supprimer'), non: t('zsg_garder'),
+  });
+  if (ok) deleteArticle(id);
 }
 
 // ── ADD ARTICLE (adaptatif selon businessType) ────────────────
@@ -23502,7 +23699,7 @@ function vAddOrder() {
   </div>`;
 }
 
-function saveOrder() {
+async function saveOrder() {
   const artEl = document.getElementById('ord-article');
   const artId = artEl?.value;
   if (!artId) { showToast(t('chooseProduct'), 'error'); return; }
@@ -23514,6 +23711,20 @@ function saveOrder() {
   const leadDays = parseInt(document.getElementById('ord-lead')?.value) || 7;
   const deliveryDate = document.getElementById('ord-delivery-date')?.value || new Date(Date.now()+leadDays*86400000).toISOString().slice(0,10);
   const notes = document.getElementById('ord-notes')?.value?.trim() || '';
+  // Commander ce qui ne se vend pas immobilise de l'argent : Sova regarde
+  // les ventes des 60 derniers jours et ce que le stock couvre déjà.
+  if (art) {
+    const vendus = _sovaVentesArticle(art, 60);
+    const stock = Number(art.stock) || 0;
+    const L = [];
+    if (vendus <= 0) L.push(t('zsg_cmdRien'));
+    else {
+      const jours = Math.round(stock / (vendus / 60));
+      if (jours > 60) L.push(t('zsg_cmdCouvre').replace('{0}', fmtQty(stock)).replace('{1}', jours));
+    }
+    if (L.length && !(await _sovaGarde({ icone: '📦', titre: t('zsg_cmdT').replace('{0}', art.name || ''), lignes: L,
+                                           detail: t('zsg_cmdD'), oui: t('zsg_commanderQuandMeme') }))) return;
+  }
   const order = {
     id: Date.now(),
     articleId: art?.id, articleName: art?.name || '?', unit: art?.unit || 'pce',
@@ -24267,7 +24478,7 @@ function saveGoalConfig(value, type, period) {
 }
 
 // ── QUICK SALE ──────────────────────────────
-function quickSaleProduct(productId) {
+async function quickSaleProduct(productId) {
   const prod = S.products.find(p => p.id === productId);
   if (!prod) return;
   const sym = S.session?.currency_symbol || 'FCFA';
@@ -24294,8 +24505,11 @@ function quickSaleProduct(productId) {
     promoCode = promo.code;
     finalPrice = _applyPromoValue(prod.price, promo);
     promoDiscount = prod.price > 0 ? Math.round((1 - finalPrice/prod.price)*100) : 0;
-    _recordPromoUsage(promo.id, null);
   }
+  // Contrôle avant la vente — et l'usage de la promo n'est compté qu'une
+  // fois la vente décidée.
+  if (!(await _sovaGardeVente([{ nom: prod.name, prix: finalPrice, cout: prod.purchasePrice || 0, qte: 1 }]))) return;
+  if (promo) _recordPromoUsage(promo.id, null);
 
   // Create sale
   const sale = {
@@ -36194,7 +36408,7 @@ function vPromoForm() {
   </div>`;
 }
 
-function savePromotion() {
+async function savePromotion() {
   const name = ($('promo-name')?.value||'').trim();
   const code = ($('promo-code')?.value||'').trim().toUpperCase();
   const type = $('promo-type')?.value || 'percent';
@@ -36212,6 +36426,29 @@ function savePromotion() {
   const startDate = $('promo-start')?.value || new Date().toISOString().slice(0,10);
   const endDate = $('promo-end')?.value || new Date(Date.now()+30*86400000).toISOString().slice(0,10);
   const active = $('promo-active')?.checked !== false;
+
+  // Sova regarde ce que la remise fait à chaque produit concerné : sans
+  // produit coché, elle s'applique à TOUS.
+  const __vises = (S.products || []).filter(pr => !products.length || products.includes(pr.id));
+  const __perdants = __vises.filter(pr => {
+    const cout = Number(pr.purchasePrice) || 0, prix = Number(pr.price) || 0;
+    const remise = type === 'percent' ? prix * (1 - value / 100) : prix - value;
+    return cout > 0 && remise < cout;
+  });
+  if (__perdants.length) {
+    const ok = await _sovaGarde({
+      icone: '🏷️',
+      titre: t('zsg_remiseT').replace('{0}', __perdants.length),
+      lignes: __perdants.slice(0, 5).map(pr => {
+        const prix = Number(pr.price) || 0;
+        const remise = _arrondiDevise(type === 'percent' ? prix * (1 - value / 100) : prix - value);
+        return tpar('zsg_remiseL', pr.name, fmt(remise), fmt(pr.purchasePrice), sym());
+      }),
+      detail: products.length ? t('zsg_remiseD') : t('zsg_remiseTous'),
+      oui: t('zsg_creerQuandMeme'),
+    });
+    if (!ok) return;
+  }
 
   if (S.editingPromoId) {
     const p = S.promotions.find(x => x.id === S.editingPromoId);

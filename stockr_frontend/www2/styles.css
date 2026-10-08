@@ -6633,3 +6633,41 @@ body.dark .card.rc-resume {
   background: color-mix(in srgb, var(--danger, #DC2626) 10%, var(--card-bg));
   border-left: 3px solid var(--danger, #DC2626);
 }
+
+/* ── Sova te prévient : la feuille de confirmation ─────────────────────── */
+.sg-voile {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; align-items: flex-end; justify-content: center;
+  background: rgba(8, 8, 18, .55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: sgVoile .18s ease-out;
+}
+@keyframes sgVoile { from { opacity: 0; } to { opacity: 1; } }
+.sg-feuille {
+  width: 100%; max-width: 460px; margin: 0 12px 14px;
+  padding: 18px 18px 16px; border-radius: var(--r-xl);
+  background: var(--card-bg); color: var(--text-1);
+  border: var(--bd-w) solid var(--border);
+  box-shadow: 0 24px 60px -18px rgba(0,0,0,.45);
+  animation: sgMonte .24s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes sgMonte { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .sg-voile, .sg-feuille { animation: none; } }
+.sg-tete { display: flex; justify-content: center; margin-bottom: 8px; }
+.sg-sova {
+  font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: var(--r-pill);
+  color: #fff; background: linear-gradient(135deg, #8A6729, #C9A24D);
+}
+.sg-ic { text-align: center; font-size: 30px; line-height: 1; margin: 6px 0 8px; }
+.sg-t { text-align: center; font-size: 16.5px; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+.sg-l { margin: 12px 0 0; padding: 0; list-style: none; }
+.sg-l li {
+  position: relative; padding: 8px 10px 8px 26px; margin-bottom: 6px;
+  font-size: 13px; line-height: 1.45; border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--danger, #DC2626) 7%, var(--card-bg));
+}
+.sg-l li::before { content: '•'; position: absolute; left: 11px; top: 7px; color: var(--danger, #DC2626); font-weight: 900; }
+.sg-d { margin-top: 10px; font-size: 12px; line-height: 1.5; color: var(--text-2); text-align: center; }
+.sg-act { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.sg-act .btn { width: 100%; }

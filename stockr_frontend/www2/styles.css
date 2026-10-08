@@ -6715,3 +6715,13 @@ body.dark .sub-hero.sh-teinte {
     color-mix(in srgb, var(--sh-c2, var(--sh-c1, var(--accent))) 38%, #181B23) 100%) !important;
 }
 .sia-envoyer{background:linear-gradient(135deg,#8A6729,#C9A24D) !important;border-color:#8A6729 !important;color:#fff !important}
+
+/* ── Fiche « Nouvelle commande » (lot 313) ──────────────────────────────── */
+.bo-feuille{text-align:left}
+.bo-feuille .sg-t{margin-bottom:12px}
+.bo-champ{display:flex;flex-direction:column;gap:5px;margin-bottom:10px;flex:1;min-width:0}
+.bo-champ>span{font-size:12px;font-weight:700;color:var(--text-2)}
+.bo-ligne{display:flex;gap:10px}
+.bo-total{font-size:14px;font-weight:800;color:var(--text-1);padding:8px 0 2px;font-variant-numeric:tabular-nums}
+.bo-err{font-size:12.5px;font-weight:700;color:var(--danger);min-height:2px}
+@media (max-width:360px){.bo-ligne{flex-direction:column;gap:0}}

@@ -270,6 +270,30 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zbo_nouvelle: "Nouvelle commande",
+    zbo_client: "Nom du client",
+    zbo_tel: "Téléphone",
+    zbo_zone: "Zone de livraison",
+    zbo_article: "Article",
+    zbo_qte: "Quantité",
+    zbo_total: "Total : {0}",
+    zbo_livraison: "dont livraison {0}",
+    zbo_enregistrer: "Enregistrer la commande",
+    zbo_nomRequis: "Indiquez le nom du client.",
+    zbo_vitrineVide: "Ajoutez d'abord des produits ou articles en vitrine.",
+    zbo_ajoutee: "Commande ajoutée",
+    zbo_log: "Commande de {0} — {1}",
+    zbo_stock: "Stock : {0}",
+    zbk_invalide: "Fichier de sauvegarde invalide",
+    zbk_dateInconnue: "date inconnue",
+    zbk_confirmer: "Restaurer cette sauvegarde ?\n\n{0}📅 {1}\n📦 {2} éléments\n\n⚠️ Cela REMPLACE toutes les données actuelles de cet appareil.",
+    zbk_ok: "✅ Données restaurées — redémarrage…",
+    zbk_echec: "Restauration impossible : {0}",
+    zbk_lecture: "Lecture du fichier impossible",
+    zth_sombre: "Mode sombre activé",
+    zth_clair: "Mode clair activé",
+    zre_aCommander: "{0} article(s) à commander",
+    zlo_relancerVip: "Relancer les VIP",
     zsv_unite: "{0} unité",
     zsv_excellent: "Excellent",
     zsv_attention: "Attention",
@@ -3912,6 +3936,30 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zbo_nouvelle: "New order",
+    zbo_client: "Customer name",
+    zbo_tel: "Phone",
+    zbo_zone: "Delivery area",
+    zbo_article: "Item",
+    zbo_qte: "Quantity",
+    zbo_total: "Total: {0}",
+    zbo_livraison: "incl. delivery {0}",
+    zbo_enregistrer: "Save order",
+    zbo_nomRequis: "Enter the customer's name.",
+    zbo_vitrineVide: "Add products or items to your shop window first.",
+    zbo_ajoutee: "Order added",
+    zbo_log: "Order from {0} — {1}",
+    zbo_stock: "Stock: {0}",
+    zbk_invalide: "Invalid backup file",
+    zbk_dateInconnue: "unknown date",
+    zbk_confirmer: "Restore this backup?\n\n{0}📅 {1}\n📦 {2} items\n\n⚠️ This REPLACES all current data on this device.",
+    zbk_ok: "✅ Data restored — restarting…",
+    zbk_echec: "Restore failed: {0}",
+    zbk_lecture: "Could not read the file",
+    zth_sombre: "Dark mode on",
+    zth_clair: "Light mode on",
+    zre_aCommander: "{0} item(s) to order",
+    zlo_relancerVip: "Follow up with VIPs",
     zsv_unite: "{0} unit",
     zsv_excellent: "Excellent",
     zsv_attention: "Watch",
@@ -11309,7 +11357,7 @@ function vCredits() {
       <div style="font-size:10.5px;color:var(--text-3)">${t('zq_rembourse').replace('{0}', fmt(paid)+' '+sym())}${pct>0?` (${pct}%)`:''}</div>` : ''}
       <div style="display:flex;gap:6px;margin-top:11px">
         ${!settled ? `<button class="btn" style="flex:1;padding:8px 4px;font-size:12px;font-weight:700;background:var(--accent);color:#fff;border:none" onclick="payCredit(${c.id})">💰 Encaisser</button>` : ''}
-        <button class="btn" style="flex:1;padding:8px 4px;font-size:12px;font-weight:700;background:#25D36618;color:#128C4B;border:1px solid #25D36640" onclick="remindCredit(${c.id})">${IC.whatsapp||'💬'} Relancer</button>
+        <button class="btn" style="flex:1;padding:8px 4px;font-size:12px;font-weight:700;background:#25D36618;color:#128C4B;border:1px solid #25D36640" onclick="remindCredit(${c.id})">${IC.whatsapp||'💬'} ${t('zrc_relancer')}</button>
         <button class="btn" style="flex-shrink:0;padding:8px 11px;font-size:12px;background:var(--gray-1);border:1px solid var(--border);color:var(--text-3)" onclick="deleteCredit(${c.id})">🗑️</button>
       </div>
     </div>`;
@@ -14281,12 +14329,12 @@ function importBackupFile(file) {
     let payload = null;
     try { payload = JSON.parse(reader.result); } catch (_) {}
     if (!payload || !payload._baro_backup || !payload.data || typeof payload.data !== 'object') {
-      showToast('Fichier de sauvegarde invalide', 'error');
+      showToast(t('zbk_invalide'), 'error');
       return;
     }
     const n = Object.keys(payload.data).length;
-    const when = payload.exportedAt ? new Date(payload.exportedAt).toLocaleString(_loc()) : 'date inconnue';
-    if (!confirm(`Restaurer cette sauvegarde ?\n\n${payload.business ? '🏪 ' + payload.business + '\n' : ''}📅 ${when}\n📦 ${n} éléments\n\n⚠️ Cela REMPLACE toutes les données actuelles de cet appareil.`)) return;
+    const when = payload.exportedAt ? new Date(payload.exportedAt).toLocaleString(_loc()) : t('zbk_dateInconnue');
+    if (!confirm(tpar('zbk_confirmer', payload.business ? '🏪 ' + payload.business + '\n' : '', when, n))) return;
     try {
       // Purge des clés BARO existantes puis restauration intégrale
       const toRemove = [];
@@ -14295,13 +14343,13 @@ function importBackupFile(file) {
       Object.keys(payload.data).forEach(k => { try { localStorage.setItem(k, payload.data[k]); } catch (_) {} });
       // Même règle qu'à la restauration depuis le serveur.
       try { localStorage.removeItem('baro_regles_planif'); localStorage.setItem('baro_regles_rebase', '1'); } catch (_) {}
-      showToast('✅ Données restaurées — redémarrage…', 'success');
+      showToast(t('zbk_ok'), 'success');
       setTimeout(() => location.reload(), 1000);
     } catch (e) {
-      showToast('Restauration impossible : ' + (e.message || e), 'error');
+      showToast(tpar('zbk_echec', e.message || e), 'error');
     }
   };
-  reader.onerror = () => showToast('Lecture du fichier impossible', 'error');
+  reader.onerror = () => showToast(t('zbk_lecture'), 'error');
   reader.readAsText(file);
 }
 
@@ -14318,7 +14366,7 @@ function toggleDark() {
   }
   // Persist preference
   localStorage.setItem('stockr_dark_mode', S.darkMode ? '1' : '0');
-  showToast(S.darkMode ? 'Mode sombre activé' : 'Mode clair activé', 'success');
+  showToast(S.darkMode ? t('zth_sombre') : t('zth_clair'), 'success');
   render();
 }
 
@@ -35971,7 +36019,7 @@ function _getAllVitrineItems() {
   return [
     ...prods.map(p => ({ id:p.id, name:p.name, price:p.price, description:p.description||'', kind:'product' })),
     ...packs.map(pk => ({ id:'pack_'+pk.id, name:'📦 '+pk.name, price:packFinalPrice(pk), description:pk.description||'Pack promo', kind:'pack' })),
-    ...arts.map(a => ({ id:a.id, name:a.name, price:a.price||a.salePrice||0, description:a.description||`Stock: ${a.qty||0} ${a.unit||''}`, kind:'article' }))
+    ...arts.map(a => ({ id:a.id, name:a.name, price:a.price||a.salePrice||0, description:a.description||tpar('zbo_stock', `${fmtQty(a.stock||0)} ${a.unit||''}`.trim()), kind:'article' }))
   ];
 }
 function shareBoutiqueWhatsApp() {
@@ -36294,31 +36342,81 @@ function vBoutiqueAnalytics() {
     </div>`).join('')}
   </div>`;
 }
+// Saisie d'une commande reçue par téléphone ou au comptoir. Avant : six
+// fenêtres natives à la suite, l'article choisi en tapant son numéro dans
+// une liste, et tout en français.
 function addBoutiqueOrder() {
-  const clientName = prompt('Nom du client :');
-  if (!clientName) return;
-  const phone = prompt('Telephone du client :') || '';
-  const zone = prompt('Zone de livraison :') || '';
-  // Select products/articles en vitrine
-  const shopProds = _getAllVitrineItems();
-  if (shopProds.length === 0) { showToast('Ajoutez des produits/articles en vitrine d\'abord', 'error'); return; }
-  const prodIndex = prompt('Article :\n' + shopProds.map((p,i) => `${i+1}. ${p.name} — ${fmt(p.price)} ${sym()}`).join('\n') + '\n\nNumero :');
-  if (!prodIndex) return;
-  const prod = shopProds[parseInt(prodIndex)-1];
-  if (!prod) { showToast('Produit invalide', 'error'); return; }
-  const qty = parseInt(prompt('Quantite :', '1')) || 1;
-  const total = prod.price * qty + (S.boutiqueConfig.deliveryFees || 0);
-  const order = {
-    id: Date.now(), clientName, phone, zone, status: 'pending',
-    items: [{ id:prod.id, name:prod.name, price:prod.price, qty }],
-    total, date: new Date().toISOString()
+  const items = _getAllVitrineItems();
+  if (items.length === 0) { showToast(t('zbo_vitrineVide'), 'error'); return; }
+  const e = _wafEsc;
+  const frais = Number((S.boutiqueConfig || {}).deliveryFees) || 0;
+  document.querySelectorAll('.sg-voile').forEach(x => x.remove());
+  const v = document.createElement('div');
+  v.className = 'sg-voile';
+  v.innerHTML = `
+    <form class="sg-feuille bo-feuille" role="dialog" aria-modal="true" aria-labelledby="bo-t" novalidate>
+      <div class="sg-t" id="bo-t">🛍️ ${e(t('zbo_nouvelle'))}</div>
+      <label class="bo-champ"><span>${e(t('zbo_client'))}</span>
+        <input class="input" name="nom" list="bo-clients" autocomplete="off" required></label>
+      <datalist id="bo-clients">${(S.clients || []).slice(0, 200).map(c => `<option value="${e(c.name || '')}">`).join('')}</datalist>
+      <div class="bo-ligne">
+        <label class="bo-champ"><span>${e(t('zbo_tel'))}</span><input class="input" name="tel" type="tel" inputmode="tel" autocomplete="off"></label>
+        <label class="bo-champ"><span>${e(t('zbo_zone'))}</span><input class="input" name="zone" autocomplete="off"></label>
+      </div>
+      <div class="bo-ligne">
+        <label class="bo-champ" style="flex:2"><span>${e(t('zbo_article'))}</span>
+          <select class="input" name="article">${items.map((p, i) => `<option value="${i}">${e(p.name)} — ${e(fmt(p.price))} ${e(sym())}</option>`).join('')}</select></label>
+        <label class="bo-champ" style="flex:1"><span>${e(t('zbo_qte'))}</span><input class="input" name="qte" type="number" min="1" step="1" value="1" inputmode="numeric"></label>
+      </div>
+      <div class="bo-total" aria-live="polite"></div>
+      <div class="bo-err" role="alert"></div>
+      <div class="sg-act">
+        <button type="submit" class="btn btn-primary">${e(t('zbo_enregistrer'))}</button>
+        <button type="button" class="btn btn-ghost bo-annuler">${e(t('cancel'))}</button>
+      </div>
+    </form>`;
+  const f = v.querySelector('form');
+  // Le client choisi dans la liste remplit son téléphone et sa zone.
+  f.nom.addEventListener('change', () => {
+    const c = (S.clients || []).find(x => (x.name || '') === f.nom.value);
+    if (c) { if (!f.tel.value) f.tel.value = c.phone || ''; if (!f.zone.value) f.zone.value = c.zone || c.address || ''; }
+  });
+  const maj = () => {
+    const p = items[Number(f.article.value)] || items[0];
+    const q = Math.max(1, parseInt(f.qte.value, 10) || 1);
+    const tot = _arrondiDevise((Number(p.price) || 0) * q + frais);
+    v.querySelector('.bo-total').textContent = tpar('zbo_total', `${fmt(tot)} ${sym()}`) + (frais ? ' · ' + tpar('zbo_livraison', `${fmt(frais)} ${sym()}`) : '');
   };
-  S.boutiqueOrders.unshift(order);
-  localStorage.setItem('baro_boutique_orders', JSON.stringify(S.boutiqueOrders));
-  logActivity('order', `Commande de ${clientName} — ${fmt(total)} ${sym()}`);
-  _evtCommande('recue', order);
-  showToast('Commande ajoutee !');
-  render();
+  f.article.addEventListener('change', maj);
+  f.qte.addEventListener('input', maj);
+  maj();
+  const fermer = () => { v.remove(); document.removeEventListener('keydown', clavier); };
+  const clavier = ev => { if (ev.key === 'Escape') fermer(); };
+  v.querySelector('.bo-annuler').onclick = fermer;
+  v.addEventListener('click', ev => { if (ev.target === v) fermer(); });
+  f.addEventListener('submit', ev => {
+    ev.preventDefault();
+    const clientName = f.nom.value.trim();
+    if (!clientName) { v.querySelector('.bo-err').textContent = t('zbo_nomRequis'); f.nom.focus(); return; }
+    const prod = items[Number(f.article.value)] || items[0];
+    const qty = Math.max(1, parseInt(f.qte.value, 10) || 1);
+    const total = _arrondiDevise((Number(prod.price) || 0) * qty + frais);
+    const order = {
+      id: Date.now(), clientName, phone: f.tel.value.trim(), zone: f.zone.value.trim(), status: 'pending',
+      items: [{ id: prod.id, name: prod.name, price: prod.price, qty }],
+      total, date: new Date().toISOString()
+    };
+    S.boutiqueOrders.unshift(order);
+    localStorage.setItem('baro_boutique_orders', JSON.stringify(S.boutiqueOrders));
+    logActivity('order', tpar('zbo_log', clientName, `${fmt(total)} ${sym()}`));
+    _evtCommande('recue', order);
+    fermer();
+    showToast(t('zbo_ajoutee'), 'success');
+    render();
+  });
+  document.addEventListener('keydown', clavier);
+  document.body.appendChild(v);
+  setTimeout(() => { try { f.nom.focus(); } catch (_) {} }, 30);
 }
 function updateOrderStatus(id, status) {
   const order = S.boutiqueOrders.find(o => String(o.id) === String(id));
@@ -36669,7 +36767,7 @@ function _renderLoyaltyTab() {
         </div>
       </div>
       <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn btn-ghost" style="font-size:11px;padding:6px 10px;flex:1" onclick="sendLoyaltyCampaign()">${IC.whatsapp} Relancer les VIP</button>
+        <button class="btn btn-ghost" style="font-size:11px;padding:6px 10px;flex:1" onclick="sendLoyaltyCampaign()">${IC.whatsapp} ${t('zlo_relancerVip')}</button>
         <button class="btn btn-ghost" style="font-size:11px;padding:6px 10px;flex:1" onclick="exportLoyaltyReport()">${IC.download||'⤓'} Rapport CSV</button>
       </div>
     </div>` : ''}`;
@@ -46106,7 +46204,7 @@ function vPurchaseOrdersEnhanced() {
     ${S.articles.filter(a=>a.stock<a.min&&a.min>0).length>0?`
     <div class="alert-banner" style="margin-bottom:12px" onclick="nav('add-order')">
       <div class="alert-ico">${IC.alert}</div>
-      <div><div class="alert-title">${t('y3_reappSuggere')}</div><div class="alert-sub">${S.articles.filter(a=>a.stock<a.min&&a.min>0).length} articles à commander</div></div>
+      <div><div class="alert-title">${t('y3_reappSuggere')}</div><div class="alert-sub">${tpar('zre_aCommander', S.articles.filter(a=>a.stock<a.min&&a.min>0).length)}</div></div>
       <div class="alert-arrow">${IC.chevron}</div>
     </div>`:''}
 

@@ -2256,7 +2256,7 @@ const LANGS = {
     zs_iaAvancee: "IA avancée",
     zs_apiRest: "API REST complète",
     zs_multiUtilisateurs: "Multi-utilisateurs illimités",
-    zs_support247: "Support prioritaire 24/7",
+    zs_support247: "Support prioritaire",
     zs_accountManager: "Chargé de compte dédié",
     zs_roles: "Gestion des rôles et permissions",
     zs_boutiqueDomaine: "Boutique + domaine personnalisé",
@@ -6323,7 +6323,7 @@ const LANGS = {
     zs_iaAvancee: "advanced AI",
     zs_apiRest: "Full REST API",
     zs_multiUtilisateurs: "Unlimited users",
-    zs_support247: "Priority support 24/7",
+    zs_support247: "Priority support",
     zs_accountManager: "Dedicated account manager",
     zs_roles: "Roles and permissions",
     zs_boutiqueDomaine: "Shop + custom domain",
@@ -25230,11 +25230,10 @@ function _planFeatures(plan) {
     t('unlimited')+' '+t('zs_articles'), t('unlimited')+' '+t('zs_ventes'),
     t('unlimited')+' '+t('zs_emplacements'), tpar('zsp_prixEnt', 300),
     t('zs_apiRest'), t('zs_multiUtilisateurs'),
-    t('zs_support247'), t('zs_accountManager'),
+    t('zs_support247'), t('w3_prevision'), t('zrc_titre'), t('zau_titre'), t('z2_titre'),
     t('zs_roles'), t('zs_integrationsIll'),
     t('zs_boutiqueDomaine'), t('zs_fideliteAvancee'),
-    t('zs_exportOhada'), 'SLA 99.9%',
-    t('zs_formation'),
+    t('zs_exportOhada'),
   ];
   return _planFeatures('free');
 }

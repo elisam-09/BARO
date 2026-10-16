@@ -84,6 +84,7 @@ def create_app():
     from routes.push_routes import push_bp
     from routes.shopper_routes import shopper_bp
     from routes.ai_routes import ai_bp
+    from routes.oauth_routes import oauth_bp
 
     app.register_blueprint(article_bp, url_prefix='/api/articles')
     app.register_blueprint(product_bp, url_prefix='/api/products')
@@ -101,6 +102,7 @@ def create_app():
     app.register_blueprint(push_bp, url_prefix='/api/push')
     app.register_blueprint(shopper_bp, url_prefix='/api/shoppers')
     app.register_blueprint(ai_bp, url_prefix='/api/ai')
+    app.register_blueprint(oauth_bp, url_prefix='/api/auth')
     
     
     @app.route('/api/health')

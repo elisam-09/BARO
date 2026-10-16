@@ -6848,3 +6848,16 @@ body.dark .sub-hero:not(.sh-teinte) {
 .sp-apercu { margin-bottom: 14px; }
 .sp-apercu-l { font-size: 13px; line-height: 1.5; color: var(--text-2); padding: 7px 0; border-top: 1px solid var(--border); }
 .sp-apercu-l:first-of-type { border-top: none; }
+
+
+/* ── Connexion avec Google / Apple (lot 317) ─────────────────────────── */
+.soc-sep { display: flex; align-items: center; gap: 10px; margin: 18px 0 12px; font-size: 11px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: .08em; }
+.soc-sep::before, .soc-sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.soc-btn { width: 100%; gap: 10px; font-weight: 700; padding: 12px; margin-bottom: 10px; border-radius: var(--r-md); min-height: 48px; }
+.soc-btn svg { flex-shrink: 0; }
+.soc-google { background: #fff; color: #1f1f1f; border: 1.5px solid #dadce0; }
+.soc-apple { background: #000; color: #fff; border: 1.5px solid #000; }
+.soc-bio { background: var(--card-bg); color: var(--accent); border: 2px solid var(--accent); }
+[data-theme="dark"] .soc-google, body.dark .soc-google { background: #fff; color: #1f1f1f; }
+[data-theme="dark"] .soc-apple, body.dark .soc-apple { background: #fff; color: #000; border-color: #fff; }
+.soc-pastille { width: 40px; height: 40px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,.1); flex-shrink: 0; }

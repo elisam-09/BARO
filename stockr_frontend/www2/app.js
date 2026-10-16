@@ -270,6 +270,38 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zau_ou: "ou",
+    zau_google: "Continuer avec Google",
+    zau_apple: "Continuer avec Apple",
+    zau_googleOff: "La connexion avec Google n'est pas activée sur ce serveur.",
+    zau_appleOff: "La connexion avec Apple n'est pas activée sur ce serveur.",
+    zau_annule: "Connexion annulée",
+    zau_echec: "La connexion n'a pas abouti. Réessayez.",
+    zau_reseau: "Pas de connexion internet : la connexion avec Google ou Apple en a besoin.",
+    zau_refuse: "Ce compte n'a pas pu être vérifié. Réessayez.",
+    zau_nonVerifie: "Cette adresse n'est pas vérifiée chez le fournisseur.",
+    zau_bienvenue: "Bienvenue, {0} !",
+    zau_rebonjour: "Bon retour, {0} !",
+    zau_bioBouton: "Déverrouiller avec la biométrie",
+    zau_bioIndispo: "La biométrie n'est pas disponible sur cet appareil",
+    zau_bioCapteur: "Aucun capteur détecté (empreinte, Face ID, Windows Hello)",
+    zau_bioConnexion: "Connectez-vous d'abord, puis activez la biométrie dans Paramètres > Sécurité",
+    zau_bioOk: "Biométrie activée sur cet appareil",
+    zau_bioAnnule: "Activation annulée",
+    zau_bioHttps: "La biométrie demande une connexion sécurisée (HTTPS)",
+    zau_bioErreur: "Biométrie : {0}",
+    zau_bioValide: "Déverrouillé",
+    zau_bioSession: "Aucune session sur cet appareil : connectez-vous",
+    zau_bioRefus: "Déverrouillage annulé",
+    zau_bioNonEnrole: "Cet appareil n'est pas enregistré : réactivez la biométrie",
+    zau_cfgTitre: "Connexion avec Google et Apple",
+    zau_cfgSous: "Réglée sur le serveur de BARO, par son propriétaire",
+    zau_cfgActif: "Activée",
+    zau_cfgInactif: "Pas encore activée",
+    zau_cfgPourquoi: "Le compte Google ou Apple est vérifié par le serveur : un jeton émis pour une autre application, expiré, ou une adresse non vérifiée sont refusés. Le commerçant n'a rien à configurer.",
+    zau_cfgEtapesG: "Pour l'activer : Google Cloud → API et services → Identifiants → ID client OAuth « Application Web », origine JavaScript autorisée {0}, puis GOOGLE_CLIENT_ID dans le fichier .env du serveur et « Reload ».",
+    zau_cfgEtapesA: "Pour l'activer : compte Apple Developer (99 $ par an) → Services ID avec « Sign in with Apple », domaine {0} et retour {1}, puis APPLE_SERVICE_ID dans le fichier .env du serveur, pip install PyJWT[crypto] et « Reload ».",
+    zau_cfgVerifier: "Vérifier à nouveau",
     zvt_capcut: "sur mobile, CapCut s'ouvre tout seul s'il est installé.",
     zsp_scansIllimites: "♾️ Scans illimités · forfait {0}",
     zsp_modePhoto: "Scan photo",
@@ -4128,6 +4160,38 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zau_ou: "or",
+    zau_google: "Continue with Google",
+    zau_apple: "Continue with Apple",
+    zau_googleOff: "Sign-in with Google isn't enabled on this server.",
+    zau_appleOff: "Sign-in with Apple isn't enabled on this server.",
+    zau_annule: "Sign-in cancelled",
+    zau_echec: "Sign-in didn't go through. Please try again.",
+    zau_reseau: "No internet connection: signing in with Google or Apple needs it.",
+    zau_refuse: "This account couldn't be verified. Please try again.",
+    zau_nonVerifie: "This address isn't verified by the provider.",
+    zau_bienvenue: "Welcome, {0}!",
+    zau_rebonjour: "Welcome back, {0}!",
+    zau_bioBouton: "Unlock with biometrics",
+    zau_bioIndispo: "Biometrics aren't available on this device",
+    zau_bioCapteur: "No sensor found (fingerprint, Face ID, Windows Hello)",
+    zau_bioConnexion: "Sign in first, then turn on biometrics in Settings > Security",
+    zau_bioOk: "Biometrics turned on for this device",
+    zau_bioAnnule: "Setup cancelled",
+    zau_bioHttps: "Biometrics need a secure connection (HTTPS)",
+    zau_bioErreur: "Biometrics: {0}",
+    zau_bioValide: "Unlocked",
+    zau_bioSession: "No session on this device: please sign in",
+    zau_bioRefus: "Unlock cancelled",
+    zau_bioNonEnrole: "This device isn't registered: turn biometrics on again",
+    zau_cfgTitre: "Sign-in with Google and Apple",
+    zau_cfgSous: "Set up on BARO's server, by its owner",
+    zau_cfgActif: "On",
+    zau_cfgInactif: "Not set up yet",
+    zau_cfgPourquoi: "The Google or Apple account is verified by the server: a token issued for another app, an expired token or an unverified address are rejected. Shop owners have nothing to set up.",
+    zau_cfgEtapesG: "To turn it on: Google Cloud → APIs & Services → Credentials → OAuth client ID “Web application”, authorised JavaScript origin {0}, then GOOGLE_CLIENT_ID in the server's .env file and “Reload”.",
+    zau_cfgEtapesA: "To turn it on: Apple Developer account ($99 a year) → Services ID with “Sign in with Apple”, domain {0} and return URL {1}, then APPLE_SERVICE_ID in the server's .env file, pip install PyJWT[crypto] and “Reload”.",
+    zau_cfgVerifier: "Check again",
     zvt_capcut: "on a phone, CapCut opens by itself if it is installed.",
     zsp_scansIllimites: "♾️ Unlimited scans · {0} plan",
     zsp_modePhoto: "Photo scan",
@@ -16255,18 +16319,12 @@ function vAuth() {
         ${isLogin ? t('loginBtn') : t('next') + ' →'}
       </button>
 
-      ${isLogin && window.PublicKeyCredential ? `
-      <!-- Separator -->
-      <div style="display:flex;align-items:center;gap:10px;margin:18px 0 12px">
-        <div style="flex:1;height:1px;background:var(--border)"></div>
-        <div style="font-size:11px;color:var(--text-3);font-weight:600">OU</div>
-        <div style="flex:1;height:1px;background:var(--border)"></div>
-      </div>
-
-      <!-- Connexion biométrique (WebAuthn natif navigateur — 100% fonctionnel) -->
-      <button class="btn" onclick="loginBiometric()" style="background:var(--card-bg);color:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;padding:12px;width:100%">
-        <span style="font-size:18px">👆</span>
-        Connexion biométrique
+      ${isLogin ? _boutonsSociaux() : ''}
+      ${isLogin && window.PublicKeyCredential && localStorage.getItem('stockr_webauthn_cred') ? `
+      <!-- Déverrouillage biométrique : une vraie vérification par l'appareil,
+           qui rouvre la session déjà ouverte ici (ce n'est pas un compte). -->
+      <button class="btn soc-btn soc-bio" onclick="loginBiometric()">
+        <span style="font-size:17px">👆</span><span>${t('zau_bioBouton')}</span>
       </button>
       ` : ''}
       ${isLogin ? `
@@ -16300,100 +16358,6 @@ function vAuth() {
 // ── Social / biometric login : flux fonctionnels ────────────────
 // Google Identity Services et Apple Sign-In doivent être chargés via index.html en prod.
 // En absence : modal interne propre (pas de prompt() natif) qui crée une vraie session.
-function __socialLoginCreate(provider, email, name, avatar) {
-  const token = 'social_' + provider + '_' + Math.random().toString(36).slice(2, 12);
-  const session = {
-    token,
-    id: 'u_' + provider + '_' + Date.now(),
-    email: email,
-    name: name,
-    business: (name || t('zz_maBoutique')),
-    provider,
-    avatar: avatar || (provider === 'google' ? '🟢' : provider === 'apple' ? '🍎' : '👤'),
-    profile:         S.authProfile || 'reseller',
-    businessType:    S.authProfile === 'transformer' ? 'maker' : S.authProfile === 'reseller' ? 'reseller' : 'mixed',
-    country:         S.authCountry || 'CI',
-    currency:        S.authCurrency || 'XOF',
-    currency_symbol: getCurrencySymbol(S.authCurrency || 'XOF'),
-    language:        S.authLang || 'fr',
-    tax_rate:        0,
-    createdAt: Date.now(),
-  };
-  try {
-    localStorage.setItem('stockr_session', JSON.stringify(session));
-    localStorage.setItem('stockr_token', token);
-    localStorage.setItem('stockr_business_type', session.businessType);
-  } catch(e){}
-  S.token = token;
-  S.session = session;
-  // Session vierge (pas de seed auto pour éviter faux produits)
-  S.articles = []; S.products = []; S.clients = []; S.sales = [];
-  if (typeof logAudit === 'function') logAudit('auth', 'login_success', { provider, email });
-  S.view = 'home';
-  render();
-  try { loadData(); } catch(e){}
-  showToast('✅ Connecté avec ' + provider.charAt(0).toUpperCase() + provider.slice(1) + ' — ' + name, 'success');
-  // Proposer biométrie après login social
-  setTimeout(() => {
-    if (window.PublicKeyCredential && !localStorage.getItem('stockr_webauthn_cred')) {
-      if (confirm('🔐 Activer la biométrie pour sécuriser ce compte ?\n(Empreinte / FaceID / PIN)')) {
-        loginBiometric();
-      }
-    }
-  }, 1500);
-}
-
-function __showSocialModal(provider) {
-  const existing = document.getElementById('social-login-modal');
-  if (existing) existing.remove();
-  const brand = provider === 'google'
-    ? { title: 'Connexion Google', color: '#4285F4', icon: '🟢', logo: '<svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.1 18.9 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.3l-6.2-5.2c-2 1.5-4.6 2.5-7.3 2.5-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.6 39.7 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2c-.4.4 6.7-4.9 6.7-14.8 0-1.3-.1-2.6-.4-3.9z"/></svg>', placeholder: 'ex: monadresse@gmail.com' }
-    : { title: 'Connexion Apple', color: '#000', icon: '🍎', logo: '<svg width="20" height="20" viewBox="0 0 170 170" fill="#fff"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.38 0-10.86 2.346-20.228 7.045-28.088 3.693-6.31 8.606-11.29 14.755-14.95 6.149-3.66 12.793-5.53 19.948-5.65 3.916 0 9.045 1.21 15.417 3.59 6.354 2.39 10.428 3.6 12.205 3.6 1.33 0 5.857-1.415 13.533-4.23 7.258-2.62 13.382-3.71 18.397-3.28 13.59 1.1 23.81 6.45 30.63 16.09-12.15 7.37-18.16 17.68-18.04 30.92.11 10.31 3.85 18.89 11.2 25.71 3.33 3.16 7.05 5.6 11.19 7.34-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375a25.222 25.222 0 0 1-.188-3.07c0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 8.99-3.497 13.1-3.71.12 1.083.17 2.166.17 3.24z"/></svg>', placeholder: 'ex: monadresse@icloud.com' };
-  const modal = document.createElement('div');
-  modal.id = 'social-login-modal';
-  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px);animation:fadeIn .2s ease';
-  modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
-  modal.innerHTML = `
-    <div style="background:var(--surface);border-radius:16px;max-width:400px;width:100%;box-shadow:0 25px 60px rgba(0,0,0,.35);animation:slideUp .25s ease;overflow:hidden">
-      <div style="background:${brand.color};padding:22px 24px;color:#fff;display:flex;align-items:center;gap:12px">
-        <div style="width:40px;height:40px;background:rgba(255,255,255,${provider==='apple'?0.15:0.95});border-radius:50%;display:flex;align-items:center;justify-content:center">${brand.logo}</div>
-        <div style="flex:1">
-          <div style="font-size:17px;font-weight:800">${brand.title}</div>
-          <div style="font-size:12px;opacity:.85;margin-top:2px">${t('x1_baroIdentite')}</div>
-        </div>
-        <button style="width:32px;height:32px;border-radius:50%;border:none;background:rgba(255,255,255,.2);color:#fff;font-size:18px;cursor:pointer" onclick="document.getElementById('social-login-modal').remove()">×</button>
-      </div>
-      <div style="padding:20px 24px">
-        <div class="form-group">
-          <label class="form-label">Email ${provider === 'google' ? 'Google' : 'Apple'}</label>
-          <input class="input" id="social-email-inp" type="email" autocomplete="email" placeholder="${brand.placeholder}" style="font-size:16px">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nom complet</label>
-          <input class="input" id="social-name-inp" type="text" autocomplete="name" placeholder="Prénom Nom" style="font-size:16px">
-        </div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <button class="btn btn-ghost" style="flex:1" onclick="document.getElementById('social-login-modal').remove()">${t('cancel')}</button>
-          <button class="btn btn-primary" style="flex:2;background:${brand.color};border-color:${brand.color}" onclick="__submitSocialLogin('${provider}')">${brand.icon} Se connecter</button>
-        </div>
-        <div style="text-align:center;margin-top:12px;font-size:11px;color:var(--text-3)">${t('x1_donneesLocales')}</div>
-      </div>
-    </div>`;
-  document.body.appendChild(modal);
-  setTimeout(() => document.getElementById('social-email-inp')?.focus(), 150);
-}
-
-function __submitSocialLogin(provider) {
-  const emailEl = document.getElementById('social-email-inp');
-  const nameEl = document.getElementById('social-name-inp');
-  const email = (emailEl?.value || '').trim();
-  const name  = (nameEl?.value || '').trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { emailEl?.focus(); showToast('Email invalide', 'error'); return; }
-  if (name.length < 2) { nameEl?.focus(); showToast('Entrez votre nom', 'error'); return; }
-  document.getElementById('social-login-modal')?.remove();
-  __socialLoginCreate(provider, email, name);
-}
-
 // ── OAuth réel : Google Identity Services (accounts.google.com) ────
 function _loadGoogleGSI() {
   return new Promise((resolve, reject) => {
@@ -16427,128 +16391,132 @@ function _loadAppleJS() {
   });
 }
 
-async function loginGoogle() {
-  if (typeof logAudit === 'function') logAudit('auth', 'google_attempt', {});
-  const clientId = (localStorage.getItem('stockr_google_client_id') || '').trim();
-
-  // Pas de Client ID configuré → ouverture directe de accounts.google.com (page de choix de compte)
-  // + modal de saisie manuelle avec auto-détection de l'email Google depuis le presse-papiers
-  if (!clientId) {
-    // Ouvre le vrai accounts.google.com dans un nouvel onglet pour se connecter
-    try {
-      window.open('https://accounts.google.com/ServiceLogin?continue=' + encodeURIComponent(window.location.href), '_blank', 'noopener');
-    } catch(_){}
-    showToast('🔐 Connectez-vous à Google dans l\'onglet ouvert, puis revenez ici.', 'info');
-    // Affiche la modale BARO pour saisie de l'email Google une fois connecté
-    setTimeout(() => __showSocialModal('google'), 600);
+// ── Connexion avec Google / Apple, vérifiée par le serveur ──
+// Avant : sans réglage, l'app ouvrait Google dans un onglet puis faisait
+// SAISIR l'adresse, sans aucune vérification — n'importe qui se déclarait
+// propriétaire de n'importe quelle adresse. Et même configurée, la session
+// créée était locale, inconnue du serveur. Désormais le navigateur obtient
+// un jeton, le serveur le vérifie et ouvre (ou crée) un vrai compte.
+const _LOGO_GOOGLE = '<svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.1 18.9 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.3l-6.2-5.2c-2 1.5-4.6 2.5-7.3 2.5-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.6 39.7 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2c-.4.4 6.7-4.9 6.7-14.8 0-1.3-.1-2.6-.4-3.9z"/></svg>';
+const _LOGO_APPLE = '<svg width="17" height="17" viewBox="0 0 170 170" fill="currentColor"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.38 0-10.86 2.346-20.228 7.045-28.088 3.693-6.31 8.606-11.29 14.755-14.95 6.149-3.66 12.793-5.53 19.948-5.65 3.916 0 9.045 1.21 15.417 3.59 6.354 2.39 10.428 3.6 12.205 3.6 1.33 0 5.857-1.415 13.533-4.23 7.258-2.62 13.382-3.71 18.397-3.28 13.59 1.1 23.81 6.45 30.63 16.09-12.15 7.37-18.16 17.68-18.04 30.92.11 10.31 3.85 18.89 11.2 25.71 3.33 3.16 7.05 5.6 11.19 7.34-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375a25.222 25.222 0 0 1-.188-3.07c0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 8.99-3.497 13.1-3.71.12 1.083.17 2.166.17 3.24z"/></svg>';
+let _authCfg = (() => { try { return JSON.parse(localStorage.getItem('baro_auth_cfg') || 'null'); } catch (_) { return null; } })();
+let _authCfgQuand = 0, _authCfgEnCours = false;
+async function _authConfig(force) {
+  if (!force && _authCfgQuand && Date.now() - _authCfgQuand < 10 * 60000) return _authCfg;
+  try {
+    const r = await fetch(API_BASE + '/api/auth/config', { cache: 'no-store' });
+    if (r.ok) _authCfg = await r.json();
+    else if (r.status === 404) _authCfg = { google_client_id: null, apple_service_id: null };
+    try { localStorage.setItem('baro_auth_cfg', JSON.stringify(_authCfg)); } catch (_) {}
+  } catch (_) {}
+  _authCfgQuand = Date.now();
+  return _authCfg;
+}
+function _authCfgRafraichir() {
+  if (_authCfgEnCours || (_authCfgQuand && Date.now() - _authCfgQuand < 10 * 60000)) return;
+  _authCfgEnCours = true;
+  const avant = JSON.stringify(_authCfg);
+  _authConfig(true).then(() => { if (JSON.stringify(_authCfg) !== avant) render(); }).finally(() => { _authCfgEnCours = false; });
+}
+// L'identifiant Google de l'app (serveur) ; l'ancien réglage local reste
+// accepté pour la publication YouTube.
+function _googleClientId() {
+  return (_authCfg && _authCfg.google_client_id) || (localStorage.getItem('stockr_google_client_id') || '').trim();
+}
+function _boutonsSociaux() {
+  _authCfgRafraichir();
+  const g = _authCfg && _authCfg.google_client_id, a = _authCfg && _authCfg.apple_service_id;
+  if (!g && !a) return '';
+  return `
+      <div class="soc-sep"><span>${t('zau_ou')}</span></div>
+      ${g ? `<button type="button" class="btn soc-btn soc-google" onclick="loginGoogle()">${_LOGO_GOOGLE}<span>${t('zau_google')}</span></button>` : ''}
+      ${a ? `<button type="button" class="btn soc-btn soc-apple" onclick="loginApple()">${_LOGO_APPLE}<span>${t('zau_apple')}</span></button>` : ''}`;
+}
+// Envoie le jeton au serveur ; la réponse est un vrai compte BARO.
+async function _finirConnexionSociale(fournisseur, corps) {
+  let r;
+  try {
+    r = await fetch(API_BASE + '/api/auth/' + fournisseur, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.assign({
+        currency: S.authCurrency || 'XOF', language: _lang, country: S.authCountry || 'CI',
+        business_name: S.authBusiness || '',
+      }, corps)),
+    });
+  } catch (_) { showToast(t('zau_reseau'), 'error'); return; }
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok || !d.user || !d.user.auth_token) {
+    const e = d && d.error;
+    showToast(e === 'non_configure' ? t(fournisseur === 'apple' ? 'zau_appleOff' : 'zau_googleOff')
+      : e === 'email_non_verifie' ? t('zau_nonVerifie') : e === 'jeton' ? t('zau_refuse') : t('zau_echec'), 'error');
     return;
   }
+  const u = d.user;
+  S.token = u.auth_token;
+  // Type de commerce : celui déjà choisi sur cet appareil, sinon celui du
+  // parcours d'inscription, sinon « mixte » (modifiable dans les réglages).
+  const btLocal = localStorage.getItem('stockr_business_type');
+  const bt = btLocal || (S.authProfile === 'transformer' ? 'maker' : S.authProfile === 'reseller' ? 'reseller' : 'mixed');
+  S.session = {
+    id: u.id, name: u.name, email: u.email, business: u.business_name,
+    profile: bt === 'maker' ? 'transformer' : bt === 'reseller' ? 'reseller' : 'mixed',
+    businessType: bt, provider: fournisseur,
+    currency: u.currency || 'XOF', currency_symbol: getCurrencySymbol(u.currency || 'XOF'),
+    country: u.country || 'CI', language: u.language || _lang, tax_rate: 0,
+  };
+  try { localStorage.setItem('stockr_business_type', bt); } catch (_) {}
+  saveSession({ ...S.session, token: S.token });
+  if (typeof logAudit === 'function') logAudit('auth', 'login', { email: u.email, provider: fournisseur });
+  USE_LOCAL = false;
+  S.view = 'home';
+  render();
+  showToast(tpar(d.nouveau ? 'zau_bienvenue' : 'zau_rebonjour', (u.name || '').split(' ')[0] || u.email), 'success');
+  try { await loadData(); } catch (_) {}
+}
 
-  // Avec Client ID → vrai flow OAuth 2.0 redirection accounts.google.com
-  try {
-    await _loadGoogleGSI();
-    if (!window.google?.accounts?.oauth2) throw new Error('GSI not loaded');
-
-    // Flow 1 : Implicit flow (token direct) — redirige réellement sur accounts.google.com
-    const tokenClient = window.google.accounts.oauth2.initTokenClient({
-      client_id: clientId,
-      scope: 'openid email profile',
-      callback: async (tokenResponse) => {
-        if (!tokenResponse.access_token) {
-          showToast('Connexion Google annulée', 'error');
-          return;
-        }
-        // Récupérer les infos utilisateur avec le token
-        try {
-          const userInfo = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-            headers: { 'Authorization': 'Bearer ' + tokenResponse.access_token }
-          }).then(r => r.json());
-          __socialLoginCreate('google', userInfo.email, userInfo.name || userInfo.given_name, userInfo.picture);
-        } catch (e) {
-          showToast('Erreur récupération infos Google', 'error');
-          __showSocialModal('google');
-        }
-      },
-      error_callback: (err) => {
-        showToast('Connexion Google échouée : ' + (err?.message || 'erreur inconnue'), 'error');
-      }
-    });
-
-    // Ouvre réellement accounts.google.com dans une popup/redirect
-    tokenClient.requestAccessToken({ prompt: 'select_account' });
-  } catch(e) {
-    console.warn('Google OAuth error', e);
-    // Dernier fallback : redirection directe vers accounts.google.com
-    const redirectUri = window.location.origin + window.location.pathname;
-    const state = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    const nonce = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    localStorage.setItem('stockr_oauth_state', state);
-    localStorage.setItem('stockr_oauth_nonce', nonce);
-    localStorage.setItem('stockr_oauth_provider', 'google');
-    const authUrl = 'https://accounts.google.com/o/oauth2/v2/auth?' +
-      'client_id=' + encodeURIComponent(clientId) +
-      '&redirect_uri=' + encodeURIComponent(redirectUri) +
-      '&response_type=' + encodeURIComponent('id_token token') +
-      '&scope=' + encodeURIComponent('openid email profile') +
-      '&state=' + encodeURIComponent(state) +
-      '&nonce=' + encodeURIComponent(nonce) +
-      '&prompt=select_account';
-    window.location.href = authUrl;
-  }
+async function loginGoogle() {
+  if (typeof logAudit === 'function') logAudit('auth', 'google_attempt', {});
+  const cfg = await _authConfig(true);
+  const cid = cfg && cfg.google_client_id;
+  if (!cid) { showToast(t('zau_googleOff'), 'error'); return; }
+  try { await _loadGoogleGSI(); } catch (_) { showToast(t('zau_reseau'), 'error'); return; }
+  if (!window.google?.accounts?.oauth2) { showToast(t('zau_echec'), 'error'); return; }
+  const client = window.google.accounts.oauth2.initTokenClient({
+    client_id: cid,
+    scope: 'openid email profile',
+    callback: (rep) => {
+      if (!rep || !rep.access_token) { showToast(t('zau_annule'), 'info'); return; }
+      _finirConnexionSociale('google', { access_token: rep.access_token });
+    },
+    error_callback: (err) => {
+      showToast(err && /popup_closed|popup_failed_to_open/.test(err.type || '') ? t('zau_annule') : t('zau_echec'), 'info');
+    },
+  });
+  client.requestAccessToken({ prompt: 'select_account' });
 }
 
 async function loginApple() {
   if (typeof logAudit === 'function') logAudit('auth', 'apple_attempt', {});
-  const serviceId = (localStorage.getItem('stockr_apple_service_id') || '').trim();
-
-  if (!serviceId) {
-    // Ouvre le vrai appleid.apple.com pour connexion
-    try {
-      window.open('https://appleid.apple.com/sign-in', '_blank', 'noopener');
-    } catch(_){}
-    showToast("🔐 Connectez-vous à Apple dans l'onglet ouvert, puis revenez ici.", 'info');
-    setTimeout(() => __showSocialModal('apple'), 600);
-    return;
-  }
-
+  const cfg = await _authConfig(true);
+  const sid = cfg && cfg.apple_service_id;
+  if (!sid) { showToast(t('zau_appleOff'), 'error'); return; }
+  try { await _loadAppleJS(); } catch (_) { showToast(t('zau_reseau'), 'error'); return; }
+  if (!window.AppleID?.auth) { showToast(t('zau_echec'), 'error'); return; }
   try {
-    await _loadAppleJS();
-    if (!window.AppleID?.auth) throw new Error('AppleID.auth not loaded');
-
-    const redirectUri = window.location.origin + window.location.pathname;
     window.AppleID.auth.init({
-      clientId: serviceId,
-      scope: 'name email',
-      redirectURI: redirectUri,
-      state: Math.random().toString(36).slice(2),
-      nonce: Math.random().toString(36).slice(2),
+      clientId: sid, scope: 'name email',
+      redirectURI: window.location.origin + window.location.pathname,
+      state: crypto.getRandomValues(new Uint32Array(2)).join(''),
       usePopup: true,
     });
-
     const res = await window.AppleID.auth.signIn();
-    // res.authorization.id_token : JWT
-    // res.user : { name: { firstName, lastName }, email } (seulement à la 1re connexion)
-    let email = '', name = '';
-    try {
-      const idToken = res?.authorization?.id_token;
-      if (idToken) {
-        const payload = JSON.parse(atob(idToken.split('.')[1]));
-        email = payload.email || '';
-      }
-    } catch(e){}
-    email = email || res?.user?.email || 'apple_user@' + serviceId;
-    const fn = res?.user?.name?.firstName || '';
-    const ln = res?.user?.name?.lastName || '';
-    name = (fn + ' ' + ln).trim() || email.split('@')[0] || 'Utilisateur Apple';
-    __socialLoginCreate('apple', email, name);
-  } catch(e) {
-    console.warn('Apple Sign-In error', e);
-    if (e?.error === 'popup_closed_by_user') {
-      showToast('Connexion Apple annulée', 'info');
-    } else {
-      showToast('Erreur Apple Sign-In : ' + (e?.message || e?.error || 'inconnue'), 'error');
-      __showSocialModal('apple');
-    }
+    const idToken = res?.authorization?.id_token;
+    if (!idToken) { showToast(t('zau_echec'), 'error'); return; }
+    // Apple ne donne le nom qu'à la toute première connexion.
+    const nom = [res?.user?.name?.firstName, res?.user?.name?.lastName].filter(Boolean).join(' ');
+    await _finirConnexionSociale('apple', { id_token: idToken, name: nom });
+  } catch (e) {
+    showToast(e?.error === 'popup_closed_by_user' ? t('zau_annule') : t('zau_echec'), 'info');
   }
 }
 
@@ -16564,7 +16532,7 @@ function _handleOAuthCallback() {
   const provider = localStorage.getItem('stockr_oauth_provider') || 'google';
 
   if (error) {
-    showToast('OAuth error : ' + error, 'error');
+    showToast(t('zau_annule'), 'info');
     history.replaceState(null, '', window.location.pathname);
     localStorage.removeItem('stockr_oauth_state');
     localStorage.removeItem('stockr_oauth_provider');
@@ -16572,7 +16540,7 @@ function _handleOAuthCallback() {
   }
   if (!idToken && !accessToken) return false;
   if (state && expectedState && state !== expectedState) {
-    showToast('OAuth state mismatch — possible attaque CSRF, annulé', 'error');
+    showToast(t('zau_refuse'), 'error');
     history.replaceState(null, '', window.location.pathname);
     return true;
   }
@@ -16583,33 +16551,9 @@ function _handleOAuthCallback() {
   localStorage.removeItem('stockr_oauth_provider');
   localStorage.removeItem('stockr_oauth_nonce');
 
-  (async () => {
-    try {
-      let email = '', name = '', picture = '';
-      if (idToken) {
-        const payload = JSON.parse(atob(idToken.split('.')[1]));
-        email = payload.email || '';
-        name = payload.name || payload.given_name || '';
-        picture = payload.picture || '';
-      }
-      if (!email && accessToken && provider === 'google') {
-        const userInfo = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-          headers: { 'Authorization': 'Bearer ' + accessToken }
-        }).then(r => r.json());
-        email = userInfo.email;
-        name = userInfo.name || userInfo.given_name;
-        picture = userInfo.picture;
-      }
-      if (email) {
-        __socialLoginCreate(provider, email, name || email.split('@')[0], picture);
-      } else {
-        showToast('OAuth : email non obtenu', 'error');
-      }
-    } catch (e) {
-      console.warn('OAuth callback parse error', e);
-      showToast('Erreur traitement OAuth', 'error');
-    }
-  })();
+  // Le jeton est vérifié par le serveur : un jeton lu sans vérification
+  // permettait de se présenter avec n'importe quelle adresse.
+  if (provider === 'google') _finirConnexionSociale('google', idToken ? { credential: idToken } : { access_token: accessToken });
   return true;
 }
 
@@ -16642,17 +16586,17 @@ async function isBiometricAvailable() {
 // Enrôle la biométrie (appelé depuis Paramètres → Sécurité)
 async function enrollBiometric() {
   if (!window.PublicKeyCredential) {
-    showToast('WebAuthn non disponible sur cet appareil', 'error');
+    showToast(t('zau_bioIndispo'), 'error');
     return false;
   }
   const avail = await isBiometricAvailable();
   if (!avail) {
-    showToast('Aucun capteur biométrique détecté (TouchID / FaceID / empreinte)', 'error');
+    showToast(t('zau_bioCapteur'), 'error');
     return false;
   }
   const savedSession = getSession();
   if (!savedSession) {
-    showToast('Connectez-vous d\'abord puis activez la biométrie', 'info');
+    showToast(t('zau_bioConnexion'), 'info');
     return false;
   }
   try {
@@ -16681,16 +16625,16 @@ async function enrollBiometric() {
       // Stocke l'ID (base64url) + rawId en base64url pour allowCredentials
       localStorage.setItem('stockr_webauthn_cred', cred.id);
       localStorage.setItem('stockr_webauthn_rawid', _bufToB64u(cred.rawId));
-      showToast('✅ Biométrie enrôlée avec succès', 'success');
+      showToast('✅ ' + t('zau_bioOk'), 'success');
       logAudit('auth', 'biometric_enrolled', { device: navigator.userAgent.split(' ').slice(-1)[0] });
       return true;
     }
     return false;
   } catch(e) {
     logAudit('auth', 'biometric_failed', { error: e.message, stage: 'enroll' });
-    const msg = e.name === 'NotAllowedError' ? 'Enrôlement annulé' :
-                e.name === 'SecurityError' ? 'HTTPS requis pour la biométrie' :
-                `Erreur biométrie : ${e.message}`;
+    const msg = e.name === 'NotAllowedError' ? t('zau_bioAnnule') :
+                e.name === 'SecurityError' ? t('zau_bioHttps') :
+                tpar('zau_bioErreur', e.message);
     showToast(msg, 'error');
     return false;
   }
@@ -16698,7 +16642,7 @@ async function enrollBiometric() {
 
 async function loginBiometric() {
   if (!window.PublicKeyCredential) {
-    showToast('WebAuthn non disponible sur cet appareil', 'error');
+    showToast(t('zau_bioIndispo'), 'error');
     return;
   }
   try {
@@ -16709,7 +16653,7 @@ async function loginBiometric() {
     // Si pas encore enrôlé : déléguer à enrollBiometric()
     if (!savedCredId) {
       if (!savedSession) {
-        showToast('Connectez-vous d\'abord (email/mot de passe), puis activez la biométrie dans Paramètres > Sécurité', 'info');
+        showToast(t('zau_bioConnexion'), 'info');
         return;
       }
       await enrollBiometric();
@@ -16734,7 +16678,7 @@ async function loginBiometric() {
     }
     await navigator.credentials.get({ publicKey });
     logAudit('auth', 'biometric_success', {});
-    showToast('✅ Biométrie validée', 'success');
+    showToast('✅ ' + t('zau_bioValide'), 'success');
     if (savedSession) {
       S.token = savedSession.token;
       S.session = savedSession;
@@ -16742,14 +16686,14 @@ async function loginBiometric() {
       render();
       try { loadData(); } catch(e){}
     } else {
-      showToast('Session absente — connectez-vous', 'warning');
+      showToast(t('zau_bioSession'), 'warning');
     }
   } catch(e) {
     logAudit('auth', 'biometric_failed', { error: e.message, stage: 'verify' });
-    const msg = e.name === 'NotAllowedError' ? 'Authentification biométrique annulée' :
-                e.name === 'InvalidStateError' ? 'Cet appareil n\'est pas enrôlé — réenrôlez' :
-                e.name === 'SecurityError' ? 'HTTPS requis pour la biométrie' :
-                `Erreur : ${e.message || 'Authentification échouée'}`;
+    const msg = e.name === 'NotAllowedError' ? t('zau_bioRefus') :
+                e.name === 'InvalidStateError' ? t('zau_bioNonEnrole') :
+                e.name === 'SecurityError' ? t('zau_bioHttps') :
+                tpar('zau_bioErreur', e.message || '');
     showToast(msg, 'error');
   }
 }
@@ -27261,103 +27205,30 @@ async function testGeminiKey() {
 
 // ── OAUTH SETUP (Google + Apple Sign-In) ────────
 function vOAuthSetup() {
-  const googleId = localStorage.getItem('stockr_google_client_id') || '';
-  const appleId  = localStorage.getItem('stockr_apple_service_id') || '';
-  const origin   = window.location.origin;
-  const redirect = window.location.origin + window.location.pathname;
+  _authCfgRafraichir();
+  const c = _authCfg || {};
+  const origine = window.location.origin;
+  const retour = window.location.origin + window.location.pathname;
+  const ligne = (logo, nom, actif, etapes) => `
+    <div class="card" style="margin-bottom:12px;border-left:4px solid ${actif ? 'var(--success)' : 'var(--border)'}">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <div class="soc-pastille">${logo}</div>
+        <div style="flex:1;min-width:0"><div style="font-size:15px;font-weight:800">${nom}</div>
+          <div style="font-size:12px;font-weight:700;color:${actif ? 'var(--success)' : 'var(--text-3)'}">${actif ? '🟢 ' + t('zau_cfgActif') : '⚪ ' + t('zau_cfgInactif')}</div></div>
+      </div>
+      ${actif ? '' : `<div style="font-size:12px;color:var(--text-2);line-height:1.6">${etapes}</div>`}
+    </div>`;
   return `
-  <div class="sub-hero" style="background:linear-gradient(135deg,#4285F4,#000)">
+  <div class="sub-hero sh-teinte" style="--sh-c1:#4285F4;--sh-c2:#111827">
     <button class="back-btn-dark" style="margin-bottom:14px" onclick="nav(getSession()?'more':'auth')">${IC.left}</button>
-    <div class="sub-hero-title">🔐 Connexions OAuth</div>
-    <div class="sub-hero-sub">${googleId ? '🟢 Google OK' : '⚪ Google'} · ${appleId ? '🟢 Apple OK' : '⚪ Apple'}</div>
+    <div class="sub-hero-title">🔐 ${t('zau_cfgTitre')}</div>
+    <div class="sub-hero-sub">${t('zau_cfgSous')}</div>
   </div>
   <div class="container">
-
-    <div class="card" style="margin-bottom:12px;background:linear-gradient(135deg,#EFF6FF,#F3E8FF);border:1.5px solid #4285F4">
-      <div style="font-size:14px;font-weight:800;color:#1E3A8A;margin-bottom:6px">ℹ️ Pourquoi configurer ?</div>
-      <div style="font-size:12px;color:#3730A3;line-height:1.6">
-        BARO ouvre <strong>${t('x3_vraiGoogle')}</strong> et <strong>${t('x3_vraiApple')}</strong>.
-        ${t('x_oaPour')}
-        <br><br>
-        ${t('v_oaSansConfig')}
-      </div>
-    </div>
-
-    <!-- ── Google ── -->
-    <div class="card" style="margin-bottom:12px;border-left:4px solid ${googleId?'var(--success)':'#4285F4'}">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-        <div style="width:40px;height:40px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.1)">
-          <svg width="24" height="24" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.1 18.9 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.3l-6.2-5.2c-2 1.5-4.6 2.5-7.3 2.5-5.2 0-9.6-3.3-11.2-8l-6.5 5C9.6 39.7 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2c-.4.4 6.7-4.9 6.7-14.8 0-1.3-.1-2.6-.4-3.9z"/></svg>
-        </div>
-        <div style="flex:1">
-          <div style="font-size:15px;font-weight:800;color:var(--text-1)">Google Sign-In</div>
-          <div style="font-size:11px;color:var(--text-2)">${googleId ? 'Configuré' : t('v_oaNonConfig')}</div>
-        </div>
-      </div>
-
-      <details style="margin-bottom:10px">
-        <summary style="cursor:pointer;font-size:12px;font-weight:700;color:#4285F4;padding:6px 0">${t('x3_commentClientId')}</summary>
-        <div style="font-size:12px;color:var(--text-2);line-height:1.7;padding:8px 0 0 12px;border-left:2px solid #4285F4">
-          1. Ouvrez <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer" style="color:#4285F4;font-weight:700">console.cloud.google.com/apis/credentials</a><br>
-          ${t('v_oaProjet')}<br>
-          3. <strong>${t('x3_creerIdentifiants')}</strong> → <strong>${t('z_idClientOauth')}</strong><br>
-          4. Type : <strong>Application Web</strong><br>
-          5. <strong>${t('x3_originesJs')}</strong> : <code style="background:var(--gray-1);padding:2px 6px;border-radius:4px;font-size:11px;word-break:break-all">${origin}</code>
-          <button class="btn btn-ghost" style="padding:4px 8px;font-size:11px;margin-left:6px" onclick="navigator.clipboard.writeText('${origin}');showToast('Copié','success')">📋</button><br>
-          6. <strong>${t('x3_uriRedirection')}</strong> : <code style="background:var(--gray-1);padding:2px 6px;border-radius:4px;font-size:11px;word-break:break-all">${redirect}</code>
-          <button class="btn btn-ghost" style="padding:4px 8px;font-size:11px;margin-left:6px" onclick="navigator.clipboard.writeText('${redirect}');showToast('Copié','success')">📋</button><br>
-          7. ${t('y2_copiezClientId').replace('{0}','<strong>Client ID</strong>').replace('{1}','<code>.apps.googleusercontent.com</code>')}
-        </div>
-      </details>
-
-      <label class="form-label">${t('z_clientIdGoogle')}</label>
-      <input id="google-client-id-input" class="input" type="text" placeholder="123456789-xxx.apps.googleusercontent.com" value="${googleId}" style="font-family:monospace;font-size:13px !important">
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <button class="btn btn-ghost" style="flex:1" onclick="saveGoogleClientId()">${t('w7_enregistrer')}</button>
-        ${googleId ? `<button class="btn btn-primary" style="flex:1;background:#4285F4;border-color:#4285F4" onclick="loginGoogle()">🧪 ${t('zza_tester')}</button>` : ''}
-      </div>
-      ${googleId ? `<button class="btn btn-ghost" style="width:100%;margin-top:8px;color:var(--danger);border-color:var(--danger)" onclick="if(confirm('Supprimer le Client ID Google ?')){localStorage.removeItem('stockr_google_client_id');showToast('Supprimé','info');render()}">${t('w7_supprimer')}</button>` : ''}
-    </div>
-
-    <!-- ── Apple ── -->
-    <div class="card" style="margin-bottom:12px;border-left:4px solid ${appleId?'var(--success)':'#000'}">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-        <div style="width:40px;height:40px;background:#000;border-radius:50%;display:flex;align-items:center;justify-content:center">
-          <svg width="22" height="22" viewBox="0 0 170 170" fill="#fff"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.197-2.12-9.973-3.17-14.34-3.17-4.58 0-9.492 1.05-14.746 3.17-5.262 2.13-9.501 3.24-12.742 3.35-4.929.21-9.842-1.96-14.746-6.52-3.13-2.73-7.045-7.41-11.735-14.04-5.032-7.08-9.169-15.29-12.41-24.65-3.471-10.11-5.211-19.9-5.211-29.38 0-10.86 2.346-20.228 7.045-28.088 3.693-6.31 8.606-11.29 14.755-14.95 6.149-3.66 12.793-5.53 19.948-5.65 3.916 0 9.045 1.21 15.417 3.59 6.354 2.39 10.428 3.6 12.205 3.6 1.33 0 5.857-1.415 13.533-4.23 7.258-2.62 13.382-3.71 18.397-3.28 13.59 1.1 23.81 6.45 30.63 16.09-12.15 7.37-18.16 17.68-18.04 30.92.11 10.31 3.85 18.89 11.2 25.71 3.33 3.16 7.05 5.6 11.19 7.34-.9 2.61-1.85 5.11-2.86 7.51zM119.11 7.24c0 8.102-2.96 15.667-8.86 22.669-7.12 8.324-15.732 13.134-25.071 12.375a25.222 25.222 0 0 1-.188-3.07c0-7.778 3.386-16.102 9.399-22.908 3.002-3.446 6.82-6.311 11.45-8.597 4.62-2.252 8.99-3.497 13.1-3.71.12 1.083.17 2.166.17 3.24z"/></svg>
-        </div>
-        <div style="flex:1">
-          <div style="font-size:15px;font-weight:800;color:var(--text-1)">Sign in with Apple</div>
-          <div style="font-size:11px;color:var(--text-2)">${appleId ? 'Configuré' : t('v_oaNonConfig')}</div>
-        </div>
-      </div>
-
-      <details style="margin-bottom:10px">
-        <summary style="cursor:pointer;font-size:12px;font-weight:700;color:var(--text-1);padding:6px 0">📖 ${t('zy_appleGuide')}</summary>
-        <div style="font-size:12px;color:var(--text-2);line-height:1.7;padding:8px 0 0 12px;border-left:2px solid var(--border)">
-          1. Ouvrez <a href="https://developer.apple.com/account/resources/identifiers/list/serviceId" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700">developer.apple.com/account/resources/identifiers</a><br>
-          ${t('v_oaCreez')} <strong>Services ID</strong> (ex: <code>com.votreapp.baro.web</code>)<br>
-          3. Activez <strong>Sign In with Apple</strong><br>
-          ${t('v_oaDomaine')} <code style="background:var(--gray-1);padding:2px 6px;border-radius:4px;font-size:11px">${window.location.hostname}</code><br>
-          ${t('zy_urlRetour')} <code style="background:var(--gray-1);padding:2px 6px;border-radius:4px;font-size:11px;word-break:break-all">${redirect}</code><br>
-          ${t('v_oaServices')}
-        </div>
-      </details>
-
-      <label class="form-label">Services ID Apple</label>
-      <input id="apple-service-id-input" class="input" type="text" placeholder="com.votreapp.baro.web" value="${appleId}" style="font-family:monospace;font-size:13px !important">
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <button class="btn btn-ghost" style="flex:1" onclick="saveAppleServiceId()">${t('w7_enregistrer')}</button>
-        ${appleId ? `<button class="btn btn-primary" style="flex:1;background:#000;border-color:#000" onclick="loginApple()">🧪 ${t('zza_tester')}</button>` : ''}
-      </div>
-      ${appleId ? `<button class="btn btn-ghost" style="width:100%;margin-top:8px;color:var(--danger);border-color:var(--danger)" onclick="if(confirm('Supprimer le Services ID Apple ?')){localStorage.removeItem('stockr_apple_service_id');showToast('Supprimé','info');render()}">${t('w7_supprimer')}</button>` : ''}
-    </div>
-
-    <div class="card" style="margin-top:14px;background:var(--gray-1);padding:14px">
-      <div style="font-size:12px;color:var(--text-2);line-height:1.6">
-        🔒 <strong>${t('w2_securite')}</strong> ${t('v_oaPublics')}<br>
-        ⚡ <strong>Astuce</strong> ${t('v_oaPopup')}
-      </div>
-    </div>
+    <div class="card" style="margin-bottom:12px"><div style="font-size:12.5px;color:var(--text-2);line-height:1.6">${t('zau_cfgPourquoi')}</div></div>
+    ${ligne(_LOGO_GOOGLE, 'Google', !!c.google_client_id, tpar('zau_cfgEtapesG', `<code>${_wafEsc(origine)}</code>`))}
+    ${ligne(`<span style="color:var(--text-1)">${_LOGO_APPLE}</span>`, 'Apple', !!c.apple_service_id, tpar('zau_cfgEtapesA', `<code>${_wafEsc(window.location.hostname)}</code>`, `<code>${_wafEsc(retour)}</code>`))}
+    <button class="btn btn-ghost" style="width:100%" onclick="_authCfgQuand=0;_authConfig(true).then(()=>render())">${t('zau_cfgVerifier')}</button>
   </div>`;
 }
 
@@ -39871,9 +39742,9 @@ async function __publishTo(target) {
 
   // ═══ YouTube : upload RÉEL via Data API v3 ═══
   if (target === 'youtube') {
-    const clientId = (localStorage.getItem('stockr_google_client_id') || '').trim();
+    const clientId = _googleClientId();
     if (!clientId) {
-      if (confirm('Google OAuth non configuré. Configurer maintenant ?')) {
+      if (confirm(t('zau_googleOff'))) {
         document.getElementById('publish-modal')?.remove();
         nav('oauth-setup');
       }
@@ -47405,8 +47276,6 @@ function __baroInit() {
   window._openSmsVerification    = _openSmsVerification;
   window._doActivatePlan    = _doActivatePlan;
   window.logActivity        = logActivity;
-  window.__showSocialModal  = __showSocialModal;
-  window.__submitSocialLogin= __submitSocialLogin;
   window.vOAuthSetup        = vOAuthSetup;
   window.saveGoogleClientId = saveGoogleClientId;
   window.saveAppleServiceId = saveAppleServiceId;

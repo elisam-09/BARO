@@ -9231,6 +9231,32 @@ function _saveArticles() {
     localStorage.setItem('stockr_articles', j);
     localStorage.setItem('baro_articles', j);
   } catch(_){}
+  _synchroStocks();
+}
+
+// ── Le stock d'un article, envoyé au serveur quel que soit le chemin ──
+// Le serveur garde la quantité d'un article dans « quantity ». La vente
+// rapide lui envoyait « stock » (champ ignoré) et la vente au panier ne
+// lui disait rien : à la synchro suivante, la quantité du serveur
+// remplaçait celle de l'appareil — le stock « remontait » tout seul.
+// Désormais, à chaque enregistrement, toute quantité qui diffère de la
+// dernière connue du serveur lui est envoyée, et notée comme surcharge :
+// hors ligne, la valeur de l'appareil tient et repart à la synchro suivante.
+var _stockServeur = {};   // var : _saveArticles peut servir avant cette ligne
+function _noterStockServeur(liste) {
+  _stockServeur = {};
+  (liste || []).forEach(a => { if (a && a.id != null) _stockServeur[String(a.id)] = Number(a.stock) || 0; });
+}
+function _synchroStocks() {
+  if (USE_LOCAL || !S.token) return;
+  (S.articles || []).forEach(a => {
+    if (!a || a.id == null || Number(a.id) > 1e10) return;   // id local : réconcilié plus tard
+    const k = String(a.id), v = Number(a.stock) || 0;
+    if (!(k in _stockServeur) || Math.abs(_stockServeur[k] - v) < 1e-9) return;
+    _stockServeur[k] = v;
+    _surchargeNote('a', a.id, { stock: v });
+    try { api('PUT', `/api/articles/${a.id}`, { quantity: v }).catch(() => {}); } catch (_) {}
+  });
 }
 // Même règle que pour les articles : le démarrage relit `stockr_products` et
 // `stockr_sales`. Écrire uniquement les clés `baro_*` faisait DISPARAÎTRE les
@@ -9485,6 +9511,7 @@ async function loadData() {
     apiArts.forEach(__applyExtras);
     apiProds.forEach(__applyExtras);
     // Ce qui a été modifié ici et que le serveur n'a pas encore rattrapé.
+    _noterStockServeur(apiArts);
     _surchargesAppliquer(apiArts, 'a');
     _surchargesAppliquer(apiProds, 'p');
     // ── RÈGLE D'OR (Lot 133) : le serveur COMPLÈTE, il n'efface JAMAIS ──
@@ -13986,8 +14013,7 @@ async function confirmMultiSale(opts = {}) {
         const article = S.articles.find(a => a.id === it.articleId);
         if (article) {
           article.stock = Math.max(0, (article.stock||0) - qty);
-          _saveArticles();
-          try { await api('PUT', `/api/articles/${article.id}`, { stock: article.stock }); } catch(e) {}
+          _saveArticles();   // envoie la nouvelle quantité au serveur
           pushMovement(article.name, 'exit', qty, 'Vente directe');
         }
       } else if (it.kind === 'pack') {

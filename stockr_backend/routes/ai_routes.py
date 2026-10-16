@@ -62,6 +62,7 @@ _MARGE_REFLEXION = {'low': 0, 'medium': 3000, 'high': 8000, 'xhigh': 14000, 'max
 _MODELES_AVEC_REPLI = ('claude-opus-5-5', 'claude-opus-5', 'claude-sonnet-5-5', 'claude-fable-5-1')
 
 _MAX_IMAGE_B64 = 2_500_000      # ~1,8 Mo d'image : l'app réduit à 1024 px avant l'envoi
+_MAX_DOC_B64 = 9_000_000        # ~6,5 Mo : une facture PDF de plusieurs pages
 _MAX_TEXTE = 12_000
 
 
@@ -209,7 +210,7 @@ def _gemini(systeme, messages, max_tokens):
             for bloc in contenu:
                 if bloc.get('type') == 'text':
                     parts.append({'text': bloc['text']})
-                elif bloc.get('type') == 'image':
+                elif bloc.get('type') in ('image', 'document'):
                     src = bloc['source']
                     parts.append({'inline_data': {'mime_type': src['media_type'], 'data': src['data']}})
         contenus.append({'role': 'model' if m['role'] == 'assistant' else 'user', 'parts': parts})
@@ -354,3 +355,52 @@ def chat(current_user):
         return jsonify({'error': err}), 422
     _compter(current_user, 'chat')
     return jsonify({'text': texte, 'provider': _fournisseur(), 'left': _reste(current_user, 'chat')})
+
+
+# ── Lire une facture ou un bon de livraison (Pro et Entreprise) ─────────
+_PROMPT_FACTURE = (
+    "You read supplier invoices and delivery notes for small shops in West Africa (the BARO app). "
+    "Extract what is written, never invent: supplier name, document number, date (YYYY-MM-DD), currency "
+    "if shown, and every product line with its name as written, quantity, unit, unit price and line total. "
+    "Numbers are plain numbers (no thousands separators, dot for decimals). If a value is missing, use null. "
+    "Ignore lines that are not products (subtotals, taxes, delivery fees go in their own fields). "
+    "Return STRICTLY one JSON object, no markdown: "
+    "{\"supplier\":\"\",\"number\":\"\",\"date\":\"\",\"currency\":\"\",\"lines\":[{\"name\":\"\",\"quantity\":0,"
+    "\"unit\":\"\",\"unit_price\":0,\"total\":0,\"catalog_match\":\"\"}],\"taxes\":0,\"delivery\":0,\"total\":0}"
+)
+
+
+@ai_bp.route('/document', methods=['POST'])
+@token_required
+def document(current_user):
+    if not _fournisseur():
+        return jsonify({'error': 'indisponible'}), 503
+    if _quota(current_user, 'vision') <= 0:
+        return jsonify({'error': 'forfait', 'minimum': 'pro'}), 403
+    if _reste(current_user, 'vision') <= 0:
+        return jsonify({'error': 'quota', 'max': _quota(current_user, 'vision')}), 429
+    d = request.get_json(silent=True) or {}
+    donnees = d.get('data') or ''
+    type_mime = str(d.get('media_type') or '')
+    if not donnees or len(donnees) > _MAX_DOC_B64:
+        return jsonify({'error': 'fichier'}), 400
+    if type_mime == 'application/pdf':
+        bloc = {'type': 'document', 'source': {'type': 'base64', 'media_type': 'application/pdf', 'data': donnees}}
+    elif type_mime in ('image/jpeg', 'image/png', 'image/webp'):
+        bloc = {'type': 'image', 'source': {'type': 'base64', 'media_type': type_mime, 'data': donnees}}
+    else:
+        return jsonify({'error': 'format'}), 400
+    catalogue = [str(x)[:80] for x in (d.get('catalog') or [])[:400] if x]
+    consigne = 'Read this supplier document.'
+    if catalogue:
+        consigne += (" When a line is clearly one of the shop's products below, set \"catalog_match\" to that exact "
+                     "name; otherwise leave it empty.\nCatalog: " + ' | '.join(catalogue))
+    messages = [{'role': 'user', 'content': [bloc, {'type': 'text', 'text': consigne}]}]
+    try:
+        texte, err = _appeler(_PROMPT_FACTURE, messages, 6000, 'vision', _forfait(current_user))
+    except Exception as e:
+        return jsonify({'error': 'fournisseur', 'detail': type(e).__name__}), 502
+    if err:
+        return jsonify({'error': err}), 422
+    _compter(current_user, 'vision')
+    return jsonify({'text': texte, 'provider': _fournisseur(), 'left': _reste(current_user, 'vision')})

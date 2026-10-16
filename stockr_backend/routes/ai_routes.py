@@ -63,6 +63,7 @@ _MODELES_AVEC_REPLI = ('claude-opus-5-5', 'claude-opus-5', 'claude-sonnet-5-5', 
 
 _MAX_IMAGE_B64 = 2_500_000      # ~1,8 Mo d'image : l'app réduit à 1024 px avant l'envoi
 _MAX_DOC_B64 = 9_000_000        # ~6,5 Mo : une facture PDF de plusieurs pages
+_MAX_PAGES = 6                  # photos d'une même facture papier
 _MAX_TEXTE = 12_000
 
 
@@ -380,22 +381,31 @@ def document(current_user):
     if _reste(current_user, 'vision') <= 0:
         return jsonify({'error': 'quota', 'max': _quota(current_user, 'vision')}), 429
     d = request.get_json(silent=True) or {}
-    donnees = d.get('data') or ''
-    type_mime = str(d.get('media_type') or '')
-    if not donnees or len(donnees) > _MAX_DOC_B64:
+    # Un PDF, une photo, ou plusieurs photos (une facture papier de
+    # plusieurs pages) : une seule lecture, décomptée une fois.
+    pages = d.get('pages') if isinstance(d.get('pages'), list) else [{'data': d.get('data'), 'media_type': d.get('media_type')}]
+    if not pages or len(pages) > _MAX_PAGES:
         return jsonify({'error': 'fichier'}), 400
-    if type_mime == 'application/pdf':
-        bloc = {'type': 'document', 'source': {'type': 'base64', 'media_type': 'application/pdf', 'data': donnees}}
-    elif type_mime in ('image/jpeg', 'image/png', 'image/webp'):
-        bloc = {'type': 'image', 'source': {'type': 'base64', 'media_type': type_mime, 'data': donnees}}
-    else:
-        return jsonify({'error': 'format'}), 400
+    blocs, taille = [], 0
+    for page in pages:
+        page = page if isinstance(page, dict) else {}
+        donnees = page.get('data') or ''
+        type_mime = str(page.get('media_type') or '')
+        taille += len(donnees)
+        if not isinstance(donnees, str) or not donnees or taille > _MAX_DOC_B64:
+            return jsonify({'error': 'fichier'}), 400
+        if type_mime == 'application/pdf' and len(pages) == 1:
+            blocs.append({'type': 'document', 'source': {'type': 'base64', 'media_type': 'application/pdf', 'data': donnees}})
+        elif type_mime in ('image/jpeg', 'image/png', 'image/webp'):
+            blocs.append({'type': 'image', 'source': {'type': 'base64', 'media_type': type_mime, 'data': donnees}})
+        else:
+            return jsonify({'error': 'format'}), 400
     catalogue = [str(x)[:80] for x in (d.get('catalog') or [])[:400] if x]
-    consigne = 'Read this supplier document.'
+    consigne = 'Read this supplier document.' if len(blocs) == 1 else         f'These {len(blocs)} images are the pages of one supplier document, in order. Read them as one document.'
     if catalogue:
         consigne += (" When a line is clearly one of the shop's products below, set \"catalog_match\" to that exact "
                      "name; otherwise leave it empty.\nCatalog: " + ' | '.join(catalogue))
-    messages = [{'role': 'user', 'content': [bloc, {'type': 'text', 'text': consigne}]}]
+    messages = [{'role': 'user', 'content': blocs + [{'type': 'text', 'text': consigne}]}]
     try:
         texte, err = _appeler(_PROMPT_FACTURE, messages, 6000, 'vision', _forfait(current_user))
     except Exception as e:

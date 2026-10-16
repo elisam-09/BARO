@@ -270,6 +270,181 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zim_titre: "Importer",
+    zim_sous: "Factures, Excel, photos, sauvegardes",
+    zim_menuSub: "Facture fournisseur · Excel · photos",
+    zim_retour: "Retour",
+    zim_depotT: "Choisir ou déposer un fichier",
+    zim_depotS: "PDF, Excel, ODS, CSV, ZIP, JPG, PNG ou sauvegarde BARO : le bon import s'ouvre tout seul.",
+    zim_factT: "Facture fournisseur",
+    zim_factD: "Photographiez la facture ou le bon de livraison, ou choisissez le PDF. L'IA lit chaque ligne, vous vérifiez, puis le stock et les prix d'achat se mettent à jour.",
+    zim_photographier: "Photographier",
+    zim_choisirFichier: "Choisir un fichier",
+    zim_debloquer: "Voir ce que ça débloque",
+    zim_iaHorsLigne: "Nécessite Internet et un compte connecté.",
+    zim_iaIndispo: "Lecture par l'IA indisponible pour le moment.",
+    zim_iaReste: "{0} lectures restantes aujourd'hui sur {1}",
+    zim_tabT: "Tableur",
+    zim_tabD: "Votre liste d'articles depuis Excel, Google Sheets (fichier exporté), LibreOffice ou une autre caisse. Les colonnes sont reconnues et vous voyez tout avant d'importer.",
+    zim_modele: "Modèle vide",
+    zim_photosT: "Photos d'articles",
+    zim_photosD: "Plusieurs photos ou un dossier compressé (.zip). Chaque photo va à l'article dont le nom, la référence ou le code-barres correspond au nom du fichier.",
+    zim_choisirPhotos: "Choisir des photos",
+    zim_choisirZip: "Choisir un .zip",
+    zim_sauvT: "Sauvegarde BARO",
+    zim_sauvD: "Restaure un fichier .json exporté depuis BARO. Il remplace les données de cet appareil.",
+    zim_restaurer: "Restaurer",
+    zim_sauvegarder: "Créer une sauvegarde",
+    zim_recents: "Derniers imports",
+    zim_lignesN: "{0} lignes",
+    zim_formatInconnu: "Format non pris en charge. Utilisez PDF, Excel, ODS, CSV, ZIP, JPG, PNG ou JSON.",
+    zim_genreT: "Ces {0} image(s), c'est :",
+    zim_genreFacture: "Une facture ou un bon de livraison",
+    zim_genreFactureS: "L'IA lit les lignes pour entrer le stock",
+    zim_genrePhotos: "Des photos d'articles",
+    zim_genrePhotosS: "Pour illustrer votre stock et votre boutique",
+    zim_annuler: "Annuler",
+    zim_pdfSeul: "Un PDF se lit seul : retirez les photos ou choisissez un seul PDF.",
+    zim_pdfLourd: "PDF trop lourd (6,5 Mo au maximum). Exportez-le en qualité réduite ou photographiez les pages.",
+    zim_maxPages: "6 pages au maximum par facture.",
+    zim_illisible: "Impossible d'ouvrir « {0} ». Enregistrez l'image en JPG ou PNG.",
+    zim_pagesN: "{0} page(s) : ajoutez les suivantes si la facture continue",
+    zim_pagesPdf: "Document PDF",
+    zim_retirer: "Retirer",
+    zim_ajouterPage: "Page suivante",
+    zim_ouGalerie: "ou choisir des images",
+    zim_noteLecture: "Cadrez toute la page, à plat et bien éclairée. Les pages sont lues ensemble et comptent pour une seule lecture.",
+    zim_noteLecturePdf: "Toutes les pages du PDF sont lues ensemble et comptent pour une seule lecture.",
+    zim_lire: "Lire la facture",
+    zim_resteCourt: "{0} restantes",
+    zim_lectureT: "Lecture en cours…",
+    zim_lectureS: "L'IA lit votre document",
+    zim_lectureD: "Fournisseur, lignes, quantités et prix : comptez de 20 secondes à 2 minutes selon la longueur.",
+    zim_errReseau: "Pas de connexion au serveur. Vérifiez Internet et réessayez.",
+    zim_errForfait: "La lecture de factures est réservée aux forfaits Pro et Entreprise.",
+    zim_errQuota: "Limite du jour atteinte ({0} lectures). Elle se renouvelle demain.",
+    zim_errLongue: "Document trop long pour une seule lecture : envoyez-le en plusieurs parties.",
+    zim_errRefus: "L'IA n'a pas pu traiter ce document.",
+    zim_errFichier: "Fichier refusé (format ou taille). Essayez une photo JPG.",
+    zim_errLecture: "La lecture a échoué. Réessayez dans un instant.",
+    zim_errVideFacture: "Aucune ligne d'article trouvée. Vérifiez que la photo est nette et que la page entière est visible.",
+    zim_verifT: "Vérifiez la facture",
+    zim_verifS: "{0} ligne(s) lue(s). Rien n'est enregistré avant votre accord.",
+    zim_fournisseur: "Fournisseur",
+    zim_numero: "N° de facture",
+    zim_date: "Date",
+    zim_totalFacture: "Total de la facture",
+    zim_sommeLignes: "Somme des lignes",
+    zim_ecart: "La somme des lignes ne correspond pas au total de la facture : vérifiez qu'aucune ligne ne manque ou n'est mal lue.",
+    zim_deja: "Cette facture semble déjà importée (le {0}).",
+    zim_dejaConfirmer: "Cette facture semble déjà importée (le {0}). L'importer une deuxième fois ajoutera encore le stock. Continuer ?",
+    zim_convertir: "Convertir de {0} en {1}",
+    zim_taux: "1 {0} = {1} {2} ({3})",
+    zim_tauxOfficiel: "parité officielle",
+    zim_tauxEnregistre: "taux enregistré dans BARO",
+    zim_tauxInconnu: "Taux inconnu pour cette monnaie : les prix restent tels quels.",
+    zim_inclure: "Inclure",
+    zim_lierPh: "Nouvel article, ou choisissez dans votre stock",
+    zim_delier: "Ne pas lier",
+    zim_qte: "Qté",
+    zim_pu: "Prix unitaire",
+    zim_totalL: "Total",
+    zim_pvFacultatif: "Prix de vente ({0}, facultatif)",
+    zim_existant: "Lié",
+    zim_stockApres: "stock {0} → {1}",
+    zim_prixAchat: "prix d'achat {0} → {1}",
+    zim_margeNeg: "⚠ Prix d'achat au-dessus du prix de vente ({0})",
+    zim_nouveau: "Nouveau",
+    zim_seraCree: "sera créé dans votre stock",
+    zim_doute: "⚠ À vérifier : quantité × prix ne donne pas le total lu.",
+    zim_douteQte: "⚠ Quantité illisible : saisissez-la.",
+    zim_pasTrouve: "Article introuvable : choisissez un nom dans la liste.",
+    zim_majPrix: "Mettre à jour les prix d'achat",
+    zim_majPrixS: "Vos marges seront calculées avec les prix de cette facture.",
+    zim_depense: "Ajouter la facture aux dépenses",
+    zim_depenseS: "Pour suivre la trésorerie. Vos marges comptent déjà le prix d'achat : inutile si vous suivez seulement les bénéfices.",
+    zim_entrer: "Entrer {0} ligne(s) en stock",
+    zim_enCours: "Enregistrement… {0}/{1}",
+    zim_rien: "Aucune ligne à importer.",
+    zim_abandonner: "Abandonner cet import ? Rien n'a été enregistré.",
+    zim_facture: "Facture",
+    zim_journal: "Import de facture : {0} ligne(s), {1}",
+    zim_finiT: "C'est fait",
+    zim_finiEntrees: "{0} ligne(s) entrée(s) en stock",
+    zim_finiCreees: "{0} article(s) créé(s)",
+    zim_finiPrix: "{0} prix d'achat mis à jour",
+    zim_finiMaj: "{0} article(s) mis à jour",
+    zim_finiPhotos: "{0} photo(s) attribuée(s)",
+    zim_finiEchecs: "{0} ligne(s) non enregistrée(s) faute de connexion : réimportez-les plus tard.",
+    zim_finiDepense: "Dépense enregistrée : {0}",
+    zim_sansPrix: "Prix de vente à fixer",
+    zim_sansPrixS: "Ces nouveaux articles n'ont pas encore de prix de vente.",
+    zim_fixerPrix: "Fixer le prix de vente",
+    zim_voirStock: "Voir le stock",
+    zim_autre: "Importer autre chose",
+    zim_chargement: "Ouverture du fichier…",
+    zim_errLib: "Impossible de charger le lecteur de fichiers. Vérifiez Internet et réessayez.",
+    zim_errVide: "Ce fichier ne contient aucune donnée.",
+    zim_errTableur: "Ce fichier n'a pas pu être lu. Enregistrez-le en .xlsx ou .csv et réessayez.",
+    zim_errZip: "Ce fichier .zip n'a pas pu être ouvert.",
+    zim_feuille: "Feuille",
+    zim_nouveaux: "nouveaux",
+    zim_misAJour: "mis à jour",
+    zim_ignores: "ignorés",
+    zim_choisirNom: "Indiquez quelle colonne contient le nom des articles.",
+    zim_limite: "Votre forfait permet encore {0} article(s) : seuls les {0} premiers nouveaux sur {1} seront créés.",
+    zim_voirForfaits: "Voir les forfaits",
+    zim_colonnes: "Colonnes reconnues",
+    zim_aucune: "Aucune",
+    zim_colonne: "Colonne",
+    zim_colsN: "{0} sur {1}",
+    zim_sauvOk: "📦 Sauvegarde enregistrée ({0} éléments)",
+    zim_sauvEchec: "Sauvegarde impossible : {0}",
+    zim_spectraSub: "Photo ou PDF : l'IA entre le stock et les prix d'achat",
+    zim_ligneEntete: "Ligne des titres",
+    zim_ligne: "Ligne",
+    zim_ch_name: "Nom",
+    zim_ch_stock: "Quantité",
+    zim_ch_price: "Prix de vente",
+    zim_ch_purchasePrice: "Prix d'achat",
+    zim_ch_ref: "Référence",
+    zim_ch_ean: "Code-barres",
+    zim_ch_category: "Catégorie",
+    zim_ch_unit: "Unité",
+    zim_ch_min: "Seuil d'alerte",
+    zim_qteFichier: "Pour les articles déjà en stock, la quantité du fichier…",
+    zim_modeRemplacer: "est le stock actuel",
+    zim_modeRemplacerS: "Elle remplace le stock (inventaire).",
+    zim_modeAjouter: "est une livraison",
+    zim_modeAjouterS: "Elle s'ajoute au stock existant.",
+    zim_apercu: "Aperçu ({0} sur {1})",
+    zim_thNom: "Article",
+    zim_thPrix: "Prix",
+    zim_pNouveau: "Nouveau",
+    zim_pMaj: "Existant",
+    zim_r_sansNom: "Sans nom",
+    zim_r_doublon: "Doublon",
+    zim_r_total: "Total",
+    zim_importerN: "Importer {0} article(s)",
+    zim_noteTableur: "Import tableur",
+    zim_journalTab: "Import tableur : {0} créé(s), {1} mis à jour",
+    zim_photosS: "{0} photo(s), {1} reconnue(s)",
+    zim_photosAide: "Vérifiez l'article de chaque photo. Une photo sans article n'est pas importée.",
+    zim_photosEchecs: "{0} fichier(s) illisible(s) ignoré(s).",
+    zim_photosTrop: "200 photos au maximum par import : {0} photo(s) restent à importer ensuite.",
+    zim_photoLier: "Choisir l'article",
+    zim_remplace: "remplacera la photo actuelle",
+    zim_attribuer: "Attribuer {0} photo(s)",
+    zim_memoirePleine: "Mémoire de l'appareil pleine : choisissez moins de photos à la fois.",
+    zim_aucunePhoto: "Aucune image trouvée dans ces fichiers.",
+    zim_photosLecture: "Préparation des photos… {0}/{1}",
+    zim_journalPhotos: "Import de photos : {0} attribuée(s)",
+    zim_documentsSub: "Devis · factures · rapports · exports",
+    zim_mouvementsN: "{0} mouvements",
+    zim_fFact: "Lecture de factures par l'IA",
+    zim_fFactQ: "Photographiez ou déposez la facture d'un fournisseur : l'IA en lit les lignes, vous vérifiez, et le stock comme les prix d'achat se mettent à jour.",
+    zim_fPhotos: "Import de photos en lot",
+    zim_fPhotosQ: "Attribuez des dizaines de photos (ou un .zip) à vos articles en une fois, d'après le nom des fichiers.",
     zau_ou: "ou",
     zau_google: "Continuer avec Google",
     zau_apple: "Continuer avec Apple",
@@ -2366,6 +2541,8 @@ const LANGS = {
     "zh_d_xl-ventes": "Le détail des ventes en feuille de calcul.",
     "zh_a_xl-articles": "Exporter les articles (Excel)",
     "zh_d_xl-articles": "L'état du stock en feuille de calcul.",
+    "zh_a_xl-import": "Importer un fichier Excel ou CSV",
+    "zh_d_xl-import": "Crée ou met à jour vos articles, après vérification.",
     "zh_a_pos-config": "Configurer la caisse",
     "zh_d_pos-config": "Imprimante, tiroir-caisse et format de ticket.",
     "zh_a_api-cles": "Mes clés d'API",
@@ -4160,6 +4337,181 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zim_titre: "Import",
+    zim_sous: "Invoices, Excel, photos, backups",
+    zim_menuSub: "Supplier invoice · Excel · photos",
+    zim_retour: "Back",
+    zim_depotT: "Choose or drop a file",
+    zim_depotS: "PDF, Excel, ODS, CSV, ZIP, JPG, PNG or a BARO backup: the right import opens by itself.",
+    zim_factT: "Supplier invoice",
+    zim_factD: "Photograph the invoice or delivery note, or pick the PDF. The AI reads every line, you check it, then stock and purchase prices update.",
+    zim_photographier: "Take a photo",
+    zim_choisirFichier: "Choose a file",
+    zim_debloquer: "See what it unlocks",
+    zim_iaHorsLigne: "Needs internet and a signed-in account.",
+    zim_iaIndispo: "AI reading is unavailable right now.",
+    zim_iaReste: "{0} of {1} readings left today",
+    zim_tabT: "Spreadsheet",
+    zim_tabD: "Your item list from Excel, Google Sheets (exported file), LibreOffice or another POS. Columns are recognised and you see everything before importing.",
+    zim_modele: "Blank template",
+    zim_photosT: "Item photos",
+    zim_photosD: "Several photos or a compressed folder (.zip). Each photo goes to the item whose name, reference or barcode matches the file name.",
+    zim_choisirPhotos: "Choose photos",
+    zim_choisirZip: "Choose a .zip",
+    zim_sauvT: "BARO backup",
+    zim_sauvD: "Restores a .json file exported from BARO. It replaces the data on this device.",
+    zim_restaurer: "Restore",
+    zim_sauvegarder: "Create a backup",
+    zim_recents: "Recent imports",
+    zim_lignesN: "{0} lines",
+    zim_formatInconnu: "Unsupported format. Use PDF, Excel, ODS, CSV, ZIP, JPG, PNG or JSON.",
+    zim_genreT: "These {0} image(s) are:",
+    zim_genreFacture: "An invoice or delivery note",
+    zim_genreFactureS: "The AI reads the lines to add stock",
+    zim_genrePhotos: "Item photos",
+    zim_genrePhotosS: "To illustrate your stock and your shop",
+    zim_annuler: "Cancel",
+    zim_pdfSeul: "A PDF is read on its own: remove the photos or pick a single PDF.",
+    zim_pdfLourd: "PDF too large (6.5 MB max). Export it at lower quality or photograph the pages.",
+    zim_maxPages: "6 pages max per invoice.",
+    zim_illisible: "Can't open \"{0}\". Save the image as JPG or PNG.",
+    zim_pagesN: "{0} page(s): add the next ones if the invoice continues",
+    zim_pagesPdf: "PDF document",
+    zim_retirer: "Remove",
+    zim_ajouterPage: "Next page",
+    zim_ouGalerie: "or choose images",
+    zim_noteLecture: "Frame the whole page, flat and well lit. Pages are read together and count as one reading.",
+    zim_noteLecturePdf: "All PDF pages are read together and count as one reading.",
+    zim_lire: "Read the invoice",
+    zim_resteCourt: "{0} left",
+    zim_lectureT: "Reading…",
+    zim_lectureS: "The AI is reading your document",
+    zim_lectureD: "Supplier, lines, quantities and prices: allow 20 seconds to 2 minutes depending on length.",
+    zim_errReseau: "No connection to the server. Check the internet and try again.",
+    zim_errForfait: "Invoice reading is for the Pro and Enterprise plans.",
+    zim_errQuota: "Daily limit reached ({0} readings). It resets tomorrow.",
+    zim_errLongue: "Document too long for one reading: send it in several parts.",
+    zim_errRefus: "The AI couldn't process this document.",
+    zim_errFichier: "File rejected (format or size). Try a JPG photo.",
+    zim_errLecture: "Reading failed. Try again in a moment.",
+    zim_errVideFacture: "No item lines found. Check the photo is sharp and the whole page is visible.",
+    zim_verifT: "Check the invoice",
+    zim_verifS: "{0} line(s) read. Nothing is saved until you confirm.",
+    zim_fournisseur: "Supplier",
+    zim_numero: "Invoice no.",
+    zim_date: "Date",
+    zim_totalFacture: "Invoice total",
+    zim_sommeLignes: "Sum of lines",
+    zim_ecart: "The sum of the lines doesn't match the invoice total: check that no line is missing or misread.",
+    zim_deja: "This invoice seems already imported (on {0}).",
+    zim_dejaConfirmer: "This invoice seems already imported (on {0}). Importing it again will add the stock again. Continue?",
+    zim_convertir: "Convert from {0} to {1}",
+    zim_taux: "1 {0} = {1} {2} ({3})",
+    zim_tauxOfficiel: "official peg",
+    zim_tauxEnregistre: "rate saved in BARO",
+    zim_tauxInconnu: "Unknown rate for this currency: prices stay as they are.",
+    zim_inclure: "Include",
+    zim_lierPh: "New item, or pick one from your stock",
+    zim_delier: "Unlink",
+    zim_qte: "Qty",
+    zim_pu: "Unit price",
+    zim_totalL: "Total",
+    zim_pvFacultatif: "Selling price ({0}, optional)",
+    zim_existant: "Linked",
+    zim_stockApres: "stock {0} → {1}",
+    zim_prixAchat: "purchase price {0} → {1}",
+    zim_margeNeg: "⚠ Purchase price above the selling price ({0})",
+    zim_nouveau: "New",
+    zim_seraCree: "will be created in your stock",
+    zim_doute: "⚠ Please check: quantity × price doesn't match the total read.",
+    zim_douteQte: "⚠ Quantity unreadable: please enter it.",
+    zim_pasTrouve: "Item not found: pick a name from the list.",
+    zim_majPrix: "Update purchase prices",
+    zim_majPrixS: "Your margins will be calculated with this invoice's prices.",
+    zim_depense: "Add the invoice to expenses",
+    zim_depenseS: "To track cash flow. Your margins already count the purchase price: not needed if you only track profit.",
+    zim_entrer: "Add {0} line(s) to stock",
+    zim_enCours: "Saving… {0}/{1}",
+    zim_rien: "No line to import.",
+    zim_abandonner: "Discard this import? Nothing has been saved.",
+    zim_facture: "Invoice",
+    zim_journal: "Invoice import: {0} line(s), {1}",
+    zim_finiT: "Done",
+    zim_finiEntrees: "{0} line(s) added to stock",
+    zim_finiCreees: "{0} item(s) created",
+    zim_finiPrix: "{0} purchase price(s) updated",
+    zim_finiMaj: "{0} item(s) updated",
+    zim_finiPhotos: "{0} photo(s) assigned",
+    zim_finiEchecs: "{0} line(s) not saved because of the connection: import them again later.",
+    zim_finiDepense: "Expense recorded: {0}",
+    zim_sansPrix: "Selling prices to set",
+    zim_sansPrixS: "These new items don't have a selling price yet.",
+    zim_fixerPrix: "Set the selling price",
+    zim_voirStock: "View stock",
+    zim_autre: "Import something else",
+    zim_chargement: "Opening the file…",
+    zim_errLib: "Couldn't load the file reader. Check the internet and try again.",
+    zim_errVide: "This file contains no data.",
+    zim_errTableur: "This file couldn't be read. Save it as .xlsx or .csv and try again.",
+    zim_errZip: "This .zip file couldn't be opened.",
+    zim_feuille: "Sheet",
+    zim_nouveaux: "new",
+    zim_misAJour: "updated",
+    zim_ignores: "skipped",
+    zim_choisirNom: "Tell BARO which column holds the item names.",
+    zim_limite: "Your plan allows {0} more item(s): only the first {0} of {1} new ones will be created.",
+    zim_voirForfaits: "See plans",
+    zim_colonnes: "Detected columns",
+    zim_aucune: "None",
+    zim_colonne: "Column",
+    zim_colsN: "{0} of {1}",
+    zim_sauvOk: "📦 Backup saved ({0} items)",
+    zim_sauvEchec: "Backup failed: {0}",
+    zim_spectraSub: "Photo or PDF: the AI adds stock and purchase prices",
+    zim_ligneEntete: "Header row",
+    zim_ligne: "Row",
+    zim_ch_name: "Name",
+    zim_ch_stock: "Quantity",
+    zim_ch_price: "Selling price",
+    zim_ch_purchasePrice: "Purchase price",
+    zim_ch_ref: "Reference",
+    zim_ch_ean: "Barcode",
+    zim_ch_category: "Category",
+    zim_ch_unit: "Unit",
+    zim_ch_min: "Alert threshold",
+    zim_qteFichier: "For items already in stock, the file's quantity…",
+    zim_modeRemplacer: "is the current stock",
+    zim_modeRemplacerS: "It replaces the stock (stock count).",
+    zim_modeAjouter: "is a delivery",
+    zim_modeAjouterS: "It adds to the existing stock.",
+    zim_apercu: "Preview ({0} of {1})",
+    zim_thNom: "Item",
+    zim_thPrix: "Price",
+    zim_pNouveau: "New",
+    zim_pMaj: "Existing",
+    zim_r_sansNom: "No name",
+    zim_r_doublon: "Duplicate",
+    zim_r_total: "Total",
+    zim_importerN: "Import {0} item(s)",
+    zim_noteTableur: "Spreadsheet import",
+    zim_journalTab: "Spreadsheet import: {0} created, {1} updated",
+    zim_photosS: "{0} photo(s), {1} matched",
+    zim_photosAide: "Check each photo's item. A photo without an item isn't imported.",
+    zim_photosEchecs: "{0} unreadable file(s) skipped.",
+    zim_photosTrop: "200 photos max per import: {0} photo(s) are left to import next.",
+    zim_photoLier: "Choose the item",
+    zim_remplace: "will replace the current photo",
+    zim_attribuer: "Assign {0} photo(s)",
+    zim_memoirePleine: "Device storage full: choose fewer photos at a time.",
+    zim_aucunePhoto: "No image found in these files.",
+    zim_photosLecture: "Preparing photos… {0}/{1}",
+    zim_journalPhotos: "Photo import: {0} assigned",
+    zim_documentsSub: "Quotes · invoices · reports · exports",
+    zim_mouvementsN: "{0} movements",
+    zim_fFact: "AI invoice reading",
+    zim_fFactQ: "Photograph or drop a supplier's invoice: the AI reads its lines, you check them, and both stock and purchase prices update.",
+    zim_fPhotos: "Bulk photo import",
+    zim_fPhotosQ: "Assign dozens of photos (or a .zip) to your items at once, based on the file names.",
     zau_ou: "or",
     zau_google: "Continue with Google",
     zau_apple: "Continue with Apple",
@@ -6256,6 +6608,8 @@ const LANGS = {
     "zh_d_xl-ventes": "Sales detail as a spreadsheet.",
     "zh_a_xl-articles": "Export items (Excel)",
     "zh_d_xl-articles": "Stock levels as a spreadsheet.",
+    "zh_a_xl-import": "Import an Excel or CSV file",
+    "zh_d_xl-import": "Creates or updates your items, after review.",
     "zh_a_pos-config": "Set up the till",
     "zh_d_pos-config": "Printer, cash drawer and receipt format.",
     "zh_a_api-cles": "My API keys",
@@ -8909,6 +9263,14 @@ async function _pwdHash(salt, password) {
   return 'h0$' + h1.toString(16) + h2.toString(16);
 }
 
+// Identifiants du mode hors-ligne : Date.now() seul donnait le même numéro
+// à deux articles créés dans la même milliseconde (import d'un tableur).
+let _dernierIdLocal = 0;
+function _idLocal() {
+  const n = Date.now();
+  _dernierIdLocal = n > _dernierIdLocal ? n : _dernierIdLocal + 1;
+  return _dernierIdLocal;
+}
 function _localApi(method, path, body) {
   // ── Auth ──
   if (path === '/api/auth/register' && method === 'POST') {
@@ -8958,7 +9320,7 @@ function _localApi(method, path, body) {
   if (path === '/api/articles/' && method === 'POST') {
     // Stocker le corps COMPLET (image, sell_price, category, expiry…) — le
     // squelette 7 champs faisait "disparaître" photo/prix au redémarrage.
-    const a = { quantity: 0, unit: 'pcs', alert_threshold: 0, lead_time_days: 7, daily_avg_demand: 0, ...body, id: Date.now() };
+    const a = { quantity: 0, unit: 'pcs', alert_threshold: 0, lead_time_days: 7, daily_avg_demand: 0, ...body, id: _idLocal() };
     d.articles.push(a); _lsSaveData(_uid(), d); return a;
   }
   const artId = path.match(/\/api\/articles\/(\d+)/)?.[1];
@@ -8975,7 +9337,7 @@ function _localApi(method, path, body) {
   if (path === '/api/products/' && method === 'GET') return d.products.map(p => ({ ...p, composition: (p.composition||[]).map(c => ({ article: d.articles.find(a=>a.id===c.article_id)||{id:c.article_id,name:'?',unit:'pcs'}, quantity_used: c.quantity_used })) }));
   if (path === '/api/products/' && method === 'POST') {
     // Corps complet ici aussi (image, category, description…)
-    const p = { price: 0, purchase_price: 0, composition: [], ...body, id: Date.now() };
+    const p = { price: 0, purchase_price: 0, composition: [], ...body, id: _idLocal() };
     d.products.push(p); _lsSaveData(_uid(), d);
     return { ...p, composition: p.composition.map(c => ({ article: d.articles.find(a=>a.id===c.article_id)||{id:c.article_id,name:'?',unit:'pcs'}, quantity_used: c.quantity_used })) };
   }
@@ -9002,7 +9364,7 @@ function _localApi(method, path, body) {
       const art = d.articles.find(a => a.id === c.article_id);
       if (art) art.quantity = Math.round((art.quantity - c.quantity_used * body.quantity) * 10) / 10;
     }
-    const sale = { id: Date.now(), product_id: body.product_id, product_name: p.name, quantity: body.quantity, client_id: body.client_id || null, client_name: body.client_name || null, timestamp: new Date().toISOString() };
+    const sale = { id: _idLocal(), product_id: body.product_id, product_name: p.name, quantity: body.quantity, client_id: body.client_id || null, client_name: body.client_name || null, timestamp: new Date().toISOString() };
     d.sales.unshift(sale); _lsSaveData(_uid(), d);
     return { sale };
   }
@@ -9011,7 +9373,7 @@ function _localApi(method, path, body) {
   if (!d.clients) d.clients = [];
   if (path === '/api/clients/' && method === 'GET') return d.clients;
   if (path === '/api/clients/' && method === 'POST') {
-    const c = { id: Date.now(), name: body.name, phone: body.phone || '', email: body.email || '', notes: body.notes || '', created_at: new Date().toISOString() };
+    const c = { id: _idLocal(), name: body.name, phone: body.phone || '', email: body.email || '', notes: body.notes || '', created_at: new Date().toISOString() };
     d.clients.push(c); _lsSaveData(_uid(), d); return c;
   }
   const clientId = path.match(/\/api\/clients\/(\d+)/)?.[1];
@@ -9042,7 +9404,7 @@ function _localApi(method, path, body) {
         art.quantity = (art.quantity || 0) + item.quantity;
         results.push({ name: art.name, new_qty: item.quantity, unit: art.unit || item.unit || 'pce' });
       } else {
-        const newArt = { id: Date.now() + Math.floor(Math.random()*1000), name: item.name, quantity: item.quantity, unit: item.unit || 'pce', alert_threshold: 0, lead_time_days: 7 };
+        const newArt = { id: _idLocal(), name: item.name, quantity: item.quantity, unit: item.unit || 'pce', alert_threshold: 0, lead_time_days: 7 };
         d.articles.push(newArt);
         results.push({ name: item.name, new_qty: item.quantity, unit: item.unit || 'pce' });
       }
@@ -10175,10 +10537,10 @@ function __planShowConfirmModal(planKey, amount, providerId) {
 // LIMITES DES PLANS — appliquées réellement (pas que du marketing)
 // ═══════════════════════════════════════════════════════════════
 const PLAN_LIMITS = {
-  free:       { articles: 50,       salesPerMonth: 100,    locations: 1,        spectra: false, spectraPerDay: 0,       suppliers: 3,        boutique: false, marketing: false, integrations: 0,        excel: false, loyalty: false, purchaseOrders: false },
-  starter:    { articles: 500,      salesPerMonth: 2000,   locations: 2,        spectra: false, spectraPerDay: 0,       suppliers: 10,       boutique: false, marketing: false, integrations: 0,        excel: true,  loyalty: false, purchaseOrders: false },
-  pro:        { articles: Infinity, salesPerMonth: Infinity, locations: 5,      spectra: true, spectraPerDay: Infinity, suppliers: Infinity, boutique: true,  marketing: true,  integrations: 10,       excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: false, whiteLabel: false, advancedAnalytics: false },
-  enterprise: { articles: Infinity, salesPerMonth: Infinity, locations: Infinity, spectra: true, spectraPerDay: Infinity, suppliers: Infinity, boutique: true, marketing: true, integrations: Infinity, excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: true,  whiteLabel: true,  advancedAnalytics: true },
+  free:       { factureIA: false, importPhotos: false, articles: 50,       salesPerMonth: 100,    locations: 1,        spectra: false, spectraPerDay: 0,       suppliers: 3,        boutique: false, marketing: false, integrations: 0,        excel: false, loyalty: false, purchaseOrders: false },
+  starter:    { factureIA: false, importPhotos: true,  articles: 500,      salesPerMonth: 2000,   locations: 2,        spectra: false, spectraPerDay: 0,       suppliers: 10,       boutique: false, marketing: false, integrations: 0,        excel: true,  loyalty: false, purchaseOrders: false },
+  pro:        { factureIA: true,  importPhotos: true,  articles: Infinity, salesPerMonth: Infinity, locations: 5,      spectra: true, spectraPerDay: Infinity, suppliers: Infinity, boutique: true,  marketing: true,  integrations: 10,       excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: false, whiteLabel: false, advancedAnalytics: false },
+  enterprise: { factureIA: true,  importPhotos: true,  articles: Infinity, salesPerMonth: Infinity, locations: Infinity, spectra: true, spectraPerDay: Infinity, suppliers: Infinity, boutique: true, marketing: true, integrations: Infinity, excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: true,  whiteLabel: true,  advancedAnalytics: true },
 };
 // Libellé lisible du plan (réutilisé par les verrous Entreprise)
 // Conserve pour compatibilite ; l'affichage passe par _planLabel(), qui
@@ -10277,6 +10639,8 @@ function _FEATURE_INFO_() {
   _fiCache = {
     excel:          { icone: '📊', titre: t('zv_fExcel'),  quoi: t('zv_fExcelQ'),  minimum: 'starter' },
     spectra:        { icone: '🔍', titre: t('zsp_fTitre'), quoi: t('zsp_fQuoi'),   minimum: 'pro' },
+    factureIA:      { icone: '🧾', titre: t('zim_fFact'),  quoi: t('zim_fFactQ'),  minimum: 'pro' },
+    importPhotos:   { icone: '🖼️', titre: t('zim_fPhotos'), quoi: t('zim_fPhotosQ'), minimum: 'starter' },
     loyalty:        { icone: '⭐', titre: t('zv_fFid'),    quoi: t('zv_fFidQ'),    minimum: 'pro' },
     purchaseOrders: { icone: '📦', titre: t('zv_fBons'),   quoi: t('zv_fBonsQ'),   minimum: 'pro' },
     whiteLabel:     { icone: '✦',  titre: t('zv_fIdent'),  quoi: t('zv_fIdentQ'),  minimum: 'enterprise' },
@@ -10424,17 +10788,6 @@ async function _syncBillingStatus() {
       render();
     }
   } catch (e) { /* hors-ligne ou backend absent : on garde l'état local, sans bruit */ }
-}
-function getPlanLimits(plan) {
-  const limits = {
-    free:       { articles: 50,  sales: 100,  locations: 1,  spectra: 5,  suppliers: 3,  orders: 10 },
-    starter:    { articles: 500, sales: 2000, locations: 2,  spectra: 50, suppliers: 10, orders: 50 },
-    pro:        { articles: -1,  sales: -1,   locations: 5,  spectra: -1, suppliers: -1, orders: -1 },
-    enterprise: { articles: -1,  sales: -1,   locations: -1, spectra: -1, suppliers: -1, orders: -1 },
-    // Legacy aliases (backward compatibility with older subscriptions)
-    business:   { articles: -1,  sales: -1,   locations: -1, spectra: -1, suppliers: -1, orders: -1 },
-  };
-  return limits[plan] || limits.free;
 }
 
 // ── Expiry Date Helpers ───────────────────────
@@ -14805,10 +15158,10 @@ function exportBackupFile() {
     a.download = `baro_sauvegarde_${(S.session?.business || 'donnees').replace(/[^\w-]/g, '_').slice(0, 24)}_${stamp}.json`;
     document.body.appendChild(a); a.click(); document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    showToast(`📦 Sauvegarde enregistrée (${payload.keys} éléments)`, 'success');
+    showToast(tpar('zim_sauvOk', payload.keys), 'success');
     logActivity('backup', 'Sauvegarde par fichier exportée');
   } catch (e) {
-    showToast('Sauvegarde impossible : ' + (e.message || e), 'error');
+    showToast(tpar('zim_sauvEchec', e.message || e), 'error');
   }
 }
 
@@ -15898,7 +16251,7 @@ function _doRender() {
   const map = {
     home: vHome, pantry: vPantry, products: vProducts,
     sales: vSales, financial: vFinancial,
-    detail: vDetail, add: vAdd, 'bulk-add': vBulkAdd, 'bulk-photos': vBulkPhotos, 'add-product': vAddProduct,
+    detail: vDetail, add: vAdd, 'bulk-add': vBulkAdd, 'bulk-photos': vBulkPhotos, importer: vImporter, 'add-product': vAddProduct,
     'edit-product': vEditProduct, settings: vSettings, 'metier-guide': vMetierGuide, 'multi-store': vMultiStore, 'ai-chat': vAiChat, documents: vDocuments, 'devis-form': vDevisForm,
     peremptions: vExpiry,
     reassort: vReorder,
@@ -16019,7 +16372,7 @@ function _doRender() {
     if (gs) { gs.focus({ preventScroll: true }); gs.setSelectionRange(gs.value.length, gs.value.length); }
   }
 
-  const hideNav = ['detail','add','add-product','edit-product','pack-form','add-client','client-detail','notifications','catalog','add-supplier','supplier-detail','stock-history','purchase-orders','add-order','pricing','subscription','billing-setup','boutique','boutique-editor','boutique-appearance','boutique-domain','boutique-pixels','boutique-code','boutique-seo','boutique-analytics','boutique-hours','boutique-policies','boutique-faq','bulk-add','bulk-photos','marketing','social-media','social-setup','payments-setup','integrations','delivery-setup','whatsapp-setup','whatsapp-file','automatisations','automatisation-edit','whatsapp-broadcast','sms-setup','sms-broadcast','email-broadcast','ecommerce-setup','sheets-setup','pos-setup','compta-setup','api-settings','spectra','clients','exports','team','add-team-member','audit-log','appearance','security','2fa-verify','onboarding','setup-wizard','creator'].includes(S.view);
+  const hideNav = ['detail','add','add-product','edit-product','pack-form','add-client','client-detail','notifications','catalog','add-supplier','supplier-detail','stock-history','purchase-orders','add-order','pricing','subscription','billing-setup','boutique','boutique-editor','boutique-appearance','boutique-domain','boutique-pixels','boutique-code','boutique-seo','boutique-analytics','boutique-hours','boutique-policies','boutique-faq','bulk-add','bulk-photos','importer','marketing','social-media','social-setup','payments-setup','integrations','delivery-setup','whatsapp-setup','whatsapp-file','automatisations','automatisation-edit','whatsapp-broadcast','sms-setup','sms-broadcast','email-broadcast','ecommerce-setup','sheets-setup','pos-setup','compta-setup','api-settings','spectra','clients','exports','team','add-team-member','audit-log','appearance','security','2fa-verify','onboarding','setup-wizard','creator'].includes(S.view);
   navEl.style.display = hideNav ? 'none' : '';
   if (!hideNav) navEl.innerHTML = renderNav();
 }
@@ -17521,6 +17874,7 @@ function vPantry() {
       <button class="back-btn" onclick="nav('home')">${IC.left}</button>
       <div class="page-title">${stockLabel}</div>
       <div style="display:flex;gap:8px;align-items:center">
+        <button class="fab fab-outline" onclick="S.imp=null;nav('importer')" title="${t('zim_titre')}" aria-label="${t('zim_titre')}">${IC.upload}</button>
         <button class="fab fab-outline" onclick="exportStockCSV()" title="Exporter CSV">⬇</button>
         <button class="fab fab-outline" onclick="nav('spectra')" title="Spectra">${IC.camera}</button>
         <button class="fab" onclick="nav('add')">${IC.plus}</button>
@@ -17773,7 +18127,6 @@ function vProducts() {
       <div style="display:flex;gap:6px">
         ${tab==='products' ? `
           <button class="fab fab-outline" onclick="exportProductsCSV()" title="Exporter CSV">⬇</button>
-          <button class="fab fab-outline" onclick="importProductsFromCSV()" title="Importer CSV">${IC.upload||'⬆'}</button>
           <button class="fab" onclick="nav('add-product')">${IC.plus}</button>
         ` : `
           <button class="fab" onclick="startNewPack()" title="Créer un pack">${IC.plus}</button>
@@ -29302,10 +29655,11 @@ function vMore() {
     { id:'caisse',          icon:'🧾',          label:t('w3_cloture'),              sub:t('w3_clotureSub'), color:'#059669' },
     { id:'credits',         icon:'📒',          label:t('w3_credits'),                sub:t('w3_creditsSub'), color:'#DC2626', badge: (()=>{try{return _creditsStats().openCount||null;}catch(_){return null;}})() },
     { id:'peremptions',     icon:'⏳',          label:t('w3_peremptions'),                    sub:t('w3_peremptionsSub'), color:'#EC4899', badge: (S.articles||[]).filter(a=>{const e=getExpiryStatus(a.expiry);return e&&e.days<=30;}).length || null },
-    { id:'stock-history',   icon:IC.trending,   label:t('stockHistory')||'Mouvements', sub:`${S.stockMovements.length} entrees`, color:'#334155' },
+    { id:'stock-history',   icon:IC.trending,   label:t('stockHistory')||'Mouvements', sub:tpar('zim_mouvementsN', S.stockMovements.length), color:'#334155' },
     { id:'spectra',         icon:IC.camera,     label:'Spectra AI',                    sub:t('zz5_scannerCompter'),        color:'#6366f1' },
+    { id:'importer',        icon:IC.upload,     label:t('zim_titre'),                  sub:t('zim_menuSub'),               color:'#0F766E' },
     { id:'catalog',         icon:IC.pdf,        label:t('catalog')||'Catalogue',       sub:'WhatsApp & PDF',           color:'#16a34a' },
-    { id:'documents',       icon:'📁',          label:'Documents',                     sub:'Devis · factures · rapports · exports', color:'#0d9488' },
+    { id:'documents',       icon:'📁',          label:'Documents',                     sub:t('zim_documentsSub'), color:'#0d9488' },
     { id:'pricing',         icon:IC.star,       label:t('pricing')||'Tarifs',          sub:t('myPlan')||'Mon plan',    color:'#eab308' },
     { id:'settings',        icon:IC.settings,   label:t('settings')||'Parametres',     sub:t('myAccount')||'Compte',   color:'#64748b' },
   ].filter(it => it && !_isHidden(it.id));
@@ -42268,7 +42622,8 @@ const BARO_ACTIONS_INTEGRATION = {
                     { cle:'gs-ouvrir', icone:'🔗', type:'lien', fn:'ouvrirValeurEnregistree' }],
   'excel':         [{ cle:'xl-tout', icone:'📊', type:'export', fn:'exportFullXLSX' },
                     { cle:'xl-ventes', icone:'💰', type:'export', fn:'exportSalesXLSX' },
-                    { cle:'xl-articles', icone:'📦', type:'export', fn:'exportArticlesXLSX' }],
+                    { cle:'xl-articles', icone:'📦', type:'export', fn:'exportArticlesXLSX' },
+                    { cle:'xl-import', icone:'⬆️', type:'vue', fn:'ouvrirImportTableur' }],
 
   // ── Boutique et divers ───────────────────────────────────────────────
   'youtube-studio': [{ cle:'yt-ouvrir', icone:'🔗', type:'lien', fn:'ouvrirValeurEnregistree' }],
@@ -42316,6 +42671,7 @@ function lancerActionIntegration(id, cle) {
 }
 
 // ── Fonctions d'action propres aux intégrations ─────────────────────────
+function ouvrirImportTableur() { S.imp = null; nav('importer'); _impTableurChoisir(); }
 function ouvrirPartenaire(id) {
   const cible = id || (S.intPanneau && S.intPanneau.id);
   const def = _getIntegrationDef(cible);
@@ -46276,40 +46632,1010 @@ function requestPaymentWhatsApp(amount, clientPhone, reference) {
   return url;
 }
 
-// Import products from CSV
-function importProductsFromCSV() {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = '.csv,text/csv';
-  input.onchange = () => {
-    const file = input.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target.result;
-      const lines = text.split(/\r?\n/).filter(l => l.trim());
-      if (lines.length < 2) { showToast('CSV vide ou invalide', 'error'); return; }
-      const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-      const nameIdx = headers.findIndex(h => h.includes('nom') || h.includes('name') || h.includes('title'));
-      const priceIdx = headers.findIndex(h => h.includes('prix') || h.includes('price'));
-      if (nameIdx === -1) { showToast('Colonne "Nom/Name" introuvable', 'error'); return; }
-      let count = 0;
-      for (let i = 1; i < lines.length; i++) {
-        const cols = lines[i].split(',');
-        const name = cols[nameIdx]?.replace(/^"|"$/g,'').trim();
-        const price = parseFloat(cols[priceIdx]) || 0;
-        if (!name) continue;
-        if (S.products.find(p => p.name === name)) continue;
-        S.products.push({ id:Date.now()+i, name, price, purchasePrice:Math.round(price*0.7), composition:[] });
-        count++;
-      }
-      localStorage.setItem('baro_products', JSON.stringify(S.products));
-      showToast(`${count} produits importés !`);
-      render();
-    };
-    reader.readAsText(file);
+// ── IMPORTER (lot 318b) ──────────────────────────────────────────────
+// Un seul écran pour faire entrer des fichiers dans BARO : la facture d'un
+// fournisseur (PDF ou photos, lue par l'IA), un tableur (Excel, ODS, CSV),
+// des photos d'articles (ou un .zip), une sauvegarde BARO. Rien n'entre
+// dans le stock sans être passé sous les yeux du commerçant : chaque import
+// s'arrête sur un écran de vérification.
+const _IMP_LIBS = {
+  xlsx:  'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js',
+  jszip: 'https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js',
+};
+const _IMP_EXT_TABLEUR = /\.(xlsx|xlsm|xls|ods|csv|tsv|txt)$/i;
+const _IMP_EXT_IMAGE = /\.(jpe?g|png|webp|gif|bmp)$/i;
+const _IMP_ACCEPT_TOUT = '.pdf,.xlsx,.xlsm,.xls,.ods,.csv,.tsv,.txt,.zip,.json,image/*';
+const _IMP_ACCEPT_TABLEUR = '.xlsx,.xlsm,.xls,.ods,.csv,.tsv,.txt,text/csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.oasis.opendocument.spreadsheet';
+
+function _impEsc(v) { return _sovaEsc(v).replace(/"/g, '&quot;'); }
+function _impMaDevise() { return (S.session && S.session.currency) || 'XOF'; }
+function _impArt(id) {
+  if (id === '' || id == null) return null;
+  return (S.articles || []).find(a => String(a.id) === String(id)) || null;
+}
+function _impTaille(o) {
+  const en = _lang === 'en';
+  return o >= 1048576 ? (o / 1048576).toFixed(1).replace('.', en ? '.' : ',') + (en ? ' MB' : ' Mo') : Math.max(1, Math.round(o / 1024)) + (en ? ' KB' : ' Ko');
+}
+function _impHisto() { try { return JSON.parse(localStorage.getItem('baro_imports') || '[]') || []; } catch (_) { return []; } }
+function _impNoter(e) {
+  const h = _impHisto();
+  h.unshift(Object.assign({}, e, { quand: new Date().toISOString() }));
+  try { localStorage.setItem('baro_imports', JSON.stringify(h.slice(0, 40))); } catch (_) {}
+}
+
+// Nombres écrits à la française (1 234,50), à l'anglaise (1,234.50) ou
+// avec la monnaie collée (15 000 FCFA). « dec » donne le séparateur décimal
+// quand on le connaît (un CSV en « ; » vient d'un Excel français).
+function _impNombre(v, dec) {
+  if (typeof v === 'number') return isFinite(v) ? v : null;
+  let s = String(v == null ? '' : v).replace(/[\s  ']/g, '').replace(/[^\d.,\-]/g, '');
+  if (!/\d/.test(s)) return null;
+  const nv = (s.match(/,/g) || []).length, np = (s.match(/\./g) || []).length;
+  if (dec && (dec === ',' ? nv : np) > 1) dec = '';
+  if (!dec) dec = (nv && np) ? (s.lastIndexOf(',') > s.lastIndexOf('.') ? ',' : '.') : nv === 1 ? ',' : np === 1 ? '.' : '';
+  if (dec === ',') s = s.replace(/\./g, '').replace(',', '.');
+  else if (dec === '.') s = s.replace(/,/g, '');
+  else s = s.replace(/[.,]/g, '');
+  const n = parseFloat(s);
+  return isFinite(n) ? n : null;
+}
+
+function _impFichiers(accept, multiple, camera, faire) {
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = accept; inp.multiple = !!multiple;
+  if (camera) inp.setAttribute('capture', 'environment');
+  inp.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+  document.body.appendChild(inp);
+  const fin = () => { try { inp.remove(); } catch (_) {} };
+  inp.addEventListener('cancel', fin);
+  inp.onchange = () => { const f = Array.from(inp.files || []); fin(); if (f.length) faire(f); };
+  inp.click();
+}
+function _impChargerImage(fichier) {
+  return new Promise((ok, ko) => {
+    const url = URL.createObjectURL(fichier);
+    const img = new Image();
+    img.onload = () => { ok(img); setTimeout(() => URL.revokeObjectURL(url), 0); };
+    img.onerror = () => { URL.revokeObjectURL(url); ko(new Error('image')); };
+    img.src = url;
+  });
+}
+function _impReduire(img, max, q) {
+  const w0 = img.naturalWidth || img.width || 1, h0 = img.naturalHeight || img.height || 1;
+  const k = Math.min(1, max / Math.max(w0, h0));
+  const c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(w0 * k)); c.height = Math.max(1, Math.round(h0 * k));
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);   // PNG transparent : fond blanc
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, c.width, c.height);
+  return c.toDataURL('image/jpeg', q || 0.85);
+}
+function _impBase64(fichier) {
+  return new Promise((ok, ko) => {
+    const r = new FileReader();
+    r.onload = () => ok(String(r.result).split(',')[1] || '');
+    r.onerror = () => ko(r.error);
+    r.readAsDataURL(fichier);
+  });
+}
+function _impJSON(txt) {
+  const s = String(txt || '').replace(/```(?:json)?/gi, '');
+  const a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if (a < 0 || b <= a) return null;
+  try { return JSON.parse(s.slice(a, b + 1)); } catch (_) { return null; }
+}
+
+// ── Aiguillage : un fichier déposé ouvre le bon import ──
+function _impChoisirTout() { _impFichiers(_IMP_ACCEPT_TOUT, true, false, _impRouter); }
+function _impDepot(ev) {
+  ev.preventDefault();
+  const z = document.getElementById('imp-depot'); if (z) z.classList.remove('survol');
+  const f = Array.from((ev.dataTransfer && ev.dataTransfer.files) || []);
+  if (f.length) _impRouter(f);
+}
+function _impRouter(files) {
+  const nom = f => (f.name || '').toLowerCase();
+  const json = files.find(f => /\.json$/.test(nom(f)));
+  if (json) return importBackupFile(json);
+  const tab = files.find(f => _IMP_EXT_TABLEUR.test(nom(f)));
+  if (tab) return _impTableur(tab);
+  if (files.some(f => /\.zip$/.test(nom(f)))) return _impPhotos(files);
+  if (files.some(f => f.type === 'application/pdf' || /\.pdf$/.test(nom(f)))) return _impFactureAjouter(files);
+  const images = files.filter(f => /^image\//.test(f.type) || _IMP_EXT_IMAGE.test(nom(f)));
+  if (!images.length) { showToast(t('zim_formatInconnu'), 'error'); return; }
+  _impDemanderGenre(images);
+}
+function _impDemanderGenre(images) {
+  const old = document.getElementById('imp-genre'); if (old) old.remove();
+  const m = document.createElement('div');
+  m.id = 'imp-genre'; m.className = 'imp-voile';
+  m.onclick = e => { if (e.target === m) m.remove(); };
+  m.innerHTML = `<div class="imp-feuille" role="dialog" aria-modal="true">
+    <div class="imp-feuille-t">${tpar('zim_genreT', images.length)}</div>
+    <button class="imp-choix" data-g="facture"><span class="imp-choix-ic">🧾</span><span><b>${t('zim_genreFacture')}</b><small>${t('zim_genreFactureS')}</small></span></button>
+    <button class="imp-choix" data-g="photos"><span class="imp-choix-ic">🖼️</span><span><b>${t('zim_genrePhotos')}</b><small>${t('zim_genrePhotosS')}</small></span></button>
+    <button class="btn btn-ghost" data-g="">${t('zim_annuler')}</button>
+  </div>`;
+  m.querySelectorAll('[data-g]').forEach(b => b.onclick = () => {
+    m.remove();
+    if (b.dataset.g === 'facture') _impFactureAjouter(images);
+    else if (b.dataset.g === 'photos') _impPhotos(images);
+  });
+  document.body.appendChild(m);
+}
+
+function _impAnnuler() {
+  const st = S.imp;
+  if (st && ['facture', 'tableur', 'photos'].includes(st.etape) && !st.enCours && !confirm(t('zim_abandonner'))) return;
+  S.imp = null;
+  render();
+}
+function _impAccueilRetour() { S.imp = null; nav('more'); }
+function _impEntete(titre, sous, retour) {
+  return `<div class="sub-hero"><div class="page-header-row"><button class="back-btn-dark" onclick="${retour}" aria-label="${t('zim_retour')}">${IC.left}</button><div style="flex:1;min-width:0"><div class="sub-hero-title">${titre}</div><div class="sub-hero-sub imp-sous">${sous}</div></div></div></div>`;
+}
+function _impBouton(occupe, texte) {
+  const b = document.getElementById('imp-go');
+  if (!b) return;
+  b.disabled = !!occupe;
+  if (texte) b.textContent = texte;
+}
+
+// ── L'écran ──
+function vImporter() {
+  const st = S.imp;
+  if (!st) return _impVueAccueil();
+  if (st.etape === 'chargement') return _impVueChargement(st);
+  if (st.etape === 'facture-pages') return _impVuePages(st);
+  if (st.etape === 'facture-lecture') return _impVueLecture(st);
+  if (st.etape === 'facture') return _impVueFacture(st);
+  if (st.etape === 'tableur') return _impVueTableur(st);
+  if (st.etape === 'photos') return _impVuePhotos(st);
+  if (st.etape === 'fini') return _impVueFini(st);
+  return _impVueAccueil();
+}
+
+function _impCarteHTML(o) {
+  return `<div class="imp-carte">
+    <div class="imp-carte-h"><span class="imp-carte-ic">${o.ic}</span><div class="imp-carte-tt"><div class="imp-carte-t">${o.titre}${o.verrou ? ` <span class="imp-badge">${_planLabel(o.verrou)}</span>` : ''}</div><div class="imp-formats">${o.formats}</div></div></div>
+    <div class="imp-carte-d">${o.texte}</div>
+    ${o.etat ? `<div class="imp-carte-e">${o.etat}</div>` : ''}
+    <div class="imp-carte-b">${o.boutons.map(b => `<button class="btn ${b[2] ? 'btn-primary' : 'btn-ghost'}" onclick="${b[1]}">${b[0]}</button>`).join('')}</div>
+  </div>`;
+}
+
+function _impVueAccueil() {
+  _iaRafraichir();
+  const fact = _planHasFeature('factureIA'), tab = _planHasFeature('excel'), pho = _planHasFeature('importPhotos');
+  const ia = _iaStatutCache;
+  let etatIA = '';
+  if (fact) {
+    if (!_iaPossible()) etatIA = t('zim_iaHorsLigne');
+    else if (ia && ia.available === false) etatIA = t('zim_iaIndispo');
+    else if (ia && ia.vision && typeof ia.vision.left === 'number') etatIA = tpar('zim_iaReste', ia.vision.left, ia.vision.max);
+  }
+  const histo = _impHisto().slice(0, 6);
+  const icone = { facture: '🧾', tableur: '📊', photos: '🖼️' };
+  return `${_impEntete(t('zim_titre'), t('zim_sous'), '_impAccueilRetour()')}
+  <div class="container imp">
+    <div class="imp-depot" id="imp-depot" role="button" tabindex="0" onclick="_impChoisirTout()" onkeydown="if(event.key==='Enter')_impChoisirTout()"
+         ondragover="event.preventDefault();this.classList.add('survol')" ondragleave="this.classList.remove('survol')" ondrop="_impDepot(event)">
+      <div class="imp-depot-ic">${IC.upload}</div>
+      <div class="imp-depot-t">${t('zim_depotT')}</div>
+      <div class="imp-depot-s">${t('zim_depotS')}</div>
+    </div>
+    ${_impCarteHTML({ ic: '🧾', titre: t('zim_factT'), formats: 'PDF · JPG · PNG · WEBP', texte: t('zim_factD'), verrou: fact ? '' : 'pro', etat: etatIA,
+      boutons: fact ? [[IC.camera + ' ' + t('zim_photographier'), '_impFactureChoisir(true)', 1], [t('zim_choisirFichier'), '_impFactureChoisir(false)', 0]]
+                    : [[t('zim_debloquer'), "_showPlanFeatureModal('factureIA')", 1]] })}
+    ${_impCarteHTML({ ic: '📊', titre: t('zim_tabT'), formats: 'XLSX · XLS · ODS · CSV · TSV', texte: t('zim_tabD'), verrou: tab ? '' : 'starter',
+      boutons: tab ? [[t('zim_choisirFichier'), '_impTableurChoisir()', 1], [t('zim_modele'), '_impModele()', 0]]
+                   : [[t('zim_debloquer'), "_showPlanFeatureModal('excel')", 1]] })}
+    ${_impCarteHTML({ ic: '🖼️', titre: t('zim_photosT'), formats: 'JPG · PNG · WEBP · ZIP', texte: t('zim_photosD'), verrou: pho ? '' : 'starter',
+      boutons: pho ? [[t('zim_choisirPhotos'), "_impFichiers('image/*', true, false, _impPhotos)", 1], [t('zim_choisirZip'), "_impFichiers('.zip,application/zip', false, false, _impPhotos)", 0]]
+                   : [[t('zim_debloquer'), "_showPlanFeatureModal('importPhotos')", 1]] })}
+    ${_impCarteHTML({ ic: '💾', titre: t('zim_sauvT'), formats: 'JSON', texte: t('zim_sauvD'),
+      boutons: [[t('zim_restaurer'), "_impFichiers('.json,application/json', false, false, f => importBackupFile(f[0]))", 0], [t('zim_sauvegarder'), 'exportBackupFile()', 0]] })}
+    ${histo.length ? `<div class="imp-sec-t">${t('zim_recents')}</div>
+    <div class="imp-histo">${histo.map(h => `<div class="imp-h"><span class="imp-h-ic">${icone[h.genre] || '📄'}</span><div class="imp-h-t"><b>${_impEsc(h.genre === 'photos' ? t('zim_photosT') : (h.titre || (h.genre === 'facture' ? t('zim_facture') : '—')))}</b><small>${new Date(h.quand).toLocaleDateString(_loc(), { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}${h.numero ? ' · n° ' + _impEsc(h.numero) : ''}</small></div><span class="imp-h-n">${tpar('zim_lignesN', h.n || 0)}</span></div>`).join('')}</div>` : ''}
+  </div>`;
+}
+
+function _impVueChargement(st) {
+  return `${_impEntete(t('zim_titre'), _impEsc(st.titre || ''), '_impAnnuler()')}
+  <div class="container imp"><div class="imp-lecture">
+    <div class="imp-rond"></div>
+    <div class="imp-lecture-t">${t('zim_chargement')}</div>
+    <div class="imp-lecture-s" id="imp-charge-s">${_impEsc(st.detail || '')}</div>
+  </div></div>`;
+}
+
+// ── 1. Facture fournisseur ──────────────────────────────────────────
+function _impFactureChoisir(camera) {
+  if (!_planHasFeature('factureIA')) { _showPlanFeatureModal('factureIA'); return; }
+  _impFichiers(camera ? 'image/*' : 'application/pdf,.pdf,image/*', !camera, camera, _impFactureAjouter);
+}
+async function _impFactureAjouter(files) {
+  if (!_planHasFeature('factureIA')) { _showPlanFeatureModal('factureIA'); return; }
+  const st = (S.imp && S.imp.etape === 'facture-pages') ? S.imp : { etape: 'facture-pages', pages: [] };
+  for (const f of files) {
+    const nom = f.name || 'photo.jpg';
+    if (f.type === 'application/pdf' || /\.pdf$/i.test(nom)) {
+      if (st.pages.length) { showToast(t('zim_pdfSeul'), 'error'); continue; }
+      if (f.size > 6.5 * 1048576) { showToast(t('zim_pdfLourd'), 'error'); continue; }
+      try { st.pages = [{ nom, pdf: true, media: 'application/pdf', data: await _impBase64(f), taille: f.size }]; }
+      catch (_) { showToast(tpar('zim_illisible', nom), 'error'); }
+      break;
+    }
+    if (st.pages.some(p => p.pdf)) { showToast(t('zim_pdfSeul'), 'error'); break; }
+    if (st.pages.length >= 6) { showToast(t('zim_maxPages'), 'error'); break; }
+    try {
+      const url = _impReduire(await _impChargerImage(f), 1600, 0.85);
+      st.pages.push({ nom, media: 'image/jpeg', data: url.split(',')[1], apercu: url });
+    } catch (_) { showToast(tpar('zim_illisible', nom), 'error'); }
+  }
+  if (!st.pages.length) return;
+  st.erreur = '';
+  S.imp = st;
+  if (S.view !== 'importer') nav('importer'); else render();
+}
+function _impPageRetirer(i) {
+  const st = S.imp; if (!st || !st.pages) return;
+  st.pages.splice(i, 1);
+  if (!st.pages.length) S.imp = null;
+  render();
+}
+function _impVuePages(st) {
+  const pdf = st.pages[0] && st.pages[0].pdf;
+  const ia = _iaStatutCache;
+  const reste = ia && ia.vision && typeof ia.vision.left === 'number' ? ia.vision.left : null;
+  return `${_impEntete(t('zim_factT'), pdf ? t('zim_pagesPdf') : tpar('zim_pagesN', st.pages.length), "S.imp=null;render()")}
+  <div class="container imp">
+    ${st.erreur ? `<div class="imp-alerte">${_impEsc(st.erreur)}</div>` : ''}
+    <div class="imp-pages">
+      ${st.pages.map((p, i) => p.pdf
+        ? `<div class="imp-page imp-page-pdf"><div class="imp-pdf-ic">PDF</div><div class="imp-page-nom">${_impEsc(p.nom)}</div><div class="imp-page-taille">${_impTaille(p.taille)}</div><button class="imp-page-x" onclick="_impPageRetirer(${i})" aria-label="${t('zim_retirer')}">×</button></div>`
+        : `<div class="imp-page"><img src="${p.apercu}" alt=""><span class="imp-page-no">${i + 1}</span><button class="imp-page-x" onclick="_impPageRetirer(${i})" aria-label="${t('zim_retirer')}">×</button></div>`).join('')}
+      ${!pdf && st.pages.length < 6 ? `<button class="imp-page imp-page-plus" onclick="_impFichiers('image/*', false, true, _impFactureAjouter)">${IC.camera}<small>${t('zim_ajouterPage')}</small></button>` : ''}
+    </div>
+    ${!pdf && st.pages.length < 6 ? `<button class="imp-lien" onclick="_impFichiers('image/*', true, false, _impFactureAjouter)">${t('zim_ouGalerie')}</button>` : ''}
+    <div class="imp-note">${pdf ? t('zim_noteLecturePdf') : t('zim_noteLecture')}</div>
+    <div class="imp-barre">
+      <button class="btn btn-ghost" onclick="S.imp=null;render()">${t('zim_annuler')}</button>
+      <button class="btn btn-primary" id="imp-go" onclick="_impFactureLire()">${t('zim_lire')}${reste != null ? ` · ${tpar('zim_resteCourt', reste)}` : ''}</button>
+    </div>
+  </div>`;
+}
+function _impVueLecture(st) {
+  const p = st.pages[0] || {};
+  return `${_impEntete(t('zim_factT'), t('zim_lectureS'), "S.imp=null;render()")}
+  <div class="container imp"><div class="imp-lecture">
+    <div class="imp-scan">${p.apercu ? `<img src="${p.apercu}" alt="">` : `<div class="imp-pdf-ic grand">PDF</div>`}<div class="imp-scan-ligne"></div></div>
+    <div class="imp-lecture-t">${t('zim_lectureT')}</div>
+    <div class="imp-lecture-s">${t('zim_lectureD')}</div>
+  </div></div>`;
+}
+
+async function _impFactureLire() {
+  const st = S.imp;
+  if (!st || !st.pages || !st.pages.length || st.etape !== 'facture-pages') return;
+  if (!_iaPossible()) { st.erreur = t('zim_iaHorsLigne'); render(); return; }
+  st.etape = 'facture-lecture'; st.erreur = '';
+  render();
+  const catalogue = (S.articles || []).map(a => a.name).filter(Boolean).slice(0, 400);
+  const r = await _iaFetch('/api/ai/document', { pages: st.pages.map(p => ({ data: p.data, media_type: p.media })), catalog: catalogue }, 175000);
+  if (S.imp !== st) return;                    // abandonné pendant la lecture
+  if (!r.ok) {
+    const e = r.data && r.data.error;
+    st.etape = 'facture-pages';
+    st.erreur = r.status === 0 ? t('zim_errReseau')
+      : e === 'forfait' ? t('zim_errForfait')
+      : e === 'quota' ? (_iaMajReste('vision', 0), tpar('zim_errQuota', r.data.max))
+      : (e === 'indisponible' || r.status === 404) ? t('zim_iaIndispo')
+      : e === 'tronque' ? t('zim_errLongue')
+      : e === 'refus' ? t('zim_errRefus')
+      : (e === 'fichier' || e === 'format') ? t('zim_errFichier')
+      : t('zim_errLecture');
+    render(); return;
+  }
+  _iaMajReste('vision', r.data.left);
+  const doc = _impJSON(r.data.text);
+  if (!doc || !Array.isArray(doc.lines) || !doc.lines.some(l => l && l.name)) {
+    st.etape = 'facture-pages'; st.erreur = t('zim_errVideFacture'); render(); return;
+  }
+  S.imp = _impPreparerFacture(doc, st);
+  try { haptic('success'); } catch (_) {}
+  render();
+}
+
+function _impDeviseLue(brut) {
+  const s = String(brut || '').toUpperCase();
+  if (/CFA/.test(s)) return ['XOF', 'XAF'].includes(_impMaDevise()) ? _impMaDevise() : 'XOF';
+  if (/€|EURO/.test(s)) return 'EUR';
+  if (/US\$|DOLLAR|^\$$/.test(s)) return 'USD';
+  if (/NAIRA|₦/.test(s)) return 'NGN';
+  if (/CEDI|GH₵/.test(s)) return 'GHS';
+  const c = s.replace(/[^A-Z]/g, '');
+  return /^[A-Z]{3}$/.test(c) ? c : '';
+}
+function _impPreparerFacture(doc, st) {
+  const lignes = doc.lines.filter(l => l && l.name).map(l => {
+    const nom = String(l.name).replace(/\s+/g, ' ').trim().slice(0, 120);
+    let q = _impNombre(l.quantity), p = _impNombre(l.unit_price);
+    const tot = _impNombre(l.total);
+    if (!(q > 0) && p > 0 && tot > 0) q = Math.round(tot / p * 1000) / 1000;
+    if (!(p > 0) && q > 0 && tot > 0) p = Math.round(tot / q * 100) / 100;
+    const doute = !(q > 0) ? 'qte' : (p > 0 && tot > 0 && Math.abs(q * p - tot) > Math.max(1, tot * 0.01)) ? 'total' : '';
+    const art = _spectraMatchCatalogue(nom, l.catalog_match);
+    return { nom, unite: String(l.unit || '').trim().slice(0, 16), qte: q > 0 ? q : 0, pu: p > 0 ? p : 0, lu: tot > 0 ? tot : null,
+             art: art ? String(art.id) : '', inclure: q > 0, doute, pv: '' };
+  });
+  return {
+    etape: 'facture', pages: st.pages,
+    fournisseur: String(doc.supplier || '').trim().slice(0, 80),
+    numero: String(doc.number || '').trim().slice(0, 40),
+    date: /^\d{4}-\d{2}-\d{2}$/.test(doc.date || '') ? doc.date : '',
+    devise: _impDeviseLue(doc.currency) || _impMaDevise(),
+    total: _impNombre(doc.total), taxes: _impNombre(doc.taxes) || 0, livraison: _impNombre(doc.delivery) || 0,
+    lignes, majPrix: true, depense: false, convertir: true,
   };
-  input.click();
+}
+function _impFacteur(st) {
+  const ma = _impMaDevise();
+  if (!st.devise || st.devise === ma) return { k: 1, taux: null, autre: false };
+  const tx = _tauxEntre(ma, st.devise);
+  return { k: tx && st.convertir ? tx.valeur : 1, taux: tx, autre: true };
+}
+function _impMontant(st, v) {
+  const f = _impFacteur(st);
+  return (f.autre && (!st.convertir || !f.taux)) ? `${fmt(v)} ${st.devise}` : `${fmt(Math.round(v * f.k * 100) / 100)} ${sym()}`;
+}
+function _impDejaImportee(st) {
+  if (!st.numero) return null;
+  const n = _spectraNormNom(st.numero), f = _spectraNormNom(st.fournisseur);
+  return _impHisto().find(h => h.genre === 'facture' && h.numero && _spectraNormNom(h.numero) === n
+    && (!f || !h.fournisseur || _spectraNormNom(h.fournisseur) === f)) || null;
+}
+function _impFournisseur(nom) {
+  const n = _spectraNormNom(nom);
+  if (!n) return null;
+  return (S.suppliers || []).find(s => { const m = _spectraNormNom(s.name); return m && (m === n || n.includes(m) || m.includes(n)); }) || null;
+}
+function _impInfoLigne(st, l) {
+  const a = _impArt(l.art);
+  const pu = l.pu * _impFacteur(st).k;
+  if (!a) return `<span class="imp-tag neuf">${t('zim_nouveau')}</span>${t('zim_seraCree')}`;
+  const avant = Number(a.stock) || 0;
+  let s = `<span class="imp-tag ok">${t('zim_existant')}</span>${tpar('zim_stockApres', fmtQty(avant), fmtQty(Math.round((avant + l.qte) * 1000) / 1000))}`;
+  if (st.majPrix && pu > 0 && a.purchasePrice > 0 && Math.abs(a.purchasePrice - pu) > 0.004) {
+    const d = Math.round((pu - a.purchasePrice) / a.purchasePrice * 100);
+    s += ` · ${tpar('zim_prixAchat', fmt(a.purchasePrice), fmt(Math.round(pu * 100) / 100))}${d ? ` <b class="${d > 0 ? 'imp-hausse' : 'imp-baisse'}">${d > 0 ? '+' : ''}${d}%</b>` : ''}`;
+  }
+  const pv = a.price || a.sellPrice || 0;
+  if (pu > 0 && pv > 0 && pu >= pv) s += `<div class="imp-l-alerte">${tpar('zim_margeNeg', fmt(pv) + ' ' + sym())}</div>`;
+  return s;
+}
+function _impLigneHTML(st, l, i) {
+  const a = _impArt(l.art), f = _impFacteur(st);
+  return `<div class="imp-ligne${l.inclure ? '' : ' off'}${l.doute ? ' doute' : ''}" id="imp-l-${i}">
+    <div class="imp-l-haut">
+      <input type="checkbox" class="imp-coche" ${l.inclure ? 'checked' : ''} onchange="_impL(${i},'inclure',this.checked)" aria-label="${t('zim_inclure')}">
+      <input class="imp-l-nom" value="${_impEsc(l.nom)}" onchange="_impL(${i},'nom',this.value)" aria-label="${t('zim_ch_name')}">
+    </div>
+    <div class="imp-l-lien">
+      <input class="input" list="imp-arts" placeholder="${t('zim_lierPh')}" value="${a ? _impEsc(a.name) : ''}" onchange="_impLier(${i},this.value)" aria-label="${t('zim_lierPh')}">
+      ${a ? `<button class="imp-l-delier" onclick="_impL(${i},'art','')" aria-label="${t('zim_delier')}">×</button>` : ''}
+    </div>
+    <div class="imp-l-nums">
+      <label><span>${t('zim_qte')}${l.unite ? ' · ' + _impEsc(l.unite) : ''}</span><input class="input" type="number" inputmode="decimal" min="0" step="any" value="${l.qte || ''}" onchange="_impL(${i},'qte',this.value)"></label>
+      <label><span>${t('zim_pu')}${f.autre ? ' · ' + st.devise : ''}</span><input class="input" type="number" inputmode="decimal" min="0" step="any" value="${l.pu || ''}" onchange="_impL(${i},'pu',this.value)"></label>
+      <div class="imp-l-tot"><span>${t('zim_totalL')}</span><b id="imp-lt-${i}">${_impMontant(st, l.qte * l.pu)}</b></div>
+    </div>
+    ${!a ? `<label class="imp-l-pv"><span>${tpar('zim_pvFacultatif', sym())}</span><input class="input" type="number" inputmode="decimal" min="0" step="any" value="${_impEsc(l.pv)}" onchange="_impL(${i},'pv',this.value)"></label>` : ''}
+    <div class="imp-l-info" id="imp-li-${i}">${_impInfoLigne(st, l)}</div>
+    ${l.doute ? `<div class="imp-l-doute">${t(l.doute === 'qte' ? 'zim_douteQte' : 'zim_doute')}</div>` : ''}
+  </div>`;
+}
+function _impSommes(st) {
+  const somme = st.lignes.reduce((s, l) => s + (l.lu != null ? l.lu : l.qte * l.pu), 0);
+  const tol = Math.max(1, (st.total || 0) * 0.01);
+  const ecart = st.total > 0 && Math.abs(somme - st.total) > tol && Math.abs(somme + st.taxes + st.livraison - st.total) > tol;
+  return { somme, ecart, n: st.lignes.filter(l => l.inclure && l.qte > 0 && l.nom).length };
+}
+function _impMontantDepense(st) {
+  return st.total > 0 ? st.total : st.lignes.filter(l => l.inclure).reduce((s, l) => s + l.qte * l.pu, 0);
+}
+function _impVueFacture(st) {
+  const f = _impFacteur(st), ma = _impMaDevise();
+  const { somme, ecart, n } = _impSommes(st);
+  const deja = _impDejaImportee(st);
+  return `${_impEntete(t('zim_verifT'), tpar('zim_verifS', st.lignes.length), '_impAnnuler()')}
+  <div class="container imp">
+    <datalist id="imp-arts">${(S.articles || []).map(a => `<option value="${_impEsc(a.name)}">`).join('')}</datalist>
+    <div class="imp-carte imp-doc">
+      <div class="imp-doc-grille">
+        <label><span>${t('zim_fournisseur')}</span><input class="input" value="${_impEsc(st.fournisseur)}" onchange="S.imp.fournisseur=this.value.trim()"></label>
+        <label><span>${t('zim_numero')}</span><input class="input" value="${_impEsc(st.numero)}" onchange="S.imp.numero=this.value.trim()"></label>
+        <label><span>${t('zim_date')}</span><input class="input" type="date" value="${st.date}" onchange="S.imp.date=this.value"></label>
+      </div>
+      <div class="imp-doc-tot">
+        <div><span>${t('zim_totalFacture')}</span><b>${st.total > 0 ? _impMontant(st, st.total) : '—'}</b></div>
+        <div><span>${t('zim_sommeLignes')}</span><b id="imp-somme">${_impMontant(st, somme)}</b></div>
+      </div>
+      ${ecart ? `<div class="imp-alerte">${t('zim_ecart')}</div>` : ''}
+      ${deja ? `<div class="imp-alerte">${tpar('zim_deja', new Date(deja.quand).toLocaleDateString(_loc()))}</div>` : ''}
+      ${f.autre ? `<label class="imp-opt"><input type="checkbox" ${st.convertir ? 'checked' : ''} ${f.taux ? '' : 'disabled'} onchange="S.imp.convertir=this.checked;render()"><span><b>${tpar('zim_convertir', st.devise, ma)}</b><small>${f.taux ? tpar('zim_taux', st.devise, Number(f.taux.valeur).toLocaleString(_loc(), { maximumFractionDigits: 3 }), sym(), f.taux.origine === 'officielle' ? t('zim_tauxOfficiel') : t('zim_tauxEnregistre')) : t('zim_tauxInconnu')}</small></span></label>` : ''}
+    </div>
+    ${st.lignes.map((l, i) => _impLigneHTML(st, l, i)).join('')}
+    <div class="imp-carte imp-opts">
+      <label class="imp-opt"><input type="checkbox" ${st.majPrix ? 'checked' : ''} onchange="S.imp.majPrix=this.checked;render()"><span><b>${t('zim_majPrix')}</b><small>${t('zim_majPrixS')}</small></span></label>
+      <label class="imp-opt"><input type="checkbox" ${st.depense ? 'checked' : ''} onchange="S.imp.depense=this.checked"><span><b>${t('zim_depense')} · ${_impMontant(st, _impMontantDepense(st))}</b><small>${t('zim_depenseS')}</small></span></label>
+    </div>
+    <div class="imp-barre">
+      <button class="btn btn-ghost" onclick="_impAnnuler()">${t('zim_annuler')}</button>
+      <button class="btn btn-primary" id="imp-go" onclick="_impFactureAppliquer()" ${n ? '' : 'disabled'}>${tpar('zim_entrer', n)}</button>
+    </div>
+  </div>`;
+}
+// Une modification ne redessine que sa ligne : la page ne saute pas et le
+// champ que l'on vient de toucher garde le clavier.
+function _impMajLigne(i) {
+  const st = S.imp; if (!st || st.etape !== 'facture') return;
+  const el = document.getElementById('imp-l-' + i);
+  if (el) el.outerHTML = _impLigneHTML(st, st.lignes[i], i);
+  const { somme, n } = _impSommes(st);
+  const so = document.getElementById('imp-somme'); if (so) so.textContent = _impMontant(st, somme);
+  const b = document.getElementById('imp-go');
+  if (b && !st.enCours) { b.disabled = !n; b.textContent = tpar('zim_entrer', n); }
+}
+function _impL(i, k, v) {
+  const st = S.imp; const l = st && st.lignes && st.lignes[i];
+  if (!l) return;
+  if (k === 'qte' || k === 'pu') {
+    const n = _impNombre(v);
+    l[k] = n > 0 ? n : 0;
+    l.doute = '';                 // le commerçant a vérifié ce chiffre
+    l.lu = null;
+    if (k === 'qte' && l.qte > 0 && !l.vu) l.inclure = true;
+    // Mise à jour sans redessiner : le champ voisin garde le focus.
+    const tot = document.getElementById('imp-lt-' + i); if (tot) tot.textContent = _impMontant(st, l.qte * l.pu);
+    const inf = document.getElementById('imp-li-' + i); if (inf) inf.innerHTML = _impInfoLigne(st, l);
+    const el = document.getElementById('imp-l-' + i);
+    if (el) { el.classList.remove('doute'); const d = el.querySelector('.imp-l-doute'); if (d) d.remove(); el.classList.toggle('off', !l.inclure); const c = el.querySelector('.imp-coche'); if (c) c.checked = l.inclure; }
+    const { somme, n: nb } = _impSommes(st);
+    const so = document.getElementById('imp-somme'); if (so) so.textContent = _impMontant(st, somme);
+    const b = document.getElementById('imp-go'); if (b && !st.enCours) { b.disabled = !nb; b.textContent = tpar('zim_entrer', nb); }
+    return;
+  }
+  if (k === 'inclure') { l.inclure = !!v; l.vu = true; }
+  else if (k === 'nom') { l.nom = String(v || '').replace(/\s+/g, ' ').trim().slice(0, 120); if (l.nom) return; }
+  else if (k === 'art') l.art = String(v || '');
+  else if (k === 'pv') { l.pv = v; return; }
+  _impMajLigne(i);
+}
+function _impLier(i, v) {
+  const st = S.imp; const l = st && st.lignes && st.lignes[i];
+  if (!l) return;
+  const nv = _spectraNormNom(v);
+  const a = nv ? (S.articles || []).find(x => _spectraNormNom(x.name) === nv) : null;
+  if (v && !a) showToast(t('zim_pasTrouve'), 'error');
+  l.art = a ? String(a.id) : '';
+  _impMajLigne(i);
+}
+
+async function _impFactureAppliquer() {
+  const st = S.imp;
+  if (!st || st.etape !== 'facture' || st.enCours) return;
+  const lignes = st.lignes.filter(l => l.inclure && l.qte > 0 && l.nom);
+  if (!lignes.length) { showToast(t('zim_rien'), 'error'); return; }
+  const nouvelles = lignes.filter(l => !_impArt(l.art));
+  if (nouvelles.length && !_checkPlanLimit('articles', (S.articles || []).length + nouvelles.length - 1, 'articles')) return;
+  const deja = _impDejaImportee(st);
+  if (deja && !confirm(tpar('zim_dejaConfirmer', new Date(deja.quand).toLocaleDateString(_loc())))) return;
+  st.enCours = true;
+  _impBouton(true, tpar('zim_enCours', 0, lignes.length));
+  const k = _impFacteur(st).k;
+  const note = [t('zim_facture'), st.fournisseur, st.numero && ('n° ' + st.numero)].filter(Boolean).join(' · ');
+  const four = _impFournisseur(st.fournisseur);
+  const res = { entrees: 0, creees: [], prix: 0, echecs: 0, depense: 0 };
+  let fait = 0;
+  for (const l of lignes) {
+    const pu = Math.round(l.pu * k * 100) / 100;
+    let a = _impArt(l.art);
+    if (a) {
+      a.stock = Math.round(((Number(a.stock) || 0) + l.qte) * 1000) / 1000;
+      if (st.majPrix && pu > 0 && Math.abs((a.purchasePrice || 0) - pu) > 0.004) { a.purchasePrice = pu; res.prix++; _pushArticleMeta(a); }
+      if (four && a.supplierId == null) a.supplierId = four.id;
+    } else {
+      const pv = _impNombre(l.pv) || 0;
+      try {
+        const data = await api('POST', '/api/articles/', { name: l.nom, quantity: l.qte, unit: l.unite || 'pcs', lead_time_days: 7,
+          price: pv, sell_price: pv, purchase_price: pu, category: '', ean: '' });
+        a = articleFromAPI(data);
+        Object.assign(a, { purchasePrice: pu, price: pv, sellPrice: pv, supplierId: four ? four.id : null });
+        S.articles.push(a);
+        res.creees.push(a.id);
+      } catch (_) { res.echecs++; continue; }
+    }
+    pushMovement(a.name, 'entry', l.qte, note);
+    res.entrees++;
+    _impBouton(true, tpar('zim_enCours', ++fait, lignes.length));
+  }
+  _saveArticles();
+  if (st.depense) {
+    const brut = _impMontantDepense(st);
+    const montant = Math.round(brut * k * 100) / 100;
+    if (montant > 0) {
+      const label = [t('zim_facture'), st.fournisseur, st.numero && ('n° ' + st.numero)].filter(Boolean).join(' ');
+      const date = st.date ? new Date(st.date + 'T12:00:00').toISOString() : new Date().toISOString();
+      const e = { id: Date.now(), label, amount: montant, category: 'Achats', date };
+      S.expenses = S.expenses || [];
+      S.expenses.unshift(e);
+      try { localStorage.setItem('baro_expenses', JSON.stringify(S.expenses)); } catch (_) {}
+      if (!USE_LOCAL && S.token) {
+        api('POST', '/api/expenses/', { label, amount: montant, category: 'Achats', date })
+          .then(r => { if (r && r.id) { e.serverId = r.id; try { localStorage.setItem('baro_expenses', JSON.stringify(S.expenses)); } catch (_) {} } })
+          .catch(() => {});
+      }
+      res.depense = montant;
+    }
+  }
+  _impNoter({ genre: 'facture', titre: st.fournisseur, numero: st.numero, fournisseur: st.fournisseur, n: res.entrees });
+  try { logActivity('stock', tpar('zim_journal', res.entrees, st.fournisseur || '—')); } catch (_) {}
+  S.imp = { etape: 'fini', genre: 'facture', res };
+  try { haptic('success'); } catch (_) {}
+  render();
+}
+
+// ── 2. Tableur (Excel, ODS, CSV) ─────────────────────────────────────
+const _IMP_CHAMPS = ['name', 'purchasePrice', 'price', 'stock', 'ean', 'ref', 'category', 'unit', 'min'];
+const _IMP_SYN = {
+  name: ['nom', 'name', 'designation', 'article', 'produit', 'product', 'libelle', 'intitule', 'item', 'nom du produit', 'product name', 'nom article', 'item name', 'description'],
+  purchasePrice: ['prix d achat', 'prix achat', 'pa', 'cout', 'cout unitaire', 'cout d achat', 'purchase price', 'cost', 'cost price', 'buying price', 'unit cost', 'prix de revient', 'prix fournisseur'],
+  price: ['prix de vente', 'prix vente', 'pv', 'prix', 'price', 'sell price', 'selling price', 'sale price', 'retail price', 'tarif', 'prix unitaire', 'unit price', 'pu', 'prix public'],
+  stock: ['quantite', 'qte', 'qty', 'quantity', 'stock', 'stock actuel', 'en stock', 'qte en stock', 'quantite en stock', 'on hand', 'inventaire', 'quantites'],
+  ean: ['ean', 'code barre', 'code barres', 'code a barres', 'codebarre', 'codebarres', 'barcode', 'gtin', 'upc', 'ean13'],
+  ref: ['ref', 'reference', 'sku', 'code article', 'code produit', 'code', 'item code', 'product code', 'reference article'],
+  category: ['categorie', 'category', 'famille', 'rayon', 'groupe', 'departement', 'department'],
+  unit: ['unite', 'unit', 'uom', 'unite de mesure'],
+  min: ['seuil', 'seuil d alerte', 'alerte', 'stock min', 'stock minimum', 'minimum', 'min', 'reorder point', 'reorder level', 'stock d alerte', 'alert threshold', 'low stock alert'],
+};
+const _IMP_TOTAUX = ['total', 'sous total', 'total general', 'grand total', 'subtotal', 'totaux', 'total ht', 'total ttc'];
+
+function _impTableurChoisir() {
+  if (!_planHasFeature('excel')) { _showPlanFeatureModal('excel'); return; }
+  _impFichiers(_IMP_ACCEPT_TABLEUR, false, false, f => _impTableur(f[0]));
+}
+async function _impLireTexte(fichier) {
+  const buf = await fichier.arrayBuffer();
+  let txt = new TextDecoder('utf-8').decode(buf);
+  // Un CSV enregistré par Excel en français est en Windows-1252, pas en UTF-8.
+  if (txt.includes('�')) { try { txt = new TextDecoder('windows-1252').decode(buf); } catch (_) {} }
+  return txt.replace(/^﻿/, '');
+}
+function _impCSV(txt) {
+  const premiere = txt.split(/\r?\n/).find(l => l.trim()) || '';
+  const compte = c => { let n = 0, q = false; for (const ch of premiere) { if (ch === '"') q = !q; else if (!q && ch === c) n++; } return n; };
+  const choix = [';', '\t', ',', '|'].map(c => [c, compte(c)]).sort((a, b) => b[1] - a[1])[0];
+  const d = choix[1] ? choix[0] : ',';
+  const lignes = []; let ligne = [], champ = '', q = false, debut = true;
+  for (let i = 0; i < txt.length; i++) {
+    const ch = txt[i];
+    if (q) {
+      if (ch === '"') { if (txt[i + 1] === '"') { champ += '"'; i++; } else q = false; }
+      else champ += ch;
+      continue;
+    }
+    if (ch === '"' && debut) { q = true; debut = false; continue; }
+    if (ch === d) { ligne.push(champ); champ = ''; debut = true; continue; }
+    if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && txt[i + 1] === '\n') i++;
+      ligne.push(champ); champ = ''; debut = true;
+      if (ligne.some(c => String(c).trim())) lignes.push(ligne);
+      ligne = [];
+      continue;
+    }
+    if (debut && ch === ' ') continue;
+    debut = false;
+    champ += ch;
+  }
+  ligne.push(champ);
+  if (ligne.some(c => String(c).trim())) lignes.push(ligne);
+  return { lignes, dec: d === ';' ? ',' : d === ',' ? '.' : '' };
+}
+async function _impTableur(fichier) {
+  if (!_planHasFeature('excel')) { _showPlanFeatureModal('excel'); return; }
+  if (!fichier) return;
+  const nom = fichier.name || 'fichier';
+  S.imp = { etape: 'chargement', titre: nom };
+  if (S.view !== 'importer') nav('importer'); else render();
+  try {
+    let feuilles, dec = '';
+    if (/\.(csv|tsv|txt)$/i.test(nom) || /^text\//.test(fichier.type)) {
+      const p = _impCSV(await _impLireTexte(fichier));
+      feuilles = [{ nom, lignes: p.lignes }]; dec = p.dec;
+    } else {
+      try { await _spectraLoadScript(_IMP_LIBS.xlsx); } catch (_) { throw new Error('lib'); }
+      if (!window.XLSX) throw new Error('lib');
+      const wb = XLSX.read(await fichier.arrayBuffer(), { type: 'array', cellDates: true });
+      feuilles = wb.SheetNames.map(n => ({ nom: n, lignes: XLSX.utils.sheet_to_json(wb.Sheets[n], { header: 1, defval: '', raw: true, blankrows: false }) }));
+    }
+    feuilles = feuilles.filter(f => f.lignes.some(r => r.some(c => String(c == null ? '' : c).trim())));
+    if (!feuilles.length) throw new Error('vide');
+    // La feuille qui ressemble le plus à une liste d'articles.
+    let idx = 0, meilleur = -1;
+    feuilles.forEach((f, i) => { const sc = _impDetecterEntete(f.lignes).score + Math.min(f.lignes.length, 50) / 100; if (sc > meilleur) { meilleur = sc; idx = i; } });
+    const e = _impDetecterEntete(feuilles[idx].lignes);
+    S.imp = { etape: 'tableur', fichier: nom, feuilles, feuille: idx, entete: e.entete, carte: e.carte, dec, mode: 'remplacer' };
+  } catch (err) {
+    S.imp = null;
+    const m = err && err.message;
+    showToast(m === 'lib' ? t('zim_errLib') : m === 'vide' ? t('zim_errVide') : t('zim_errTableur'), 'error');
+  }
+  render();
+}
+function _impCarteColonnes(entetes) {
+  const cand = [];
+  (entetes || []).forEach((h, col) => {
+    const n = _spectraNormNom(h instanceof Date ? '' : String(h == null ? '' : h));
+    if (!n) return;
+    _IMP_CHAMPS.forEach((champ, rang) => {
+      let s = 0;
+      for (const syn of _IMP_SYN[champ]) {
+        const v = n === syn ? 3 : n.startsWith(syn + ' ') ? 2 : (syn.length >= 4 && (' ' + n + ' ').includes(' ' + syn + ' ')) ? 1 : 0;
+        if (v > s) s = v;
+      }
+      if (s) cand.push({ col, champ, s, rang });
+    });
+  });
+  cand.sort((a, b) => b.s - a.s || a.rang - b.rang || a.col - b.col);
+  const carte = {}; let score = 0;
+  _IMP_CHAMPS.forEach(c => { carte[c] = -1; });
+  const prises = new Set();
+  for (const c of cand) {
+    if (carte[c.champ] >= 0 || prises.has(c.col)) continue;
+    carte[c.champ] = c.col; prises.add(c.col); score += c.s;
+  }
+  return { carte, score };
+}
+function _impDetecterEntete(lignes) {
+  let best = { entete: 0, carte: _impCarteColonnes(lignes[0]).carte, score: -1 };
+  for (let r = 0; r < Math.min(15, lignes.length); r++) {
+    const c = _impCarteColonnes(lignes[r]);
+    const sc = c.score + (c.carte.name >= 0 ? 5 : 0);
+    if (sc > best.score) best = { entete: r, carte: c.carte, score: sc };
+  }
+  return best;
+}
+function _impTrouver(o) {
+  const arts = S.articles || [];
+  if (o.ean) { const a = arts.find(x => String(x.ean || x.barcode || '') === o.ean); if (a) return a; }
+  if (o.ref) { const r = o.ref.toLowerCase(); const a = arts.find(x => x.ref && String(x.ref).toLowerCase() === r); if (a) return a; }
+  const n = _spectraNormNom(o.name);
+  return arts.find(x => _spectraNormNom(x.name) === n) || null;
+}
+function _impTableurLignes(st) {
+  const f = st.feuilles[st.feuille], c = st.carte;
+  const val = (r, ch) => c[ch] >= 0 ? r[c[ch]] : undefined;
+  const txt = v => v == null ? '' : (v instanceof Date ? v.toISOString().slice(0, 10) : String(v)).trim();
+  const num = v => (v === '' || v == null) ? null : (v instanceof Date ? null : _impNombre(v, st.dec));
+  const vus = new Set();
+  return f.lignes.slice(st.entete + 1).map((r, j) => {
+    const o = { no: st.entete + j + 2, name: txt(val(r, 'name')).replace(/\s+/g, ' ').slice(0, 120), stock: num(val(r, 'stock')),
+      price: num(val(r, 'price')), purchasePrice: num(val(r, 'purchasePrice')), ref: txt(val(r, 'ref')).slice(0, 60),
+      ean: txt(val(r, 'ean')).replace(/\s/g, '').replace(/\.0+$/, '').slice(0, 32), category: txt(val(r, 'category')).slice(0, 60),
+      unit: txt(val(r, 'unit')).slice(0, 16), min: num(val(r, 'min')) };
+    if (o.stock != null && o.stock < 0) o.stock = 0;
+    if (!o.name) { o.action = 'ignorer'; o.raison = 'sansNom'; return o; }
+    if (_IMP_TOTAUX.includes(_spectraNormNom(o.name))) { o.action = 'ignorer'; o.raison = 'total'; return o; }
+    const cle = o.ean ? 'e' + o.ean : o.ref ? 'r' + o.ref.toLowerCase() : 'n' + _spectraNormNom(o.name);
+    if (vus.has(cle)) { o.action = 'ignorer'; o.raison = 'doublon'; return o; }
+    vus.add(cle);
+    o.art = _impTrouver(o);
+    o.action = o.art ? 'maj' : 'creer';
+    return o;
+  });
+}
+function _impPlaces() {
+  const lim = _planLimit('articles');
+  return lim === Infinity || lim == null ? Infinity : Math.max(0, lim - (S.articles || []).length);
+}
+function _impLettre(c) { let s = ''; c++; while (c > 0) { const m = (c - 1) % 26; s = String.fromCharCode(65 + m) + s; c = Math.floor((c - 1) / 26); } return s; }
+function _impVueTableur(st) {
+  const f = st.feuilles[st.feuille];
+  const lignes = _impTableurLignes(st);
+  const nouv = lignes.filter(l => l.action === 'creer').length, maj = lignes.filter(l => l.action === 'maj').length;
+  const ign = lignes.length - nouv - maj;
+  const places = _impPlaces(), aCreer = Math.min(nouv, places);
+  const entetes = f.lignes[st.entete] || [];
+  const nbCol = Math.min(60, Math.max(entetes.length, ...f.lignes.slice(0, 40).map(r => r.length)));
+  const colNom = c => { const h = String(entetes[c] == null ? '' : entetes[c]).trim(); return h ? _impLettre(c) + ' · ' + h.slice(0, 40) : t('zim_colonne') + ' ' + _impLettre(c); };
+  const nbMap = _IMP_CHAMPS.filter(ch => st.carte[ch] >= 0).length;
+  const pret = st.carte.name >= 0 && (aCreer + maj) > 0;
+  return `${_impEntete(t('zim_tabT'), _impEsc(st.fichier), '_impAnnuler()')}
+  <div class="container imp">
+    ${st.feuilles.length > 1 ? `<label class="imp-map"><span>${t('zim_feuille')}</span><select class="input" onchange="_impFeuille(+this.value)">${st.feuilles.map((x, i) => `<option value="${i}" ${i === st.feuille ? 'selected' : ''}>${_impEsc(x.nom)}</option>`).join('')}</select></label>` : ''}
+    <div class="imp-stats">
+      <div><b>${nouv}</b><span>${t('zim_nouveaux')}</span></div>
+      <div><b>${maj}</b><span>${t('zim_misAJour')}</span></div>
+      <div><b>${ign}</b><span>${t('zim_ignores')}</span></div>
+    </div>
+    ${st.carte.name < 0 ? `<div class="imp-alerte">${t('zim_choisirNom')}</div>` : ''}
+    ${nouv > places ? `<div class="imp-alerte">${tpar('zim_limite', places, nouv)} <button class="imp-lien" onclick="nav('subscription')">${t('zim_voirForfaits')}</button></div>` : ''}
+    ${st.carte.stock >= 0 && maj ? `<div class="imp-carte imp-opts"><div class="imp-sec-t" style="margin-top:0">${t('zim_qteFichier')}</div>
+      <label class="imp-opt"><input type="radio" name="imp-mode" ${st.mode === 'remplacer' ? 'checked' : ''} onchange="S.imp.mode='remplacer'"><span><b>${t('zim_modeRemplacer')}</b><small>${t('zim_modeRemplacerS')}</small></span></label>
+      <label class="imp-opt"><input type="radio" name="imp-mode" ${st.mode === 'ajouter' ? 'checked' : ''} onchange="S.imp.mode='ajouter'"><span><b>${t('zim_modeAjouter')}</b><small>${t('zim_modeAjouterS')}</small></span></label>
+    </div>` : ''}
+    <div class="imp-sec-t">${tpar('zim_apercu', Math.min(lignes.length, 60), lignes.length)}</div>
+    <div class="imp-table">
+      <div class="imp-tr imp-tete"><div>${t('zim_thNom')}</div><div class="imp-td-n">${t('zim_qte')}</div><div class="imp-td-n">${t('zim_thPrix')}</div><div class="imp-td-s"></div></div>
+      ${lignes.slice(0, 60).map(l => `<div class="imp-tr ${l.action}">
+        <div class="imp-td-nom"><b>${_impEsc(l.name || '—')}</b><small>${[l.ref, l.ean, l.category].filter(Boolean).map(_impEsc).join(' · ') || t('zim_ligne') + ' ' + l.no}</small></div>
+        <div class="imp-td-n">${l.stock != null ? fmtQty(l.stock) : '—'}</div>
+        <div class="imp-td-n">${l.price != null ? fmt(l.price) : '—'}</div>
+        <div class="imp-td-s"><span class="imp-pill ${l.action}">${l.action === 'creer' ? t('zim_pNouveau') : l.action === 'maj' ? t('zim_pMaj') : t('zim_r_' + l.raison)}</span></div>
+      </div>`).join('')}
+    </div>
+    <details class="imp-carte imp-cols" ${st.colsOuvert || st.carte.name < 0 ? 'open' : ''} ontoggle="S.imp.colsOuvert=this.open">
+      <summary><span>${t('zim_colonnes')}</span><b>${tpar('zim_colsN', nbMap, _IMP_CHAMPS.length)}</b></summary>
+      ${_IMP_CHAMPS.map(ch => `<label class="imp-map"><span>${t('zim_ch_' + ch)}</span><select class="input" onchange="_impMap('${ch}',+this.value)"><option value="-1">${t('zim_aucune')}</option>${Array.from({ length: nbCol }, (_, c) => `<option value="${c}" ${st.carte[ch] === c ? 'selected' : ''}>${_impEsc(colNom(c))}</option>`).join('')}</select></label>`).join('')}
+      <label class="imp-map"><span>${t('zim_ligneEntete')}</span><select class="input" onchange="_impEnteteLigne(+this.value)">${Array.from({ length: Math.min(15, f.lignes.length) }, (_, r) => `<option value="${r}" ${st.entete === r ? 'selected' : ''}>${t('zim_ligne')} ${r + 1}</option>`).join('')}</select></label>
+    </details>
+    <div class="imp-barre">
+      <button class="btn btn-ghost" onclick="_impAnnuler()">${t('zim_annuler')}</button>
+      <button class="btn btn-primary" id="imp-go" onclick="_impTableurAppliquer()" ${pret ? '' : 'disabled'}>${tpar('zim_importerN', aCreer + maj)}</button>
+    </div>
+  </div>`;
+}
+function _impMap(champ, col) {
+  const st = S.imp; if (!st || st.etape !== 'tableur') return;
+  if (col >= 0) _IMP_CHAMPS.forEach(c => { if (st.carte[c] === col) st.carte[c] = -1; });
+  st.carte[champ] = col;
+  render();
+}
+function _impEnteteLigne(r) {
+  const st = S.imp; if (!st || st.etape !== 'tableur') return;
+  st.entete = r;
+  st.carte = _impCarteColonnes(st.feuilles[st.feuille].lignes[r]).carte;
+  render();
+}
+function _impFeuille(i) {
+  const st = S.imp; if (!st || st.etape !== 'tableur' || !st.feuilles[i]) return;
+  const e = _impDetecterEntete(st.feuilles[i].lignes);
+  Object.assign(st, { feuille: i, entete: e.entete, carte: e.carte });
+  render();
+}
+async function _impTableurAppliquer() {
+  const st = S.imp;
+  if (!st || st.etape !== 'tableur' || st.enCours || st.carte.name < 0) return;
+  const lignes = _impTableurLignes(st);
+  const maj = lignes.filter(l => l.action === 'maj');
+  const nouv = lignes.filter(l => l.action === 'creer').slice(0, _impPlaces());
+  if (!maj.length && !nouv.length) return;
+  st.enCours = true;
+  const total = maj.length + nouv.length;
+  _impBouton(true, tpar('zim_enCours', 0, total));
+  const note = t('zim_noteTableur') + ' · ' + st.fichier;
+  const res = { creees: [], majs: 0, echecs: 0 };
+  for (const l of maj) {
+    const a = l.art, autres = {};
+    let meta = false;
+    if (l.stock != null) {
+      const avant = Number(a.stock) || 0;
+      const apres = Math.round((st.mode === 'ajouter' ? avant + l.stock : l.stock) * 1000) / 1000;
+      if (Math.abs(apres - avant) > 1e-9) {
+        a.stock = apres;
+        pushMovement(a.name, st.mode === 'ajouter' ? 'entry' : 'adjustment', st.mode === 'ajouter' ? l.stock : Math.round((apres - avant) * 1000) / 1000, note);
+      }
+    }
+    if (l.price != null && l.price !== a.price) { a.price = l.price; a.sellPrice = l.price; meta = true; }
+    if (l.purchasePrice != null && l.purchasePrice !== a.purchasePrice) { a.purchasePrice = l.purchasePrice; meta = true; }
+    if (l.category && l.category !== a.category) { a.category = l.category; meta = true; }
+    if (l.ean && l.ean !== a.ean) { a.ean = l.ean; a.barcode = l.ean; meta = true; }
+    if (l.ref && l.ref !== a.ref) { a.ref = l.ref; autres.ref = l.ref; }
+    if (l.unit && l.unit !== a.unit) { a.unit = l.unit; autres.unit = l.unit; }
+    if (l.min != null && l.min !== a.min) { a.min = l.min; autres.alert_threshold = l.min; }
+    if (meta) _pushArticleMeta(a);
+    if (Object.keys(autres).length && !USE_LOCAL && S.token && Number(a.id) < 1e10) { try { api('PUT', `/api/articles/${a.id}`, autres).catch(() => {}); } catch (_) {} }
+    res.majs++;
+  }
+  _impBouton(true, tpar('zim_enCours', maj.length, total));
+  for (let i = 0; i < nouv.length; i += 5) {
+    await Promise.all(nouv.slice(i, i + 5).map(async l => {
+      const pv = l.price || 0, pa = l.purchasePrice || 0;
+      try {
+        const data = await api('POST', '/api/articles/', { name: l.name, quantity: l.stock || 0, unit: l.unit || 'pcs', alert_threshold: l.min || null,
+          lead_time_days: 7, ref: l.ref || null, price: pv, purchase_price: pa, sell_price: pv, category: l.category || '', ean: l.ean || '' });
+        const a = articleFromAPI(data);
+        Object.assign(a, { ref: l.ref || '', price: pv, sellPrice: pv, purchasePrice: pa, category: l.category || '', ean: l.ean || '', barcode: l.ean || '', unit: l.unit || a.unit || 'pcs', min: l.min || 0 });
+        S.articles.push(a);
+        res.creees.push(a.id);
+        if (l.stock > 0) pushMovement(a.name, 'entry', l.stock, note);
+      } catch (_) { res.echecs++; }
+    }));
+    _impBouton(true, tpar('zim_enCours', Math.min(maj.length + i + 5, total), total));
+  }
+  _saveArticles();
+  _impNoter({ genre: 'tableur', titre: st.fichier, n: res.creees.length + res.majs });
+  try { logActivity('stock', tpar('zim_journalTab', res.creees.length, res.majs)); } catch (_) {}
+  S.imp = { etape: 'fini', genre: 'tableur', res };
+  try { haptic('success'); } catch (_) {}
+  render();
+}
+function _impModele() {
+  const h = _IMP_CHAMPS.slice().sort((a, b) => ['name', 'stock', 'price', 'purchasePrice', 'ref', 'ean', 'category', 'unit', 'min'].indexOf(a) - ['name', 'stock', 'price', 'purchasePrice', 'ref', 'ean', 'category', 'unit', 'min'].indexOf(b)).map(c => t('zim_ch_' + c));
+  const blob = new Blob(['﻿' + h.join(';') + '\r\n'], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = (_lang === 'en' ? 'baro_import_template' : 'baro_modele_import') + '.csv';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+
+// ── 3. Photos d'articles (images ou .zip) ─────────────────────────────
+function _impArticlePourFichier(nom) {
+  const base = String(nom || '').replace(/\.[^.]+$/, '').trim();
+  const arts = S.articles || [];
+  const chiffres = base.replace(/[\s_-]/g, '');
+  if (/^\d{8,14}$/.test(chiffres)) { const a = arts.find(x => String(x.ean || x.barcode || '') === chiffres); if (a) return a; }
+  const r = base.toLowerCase();
+  const parRef = arts.find(x => x.ref && String(x.ref).toLowerCase() === r);
+  if (parRef) return parRef;
+  // « riz-maman-5kg_2 » → « riz maman 5kg » ; « IMG_2034 » ne désigne rien.
+  const propre = base.replace(/[_\-.]+/g, ' ').replace(/\s+\(?\d{1,2}\)?$/, '').trim();
+  if (!propre || /^(img|dsc|dscn|photo|image|pxl|wp|screenshot|capture)\s*\d*$/i.test(propre) || /^\d+$/.test(propre)) return null;
+  return _spectraMatchCatalogue(propre);
+}
+async function _impPhotos(files) {
+  if (!_planHasFeature('importPhotos')) { _showPlanFeatureModal('importPhotos'); return; }
+  S.imp = { etape: 'chargement', titre: t('zim_photosT') };
+  if (S.view !== 'importer') nav('importer'); else render();
+  const entrees = [];
+  let echecs = 0;
+  try {
+    for (const f of files) {
+      if (/\.zip$/i.test(f.name || '') || /zip/.test(f.type || '')) {
+        try { await _spectraLoadScript(_IMP_LIBS.jszip); } catch (_) { throw new Error('lib'); }
+        if (!window.JSZip) throw new Error('lib');
+        const zip = await JSZip.loadAsync(f);
+        Object.values(zip.files)
+          .filter(z => !z.dir && _IMP_EXT_IMAGE.test(z.name) && !/(^|\/)(__MACOSX|\.)/.test(z.name))
+          .forEach(z => entrees.push({ nom: z.name.split('/').pop(), lire: () => z.async('blob') }));
+      } else if (/^image\//.test(f.type || '') || _IMP_EXT_IMAGE.test(f.name || '')) {
+        entrees.push({ nom: f.name || 'photo.jpg', lire: async () => f });
+      }
+    }
+  } catch (err) {
+    S.imp = null;
+    showToast(err && err.message === 'lib' ? t('zim_errLib') : t('zim_errZip'), 'error');
+    render(); return;
+  }
+  if (!entrees.length) { S.imp = null; showToast(t('zim_aucunePhoto'), 'error'); render(); return; }
+  const lot = entrees.slice(0, 200);
+  const photos = [];
+  for (let i = 0; i < lot.length; i++) {
+    const e = lot[i];
+    try {
+      const data = _impReduire(await _impChargerImage(await e.lire()), 480, 0.8);
+      const a = _impArticlePourFichier(e.nom);
+      photos.push({ nom: e.nom, data, art: a ? String(a.id) : '', inclure: !!a });
+    } catch (_) { echecs++; }
+    const el = document.getElementById('imp-charge-s');
+    if (el) el.textContent = tpar('zim_photosLecture', i + 1, lot.length);
+  }
+  if (!photos.length) { S.imp = null; showToast(t('zim_aucunePhoto'), 'error'); render(); return; }
+  S.imp = { etape: 'photos', photos, echecs, trop: Math.max(0, entrees.length - lot.length) };
+  render();
+}
+function _impPhotoHTML(p, i) {
+  const a = _impArt(p.art), on = p.inclure && a;
+  return `<div class="imp-photo${on ? '' : ' off'}" id="imp-p-${i}">
+    <img src="${p.data}" alt="">
+    <div class="imp-photo-c">
+      <small class="imp-photo-f">${_impEsc(p.nom)}</small>
+      <input class="input" list="imp-arts" value="${a ? _impEsc(a.name) : ''}" placeholder="${t('zim_photoLier')}" onchange="_impPhotoLier(${i},this.value)" aria-label="${t('zim_photoLier')}">
+      ${a && a.image ? `<small class="imp-photo-r">${t('zim_remplace')}</small>` : ''}
+    </div>
+    <input type="checkbox" class="imp-coche" ${on ? 'checked' : ''} ${a ? '' : 'disabled'} onchange="_impPhotoIncl(${i},this.checked)" aria-label="${t('zim_inclure')}">
+  </div>`;
+}
+function _impPhotosCompte(st) { return st.photos.filter(p => p.inclure && _impArt(p.art)).length; }
+function _impVuePhotos(st) {
+  const n = _impPhotosCompte(st);
+  return `${_impEntete(t('zim_photosT'), tpar('zim_photosS', st.photos.length, st.photos.filter(p => p.art).length), '_impAnnuler()')}
+  <div class="container imp">
+    <datalist id="imp-arts">${(S.articles || []).map(a => `<option value="${_impEsc(a.name)}">`).join('')}</datalist>
+    ${st.echecs ? `<div class="imp-alerte">${tpar('zim_photosEchecs', st.echecs)}</div>` : ''}
+    ${st.trop ? `<div class="imp-alerte">${tpar('zim_photosTrop', st.trop)}</div>` : ''}
+    <div class="imp-note" style="margin-top:0">${t('zim_photosAide')}</div>
+    <div class="imp-photos">${st.photos.map(_impPhotoHTML).join('')}</div>
+    <div class="imp-barre">
+      <button class="btn btn-ghost" onclick="_impAnnuler()">${t('zim_annuler')}</button>
+      <button class="btn btn-primary" id="imp-go" onclick="_impPhotosAppliquer()" ${n ? '' : 'disabled'}>${tpar('zim_attribuer', n)}</button>
+    </div>
+  </div>`;
+}
+function _impMajPhoto(i) {
+  const st = S.imp; if (!st || st.etape !== 'photos') return;
+  const el = document.getElementById('imp-p-' + i);
+  if (el) el.outerHTML = _impPhotoHTML(st.photos[i], i);
+  const n = _impPhotosCompte(st);
+  const b = document.getElementById('imp-go'); if (b) { b.disabled = !n; b.textContent = tpar('zim_attribuer', n); }
+}
+function _impPhotoLier(i, v) {
+  const st = S.imp; const p = st && st.photos && st.photos[i]; if (!p) return;
+  const nv = _spectraNormNom(v);
+  const a = nv ? (S.articles || []).find(x => _spectraNormNom(x.name) === nv) : null;
+  if (v && !a) showToast(t('zim_pasTrouve'), 'error');
+  p.art = a ? String(a.id) : '';
+  p.inclure = !!a;
+  _impMajPhoto(i);
+}
+function _impPhotoIncl(i, on) {
+  const st = S.imp; const p = st && st.photos && st.photos[i]; if (!p) return;
+  p.inclure = !!on;
+  _impMajPhoto(i);
+}
+function _impPhotosAppliquer() {
+  const st = S.imp;
+  if (!st || st.etape !== 'photos') return;
+  const choix = st.photos.filter(p => p.inclure && _impArt(p.art));
+  if (!choix.length) return;
+  const avant = new Map();
+  choix.forEach(p => { const a = _impArt(p.art); if (!avant.has(a.id)) avant.set(a.id, a.image || ''); a.image = p.data; });
+  // Les photos vivent dans la mémoire du navigateur : on vérifie qu'elle a
+  // la place avant d'annoncer quoi que ce soit.
+  try {
+    const j = JSON.stringify(S.articles || []);
+    localStorage.setItem('stockr_articles', j);
+    localStorage.setItem('baro_articles', j);
+  } catch (_) {
+    avant.forEach((img, id) => { const a = _impArt(id); if (a) a.image = img; });
+    _saveArticles();
+    showToast(t('zim_memoirePleine'), 'error');
+    return;
+  }
+  _saveArticles();
+  _impNoter({ genre: 'photos', n: avant.size });
+  try { logActivity('stock', tpar('zim_journalPhotos', avant.size)); } catch (_) {}
+  S.imp = { etape: 'fini', genre: 'photos', res: { photos: avant.size } };
+  try { haptic('success'); } catch (_) {}
+  render();
+}
+
+// ── Fin ──
+function _impVueFini(st) {
+  const r = st.res || {};
+  const lignes = [];
+  if (st.genre === 'facture') {
+    lignes.push(tpar('zim_finiEntrees', r.entrees || 0));
+    if (r.creees && r.creees.length) lignes.push(tpar('zim_finiCreees', r.creees.length));
+    if (r.prix) lignes.push(tpar('zim_finiPrix', r.prix));
+    if (r.depense) lignes.push(tpar('zim_finiDepense', fmt(r.depense) + ' ' + sym()));
+  } else if (st.genre === 'tableur') {
+    lignes.push(tpar('zim_finiCreees', (r.creees || []).length));
+    lignes.push(tpar('zim_finiMaj', r.majs || 0));
+  } else if (st.genre === 'photos') {
+    lignes.push(tpar('zim_finiPhotos', r.photos || 0));
+  }
+  const sansPrix = (r.creees || []).map(_impArt).filter(a => a && !(a.price > 0)).slice(0, 30);
+  return `${_impEntete(t('zim_titre'), t(st.genre === 'tableur' ? 'zim_tabT' : st.genre === 'photos' ? 'zim_photosT' : 'zim_factT'), '_impAccueilRetour()')}
+  <div class="container imp">
+    <div class="imp-fini">
+      <div class="imp-fini-ic">✓</div>
+      <div class="imp-fini-t">${t('zim_finiT')}</div>
+      <div class="imp-fini-l">${lignes.map(_impEsc).join('<br>')}</div>
+      ${r.echecs ? `<div class="imp-alerte" style="margin-top:12px;text-align:left">${tpar('zim_finiEchecs', r.echecs)}</div>` : ''}
+    </div>
+    ${sansPrix.length ? `<div class="imp-sec-t">${t('zim_sansPrix')}</div>
+    <div class="imp-note" style="margin-top:0">${t('zim_sansPrixS')}</div>
+    <div class="imp-histo">${sansPrix.map(a => `<button class="imp-h imp-h-btn" onclick="S.selectedId=${_jsArg(a.id)};nav('detail')"><span class="imp-h-ic">📦</span><div class="imp-h-t"><b>${_impEsc(a.name)}</b><small>${t('zim_fixerPrix')}</small></div><span class="imp-h-n">›</span></button>`).join('')}</div>` : ''}
+    <div class="imp-fini-b">
+      <button class="btn btn-primary" onclick="S.imp=null;nav('pantry')">${t('zim_voirStock')}</button>
+      <button class="btn btn-ghost" onclick="S.imp=null;render()">${t('zim_autre')}</button>
+    </div>
+  </div>`;
 }
 
 // ── SPECTRA ENHANCED ─────────────────────────
@@ -46656,6 +47982,11 @@ function vSpectraEnhanced() {
         <div class="quick-ico">${IC.download}</div>
         <div class="quick-label">${t('spectraReception')}</div>
         <div class="quick-sub">${t('spectraReceptionSub')}</div>
+      </div>
+      <div class="quick-btn" style="grid-column:1/-1" onclick="S.imp=null;nav('importer');_impFactureChoisir(true)">
+        <div class="quick-ico">🧾</div>
+        <div class="quick-label">${t('zim_factT')}</div>
+        <div class="quick-sub">${t('zim_spectraSub')}</div>
       </div>
     </div>
 
@@ -47242,7 +48573,6 @@ function __baroInit() {
   window.generateWavePayment     = generateWavePayment;
   window.generateOrangePayment   = generateOrangePayment;
   window.requestPaymentWhatsApp  = requestPaymentWhatsApp;
-  window.importProductsFromCSV   = importProductsFromCSV;
   // Boutique extras
   window.updateBoutiqueSocial    = updateBoutiqueSocial;
   window.updateHour              = updateHour;

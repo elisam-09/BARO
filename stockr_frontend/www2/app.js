@@ -270,6 +270,117 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zvt_capcut: "sur mobile, CapCut s'ouvre tout seul s'il est installé.",
+    zsp_scansIllimites: "♾️ Scans illimités · forfait {0}",
+    zsp_modePhoto: "Scan photo",
+    zsp_modeBarcode: "Code-barres",
+    zsp_modeComptage: "Comptage IA",
+    zsp_coucheDetection: "Détection des objets",
+    zsp_coucheClassif: "Classification fine",
+    zsp_coucheOcr: "Lecture des étiquettes",
+    zsp_coucheOcrSub: "Marques et libellés",
+    zsp_coucheEan: "Codes-barres et base produits",
+    zsp_coucheIa: "IA vision",
+    zsp_coucheMemoire: "Vos produits",
+    zsp_coucheMemoireSub: "Noms de votre stock",
+    zsp_analyseTitre: "Spectra analyse…",
+    zsp_analyseSous: "Analyse de la photo en cours",
+    zsp_chargeComptage: "Comptage en cours…",
+    zsp_chargeCodeBarres: "Recherche du code-barres…",
+    zsp_chargeProduit: "Identification du produit…",
+    zsp_limiteTitre: "Limite quotidienne atteinte",
+    zsp_limiteSous: "{0} scans par jour avec le forfait {1}",
+    zsp_limiteBravo: "Vous scannez beaucoup, bravo !",
+    zsp_avPro1: "🔍 Spectra, le scan intelligent",
+    zsp_avPro2: "🏪 Boutique en ligne",
+    zsp_avPro3: "📣 Marketing et campagnes",
+    zsp_avPro4: "♾️ Articles et ventes illimités",
+    zsp_revenirDemain: "Revenir demain",
+    zsp_changerCam: "Changer de caméra",
+    zsp_chargementIa: "Chargement de l'IA…",
+    zsp_capturerOcr: "Capturer et lire",
+    zsp_astuceOcr: "💡 Spectra lit la marque et le libellé de l'emballage pour identifier le produit précisément",
+    zsp_approcherCode: "Détection en cours… Approchez le code-barres",
+    zsp_articlesDetectes: "{0} sur {1} articles détectés",
+    zsp_iaIncertaine: "IA incertaine : vérifiez le nom",
+    zsp_qteConfiance: "Quantité détectée : {0} · Précision : {1} %",
+    zsp_memoire: "Mémoire",
+    zsp_corrigeTel: "corrigé en téléphone",
+    zsp_marque: "Marque",
+    zsp_classeIa: "Classe IA",
+    zsp_srcDico: "Dictionnaire (lecture)",
+    zsp_correspondance: "Correspondance",
+    zsp_nouvelArticle: "Nouvel article",
+    zsp_renommer: "Renommer",
+    zsp_articlesMaj: "{0} articles mis à jour",
+    zsp_sousTitre: "Vision sur l'appareil · objets, étiquettes, codes-barres",
+    zsp_sousTitreIa: "IA vision intégrée et moteurs de l'appareil",
+    zsp_badgeGratuit: "GRATUIT · 2 MIN",
+    zsp_scansJour: "Scans aujourd'hui",
+    zsp_restants: "{0}/{1} restants",
+    zsp_groqGratuit: "clé Groq gratuite · 2 min",
+    zsp_ouvre: "Ouvrez",
+    zsp_touche: "Touchez",
+    zsp_scanneTout: "Scannez n'importe quel produit",
+    zsp_btnCodeBarres: "Scanner un code-barres",
+    zsp_btnLive: "Démarrer le scan en direct",
+    zsp_btnComptage: "Compter les articles",
+    zsp_aideLive: "Détection en temps réel sur l'image de la caméra",
+    zsp_aideComptage: "Spectra détecte et compte les objets visibles sur la photo",
+    zsp_aideCodeBarres: "EAN-13, UPC, Code 128, QR…",
+    zsp_memoireProduit: "Mémoire produit ({0})",
+    zsp_memoireAide: "Spectra apprend de vos confirmations. Produits les plus reconnus :",
+    zsp_effacerMemoireQ: "Effacer toute la mémoire produit ?",
+    zsp_nArticles: "{0} articles",
+    zsp_clsObjet: "Objet",
+    zsp_clsTelephone: "Téléphone",
+    zsp_clsBoite: "Boîte / emballage",
+    zsp_qFlou: "flou",
+    zsp_qSombre: "zones sombres",
+    zsp_qSousExpo: "sous-exposé",
+    zsp_qSurExpo: "surexposé",
+    zsp_zxingIndispo: "Lecteur de codes-barres indisponible (hors ligne ?)",
+    zsp_lectureCode: "Lecture du code-barres…",
+    zsp_lectureImpossible: "Lecture impossible",
+    zsp_codeIlisible: "Code-barres illisible sur la photo (essayez plus net, plus près).\n\nVous pouvez le saisir à la main (EAN) :",
+    zsp_bdNonSupporte: "La lecture de codes-barres en direct n'est pas prise en charge par ce navigateur",
+    zsp_uneCamera: "Une seule caméra disponible",
+    zsp_cameraN: "Caméra {0}",
+    zsp_cameraNom: "Caméra : {0}",
+    zsp_iaIndispo: "IA indisponible : {0}",
+    zsp_cameraIntrouvable: "Caméra introuvable",
+    zsp_cameraRefusee: "Caméra refusée : ",
+    zsp_aucuneDetection: "Rien de détecté : rapprochez le produit",
+    zsp_rechercheCode: "Recherche de {0}…",
+    zsp_codeNonTrouve: "Code {0} : produit non trouvé, complétez le nom",
+    zsp_rechercheOff: "Recherche du produit (OpenFoodFacts)…",
+    zsp_pdfIndispo: "Le générateur de PDF n'est pas chargé",
+    zsp_rienASigner: "Aucune détection à mettre dans le rapport",
+    zsp_generationRapport: "Création du rapport…",
+    zsp_operateur: "Opérateur",
+    zsp_pdfTitre: "RAPPORT D'AUDIT SPECTRA",
+    zsp_pdfDate: "Date : {0} {1}",
+    zsp_pdfOperateur: "Opérateur : {0}",
+    zsp_pdfMode: "Mode : {0}",
+    zsp_pdfGps: "GPS : {0}, {1} (±{2} m)",
+    zsp_pdfGpsNon: "GPS : non disponible",
+    zsp_pdfArticles: "Articles détectés et mis à jour",
+    zsp_pdfDetails: "Détails de la détection",
+    zsp_pdfClasse: "classe={0}",
+    zsp_pdfSignature: "EMPREINTE SHA-256 DU RAPPORT",
+    zsp_pdfMention: "Toute modification du rapport change cette empreinte · BARO Spectra",
+    zsp_fTitre: "Spectra, le scan intelligent",
+    zsp_fQuoi: "Photographiez un produit : Spectra le reconnaît, remplit la fiche et met le stock à jour. Codes-barres à la caméra, comptage, audit et réception de livraison en photo.",
+    zsp_verrouSous: "Le scan intelligent, à partir du forfait Pro",
+    zsp_apercuT: "Ce que Spectra fait pour vous",
+    zsp_apercu1: "📷 Une photo suffit : le produit est reconnu et sa fiche se remplit",
+    zsp_apercu2: "🔖 Les codes-barres se lisent à la caméra, nom et photo compris",
+    zsp_apercu3: "🔢 L'étagère se compte toute seule, avec les écarts de stock",
+    zsp_apercu4: "🚚 Une livraison se réceptionne en photo, sans saisie",
+    zsp_apercu5: "✨ En Entreprise : l'IA réfléchit plus longtemps et voit plus juste",
+    zsp_prixPro: "🔍 Spectra : scan caméra illimité + {0} analyses IA par jour",
+    zsp_prixEnt: "🔍 Spectra + IA à réflexion approfondie ({0} analyses par jour)",
+    zsp_tagPro: "PRO",
     zpr_application: "Comment elle s'applique",
     zpr_auto: "Automatique",
     zpr_autoD: "S'applique toute seule aux articles visés, en caisse et sur la vitrine.",
@@ -4017,6 +4128,117 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zvt_capcut: "on a phone, CapCut opens by itself if it is installed.",
+    zsp_scansIllimites: "♾️ Unlimited scans · {0} plan",
+    zsp_modePhoto: "Photo scan",
+    zsp_modeBarcode: "Barcode",
+    zsp_modeComptage: "AI count",
+    zsp_coucheDetection: "Object detection",
+    zsp_coucheClassif: "Fine-grained classification",
+    zsp_coucheOcr: "Label reading",
+    zsp_coucheOcrSub: "Brands and labels",
+    zsp_coucheEan: "Barcodes and product database",
+    zsp_coucheIa: "AI vision",
+    zsp_coucheMemoire: "Your products",
+    zsp_coucheMemoireSub: "Names from your stock",
+    zsp_analyseTitre: "Spectra is analysing…",
+    zsp_analyseSous: "Analysing the photo",
+    zsp_chargeComptage: "Counting…",
+    zsp_chargeCodeBarres: "Looking for the barcode…",
+    zsp_chargeProduit: "Identifying the product…",
+    zsp_limiteTitre: "Daily limit reached",
+    zsp_limiteSous: "{0} scans a day on the {1} plan",
+    zsp_limiteBravo: "You scan a lot, well done!",
+    zsp_avPro1: "🔍 Spectra, smart scanning",
+    zsp_avPro2: "🏪 Online shop",
+    zsp_avPro3: "📣 Marketing and campaigns",
+    zsp_avPro4: "♾️ Unlimited items and sales",
+    zsp_revenirDemain: "Come back tomorrow",
+    zsp_changerCam: "Switch camera",
+    zsp_chargementIa: "Loading the AI…",
+    zsp_capturerOcr: "Capture and read",
+    zsp_astuceOcr: "💡 Spectra reads the brand and label on the packaging to identify the product precisely",
+    zsp_approcherCode: "Detecting… Bring the barcode closer",
+    zsp_articlesDetectes: "{0} of {1} detected items",
+    zsp_iaIncertaine: "AI unsure: check the name",
+    zsp_qteConfiance: "Detected quantity: {0} · Confidence: {1}%",
+    zsp_memoire: "Memory",
+    zsp_corrigeTel: "corrected to phone",
+    zsp_marque: "Brand",
+    zsp_classeIa: "AI class",
+    zsp_srcDico: "Dictionary (reading)",
+    zsp_correspondance: "Match",
+    zsp_nouvelArticle: "New item",
+    zsp_renommer: "Rename",
+    zsp_articlesMaj: "{0} items updated",
+    zsp_sousTitre: "On-device vision · objects, labels, barcodes",
+    zsp_sousTitreIa: "Built-in AI vision and on-device engines",
+    zsp_badgeGratuit: "FREE · 2 MIN",
+    zsp_scansJour: "Scans today",
+    zsp_restants: "{0}/{1} left",
+    zsp_groqGratuit: "free Groq key · 2 min",
+    zsp_ouvre: "Open",
+    zsp_touche: "Tap",
+    zsp_scanneTout: "Scan any product",
+    zsp_btnCodeBarres: "Scan a barcode",
+    zsp_btnLive: "Start live scan",
+    zsp_btnComptage: "Count items",
+    zsp_aideLive: "Real-time detection on the camera image",
+    zsp_aideComptage: "Spectra detects and counts the objects visible in the photo",
+    zsp_aideCodeBarres: "EAN-13, UPC, Code 128, QR…",
+    zsp_memoireProduit: "Product memory ({0})",
+    zsp_memoireAide: "Spectra learns from your confirmations. Most recognised products:",
+    zsp_effacerMemoireQ: "Clear all product memory?",
+    zsp_nArticles: "{0} items",
+    zsp_clsObjet: "Object",
+    zsp_clsTelephone: "Phone",
+    zsp_clsBoite: "Box / packaging",
+    zsp_qFlou: "blurry",
+    zsp_qSombre: "dark areas",
+    zsp_qSousExpo: "underexposed",
+    zsp_qSurExpo: "overexposed",
+    zsp_zxingIndispo: "Barcode reader unavailable (offline?)",
+    zsp_lectureCode: "Reading the barcode…",
+    zsp_lectureImpossible: "Could not read it",
+    zsp_codeIlisible: "The barcode can't be read in the photo (try a sharper, closer shot).\n\nYou can type it in (EAN):",
+    zsp_bdNonSupporte: "Live barcode reading isn't supported by this browser",
+    zsp_uneCamera: "Only one camera available",
+    zsp_cameraN: "Camera {0}",
+    zsp_cameraNom: "Camera: {0}",
+    zsp_iaIndispo: "AI unavailable: {0}",
+    zsp_cameraIntrouvable: "Camera not found",
+    zsp_cameraRefusee: "Camera access denied: ",
+    zsp_aucuneDetection: "Nothing detected: bring the product closer",
+    zsp_rechercheCode: "Looking up {0}…",
+    zsp_codeNonTrouve: "Code {0}: product not found, please add the name",
+    zsp_rechercheOff: "Looking up the product (OpenFoodFacts)…",
+    zsp_pdfIndispo: "The PDF generator isn't loaded",
+    zsp_rienASigner: "No detection to put in the report",
+    zsp_generationRapport: "Creating the report…",
+    zsp_operateur: "Operator",
+    zsp_pdfTitre: "SPECTRA AUDIT REPORT",
+    zsp_pdfDate: "Date: {0} {1}",
+    zsp_pdfOperateur: "Operator: {0}",
+    zsp_pdfMode: "Mode: {0}",
+    zsp_pdfGps: "GPS: {0}, {1} (±{2} m)",
+    zsp_pdfGpsNon: "GPS: not available",
+    zsp_pdfArticles: "Items detected and updated",
+    zsp_pdfDetails: "Detection details",
+    zsp_pdfClasse: "class={0}",
+    zsp_pdfSignature: "SHA-256 FINGERPRINT OF THE REPORT",
+    zsp_pdfMention: "Any change to the report changes this fingerprint · BARO Spectra",
+    zsp_fTitre: "Spectra, smart scanning",
+    zsp_fQuoi: "Take a photo of a product: Spectra recognises it, fills in the item and updates your stock. Camera barcode reading, counting, stock audits and photo delivery check-in.",
+    zsp_verrouSous: "Smart scanning, from the Pro plan",
+    zsp_apercuT: "What Spectra does for you",
+    zsp_apercu1: "📷 One photo is enough: the product is recognised and its item filled in",
+    zsp_apercu2: "🔖 Barcodes are read with the camera, name and photo included",
+    zsp_apercu3: "🔢 Shelves count themselves, with the stock gaps",
+    zsp_apercu4: "🚚 Deliveries are checked in by photo, no typing",
+    zsp_apercu5: "✨ On Enterprise: the AI thinks longer and sees more accurately",
+    zsp_prixPro: "🔍 Spectra: unlimited camera scanning + {0} AI analyses a day",
+    zsp_prixEnt: "🔍 Spectra + deep-thinking AI ({0} analyses a day)",
+    zsp_tagPro: "PRO",
     zpr_application: "How it applies",
     zpr_auto: "Automatic",
     zpr_autoD: "Applies by itself to the selected items, at the till and on your shop site.",
@@ -7559,7 +7781,7 @@ const LANGS = {
     emailAddr:'Email address', profitShort:'profit', saleOf:'sale(s)',
     addArticlesFirst:'Add articles to stock first to define composition.',
     noSalesPeriod:'No sales in this period.',
-    clients:'Clients', addClient:'Add Client', newClient:'New Client',
+    clients:'Customers', addClient:'Add Client', newClient:'New Client',
     clientName:'Client name', clientPhone:'Phone', clientEmail:'Email',
     clientNotes:'Notes', noClients:'No clients', noClientsSub:'Add your first client.',
     clientDetail:'Client details', purchases:'Purchases', totalSpent:'Total spent',
@@ -9862,10 +10084,10 @@ function __planShowConfirmModal(planKey, amount, providerId) {
 // LIMITES DES PLANS — appliquées réellement (pas que du marketing)
 // ═══════════════════════════════════════════════════════════════
 const PLAN_LIMITS = {
-  free:       { articles: 50,       salesPerMonth: 100,    locations: 1,        spectraPerDay: 10,       suppliers: 3,        boutique: false, marketing: false, integrations: 0,        excel: false, loyalty: false, purchaseOrders: false },
-  starter:    { articles: 500,      salesPerMonth: 2000,   locations: 2,        spectraPerDay: 50,       suppliers: 10,       boutique: false, marketing: false, integrations: 0,        excel: true,  loyalty: false, purchaseOrders: false },
-  pro:        { articles: Infinity, salesPerMonth: Infinity, locations: 5,      spectraPerDay: Infinity, suppliers: Infinity, boutique: true,  marketing: true,  integrations: 10,       excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: false, whiteLabel: false, advancedAnalytics: false },
-  enterprise: { articles: Infinity, salesPerMonth: Infinity, locations: Infinity, spectraPerDay: Infinity, suppliers: Infinity, boutique: true, marketing: true, integrations: Infinity, excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: true,  whiteLabel: true,  advancedAnalytics: true },
+  free:       { articles: 50,       salesPerMonth: 100,    locations: 1,        spectra: false, spectraPerDay: 0,       suppliers: 3,        boutique: false, marketing: false, integrations: 0,        excel: false, loyalty: false, purchaseOrders: false },
+  starter:    { articles: 500,      salesPerMonth: 2000,   locations: 2,        spectra: false, spectraPerDay: 0,       suppliers: 10,       boutique: false, marketing: false, integrations: 0,        excel: true,  loyalty: false, purchaseOrders: false },
+  pro:        { articles: Infinity, salesPerMonth: Infinity, locations: 5,      spectra: true, spectraPerDay: Infinity, suppliers: Infinity, boutique: true,  marketing: true,  integrations: 10,       excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: false, whiteLabel: false, advancedAnalytics: false },
+  enterprise: { articles: Infinity, salesPerMonth: Infinity, locations: Infinity, spectra: true, spectraPerDay: Infinity, suppliers: Infinity, boutique: true, marketing: true, integrations: Infinity, excel: true,  loyalty: true,  purchaseOrders: true,  customDomain: true,  whiteLabel: true,  advancedAnalytics: true },
 };
 // Libellé lisible du plan (réutilisé par les verrous Entreprise)
 // Conserve pour compatibilite ; l'affichage passe par _planLabel(), qui
@@ -9963,6 +10185,7 @@ function _FEATURE_INFO_() {
   _fiLang = _lang;
   _fiCache = {
     excel:          { icone: '📊', titre: t('zv_fExcel'),  quoi: t('zv_fExcelQ'),  minimum: 'starter' },
+    spectra:        { icone: '🔍', titre: t('zsp_fTitre'), quoi: t('zsp_fQuoi'),   minimum: 'pro' },
     loyalty:        { icone: '⭐', titre: t('zv_fFid'),    quoi: t('zv_fFidQ'),    minimum: 'pro' },
     purchaseOrders: { icone: '📦', titre: t('zv_fBons'),   quoi: t('zv_fBonsQ'),   minimum: 'pro' },
     whiteLabel:     { icone: '✦',  titre: t('zv_fIdent'),  quoi: t('zv_fIdentQ'),  minimum: 'enterprise' },
@@ -12942,7 +13165,7 @@ function _pdfPieChart(doc, { data, cx, cy, r, title }) {
 
 // ── RAPPORT PDF GLOBAL ────────────────────────
 function generateStockReportPDF() {
-  if (typeof window.jspdf === 'undefined') { showToast('jsPDF indisponible', 'error'); return; }
+  if (typeof window.jspdf === 'undefined') { showToast(t('zsp_pdfIndispo'), 'error'); return; }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit:'mm', format:'a4' });
   const biz = S.session?.business || S.session?.name || 'Mon Commerce';
@@ -12996,7 +13219,7 @@ function generateStockReportPDF() {
 }
 
 function generateSalesReportPDF(period = 'all') {
-  if (typeof window.jspdf === 'undefined') { showToast('jsPDF indisponible', 'error'); return; }
+  if (typeof window.jspdf === 'undefined') { showToast(t('zsp_pdfIndispo'), 'error'); return; }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit:'mm', format:'a4' });
   const biz = S.session?.business || S.session?.name || 'Mon Commerce';
@@ -13113,7 +13336,7 @@ function generateSalesReportPDF(period = 'all') {
 }
 
 function generateClientsReportPDF() {
-  if (typeof window.jspdf === 'undefined') { showToast('jsPDF indisponible', 'error'); return; }
+  if (typeof window.jspdf === 'undefined') { showToast(t('zsp_pdfIndispo'), 'error'); return; }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit:'mm', format:'a4' });
   const biz = S.session?.business || S.session?.name || 'Mon Commerce';
@@ -13162,7 +13385,7 @@ function generateClientsReportPDF() {
 
 // ── BILAN FINANCIER PDF — rapport pro signé ───────────────────
 function generateBilanReportPDF() {
-  if (typeof window.jspdf === 'undefined') { showToast('jsPDF indisponible — réessayez en ligne', 'error'); return; }
+  if (typeof window.jspdf === 'undefined') { showToast(t('zsp_pdfIndispo'), 'error'); return; }
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit:'mm', format:'a4' });
   const biz  = S.session?.business || S.session?.name || 'Mon Commerce';
@@ -15857,7 +16080,7 @@ function vSetupWizard() {
           </button>`).join('')}
       </div>
       <div style="font-size:11.5px;color:var(--text-3);text-align:center;line-height:1.5;margin:2px 4px 0">${t('y1_surtoutServices').replace('{0}','<strong>'+t('y1_services')+'</strong>').replace('{1}','<strong>'+t('y1_prestation')+'</strong>')}</div>
-      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">Continuer</button>`;
+      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">${t('zsg_continuer')}</button>`;
   } else if (w.step === 1) {
     body = `
       <div class="wiz-h1">${t('w9_votreBoutique')}</div>
@@ -15866,7 +16089,7 @@ function vSetupWizard() {
       <input id="wiz-biz" class="input" value="${(w.biz||'').replace(/"/g,'&quot;')}" placeholder="Ex : Boutique Awa">
       <label class="wiz-label">Ville</label>
       <input id="wiz-city" class="input" value="${(w.city||'').replace(/"/g,'&quot;')}" placeholder="Ex : Abidjan">
-      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">Continuer</button>`;
+      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">${t('zsg_continuer')}</button>`;
   } else if (w.step === 2) {
     const p = w.prod || {};
     body = `
@@ -15880,7 +16103,7 @@ function vSetupWizard() {
       </div>
       <label class="wiz-label">${t('w9_quantiteStock')}</label>
       <input id="wiz-prod-stock" class="input" type="number" inputmode="numeric" value="${p.stock||''}" placeholder="10">
-      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">Continuer</button>
+      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">${t('zsg_continuer')}</button>
       <button class="btn btn-ghost wiz-skip2" onclick="wizardSkipStep()">${t('w9_ignorerEtape')}</button>`;
   } else if (w.step === 3) {
     body = `
@@ -15888,7 +16111,7 @@ function vSetupWizard() {
       <div class="wiz-sub">Pour envoyer reçus &amp; relances et recevoir les commandes de votre boutique en ligne.</div>
       <label class="wiz-label">${t('w9_numWhatsappIntl')}</label>
       <input id="wiz-wa" class="input" value="${(w.wa||'').replace(/"/g,'&quot;')}" placeholder="+225 07 XX XX XX XX">
-      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">Continuer</button>
+      <button class="btn btn-primary wiz-cta" onclick="wizardNext()">${t('zsg_continuer')}</button>
       <button class="btn btn-ghost wiz-skip2" onclick="wizardSkipStep()">Ignorer</button>`;
   } else {
     const recap = [
@@ -16793,7 +17016,7 @@ function vHome() {
     <div class="agent-card agent-spectra" onclick="nav('spectra')">
       <div class="agent-icon agent-icon-spectra">${IC.spectraWhite}</div>
       <div class="agent-info">
-        <div class="agent-name agent-name-spectra">Spectra</div>
+        <div class="agent-name agent-name-spectra">Spectra${_planHasFeature('spectra') ? '' : ` <span class="sp-tag-pro">${t('zsp_tagPro')}</span>`}</div>
         <div class="agent-sub">${t('w1_scannerIA')}</div>
       </div>
       <svg class="agent-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -17807,7 +18030,7 @@ function vSales() {
       <div class="form-group">
         <label class="form-label">${t('clients')} <span style="color:var(--text-3);font-weight:400">(optionnel)</span></label>
         <div style="display:flex;gap:6px;margin-bottom:8px">
-          <button type="button" class="chip ${!S.saleNewClient?'active':''}" onclick="S.saleNewClient=false;render()">Existant</button>
+          <button type="button" class="chip ${!S.saleNewClient?'active':''}" onclick="S.saleNewClient=false;render()">${t('zvt_existant')}</button>
           <button type="button" class="chip ${S.saleNewClient?'active':''}" onclick="S.saleNewClient=true;render()">${t('w2_nouveauClient')}</button>
         </div>
         ${S.saleNewClient ? `
@@ -17850,7 +18073,7 @@ function vSales() {
       <div class="form-group">
         <label class="form-label">${t('clients')} <span style="color:var(--text-3);font-weight:400">(optionnel)</span></label>
         <div style="display:flex;gap:6px;margin-bottom:8px">
-          <button type="button" class="chip ${!S.saleNewClient?'active':''}" onclick="S.saleNewClient=false;render()">Existant</button>
+          <button type="button" class="chip ${!S.saleNewClient?'active':''}" onclick="S.saleNewClient=false;render()">${t('zvt_existant')}</button>
           <button type="button" class="chip ${S.saleNewClient?'active':''}" onclick="S.saleNewClient=true;render()">${t('w2_nouveauClient')}</button>
         </div>
         ${S.saleNewClient ? `
@@ -20687,8 +20910,10 @@ const COCO_TRANSLATE = {
   'baseball glove':'Gant baseball', 'skateboard':'Skateboard', 'surfboard':'Planche surf',
   'tennis racket':'Raquette tennis'
 };
+// Les classes COCO sont en anglais : en anglais on les garde, en français on
+// les traduit.
 function _translateCocoClass(cls){
-  return COCO_TRANSLATE[cls] || (cls ? (cls[0].toUpperCase() + cls.slice(1)) : 'Objet');
+  return (_lang === 'en' ? null : COCO_TRANSLATE[cls]) || (cls ? (cls[0].toUpperCase() + cls.slice(1)) : t('zsp_clsObjet'));
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -23085,15 +23310,16 @@ function _sanitizeCocoDetection(d){
       // Garde "Télécommande" SEULEMENT si preuve forte
       const keepRemote = isRemoteOCR || isRemoteBrand || isRemoteShape;
       if (!keepRemote) {
-        const labelBase = isTechOCR ? 'Smartphone' : 'Téléphone';
+        const labelBase = isTechOCR ? 'Smartphone' : t('zsp_clsTelephone');
         // Si OCR capte une marque, enrichis le nom : "iPhone", "Samsung Galaxy"…
         let refined = labelBase;
         if (isTechOCR) {
           const m = ocr.match(TECH_BRANDS_RX);
           if (m && m[0]) refined = m[0].charAt(0).toUpperCase() + m[0].slice(1).toLowerCase();
         }
-        if (!d.detected_name || d.detected_name === 'Télécommande') d.detected_name = refined;
-        if (d.matched_name === 'Télécommande') d.matched_name = refined;
+        const __rem = _translateCocoClass('remote');
+        if (!d.detected_name || d.detected_name === __rem) d.detected_name = refined;
+        if (d.matched_name === __rem) d.matched_name = refined;
         d.coco_class = 'cell phone';
         d._sanitized_from = 'remote';
       }
@@ -23103,8 +23329,9 @@ function _sanitizeCocoDetection(d){
     if (cls === 'book' && ratio > 0 && ratio < 1.3) {
       // Livre classique a un ratio ≈ 1.4-1.6. Carré = plus probable boîte/emballage.
       if (!ocr || (!/book|livre|cahier|magazine/.test(ocr))) {
-        if (d.detected_name === 'Livre') d.detected_name = 'Boîte / Emballage';
-        if (d.matched_name === 'Livre') d.matched_name = d.detected_name;
+        const __livre = _translateCocoClass('book');
+        if (d.detected_name === __livre) d.detected_name = t('zsp_clsBoite');
+        if (d.matched_name === __livre) d.matched_name = d.detected_name;
         d._sanitized_from = 'book';
       }
     }
@@ -23218,10 +23445,10 @@ function _analyzeImageQuality(img, bbox){
 
     // 3. Flags
     const flags = [];
-    if (variance < 200) flags.push('flou');
-    if (darkRatio > 0.35) flags.push('zones sombres');
-    if (mean < 40) flags.push('sous-exposé');
-    if (mean > 220) flags.push('surexposé');
+    if (variance < 200) flags.push(t('zsp_qFlou'));
+    if (darkRatio > 0.35) flags.push(t('zsp_qSombre'));
+    if (mean < 40) flags.push(t('zsp_qSousExpo'));
+    if (mean > 220) flags.push(t('zsp_qSurExpo'));
 
     // 4. Score qualité (0-100)
     let score = 100;
@@ -23247,7 +23474,7 @@ function _ensureZXing() {
     s.src = 'https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js';
     s.async = true;
     s.onload = () => resolve(window.ZXing);
-    s.onerror = () => { _zxingPromise = null; reject(new Error('Lecteur code-barres indisponible (hors-ligne ?)')); };
+    s.onerror = () => { _zxingPromise = null; reject(new Error(t('zsp_zxingIndispo'))); };
     document.head.appendChild(s);
   });
   return _zxingPromise;
@@ -23267,12 +23494,12 @@ function spectraPhotoBarcode() {
   inp.type = 'file'; inp.accept = 'image/*'; inp.capture = 'environment';
   inp.onchange = async () => {
     const f = inp.files && inp.files[0]; if (!f) return;
-    showToast('🔎 Lecture du code-barres…', '');
+    showToast('🔎 ' + t('zsp_lectureCode'), '');
     let code = null;
-    try { code = await _decodeBarcodeFromFile(f); } catch(e) { showToast(e.message || 'Lecture impossible', 'error'); }
+    try { code = await _decodeBarcodeFromFile(f); } catch(e) { showToast(e.message || t('zsp_lectureImpossible'), 'error'); }
     if (code) { _spectraBarcodeManual(String(code).trim()); }
     else {
-      const m = prompt('Code-barres non lisible sur la photo (essayez plus net / plus proche).\n\nVous pouvez le saisir à la main (EAN) :');
+      const m = prompt(t('zsp_codeIlisible'));
       if (m && m.trim()) _spectraBarcodeManual(m.trim());
     }
   };
@@ -23281,7 +23508,7 @@ function spectraPhotoBarcode() {
 // ── Scan code-barres depuis image (natif BarcodeDetector, sinon ZXing) ──
 async function spectraDetectBarcodeFromImage(img){
   if (!('BarcodeDetector' in window)) {
-    throw new Error('BarcodeDetector non supporté sur ce navigateur');
+    throw new Error(t('zsp_bdNonSupporte'));
   }
   const detector = new window.BarcodeDetector({
     formats: ['ean_13','ean_8','upc_a','upc_e','code_128','code_39','qr_code']
@@ -23351,12 +23578,12 @@ async function spectraListCameras(){
 async function spectraSwitchCamera(){
   const cams = await spectraListCameras();
   if (cams.length < 2) {
-    showToast('Une seule caméra disponible', 'info');
+    showToast(t('zsp_uneCamera'), 'info');
     return;
   }
   _spectraCameraIdx = (_spectraCameraIdx + 1) % cams.length;
-  const camLabel = cams[_spectraCameraIdx].label || `Caméra ${_spectraCameraIdx + 1}`;
-  showToast('Caméra : ' + camLabel, 'info');
+  const camLabel = cams[_spectraCameraIdx].label || tpar('zsp_cameraN', _spectraCameraIdx + 1);
+  showToast(tpar('zsp_cameraNom', camLabel), 'info');
   // Redémarrer avec la nouvelle caméra (garde le step actuel)
   const currentStep = S.spectra.step;
   spectraStopContinuous();
@@ -23397,6 +23624,8 @@ function _spectraRecordScan() {
 }
 // Renvoie true si le scan est autorisé ; sinon affiche l'écran de limite et renvoie false
 function _spectraGuard() {
+  // Le scan est réservé aux forfaits Pro et Entreprise (choix du propriétaire).
+  if (!_planHasFeature('spectra')) { _showPlanFeatureModal('spectra'); return false; }
   const limit = _spectraDailyLimit();
   if (_spectraScansToday() >= limit) {
     S.spectra = S.spectra || {};
@@ -23423,14 +23652,14 @@ async function spectraStartContinuous(){
     await loadCocoSSD();
     loadMobileNet().catch(()=>{}); // précharge le 2e cerveau en arrière-plan
   } catch(err) {
-    showToast('IA indisponible : ' + err.message, 'error');
+    showToast(tpar('zsp_iaIndispo', err.message), 'error');
     S.spectra.step = 'camera';
     render();
     return;
   }
   const video = await _spectraWaitFor('spectra-video', 40);
   const canvas = await _spectraWaitFor('spectra-canvas', 40);
-  if (!video || !canvas) { showToast('Caméra introuvable', 'error'); return; }
+  if (!video || !canvas) { showToast(t('zsp_cameraIntrouvable'), 'error'); return; }
   try {
     _spectraStream = await navigator.mediaDevices.getUserMedia({
       video: _spectraVideoConstraints(true),
@@ -23444,7 +23673,7 @@ async function spectraStartContinuous(){
     canvas.height = video.videoHeight || 480;
     _spectraLoop(video, canvas);
   } catch(err) {
-    showToast('Caméra refusée : ' + (err.message || err), 'error');
+    showToast(t('zsp_cameraRefusee') + (err.message || err), 'error');
     S.spectra.step = 'camera';
     render();
   }
@@ -23540,7 +23769,7 @@ async function spectraCaptureFromContinuous(){
   const live = S.spectra._liveDetections || [];
   const topVote = _spectraTopVideoVote();
   // On accepte la capture s'il y a soit des boîtes COCO, soit un vote vidéo MobileNet
-  if (live.length === 0 && !topVote) { showToast('Aucune détection — rapprochez le produit', 'error'); return; }
+  if (live.length === 0 && !topVote) { showToast(t('zsp_aucuneDetection'), 'error'); return; }
 
   // Capture la frame actuelle pour OCR (meilleure précision nommage)
   const video = document.getElementById('spectra-video');
@@ -23598,7 +23827,7 @@ async function spectraStartBarcode(){
   S.spectra.step = 'barcode';
   render();
   const video = await _spectraWaitFor('spectra-video', 40);
-  if (!video) { showToast('Caméra introuvable', 'error'); return; }
+  if (!video) { showToast(t('zsp_cameraIntrouvable'), 'error'); return; }
   try {
     _spectraStream = await navigator.mediaDevices.getUserMedia({
       video: _spectraVideoConstraints(false), audio: false,
@@ -23609,7 +23838,7 @@ async function spectraStartBarcode(){
     _spectraLastBarcode = null;
     _spectraBarcodeLoop(video);
   } catch(err) {
-    showToast('Caméra refusée : ' + (err.message || err), 'error');
+    showToast(t('zsp_cameraRefusee') + (err.message || err), 'error');
     S.spectra.step = 'camera';
     render();
   }
@@ -23618,7 +23847,7 @@ async function spectraStartBarcode(){
 // Saisie manuelle d'un code-barres (navigateurs sans BarcodeDetector) :
 // recherche OpenFoodFacts puis ouvre le formulaire article pré-rempli.
 async function _spectraBarcodeManual(code){
-  showToast('🔎 Recherche ' + code + '…', '');
+  showToast('🔎 ' + tpar('zsp_rechercheCode', code), '');
   let off = null;
   try { off = await lookupProductByEAN(code); } catch(_){}
   let name = '';
@@ -23627,7 +23856,7 @@ async function _spectraBarcodeManual(code){
   try { spectraStopContinuous(); } catch(e){}
   S.spectra = { step: 'camera', queue: [], current: 0, confirmed: [], naming: false, results: [], compareResults: [] };
   nav('add');
-  showToast(off && off.name ? ('✓ ' + off.name) : ('Code ' + code + ' — produit non trouvé, complétez le nom'), off && off.name ? 'success' : '');
+  showToast(off && off.name ? ('✓ ' + off.name) : tpar('zsp_codeNonTrouve', code), off && off.name ? 'success' : '');
 }
 async function _spectraBarcodeLoop(video){
   if (S.spectra.step !== 'barcode') return;
@@ -23657,7 +23886,7 @@ async function _onBarcodeDetected(code, format){
   let offName = null, offBrand = null, offCategory = null, offImage = null;
   if (!match) {
     try {
-      showToast('Recherche produit (OpenFoodFacts)…', 'info');
+      showToast(t('zsp_rechercheOff'), 'info');
       const off = await lookupProductByEAN(code);
       if (off && off.name) {
         offName = off.name;
@@ -23926,15 +24155,15 @@ function _spectraGetGPS(){
 
 // ── Rapport PDF d'audit Spectra (GPS + signature SHA-256 + détections) ──
 async function generateSpectraAuditPDF(){
-  if (typeof window.jspdf === 'undefined') { showToast('jsPDF indisponible', 'error'); return; }
+  if (typeof window.jspdf === 'undefined') { showToast(t('zsp_pdfIndispo'), 'error'); return; }
   if (!S.spectra.results || S.spectra.results.length === 0) {
-    showToast('Aucune détection à signer', 'error'); return;
+    showToast(t('zsp_rienASigner'), 'error'); return;
   }
-  showToast('Génération du rapport…', 'info');
+  showToast(t('zsp_generationRapport'), 'info');
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF({ unit: 'mm', format: 'a4' });
   const now = new Date();
-  const user = S.session?.name || S.session?.email || 'Opérateur';
+  const user = S.session?.name || S.session?.email || t('zsp_operateur');
   const biz = S.session?.business || '';
   const gps = await _spectraGetGPS();
   const signature = await _spectraAuditSignature({
@@ -23947,7 +24176,7 @@ async function generateSpectraAuditPDF(){
   // En-tête
   pdf.setFillColor(79, 70, 229); pdf.rect(0, 0, 210, 30, 'F');
   pdf.setTextColor(255,255,255); pdf.setFontSize(20); pdf.setFont('helvetica','bold');
-  pdf.text('RAPPORT AUDIT SPECTRA', 15, 20);
+  pdf.text(_pdfTexte(t('zsp_pdfTitre')), 15, 20);
   pdf.setFontSize(9); pdf.setFont('helvetica','normal');
   pdf.text(biz || 'BARO', 180, 20, { align: 'right' });
 
@@ -23956,19 +24185,19 @@ async function generateSpectraAuditPDF(){
   let y = 45;
   pdf.setFont('helvetica','bold'); pdf.text('Métadonnées', 15, y); y += 7;
   pdf.setFont('helvetica','normal');
-  pdf.text(`Date : ${now.toLocaleDateString(_loc())} ${now.toLocaleTimeString(_loc())}`, 15, y); y += 6;
-  pdf.text(`Opérateur : ${user}`, 15, y); y += 6;
-  pdf.text(`Mode : ${S.spectraMode || 'photo'}`, 15, y); y += 6;
+  pdf.text(_pdfTexte(tpar('zsp_pdfDate', now.toLocaleDateString(_loc()), now.toLocaleTimeString(_loc()))), 15, y); y += 6;
+  pdf.text(_pdfTexte(tpar('zsp_pdfOperateur', user)), 15, y); y += 6;
+  pdf.text(_pdfTexte(tpar('zsp_pdfMode', S.spectraMode || 'photo')), 15, y); y += 6;
   if (gps) {
-    pdf.text(`GPS : ${gps.lat.toFixed(5)}, ${gps.lon.toFixed(5)} (±${Math.round(gps.acc)}m)`, 15, y); y += 6;
+    pdf.text(_pdfTexte(tpar('zsp_pdfGps', gps.lat.toFixed(5), gps.lon.toFixed(5), Math.round(gps.acc))), 15, y); y += 6;
   } else {
-    pdf.text(`GPS : non disponible`, 15, y); y += 6;
+    pdf.text(_pdfTexte(t('zsp_pdfGpsNon')), 15, y); y += 6;
   }
   y += 4;
 
   // Détections
   pdf.setFont('helvetica','bold'); pdf.setFontSize(12);
-  pdf.text('Articles détectés & mis à jour', 15, y); y += 8;
+  pdf.text(_pdfTexte(t('zsp_pdfArticles')), 15, y); y += 8;
   pdf.setFont('helvetica','normal'); pdf.setFontSize(10);
   pdf.setFillColor(245, 245, 250);
   for (const r of S.spectra.results) {
@@ -23983,13 +24212,13 @@ async function generateSpectraAuditPDF(){
   y += 6;
   if (S.spectra.confirmed && S.spectra.confirmed.length) {
     pdf.setFont('helvetica','bold'); pdf.setFontSize(11);
-    pdf.text('Détails détection', 15, y); y += 7;
+    pdf.text(_pdfTexte(t('zsp_pdfDetails')), 15, y); y += 7;
     pdf.setFont('helvetica','normal'); pdf.setFontSize(8);
     for (const c of S.spectra.confirmed) {
       if (y > 270) { pdf.addPage(); y = 20; }
       const line = [
         c.name,
-        c.coco_class ? `classe=${c.coco_class}` : '',
+        c.coco_class ? tpar('zsp_pdfClasse', c.coco_class) : '',
         c.ocr_text ? `OCR="${c.ocr_text.slice(0,30)}"` : '',
         c.barcode ? `EAN=${c.barcode}` : ''
       ].filter(Boolean).join(' · ');
@@ -24002,12 +24231,12 @@ async function generateSpectraAuditPDF(){
   pdf.setPage(pageCount);
   pdf.setFont('helvetica','bold'); pdf.setFontSize(9);
   pdf.setTextColor(100,100,100);
-  pdf.text('SIGNATURE ÉLECTRONIQUE (SHA-256)', 15, 280);
+  pdf.text(_pdfTexte(t('zsp_pdfSignature')), 15, 280);
   pdf.setFont('courier','normal'); pdf.setFontSize(7);
   pdf.text(signature.slice(0, 64), 15, 285);
   pdf.text(signature.slice(64), 15, 289);
   pdf.setFont('helvetica','italic'); pdf.setFontSize(7);
-  pdf.text('Ce rapport constitue une preuve horodatée infalsifiable — BARO Spectra AI', 15, 294);
+  pdf.text(_pdfTexte(t('zsp_pdfMention')), 15, 294);
 
   const filename = `audit-spectra-${now.toISOString().slice(0,19).replace(/[:T]/g,'-')}.pdf`;
   pdf.save(filename);
@@ -24063,15 +24292,16 @@ async function scanBarcodeForArticle(){
 // Appelle onCode(code) une fois le code lu — réutilisé par le formulaire
 // article ET par l'Entrée/Sortie en série (Lot 137).
 async function _grabBarcode(onCode){
+  if (!_planHasFeature('spectra')) { _showPlanFeatureModal('spectra'); return; }
   if (!('BarcodeDetector' in window)) {
     // Fallback universel : photo du code-barres décodée via ZXing (tous navigateurs)
     const inp = document.createElement('input');
     inp.type = 'file'; inp.accept = 'image/*'; inp.capture = 'environment';
     inp.onchange = async () => {
       const file = inp.files[0]; if (!file) return;
-      showToast('🔎 Lecture du code-barres…', '');
+      showToast('🔎 ' + t('zsp_lectureCode'), '');
       let code = null;
-      try { code = await _decodeBarcodeFromFile(file); } catch(err) { showToast(err.message || 'Lecture impossible', 'error'); }
+      try { code = await _decodeBarcodeFromFile(file); } catch(err) { showToast(err.message || t('zsp_lectureImpossible'), 'error'); }
       if (code) { await onCode(String(code).trim()); }
       else {
         const m = prompt('Code-barres non lisible sur la photo.\nSaisissez-le à la main (EAN) :');
@@ -24123,7 +24353,7 @@ async function _grabBarcode(onCode){
     };
     loop();
   } catch(err) {
-    showToast('Caméra refusée : ' + (err.message || err), 'error');
+    showToast(t('zsp_cameraRefusee') + (err.message || err), 'error');
     cleanup();
   }
 }
@@ -24652,13 +24882,13 @@ function _planFeatures(plan) {
   const q = (cle, n) => t(cle).replace('{0}', n);
   if (plan === 'free') return [
     q('zs_articlesN', 50), q('zs_ventesMoisN', 100),
-    q('zs_emplacementN', 1), q('zs_spectraJour', 10),
+    q('zs_emplacementN', 1),
     t('zs_facturesPdf'), t('zs_horsLigne'),
     t('zs_supportWa'),
   ];
   if (plan === 'starter') return [
     q('zs_articlesN', 500), q('zs_ventesMoisN', 2000),
-    q('zs_emplacementsN', 2), q('zs_spectraJour', 50),
+    q('zs_emplacementsN', 2),
     t('zs_facturesPerso'), t('exportCSV'),
     t('zs_waCatalogue'), q('zs_fournisseursN', 10),
     q('zs_paiementsN', 3),
@@ -24666,7 +24896,7 @@ function _planFeatures(plan) {
   ];
   if (plan === 'pro') return [
     t('unlimited')+' '+t('zs_articles'), t('unlimited')+' '+t('zs_ventes'),
-    q('zs_emplacementsN', 5), t('zs_spectraIllimite'),
+    q('zs_emplacementsN', 5), tpar('zsp_prixPro', 60),
     'WhatsApp '+t('catalog'), t('purchaseOrders'), t('zs_fournisseursIll'),
     t('exportCSV')+' + Excel', t('zs_boutiqueEnLigne'),
     t('zs_marketing'), q('zs_integrationsN', 10),
@@ -24675,7 +24905,7 @@ function _planFeatures(plan) {
   ];
   if (plan === 'enterprise') return [
     t('unlimited')+' '+t('zs_articles'), t('unlimited')+' '+t('zs_ventes'),
-    t('unlimited')+' '+t('zs_emplacements'), 'Spectra '+t('unlimited')+' + '+t('zs_iaAvancee'),
+    t('unlimited')+' '+t('zs_emplacements'), tpar('zsp_prixEnt', 300),
     t('zs_apiRest'), t('zs_multiUtilisateurs'),
     t('zs_support247'), t('zs_accountManager'),
     t('zs_roles'), t('zs_integrationsIll'),
@@ -35696,7 +35926,7 @@ function vBoutiquePixels() {
     </div>
 
     <div class="card" style="background:#EFF6FF;border-color:#3B82F640;margin-top:14px;font-size:11px;color:#1E40AF;line-height:1.6">
-      💡 <strong>Astuce :</strong> ${t('u_pixAide').replace('{0}', t('zz3_genererHtml'))} ${t('x_pixFin')}
+      💡 <strong>${t('zwg_astuce')}</strong> ${t('u_pixAide').replace('{0}', t('zz3_genererHtml'))} ${t('x_pixFin')}
     </div>
   </div>`;
 }
@@ -39412,7 +39642,7 @@ async function __vidRecordCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'environment' }, audio:true });
     __vidStartRecord(stream, 'camera');
-  } catch(e) { showToast('Caméra refusée : '+e.message, 'error'); }
+  } catch(e) { showToast(t('zsp_cameraRefusee') + e.message, 'error'); }
 }
 
 async function __vidRecordScreen() {
@@ -39465,7 +39695,7 @@ async function __vidRecordOverlay() {
   if (!text) { showToast('Entrez le texte à incruster', 'info'); document.getElementById('vid-overlay-text')?.focus(); return; }
   let stream;
   try { stream = await navigator.mediaDevices.getUserMedia({ video:{ facingMode:'environment' }, audio:true }); }
-  catch(e) { showToast('Caméra refusée : ' + e.message, 'error'); return; }
+  catch(e) { showToast(t('zsp_cameraRefusee') + e.message, 'error'); return; }
   __vidStartOverlayRecord(stream, text);
 }
 function __vidStartOverlayRecord(stream, text) {
@@ -39878,7 +40108,7 @@ function openCapCutFlow() {
         </div>
 
         <div style="background:var(--accent-light);border-radius:10px;padding:10px;margin-top:14px;font-size:11px;color:var(--text-2);line-height:1.5">
-          💡 Astuce : sur mobile, CapCut s'ouvre automatiquement si installé.
+          💡 ${t('zwg_astuce')} ${t('zvt_capcut')}
         </div>
       </div>
     </div>`;
@@ -46187,24 +46417,45 @@ function importProductsFromCSV() {
 
 // ── SPECTRA ENHANCED ─────────────────────────
 function vSpectraEnhanced() {
+  // Gratuit et Starter : Spectra se présente, sans scanner.
+  if (!_planHasFeature('spectra')) {
+    return `
+    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">Spectra AI</div><div class="sub-hero-sub">${t('zsp_verrouSous')}</div></div></div></div>
+    ${_vFeatureLock('spectra')}
+    <div class="container">
+      <div class="card sp-apercu">
+        <div class="card-title">${t('zsp_apercuT')}</div>
+        ${['zsp_apercu1', 'zsp_apercu2', 'zsp_apercu3', 'zsp_apercu4', 'zsp_apercu5'].map(k => `<div class="sp-apercu-l">${t(k)}</div>`).join('')}
+      </div>
+    </div>`;
+  }
+  // « Comptage IA » s'appelait « YOLO IA » : aucun modèle YOLO n'est chargé,
+  // c'est le détecteur d'objets COCO-SSD qui compte. Le nom dit maintenant
+  // ce que fait le mode.
   const modes = [
-    { id:'photo',      icon:IC.camera,  label:'Photo scan',          desc:t('z_scannerPhoto') },
-    { id:'barcode',    icon:IC.barcode, label:'Code-barres',         desc:t('zy_scanCB') },
-    { id:'continuous', icon:IC.target,  label:t('spectraContinuous'),        desc:t('z_detectTemps') },
-    { id:'yolo',       icon:IC.zap,     label:'YOLO IA',             desc:t('z_detectMulti') },
+    { id:'photo',      icon:IC.camera,  label:t('zsp_modePhoto'),     desc:t('z_scannerPhoto') },
+    { id:'barcode',    icon:IC.barcode, label:t('zsp_modeBarcode'),   desc:t('zy_scanCB') },
+    { id:'continuous', icon:IC.target,  label:t('spectraContinuous'), desc:t('z_detectTemps') },
+    { id:'yolo',       icon:IC.zap,     label:t('zsp_modeComptage'),  desc:t('z_detectMulti') },
   ];
   const scanHistory = S.spectraScanHistory || [];
 
   if (S.spectra.step === 'loading') {
     const capturedImg = S.spectra.capturedImage || '';
-    const layers = [
-      { ic:'🎯', label:'Détection des objets', sub:'COCO-SSD' },
-      { ic:'🧠', label:'Classification fine', sub:'MobileNet · 1000 classes' },
-      { ic:'📖', label:'Lecture des étiquettes', sub:'OCR marques & labels' },
-      { ic:'🔖', label:'Codes-barres & base produits', sub:'EAN · OpenFoodFacts' },
-    ];
+    // Seuls les moteurs qui travaillent vraiment sont affichés : avec l'IA
+    // intégrée, les moteurs de l'appareil ne servent qu'en secours.
+    const viaIa = _iaDispo() && S.spectraMode !== 'barcode';
+    const layers = S.spectraMode === 'barcode'
+      ? [{ ic:'🔖', label:t('zsp_coucheEan'), sub:'EAN · OpenFoodFacts' }]
+      : viaIa
+        ? [{ ic:'✨', label:t('zsp_coucheIa'), sub:(_iaStatutCache && _iaStatutCache.provider === 'gemini') ? 'Gemini' : 'Claude' },
+           { ic:'🧠', label:t('zsp_coucheMemoire'), sub:t('zsp_coucheMemoireSub') }]
+        : [{ ic:'🎯', label:t('zsp_coucheDetection'), sub:'COCO-SSD' },
+           { ic:'🧠', label:t('zsp_coucheClassif'), sub:'MobileNet · 1000 classes' },
+           { ic:'📖', label:t('zsp_coucheOcr'), sub:t('zsp_coucheOcrSub') },
+           { ic:'🔖', label:t('zsp_coucheEan'), sub:'EAN · OpenFoodFacts' }];
     return `
-    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">Spectra analyse…</div><div class="sub-hero-sub">Vision multi-couches en cours</div></div></div></div>
+    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('zsp_analyseTitre')}</div><div class="sub-hero-sub">${t('zsp_analyseSous')}</div></div></div></div>
     <div class="container" style="padding:20px 18px">
       <div class="spectra-scanstage">
         ${capturedImg ? `<img src="${capturedImg}" class="spectra-scanstage-img" alt="">` : `<div class="spectra-scanstage-ph">${IC.spectraWhite.replace('width="22" height="22"','width="56" height="56"')}</div>`}
@@ -46214,7 +46465,7 @@ function vSpectraEnhanced() {
         <span class="corner bl"></span><span class="corner br"></span>
       </div>
       <div style="text-align:center;margin:18px 0 6px">
-        <div style="font-size:17px;font-weight:800;letter-spacing:.2px">${S.spectraMode==='yolo'?'Comptage automatique…':S.spectraMode==='barcode'?'Recherche du code-barres…':'Identification du produit…'}</div>
+        <div style="font-size:17px;font-weight:800;letter-spacing:.2px">${S.spectraMode==='yolo'?t('zsp_chargeComptage'):S.spectraMode==='barcode'?t('zsp_chargeCodeBarres'):t('zsp_chargeProduit')}</div>
         <div style="font-size:12px;color:var(--text-3);margin-top:4px;font-weight:500">${t('y3_reconnaitTout')}</div>
       </div>
       <div class="spectra-layers">
@@ -46234,11 +46485,11 @@ function vSpectraEnhanced() {
     const limit = _spectraDailyLimit();
     const plan = (S.subscription && S.subscription.plan) || 'free';
     return `
-    <div class="sub-hero" style="background:linear-gradient(135deg,var(--accent),#7C3AED)"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">Limite quotidienne atteinte</div><div class="sub-hero-sub">${limit} scans/jour sur le plan ${plan==='free'?'Gratuit':plan==='starter'?'Starter':plan}</div></div></div></div>
+    <div class="sub-hero" style="background:linear-gradient(135deg,var(--accent),#7C3AED)"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('zsp_limiteTitre')}</div><div class="sub-hero-sub">${tpar('zsp_limiteSous', limit, _planLabel(plan))}</div></div></div></div>
     <div class="container" style="padding:20px">
       <div style="text-align:center;padding:18px 0">
         <div style="font-size:54px;margin-bottom:8px">🚀</div>
-        <div style="font-size:19px;font-weight:900;letter-spacing:-.3px">Tu scannes beaucoup — bravo !</div>
+        <div style="font-size:19px;font-weight:900;letter-spacing:-.3px">${t('zsp_limiteBravo')}</div>
         <div style="font-size:13px;color:var(--text-3);margin-top:6px;line-height:1.55;max-width:300px;margin-left:auto;margin-right:auto">${t('y3_scansEpuises').replace('{0}','<strong>'+t('y3_scansSpectra').replace('{0}',limit)+'</strong>').replace('{1}','<strong>Pro</strong>').replace('{2}','<strong>'+t('y3_illimites')+'</strong>')}</div>
       </div>
       <div class="card" style="border:2px solid var(--accent);background:linear-gradient(135deg,rgba(124,115,255,.08),rgba(124,115,255,.02));margin-bottom:12px">
@@ -46246,10 +46497,10 @@ function vSpectraEnhanced() {
           <span style="font-size:24px">💎</span>
           <div><div style="font-size:16px;font-weight:800">BARO Pro</div><div style="font-size:12px;color:var(--text-3)">${t('x3_spectraIllimite')}</div></div>
         </div>
-        ${['🔍 Spectra IA vision illimité','🏪 Boutique en ligne','📣 Marketing & campagnes','♾️ Articles & ventes illimités'].map(f=>`<div style="display:flex;gap:8px;font-size:13px;padding:3px 0;color:var(--text-2)"><span style="color:var(--accent)">${IC.check}</span>${f}</div>`).join('')}
+        ${[t('zsp_avPro1'),t('zsp_avPro2'),t('zsp_avPro3'),t('zsp_avPro4')].map(f=>`<div style="display:flex;gap:8px;font-size:13px;padding:3px 0;color:var(--text-2)"><span style="color:var(--accent)">${IC.check}</span>${f}</div>`).join('')}
         <button class="btn btn-primary" style="margin-top:14px" onclick="nav('pricing')">${t('x3_voirPlansPro')}</button>
       </div>
-      <button class="btn btn-ghost" style="width:100%" onclick="spectraReset()">Revenir demain (gratuit)</button>
+      <button class="btn btn-ghost" style="width:100%" onclick="spectraReset()">${t('zsp_revenirDemain')}</button>
       <div style="font-size:11px;color:var(--text-3);text-align:center;margin-top:12px;line-height:1.5">${t('x3_compteurMinuit')}</div>
     </div>`;
   }
@@ -46292,7 +46543,7 @@ function vSpectraEnhanced() {
   if (S.spectra.step === 'continuous') {
     const camCount = (_spectraCameras && _spectraCameras.length) || 0;
     return `
-    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('x3_scanTempsReel')}</div><div class="sub-hero-sub">${t('x3_cocoSsd')}</div></div>${camCount>1?`<button class="fab" style="background:var(--card);border:1px solid var(--border)" onclick="spectraSwitchCamera()" title="Changer de caméra">🔄</button>`:''}</div></div>
+    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('x3_scanTempsReel')}</div><div class="sub-hero-sub">${t('x3_cocoSsd')}</div></div>${camCount>1?`<button class="fab" style="background:var(--card);border:1px solid var(--border)" onclick="spectraSwitchCamera()" title="${t('zsp_changerCam')}">🔄</button>`:''}</div></div>
     <div class="container" style="padding:12px">
       <div class="spectra-scan-frame">
         <video id="spectra-video" playsinline muted autoplay style="object-fit:cover"></video>
@@ -46301,14 +46552,14 @@ function vSpectraEnhanced() {
         <span class="corner bl"></span><span class="corner br"></span>
       </div>
       <div id="spectra-overlay" style="margin-top:14px;padding:14px;background:var(--card);border-radius:12px;border:1px solid var(--border);font-size:13px;min-height:60px">
-        <div style="opacity:.6">Chargement IA…</div>
+        <div style="opacity:.6">${t('zsp_chargementIa')}</div>
       </div>
       <div style="display:flex;gap:8px;margin-top:12px">
-        <button class="btn btn-primary" style="flex:1" onclick="spectraCaptureFromContinuous()">${IC.check} Capturer + OCR</button>
+        <button class="btn btn-primary" style="flex:1" onclick="spectraCaptureFromContinuous()">${IC.check} ${t('zsp_capturerOcr')}</button>
         <button class="btn btn-ghost" style="flex:1" onclick="spectraReset()">${t('cancel')}</button>
       </div>
       <div style="margin-top:10px;font-size:11px;color:var(--text-3);text-align:center">
-        💡 OCR lit la marque/label sur l'emballage pour identifier le produit précisément
+        ${t('zsp_astuceOcr')}
       </div>
     </div>`;
   }
@@ -46317,7 +46568,7 @@ function vSpectraEnhanced() {
   if (S.spectra.step === 'barcode') {
     const camCount = (_spectraCameras && _spectraCameras.length) || 0;
     return `
-    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('x3_scanCodeBarres')}</div><div class="sub-hero-sub">${t('x3_ean13')}</div></div>${camCount>1?`<button class="fab" style="background:var(--card);border:1px solid var(--border)" onclick="spectraSwitchCamera()" title="Changer de caméra">🔄</button>`:''}</div></div>
+    <div class="sub-hero spectra-hero-grad"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('x3_scanCodeBarres')}</div><div class="sub-hero-sub">${t('x3_ean13')}</div></div>${camCount>1?`<button class="fab" style="background:var(--card);border:1px solid var(--border)" onclick="spectraSwitchCamera()" title="${t('zsp_changerCam')}">🔄</button>`:''}</div></div>
     <div class="container" style="padding:12px">
       <div class="spectra-scan-frame">
         <video id="spectra-video" playsinline muted autoplay style="object-fit:cover"></video>
@@ -46326,7 +46577,7 @@ function vSpectraEnhanced() {
         <span class="corner bl"></span><span class="corner br"></span>
       </div>
       <div style="margin-top:14px;padding:14px;background:var(--card);border-radius:12px;border:1px solid var(--border);font-size:13px;text-align:center">
-        Détection en cours… Approchez le code-barres
+        ${t('zsp_approcherCode')}
       </div>
       <div style="display:flex;gap:8px;margin-top:12px">
         <input type="file" id="spectra-file" accept="image/*" capture="environment" style="display:none" onchange="spectraOnFile(this)">
@@ -46340,13 +46591,13 @@ function vSpectraEnhanced() {
     const item = S.spectra.queue[S.spectra.current];
     const displayName = (item.detected_name || item.matched_name || '').replace(/"/g,'&quot;');
     return `
-    <div class="sub-hero"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('spectraDetected')}</div><div class="sub-hero-sub">${S.spectra.current+1}/${S.spectra.queue.length} articles détectés</div></div></div></div>
+    <div class="sub-hero"><div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('spectraDetected')}</div><div class="sub-hero-sub">${tpar('zsp_articlesDetectes', S.spectra.current+1, S.spectra.queue.length)}</div></div></div></div>
     <div class="container">
       <div class="spectra-count-result" style="margin-bottom:14px">
         <div class="spectra-count-num">${item.quantity}</div>
         <div class="spectra-count-info">
-          <div class="spectra-count-name">${item.detected_name||item.matched_name}${(item._sanitized_from||item._ambiguous)?`<span class="spectra-ambig-badge" title="IA incertaine — vérifie le nom">${t('x3_aVerifier')}</span>`:''}</div>
-          <div class="spectra-count-detail">Quantité détectée: ${item.quantity} · Précision: ${item.confidence}%${item.from_memory?' · 🧠 Mémoire':''}${item._sanitized_from==='remote'?' · corrigé téléphone':''}</div>
+          <div class="spectra-count-name">${item.detected_name||item.matched_name}${(item._sanitized_from||item._ambiguous)?`<span class="spectra-ambig-badge" title="${t('zsp_iaIncertaine')}">${t('x3_aVerifier')}</span>`:''}</div>
+          <div class="spectra-count-detail">${tpar('zsp_qteConfiance', item.quantity, item.confidence)}${item.from_memory?' · 🧠 '+t('zsp_memoire'):''}${item._sanitized_from==='remote'?' · '+t('zsp_corrigeTel'):''}</div>
         </div>
       </div>
       ${S.spectra.naming ? `
@@ -46359,20 +46610,20 @@ function vSpectraEnhanced() {
         ${item.off_image ? `<div style="text-align:center;margin-bottom:10px"><img src="${item.off_image}" alt="" style="max-height:120px;border-radius:8px"></div>` : ''}
         <div class="info-row"><span class="info-lbl">${t('x3_nomDetecte')}</span><span class="info-val" style="font-weight:700">${item.detected_name||item.matched_name}</span></div>
         ${item.resolved_type?`<div class="info-row"><span class="info-lbl">📦 Type</span><span class="info-val" style="font-size:12px">${item.resolved_type}</span></div>`:''}
-        ${item.resolved_brand || item.off_brand?`<div class="info-row"><span class="info-lbl">🏭 Marque</span><span class="info-val" style="font-size:12px">${item.resolved_brand || item.off_brand}</span></div>`:''}
+        ${item.resolved_brand || item.off_brand?`<div class="info-row"><span class="info-lbl">🏭 ${t('zsp_marque')}</span><span class="info-val" style="font-size:12px">${item.resolved_brand || item.off_brand}</span></div>`:''}
         ${item.off_category?`<div class="info-row"><span class="info-lbl">${t('y3_categorieIcone')}</span><span class="info-val" style="font-size:11px;color:var(--text-3)">${item.off_category}</span></div>`:''}
         ${item.ocr_text?`<div class="info-row"><span class="info-lbl">📝 OCR</span><span class="info-val" style="font-size:12px">${item.ocr_text}</span></div>`:''}
         ${item.barcode?`<div class="info-row"><span class="info-lbl">${t('x3_codeBarres')}</span><span class="info-val" style="font-size:12px;font-family:monospace">${item.barcode}</span></div>`:''}
-        ${item.coco_class?`<div class="info-row"><span class="info-lbl">🏷️ Classe IA</span><span class="info-val" style="font-size:12px">${item.coco_class}</span></div>`:''}
+        ${item.coco_class?`<div class="info-row"><span class="info-lbl">🏷️ ${t('zsp_classeIa')}</span><span class="info-val" style="font-size:12px">${item.coco_class}</span></div>`:''}
         <div class="info-row"><span class="info-lbl">${t('x3_nombreDetecte')}</span><span class="info-val" style="font-size:18px;color:var(--accent)">${item.quantity} ${item.matched_unit||'pce'}</span></div>
         <div class="info-row"><span class="info-lbl">${t('x3_precisionIA')}</span><span class="info-val" style="color:${item.confidence>=90?'var(--success)':item.confidence>=70?'var(--warning)':'var(--danger)'}">${item.confidence}%</span></div>
-        ${item.from_off?`<div class="info-row"><span class="info-lbl">Source</span><span class="info-val" style="color:var(--success)">${t('x3_openFoodFacts')}</span></div>`:item.from_memory?`<div class="info-row"><span class="info-lbl">Source</span><span class="info-val" style="color:var(--accent)">${t('y3_memoireProduit')}</span></div>`:item.from_keyword?`<div class="info-row"><span class="info-lbl">Source</span><span class="info-val" style="color:var(--accent)">📖 Dictionnaire (OCR)</span></div>`:''}
+        ${item.from_off?`<div class="info-row"><span class="info-lbl">Source</span><span class="info-val" style="color:var(--success)">${t('x3_openFoodFacts')}</span></div>`:item.from_memory?`<div class="info-row"><span class="info-lbl">Source</span><span class="info-val" style="color:var(--accent)">${t('y3_memoireProduit')}</span></div>`:item.from_keyword?`<div class="info-row"><span class="info-lbl">Source</span><span class="info-val" style="color:var(--accent)">📖 ${t('zsp_srcDico')}</span></div>`:''}
         ${typeof item.quality_score === 'number' ? `<div class="info-row"><span class="info-lbl">${t('y3_qualiteImage')}</span><span class="info-val" style="color:${item.quality_score>=80?'var(--success)':item.quality_score>=50?'var(--warning)':'var(--danger)'}">${item.quality_score}/100${item.damage_flags && item.damage_flags.length ? ' · ⚠ '+item.damage_flags.join(', ') : ''}</span></div>` : ''}
-        ${item.matched_id ? `<div class="info-row"><span class="info-lbl">Correspondance</span><span class="info-val" style="color:var(--success)">${t('x3_trouveEnStock')}</span></div>` : `<div class="info-row"><span class="info-lbl">Correspondance</span><span class="info-val" style="color:var(--warning)">Nouvel article</span></div>`}
+        ${item.matched_id ? `<div class="info-row"><span class="info-lbl">${t('zsp_correspondance')}</span><span class="info-val" style="color:var(--success)">${t('x3_trouveEnStock')}</span></div>` : `<div class="info-row"><span class="info-lbl">${t('zsp_correspondance')}</span><span class="info-val" style="color:var(--warning)">${t('zsp_nouvelArticle')}</span></div>`}
       </div>
       <div style="display:flex;gap:8px">
-        <button class="btn btn-primary" style="flex:1" onclick="spectraConfirmYes()">${IC.check} Confirmer</button>
-        <button class="btn btn-ghost" style="flex:1" onclick="spectraConfirmNo()">Renommer</button>
+        <button class="btn btn-primary" style="flex:1" onclick="spectraConfirmYes()">${IC.check} ${t('confirm')}</button>
+        <button class="btn btn-ghost" style="flex:1" onclick="spectraConfirmNo()">${t('zsp_renommer')}</button>
       </div>`}
     </div>`;
   }
@@ -46387,7 +46638,7 @@ function vSpectraEnhanced() {
     }
     return `
     <div class="sub-hero" style="background:linear-gradient(135deg,#064e3b,#059669)">
-      <div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('spectraDone')}</div><div class="sub-hero-sub">${S.spectra.results.length} articles mis à jour</div></div></div>
+      <div class="page-header-row"><button class="back-btn-dark" onclick="spectraReset();nav('more')">${IC.left}</button><div style="flex:1"><div class="sub-hero-title">${t('spectraDone')}</div><div class="sub-hero-sub">${tpar('zsp_articlesMaj', S.spectra.results.length)}</div></div></div>
     </div>
     <div class="container">
       ${S.spectra.results.map(r => `
@@ -46407,7 +46658,7 @@ function vSpectraEnhanced() {
     <div class="page-header-row" style="margin-bottom:14px">
       <button class="back-btn-dark" onclick="nav('more')">${IC.left}</button>
       <div style="width:44px;height:44px;border-radius:13px;background:rgba(255,255,255,.10);border:1px solid rgba(167,139,250,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(124,58,237,.4))">${IC.spectraWhite.replace('width="22" height="22"','width="28" height="28"')}</div>
-      <div style="flex:1"><div class="sub-hero-title">Spectra AI</div><div class="sub-hero-sub">Vision multi-couches · COCO + MobileNet + OCR + EAN</div></div>
+      <div style="flex:1"><div class="sub-hero-title">Spectra AI</div><div class="sub-hero-sub">${_iaDispo() ? t('zsp_sousTitreIa') : t('zsp_sousTitre')}</div></div>
     </div>
   </div>
   <div class="container">
@@ -46442,7 +46693,7 @@ function vSpectraEnhanced() {
       <div class="spectra-ai-banner off" onclick="nav('spectra-ai-setup')">
         <div class="spectra-ai-ic pulse">✨</div>
         <div style="flex:1;min-width:0">
-          <div class="spectra-ai-title">${t('z_activerVision')} <span class="spectra-ai-badge">GRATUIT 2 MIN</span></div>
+          <div class="spectra-ai-title">${t('z_activerVision')} <span class="spectra-ai-badge">${t('zsp_badgeGratuit')}</span></div>
           <div class="spectra-ai-sub">${t('z_reconnaitPs5')}</div>
         </div>
         <div style="color:#fff;opacity:.9">${IC.chevron}</div>
@@ -46450,14 +46701,14 @@ function vSpectraEnhanced() {
     })()}
     ${(() => {
       const limit = _spectraDailyLimit();
-      if (limit === Infinity) return `<div class="spectra-quota unlimited">${t('x3_scansIllimites')}</div>`;
+      if (limit === Infinity) return `<div class="spectra-quota unlimited">${tpar('zsp_scansIllimites', _planLabel(_currentPlan()))}</div>`;
       const left = Math.max(0, limit - _spectraScansToday());
       const pct = Math.round((left / limit) * 100);
       const col = left === 0 ? 'var(--danger)' : left <= 3 ? 'var(--warning)' : 'var(--success)';
       return `<div class="spectra-quota">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <span style="font-size:11px;font-weight:700;color:var(--text-2)">Scans gratuits aujourd'hui</span>
-          <span style="font-size:11px;font-weight:800;color:${col}">${left}/${limit} restants</span>
+          <span style="font-size:11px;font-weight:700;color:var(--text-2)">${t('zsp_scansJour')}</span>
+          <span style="font-size:11px;font-weight:800;color:${col}">${tpar('zsp_restants', left, limit)}</span>
         </div>
         <div style="height:5px;background:var(--gray-2);border-radius:3px;overflow:hidden"><div style="height:100%;width:${pct}%;background:${col};border-radius:3px;transition:width .4s"></div></div>
         ${left <= 3 ? `<div style="font-size:10.5px;color:var(--text-3);margin-top:5px">${t('x3_bientotEpuises')} <a onclick="nav('pricing')" style="color:var(--accent);font-weight:700;cursor:pointer">${t('y3_passeEnPro')}</a></div>` : ''}
@@ -46466,21 +46717,21 @@ function vSpectraEnhanced() {
 
     ${_iaDispo() ? '' : `<details class="spectra-tuto" ${_spectraHasOwnKey()||localStorage.getItem('baro_spectra_tuto_seen')?'':'open'} ontoggle="if(this.open)localStorage.setItem('baro_spectra_tuto_seen','1')">
       <summary class="spectra-tuto-sum">
-        <span>${t('z_activerIa')} <span style="font-weight:500;color:var(--text-3)">Groq gratuit · 2 min</span></span>
+        <span>${t('z_activerIa')} <span style="font-weight:500;color:var(--text-3)">${t('zsp_groqGratuit')}</span></span>
         <span class="spectra-tuto-chev">${IC.chevron}</span>
       </summary>
       <div class="spectra-tuto-body">
         <div class="spectra-step">
           <div class="spectra-step-n">1</div>
-          <div><div class="spectra-step-t">${t('x3_creeCleGroq')}</div><div class="spectra-step-d">Ouvre <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700">console.groq.com/keys</a> ${t('y3_connecteToi')} <strong>${t('x3_gratuitSansCarte')}</strong></div></div>
+          <div><div class="spectra-step-t">${t('x3_creeCleGroq')}</div><div class="spectra-step-d">${t('zsp_ouvre')} <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:700">console.groq.com/keys</a> ${t('y3_connecteToi')} <strong>${t('x3_gratuitSansCarte')}</strong></div></div>
         </div>
         <div class="spectra-step">
           <div class="spectra-step-n">2</div>
-          <div><div class="spectra-step-t">${t('x3_colleDansSpectra')}</div><div class="spectra-step-d">Touche <strong>${t('z_activerVisionG')}</strong> ${t('z_spEtapes')}</div></div>
+          <div><div class="spectra-step-t">${t('x3_colleDansSpectra')}</div><div class="spectra-step-d">${t('zsp_touche')} <strong>${t('z_activerVisionG')}</strong> ${t('z_spEtapes')}</div></div>
         </div>
         <div class="spectra-step">
           <div class="spectra-step-n">3</div>
-          <div><div class="spectra-step-t">Scanne n'importe quel produit</div><div class="spectra-step-d">${t('z_spPhotoVideo')}</div></div>
+          <div><div class="spectra-step-t">${t('zsp_scanneTout')}</div><div class="spectra-step-d">${t('z_spPhotoVideo')}</div></div>
         </div>
         <button class="btn btn-primary" style="margin-top:6px;background:linear-gradient(135deg,#F55036,#7C3AED)" onclick="event.preventDefault();nav('spectra-ai-setup')">${t('z_activerMtn')}</button>
         <div style="font-size:11px;color:var(--text-3);margin-top:10px;line-height:1.5">${t('x3_sansCleSpectra')} <strong>${t('x3_codeBarresDico')}</strong> ${t('zy_dico300')}</div>
@@ -46521,44 +46772,40 @@ function vSpectraEnhanced() {
             : "document.getElementById('spectra-file').click()"
       }">
         ${IC.camera} ${
-          S.spectraMode==='barcode'?'Scanner code-barres':
-          S.spectraMode==='continuous'?'Démarrer scan live':
-          S.spectraMode==='yolo'?'Scanner YOLO IA':
+          S.spectraMode==='barcode'?t('zsp_btnCodeBarres'):
+          S.spectraMode==='continuous'?t('zsp_btnLive'):
+          S.spectraMode==='yolo'?t('zsp_btnComptage'):
           t('z_scannerStock')
         }
       </button>
       <div style="font-size:11px;color:var(--text-3);margin-top:8px">${
-        S.spectraMode==='continuous'?'Détection IA en temps réel sur flux caméra':
-        S.spectraMode==='yolo'?'YOLO détecte et compte automatiquement chaque produit':
-        S.spectraMode==='barcode'?'Scanne EAN-13, UPC, Code 128, QR… Native BarcodeDetector':
+        S.spectraMode==='continuous'?t('zsp_aideLive'):
+        S.spectraMode==='yolo'?t('zsp_aideComptage'):
+        S.spectraMode==='barcode'?t('zsp_aideCodeBarres'):
         t('z_prendsPhoto')
       }</div>
     </div>
 
-    <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost" style="flex:1" onclick="spectraRunDemo()">${t('x3_demoAudit')}</button>
-      <button class="btn btn-ghost" style="flex:1" onclick="spectraRunDemoReception()">${t('x3_demoReception')}</button>
-    </div>
 
     ${(() => {
       const mem = getSpectraMemory();
       if (mem.length === 0) return '';
       const top5 = [...mem].sort((a,b)=>b.count-a.count).slice(0,5);
       return `
-      <div class="section-hd"><span class="section-lbl">🧠 Mémoire produit (${mem.length})</span></div>
+      <div class="section-hd"><span class="section-lbl">🧠 ${tpar('zsp_memoireProduit', mem.length)}</span></div>
       <div class="card" style="padding:12px">
-        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">L'IA apprend de tes confirmations. Top produits reconnus :</div>
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">${t('zsp_memoireAide')}</div>
         ${top5.map(m => `<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:12px"><span>${m.finalName}</span><span style="color:var(--accent)">×${m.count}</span></div>`).join('')}
-        <button class="btn btn-ghost" style="width:100%;margin-top:8px;font-size:11px;padding:6px" onclick="if(confirm('Effacer toute la mémoire produit ?')){clearSpectraMemory();render();}">${t('x3_effacerMemoire')}</button>
+        <button class="btn btn-ghost" style="width:100%;margin-top:8px;font-size:11px;padding:6px" onclick="if(confirm(t('zsp_effacerMemoireQ'))){clearSpectraMemory();render();}">${t('x3_effacerMemoire')}</button>
       </div>`;
     })()}
 
     ${scanHistory.length > 0 ? `
-    <div class="section-hd"><span class="section-lbl">Historique scans</span></div>
+    <div class="section-hd"><span class="section-lbl">${t('spectraHistory')}</span></div>
     ${scanHistory.slice(0,5).map(sh => `
     <div class="card" style="margin-bottom:6px;padding:10px 14px">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div><div style="font-size:12px;font-weight:700">${sh.mode||'photo'} · ${sh.count||0} articles</div><div style="font-size:11px;color:var(--text-3)">${fmtDate(sh.date)}</div></div>
+        <div><div style="font-size:12px;font-weight:700">${sh.mode||'photo'} · ${tpar('zsp_nArticles', sh.count||0)}</div><div style="font-size:11px;color:var(--text-3)">${fmtDate(sh.date)}</div></div>
         <span class="status st-ok" style="font-size:10px">OK</span>
       </div>
     </div>`).join('')}` : ''}
@@ -46571,7 +46818,7 @@ function vSpectraEnhanced() {
       ${audits.slice(0,3).map(a => `
       <div class="card" style="margin-bottom:6px;padding:10px 14px">
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <div><div style="font-size:12px;font-weight:700">${a.count} articles · ${a.mode||'photo'}</div><div style="font-size:11px;color:var(--text-3)">${fmtDate(a.date)} · ${a.user||''}</div><div style="font-size:10px;color:var(--text-3);font-family:monospace">SIG: ${(a.signature||'').slice(0,16)}…</div></div>
+          <div><div style="font-size:12px;font-weight:700">${tpar('zsp_nArticles', a.count)} · ${a.mode||'photo'}</div><div style="font-size:11px;color:var(--text-3)">${fmtDate(a.date)} · ${a.user||''}</div><div style="font-size:10px;color:var(--text-3);font-family:monospace">SIG: ${(a.signature||'').slice(0,16)}…</div></div>
           <span class="status st-ok" style="font-size:10px">${t('x3_signe')}</span>
         </div>
       </div>`).join('')}`;

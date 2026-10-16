@@ -41,13 +41,23 @@ class AiUsage(db.Model):
 
 
 # Quotas par jour et par forfait. Réglables sans toucher au code :
-# AI_QUOTA_PRO_VISION=100, par exemple.
+# AI_QUOTA_PRO_VISION=100, par exemple. Le scan (vision) est réservé aux
+# forfaits Pro et Entreprise : 0 pour Gratuit et Starter.
 _QUOTAS = {
-    'free':       {'vision': 3,   'chat': 5},
-    'starter':    {'vision': 15,  'chat': 20},
+    'free':       {'vision': 0,   'chat': 5},
+    'starter':    {'vision': 0,   'chat': 20},
     'pro':        {'vision': 60,  'chat': 80},
     'enterprise': {'vision': 300, 'chat': 400},
 }
+
+# Profondeur de réflexion par forfait : plus le forfait est élevé, plus
+# l'IA réfléchit avant de répondre (et plus chaque réponse coûte).
+# Réglable par AI_EFFORT_PRO=high, AI_EFFORT_ENTERPRISE=max, etc.
+_EFFORT = {'free': 'low', 'starter': 'low', 'pro': 'medium', 'enterprise': 'high'}
+_EFFORTS_VALIDES = ('low', 'medium', 'high', 'xhigh', 'max')
+# La réflexion se prend sur le même plafond de jetons que la réponse : on
+# laisse de la place pour qu'elle ne coupe pas la réponse en deux.
+_MARGE_REFLEXION = {'low': 0, 'medium': 3000, 'high': 8000, 'xhigh': 14000, 'max': 20000}
 
 _MODELES_AVEC_REPLI = ('claude-opus-5-5', 'claude-opus-5', 'claude-sonnet-5-5', 'claude-fable-5-1')
 
@@ -101,27 +111,35 @@ def _reste(user, kind):
 
 
 # ── Claude ──────────────────────────────────────────────────────────────
-def _modele_claude(genre):
-    # Un modèle par usage si le propriétaire le veut : reconnaître une
-    # bouteille de Coca n'a pas besoin du modèle le plus cher.
+def _modele_claude(genre, plan='free'):
+    # Un modèle par usage (AI_MODEL_VISION / AI_MODEL_CHAT), sinon par
+    # forfait (AI_MODEL_ENTERPRISE=claude-fable-5-1, par exemple), sinon
+    # le modèle commun.
     return (os.environ.get('AI_MODEL_' + genre.upper())
+            or os.environ.get('AI_MODEL_' + plan.upper())
             or os.environ.get('AI_MODEL')
             or 'claude-opus-5-5')
 
 
-def _claude(systeme, messages, max_tokens, genre):
+def _effort(plan):
+    e = (os.environ.get('AI_EFFORT_' + plan.upper()) or _EFFORT.get(plan, 'low')).lower()
+    return e if e in _EFFORTS_VALIDES else _EFFORT.get(plan, 'low')
+
+
+def _claude(systeme, messages, max_tokens, genre, plan='free'):
     import anthropic
 
-    client = anthropic.Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'], timeout=60.0, max_retries=1)
-    modele = _modele_claude(genre)
+    effort = _effort(plan)
+    # Plus de réflexion = réponse plus longue à venir : le délai suit.
+    client = anthropic.Anthropic(api_key=os.environ['ANTHROPIC_API_KEY'],
+                                 timeout=60.0 if effort == 'low' else 150.0, max_retries=1)
+    modele = _modele_claude(genre, plan)
     args = dict(
         model=modele,
-        max_tokens=max_tokens,
+        max_tokens=max_tokens + _MARGE_REFLEXION.get(effort, 0),
         system=systeme,
         messages=messages,
-        # Une réponse de commerce n'a pas besoin d'une longue réflexion :
-        # l'effort bas garde la réponse rapide et la facture basse.
-        output_config={'effort': os.environ.get('AI_EFFORT', 'low')},
+        output_config={'effort': effort},
     )
     if modele in _MODELES_AVEC_REPLI:
         # Si le modèle décline par prudence, l'API relance la même demande
@@ -132,6 +150,10 @@ def _claude(systeme, messages, max_tokens, genre):
     if rep.stop_reason == 'refusal':
         return None, 'refus'
     texte = ''.join(b.text for b in rep.content if getattr(b, 'type', '') == 'text')
+    if not texte.strip():
+        # Réflexion arrivée au plafond sans réponse : on le dit au lieu de
+        # renvoyer une réponse vide.
+        return None, 'tronque' if rep.stop_reason == 'max_tokens' else 'refus'
     return texte, None
 
 
@@ -212,10 +234,10 @@ def _gemini(systeme, messages, max_tokens):
     return texte, None
 
 
-def _appeler(systeme, messages, max_tokens, genre):
+def _appeler(systeme, messages, max_tokens, genre, plan='free'):
     f = _fournisseur()
     if f == 'claude':
-        return _claude(systeme, messages, max_tokens, genre)
+        return _claude(systeme, messages, max_tokens, genre, plan)
     if f == 'gemini':
         return _gemini(systeme, messages, max_tokens)
     return None, 'indisponible'
@@ -230,6 +252,7 @@ def statut(current_user):
         'available': bool(f),
         'provider': f,
         'plan': _forfait(current_user),
+        'reflexion': _effort(_forfait(current_user)),
         'vision': {'left': _reste(current_user, 'vision'), 'max': _quota(current_user, 'vision')},
         'chat':   {'left': _reste(current_user, 'chat'),   'max': _quota(current_user, 'chat')},
     })
@@ -254,6 +277,8 @@ _PROMPT_VISION = (
 def vision(current_user):
     if not _fournisseur():
         return jsonify({'error': 'indisponible'}), 503
+    if _quota(current_user, 'vision') <= 0:
+        return jsonify({'error': 'forfait', 'minimum': 'pro'}), 403
     if _reste(current_user, 'vision') <= 0:
         return jsonify({'error': 'quota', 'max': _quota(current_user, 'vision')}), 429
     d = request.get_json(silent=True) or {}
@@ -272,7 +297,7 @@ def vision(current_user):
         {'type': 'text', 'text': consigne},
     ]}]
     try:
-        texte, err = _appeler(_PROMPT_VISION, messages, 2000, 'vision')
+        texte, err = _appeler(_PROMPT_VISION, messages, 2000, 'vision', _forfait(current_user))
     except Exception as e:  # réseau, clé invalide, fournisseur en panne
         return jsonify({'error': 'fournisseur', 'detail': type(e).__name__}), 502
     if err:
@@ -322,7 +347,7 @@ def chat(current_user):
     if not messages or messages[-1]['role'] != 'user' or total > _MAX_TEXTE:
         return jsonify({'error': 'messages'}), 400
     try:
-        texte, err = _appeler(_prompt_assistant(d.get('lang') or 'fr', str(d.get('context') or '')), messages, 1200, 'chat')
+        texte, err = _appeler(_prompt_assistant(d.get('lang') or 'fr', str(d.get('context') or '')), messages, 1200, 'chat', _forfait(current_user))
     except Exception as e:
         return jsonify({'error': 'fournisseur', 'detail': type(e).__name__}), 502
     if err:

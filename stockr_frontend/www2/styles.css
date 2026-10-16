@@ -6820,3 +6820,24 @@ body.dark .sub-hero:not(.sh-teinte) {
    colonne et poussait la grille hors de l'écran (+18 px à 412 px). */
 .pol { min-width: 0; }
 .pol-n { font-size: 10px; }
+
+
+/* ── Promotions (lot 315) ─────────────────────────────────────────────── */
+.pr-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pr-mode { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 11px 12px; border: 1.5px solid var(--border); border-radius: var(--r-md); background: var(--surface); color: var(--text-1); cursor: pointer; font: inherit; min-width: 0; }
+.pr-mode b { font-size: 13px; }
+.pr-mode span { font-size: 11px; line-height: 1.4; color: var(--text-3); }
+.pr-mode.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--surface)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 14%, transparent); }
+.pr-coche { display: flex; align-items: center; gap: 10px; padding: 9px 8px; cursor: pointer; border-radius: 6px; }
+.pr-coche:hover { background: var(--gray-1); }
+.pr-mode-tag { display: inline-block; vertical-align: middle; font-size: 9.5px; font-weight: 800; letter-spacing: .03em; padding: 2px 7px; border-radius: 999px; margin-left: 4px; background: var(--gray-1); color: var(--text-2); }
+.pr-mode-tag.code { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+.cp-ligne { display: flex; gap: 8px; align-items: stretch; }
+.cp-input { flex: 1 1 auto; min-width: 0; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+.cp-btn { white-space: nowrap; }
+.cp-applique { display: flex; align-items: center; gap: 8px; }
+.cp-pastille { flex: 1; min-width: 0; padding: 10px 12px; border-radius: var(--r-md); font-size: 13px; font-weight: 800; color: var(--success); background: color-mix(in srgb, var(--success) 10%, transparent); border: 1px dashed color-mix(in srgb, var(--success) 45%, transparent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-retirer { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text-2); cursor: pointer; font: inherit; }
+.cp-tag { font-size: 11px; font-weight: 800; color: var(--success); }
+.pos-avant { color: var(--text-3); font-weight: 500; font-size: .85em; }
+@media (max-width: 360px) { .pr-modes { grid-template-columns: 1fr; } }

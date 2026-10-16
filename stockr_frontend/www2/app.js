@@ -270,6 +270,87 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    zpr_application: "Comment elle s'applique",
+    zpr_auto: "Automatique",
+    zpr_autoD: "S'applique toute seule aux articles visés, en caisse et sur la vitrine.",
+    zpr_code: "Avec un code",
+    zpr_codeD: "Seulement pour qui donne le code, en caisse ou sur la vitrine.",
+    zpr_codeOptionnel: "Facultatif en mode automatique : il sert aussi sur la vitrine.",
+    zpr_articlesConcernes: "Articles concernés",
+    zpr_rienCoche: "Rien de coché : la réduction vaut pour tout.",
+    zpr_modifierT: "Modifier la réduction",
+    zpr_modifierS: "Mise à jour de la réduction",
+    zpr_pourcentage: "Pourcentage",
+    zpr_exPct: "Ex : −20 %",
+    zpr_montantFixe: "Montant fixe",
+    zpr_exFixe: "Ex : −1 000 {0} par article",
+    zpr_limites: "Limites d'utilisation",
+    zpr_maxTotal: "Utilisations maximum (total)",
+    zpr_supprimer: "Supprimer",
+    zpr_mettreAJour: "Mettre à jour",
+    zpr_exCode: "Ex : NOEL25",
+    zpr_errNom: "Donnez un nom à la réduction.",
+    zpr_errCode: "Un code est obligatoire pour une réduction avec code.",
+    zpr_errValeur: "La valeur doit être supérieure à 0.",
+    zpr_errPct: "100 % au maximum.",
+    zpr_errDoublon: "Le code « {0} » est déjà utilisé.",
+    zpr_errDates: "La date de fin est avant la date de début.",
+    zpr_majOk: "Réduction mise à jour",
+    zpr_creeOk: "Réduction créée : {0}",
+    zpr_log: "{0} créée — code {1}",
+    zpr_stDesactivee: "Désactivée",
+    zpr_stExpiree: "Expirée",
+    zpr_stAVenir: "À venir",
+    zpr_stEpuisee: "Épuisée",
+    zpr_stActive: "Active",
+    zpr_utilisations: "{0} utilisation(s)",
+    zpr_utilisationsT: "Utilisations",
+    zpr_progression: "Progression {0}/{1} ({2} %)",
+    zpr_details: "Détails",
+    zpr_type: "Type",
+    zpr_valeur: "Valeur",
+    zpr_mode: "Mode",
+    zpr_tous: "Tous",
+    zpr_nChoisis: "{0} choisi(s)",
+    zpr_maxTotalC: "Max total",
+    zpr_maxClient: "Max / client",
+    zpr_illimite: "Illimité",
+    zpr_copierCode: "Copier le code",
+    zpr_copierLien: "Copier le lien",
+    zpr_modifier: "Modifier",
+    zpr_desactiver: "Désactiver",
+    zpr_activee: "Réduction activée",
+    zpr_desactivee: "Réduction désactivée",
+    zpr_confSuppr: "Supprimer définitivement cette réduction ?",
+    zpr_supprimee: "Réduction supprimée",
+    zpr_errManquant: "Saisissez un code.",
+    zpr_errInvalide: "Code inconnu.",
+    zpr_errInactive: "Cette réduction est désactivée.",
+    zpr_errPasEncore: "Cette réduction n'a pas encore commencé.",
+    zpr_errExpiree: "Cette réduction est terminée.",
+    zpr_errLimite: "Cette réduction a atteint sa limite d'utilisation.",
+    zpr_errLimiteClient: "Ce client a déjà utilisé ce code autant de fois que permis.",
+    zpr_errRienVise: "Ce code ne s'applique à aucun article du panier.",
+    zpr_codePromo: "Code promo",
+    zpr_appliquer: "Appliquer",
+    zpr_codeApplique: "Code {0} appliqué : {1}",
+    zpr_retirer: "Retirer le code",
+    zpr_economie: "Économie : {0}",
+    zpr_offres: "Offres en cours :",
+    zpr_ligneRemise: "{0} : −{1}",
+    zvt_vider: "Vider",
+    zvt_rechercher: "Rechercher…",
+    zvt_rupture: "Rupture",
+    zvt_selection: "{0} article(s) sélectionné(s)",
+    zvt_total: "Total :",
+    zvt_valider: "Valider la vente — {0}",
+    zvt_optionnel: "(optionnel)",
+    zvt_existant: "Existant",
+    zvt_telOpt: "Téléphone (optionnel)",
+    zvt_especes: "Espèces",
+    zvt_encaisser: "Encaisser",
+    zvt_boutiqueSeule: "Stocks boutique uniquement",
+    zvt_promo: "PROMO",
     zbo_nouvelle: "Nouvelle commande",
     zbo_client: "Nom du client",
     zbo_tel: "Téléphone",
@@ -3936,6 +4017,87 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    zpr_application: "How it applies",
+    zpr_auto: "Automatic",
+    zpr_autoD: "Applies by itself to the selected items, at the till and on your shop site.",
+    zpr_code: "With a code",
+    zpr_codeD: "Only for customers who give the code, at the till or on your shop site.",
+    zpr_codeOptionnel: "Optional in automatic mode: it also works on your shop site.",
+    zpr_articlesConcernes: "Items included",
+    zpr_rienCoche: "Nothing ticked: the discount applies to everything.",
+    zpr_modifierT: "Edit discount",
+    zpr_modifierS: "Update the discount",
+    zpr_pourcentage: "Percentage",
+    zpr_exPct: "E.g. −20%",
+    zpr_montantFixe: "Fixed amount",
+    zpr_exFixe: "E.g. −1,000 {0} per item",
+    zpr_limites: "Usage limits",
+    zpr_maxTotal: "Maximum uses (total)",
+    zpr_supprimer: "Delete",
+    zpr_mettreAJour: "Update",
+    zpr_exCode: "E.g. XMAS25",
+    zpr_errNom: "Give the discount a name.",
+    zpr_errCode: "A code is required for a code discount.",
+    zpr_errValeur: "The value must be above 0.",
+    zpr_errPct: "100% at most.",
+    zpr_errDoublon: "The code “{0}” is already in use.",
+    zpr_errDates: "The end date is before the start date.",
+    zpr_majOk: "Discount updated",
+    zpr_creeOk: "Discount created: {0}",
+    zpr_log: "{0} created — code {1}",
+    zpr_stDesactivee: "Off",
+    zpr_stExpiree: "Expired",
+    zpr_stAVenir: "Upcoming",
+    zpr_stEpuisee: "Used up",
+    zpr_stActive: "Active",
+    zpr_utilisations: "{0} use(s)",
+    zpr_utilisationsT: "Uses",
+    zpr_progression: "Progress {0}/{1} ({2}%)",
+    zpr_details: "Details",
+    zpr_type: "Type",
+    zpr_valeur: "Value",
+    zpr_mode: "Mode",
+    zpr_tous: "All",
+    zpr_nChoisis: "{0} selected",
+    zpr_maxTotalC: "Max total",
+    zpr_maxClient: "Max / customer",
+    zpr_illimite: "Unlimited",
+    zpr_copierCode: "Copy code",
+    zpr_copierLien: "Copy link",
+    zpr_modifier: "Edit",
+    zpr_desactiver: "Turn off",
+    zpr_activee: "Discount turned on",
+    zpr_desactivee: "Discount turned off",
+    zpr_confSuppr: "Delete this discount for good?",
+    zpr_supprimee: "Discount deleted",
+    zpr_errManquant: "Enter a code.",
+    zpr_errInvalide: "Unknown code.",
+    zpr_errInactive: "This discount is turned off.",
+    zpr_errPasEncore: "This discount hasn't started yet.",
+    zpr_errExpiree: "This discount has ended.",
+    zpr_errLimite: "This discount has reached its usage limit.",
+    zpr_errLimiteClient: "This customer has already used this code as many times as allowed.",
+    zpr_errRienVise: "This code doesn't apply to anything in the cart.",
+    zpr_codePromo: "Promo code",
+    zpr_appliquer: "Apply",
+    zpr_codeApplique: "Code {0} applied: {1}",
+    zpr_retirer: "Remove code",
+    zpr_economie: "Saving: {0}",
+    zpr_offres: "Current offers:",
+    zpr_ligneRemise: "{0}: −{1}",
+    zvt_vider: "Clear",
+    zvt_rechercher: "Search…",
+    zvt_rupture: "Out of stock",
+    zvt_selection: "{0} item(s) selected",
+    zvt_total: "Total:",
+    zvt_valider: "Complete sale — {0}",
+    zvt_optionnel: "(optional)",
+    zvt_existant: "Existing",
+    zvt_telOpt: "Phone (optional)",
+    zvt_especes: "Cash",
+    zvt_encaisser: "Collect",
+    zvt_boutiqueSeule: "Shop stock only",
+    zvt_promo: "SALE",
     zbo_nouvelle: "New order",
     zbo_client: "Customer name",
     zbo_tel: "Phone",
@@ -12304,10 +12466,11 @@ function recordSale() {
   const payMethod = pmSel ? pmSel.value : 'cash';
   const { clientId, clientName } = _resolveClientForSale();
   const PMLABELS = {cash:'Especes',wave:'Wave',orange:'Orange Money',moov:'Moov Money',mtn:'MTN MoMo'};
-  // Apply promo
-  const promo = _getActivePromo(product.id);
-  let promoName = null, promoDiscount = 0;
-  if (promo) { promoDiscount = promo.discount; promoName = promo.name; saleTotal = _arrondiDevise(saleTotal * (100 - promoDiscount) / 100); }
+  // Promotion : automatique, ou celle du code saisi
+  const __lv = _ligneVente({ kind: 'product', productId: product.id, price: product.price, purchasePrice: product.purchasePrice }, qty, { code: S.codePromo, clientId });
+  const promoName = __lv.promo ? __lv.promo.name : null, promoDiscount = __lv.pct;
+  saleTotal = __lv.total;
+  if (__lv.promo) { _recordPromoUsage(__lv.promo.id, clientId); S.codePromo = ''; }
   const __sale = { id: Date.now(), productId: product.id, productName: product.name, qty, total: saleTotal, profit: saleTotal - saleCost, date: new Date().toISOString(), paymentMethod: payMethod, clientId, clientName: client?.name || clientName || null, promoName, promoDiscount };
   S.sales.unshift(__sale);
   // Hooks intégrations temps réel
@@ -13498,6 +13661,7 @@ async function confirmMultiSale(opts = {}) {
   clientId = client ? client.id : null;
   const pmSel = $('multi-payment');
   const payMethod = opts.payMethod || (pmSel ? pmSel.value : 'cash');
+  const __promoOpts = { code: opts.code != null ? opts.code : S.codePromo, clientId };
   // Panier multi = un même cartId → groupé « Panier · N articles » dans l'historique
   const _multiCartId = Object.keys(S.multiCart).length > 1 ? 'cart_' + Date.now() : null;
   // Sova regarde la vente AVANT de toucher au stock. La vente rapide a déjà
@@ -13507,24 +13671,22 @@ async function confirmMultiSale(opts = {}) {
     for (const [itemId, qty] of Object.entries(S.multiCart)) {
       const it = sellable.find(i => i.id === itemId);
       if (!it) continue;
-      let prix = it.price || 0;
-      if (it.kind === 'product') { const pr = _getActivePromo(it.productId); if (pr) prix = prix * (1 - (pr.discount || 0) / 100); }
+      const prix = _ligneVente(it, qty, __promoOpts).unit;
       __lignes.push({ nom: it.name || '', prix, cout: it.purchasePrice || 0, qte: qty });
     }
     if (!(await _sovaGardeVente(__lignes))) return;
   }
 
   let total = 0, newSales = [];
+  const __promosUtilisees = new Set();
   for (const [itemId, qty] of Object.entries(S.multiCart)) {
     const it = sellable.find(i => i.id === itemId);
     if (!it) continue;
-    let lineTotal = it.price * qty;
-    let lineProfit = (it.price - (it.purchasePrice||0)) * qty;
-    let promoName = null, promoDiscount = 0;
-    if (it.kind === 'product') {
-      const promo = _getActivePromo(it.productId);
-      if (promo) { promoDiscount = promo.discount; promoName = promo.name; const d = _arrondiDevise(lineTotal*promoDiscount/100); lineTotal -= d; lineProfit -= d; }
-    }
+    const __lv = _ligneVente(it, qty, __promoOpts);
+    let lineTotal = __lv.total;
+    let lineProfit = __lv.profit;
+    const promoName = __lv.promo ? __lv.promo.name : null, promoDiscount = __lv.pct;
+    if (__lv.promo) __promosUtilisees.add(__lv.promo.id);
     try {
       let saleData = null;
       if (it.kind === 'product') {
@@ -13568,6 +13730,7 @@ async function confirmMultiSale(opts = {}) {
         date: saleData?.timestamp || new Date().toISOString(),
         clientId, clientName: client?.name || null,
         paymentMethod: payMethod, promoName, promoDiscount,
+        promoId: __lv.promo ? __lv.promo.id : null, remise: __lv.remise,
         kind: it.kind,
         memberId: __mm?.id || null, memberName: __mm?.name || null, locationId: S.currentLocation || null,
       };
@@ -13577,6 +13740,7 @@ async function confirmMultiSale(opts = {}) {
     } catch(e) { console.warn('sale error', e); }
   }
   localStorage.setItem('stockr_sales', JSON.stringify(S.sales));
+  if (newSales.length) { __promosUtilisees.forEach(id => _recordPromoUsage(id, clientId)); S.codePromo = ''; }
 
   // Loyalty with tier multiplier
   if (S.loyaltyConfig?.enabled && clientId) {
@@ -13647,7 +13811,14 @@ function _qsSetQtyVal(v) {
   qs.qty = Math.max(1, Math.min(max, parseInt(v)||1)); _qsRender();
 }
 function _qsSetPay(p) { if (S._qs) { S._qs.pay = p; _qsRender(); } }
-function _qsSetClient(v) { if (S._qs) { S._qs.clientId = v ? parseInt(v) : null; _qsRender(); } }
+// L'identifiant d'un client peut être un nombre ou un texte : on garde le
+// vrai (parseInt réduisait « c1 » à NaN, et la vente perdait son client).
+function _qsSetClient(v) {
+  if (!S._qs) return;
+  const c = v ? (S.clients || []).find(x => String(x.id) === String(v)) : null;
+  S._qs.clientId = c ? c.id : null;
+  _qsRender();
+}
 // Options de paiement pour la vente : Espèces + vos méthodes ACTIVES configurées.
 // Repli sur le mobile money courant si rien n'est encore configuré.
 function _salePayChips() {
@@ -13661,8 +13832,10 @@ function _salePayChips() {
 function _qsBody() {
   const qs = S._qs; if (!qs) return '';
   const a = S.articles.find(x => x.id === qs.id); if (!a) return '';
-  const price = a.price||0, cost = a.purchasePrice||0;
-  const total = price * qs.qty, profit = (price - cost) * qs.qty;
+  const cost = a.purchasePrice||0;
+  const __lv = _ligneVente({ kind: 'article', articleId: a.id, price: a.price || 0, purchasePrice: cost }, qs.qty, { code: S.codePromo, clientId: qs.clientId });
+  const price = __lv.unit;
+  const total = __lv.total, profit = __lv.profit;
   const max = Math.max(1, Math.floor(a.stock));
   const pms = _salePayChips();
   const clientsOpts = (S.clients||[]).map(c=>`<option value="${_wafEsc(c.id)}" ${String(qs.clientId)===String(c.id)?'selected':''}>${_wafEsc(c.name||t('zwa_client'))}</option>`).join('');
@@ -13693,7 +13866,10 @@ function _qsBody() {
     ${(S.clients||[]).length ? `
     <div class="qs-label">${t('zqs_client')}</div>
     <select class="input qs-client" onchange="_qsSetClient(this.value)"><option value="">${t('x1_aucunTiret')}</option>${clientsOpts}</select>` : ''}
+    <div class="qs-label">${t('zpr_codePromo')}</div>
+    ${_champCodePromo()}
     <div class="qs-totals">
+      ${__lv.promo ? `<div class="qs-trow" style="color:var(--success)"><span>🏷️ ${_wafEsc(__lv.promo.name)}</span><b>−${fmt(__lv.remise)} ${sym()}</b></div>` : ''}
       <div class="qs-trow"><span>${t('zqs_total')}</span><b>${fmt(total)} ${sym()}</b></div>
       ${cost>0?`<div class="qs-trow qs-profit"${perte ? ' style="color:var(--danger)"' : ''}><span>${t(perte ? 'zqs_perte' : 'x1_benefice')}</span><b>${perte ? '−' + fmt(-profit) : '+' + fmt(profit)} ${sym()}</b></div>`:''}
     </div>
@@ -13713,7 +13889,7 @@ async function quickSellConfirm() {
   const clientId = qs.clientId || null;
   S.multiCart = { ['art_'+qs.id]: qs.qty };
   closeQuickSell();
-  await confirmMultiSale({ clientId, payMethod, sansGarde: true });
+  await confirmMultiSale({ clientId, payMethod, sansGarde: true, code: S.codePromo });
 }
 
 // ── Prestation / service : encaisser sans stock (coiffure, couture, réparation…) ──
@@ -13776,8 +13952,12 @@ async function confirmCart() {
   const __m = (typeof getCurrentMember === 'function') ? getCurrentMember() : null;
   const pmSel = $('sale-payment');
   const payMethod = pmSel ? pmSel.value : 'cash';
-  if (!(await _sovaGardeVente(S.cart.map(it => ({ nom: it.productName || '', prix: Number(it.unitPrice) || 0,
+  const __promoOpts = { code: S.codePromo, clientId };
+  const __ligneCart = it => _ligneVente({ kind: it.kind, productId: it.productId, articleId: it.articleId,
+                                          price: it.unitPrice, purchasePrice: it.unitCost }, it.qty, __promoOpts);
+  if (!(await _sovaGardeVente(S.cart.map(it => ({ nom: it.productName || '', prix: __ligneCart(it).unit,
                                                     cout: Number(it.unitCost) || 0, qte: Number(it.qty) || 1 }))))) return;
+  const __promosUtilisees = new Set();
   try {
     const cartId = 'cart_' + Date.now();
     let total = 0, count = 0, newSales = [];
@@ -13786,10 +13966,12 @@ async function confirmCart() {
       if (item.kind === 'article' && item.articleId) {
         const art = S.articles.find(a => a.id === item.articleId);
         if (art) art.stock = Math.round(((art.stock||0) - item.qty) * 1000) / 1000;
-        const lineTotal  = (item.unitPrice||0) * item.qty;
-        const lineProfit = ((item.unitPrice||0) - (item.unitCost || 0)) * item.qty;
+        const __la = __ligneCart(item);
+        const lineTotal  = __la.total;
+        const lineProfit = __la.profit;
+        if (__la.promo) __promosUtilisees.add(__la.promo.id);
         total += lineTotal; count += item.qty;
-        const newSale = { id: Date.now() + Math.random(), cartId, productId: null, articleId: item.articleId, productName: item.productName, qty: item.qty, total: lineTotal, profit: lineProfit, date: new Date().toISOString(), clientId, clientName: resolvedClientName || client?.name || null, paymentMethod: payMethod };
+        const newSale = { id: Date.now() + Math.random(), cartId, productId: null, articleId: item.articleId, productName: item.productName, qty: item.qty, total: lineTotal, profit: lineProfit, date: new Date().toISOString(), clientId, clientName: resolvedClientName || client?.name || null, paymentMethod: payMethod, promoName: __la.promo ? __la.promo.name : null, promoDiscount: __la.pct, promoId: __la.promo ? __la.promo.id : null };
         S.sales.unshift(newSale); newSales.push(newSale);
         try { _saveArticles(); } catch(_){}
         continue;
@@ -13824,18 +14006,12 @@ async function confirmCart() {
         data = null; // fallback géré juste après
       }
       const product = S.products.find(p => p.id === item.productId);
-      let lineTotal  = (item.unitPrice || product?.price || 0) * item.qty;
-      let lineProfit = ((item.unitPrice || product?.price || 0) - (item.unitCost || product?.purchasePrice || 0)) * item.qty;
-      // Apply promo discount
-      const promo = _getActivePromo(item.productId);
-      let promoName = null, promoDiscount = 0;
-      if (promo) {
-        promoDiscount = promo.discount;
-        promoName = promo.name;
-        const discount = _arrondiDevise(lineTotal * promoDiscount / 100);
-        lineTotal -= discount;
-        lineProfit -= discount;
-      }
+      const __lp = _ligneVente({ kind: 'product', productId: item.productId, price: item.unitPrice || product?.price || 0,
+                                 purchasePrice: item.unitCost || product?.purchasePrice || 0 }, item.qty, __promoOpts);
+      let lineTotal  = __lp.total;
+      let lineProfit = __lp.profit;
+      const promoName = __lp.promo ? __lp.promo.name : null, promoDiscount = __lp.pct;
+      if (__lp.promo) __promosUtilisees.add(__lp.promo.id);
       // Si pas de data API → destockage local des composants
       if (!data && product?.composition) {
         for (const c of product.composition) {
@@ -13874,6 +14050,7 @@ async function confirmCart() {
       S.paymentHistory.unshift({ id:Date.now(), provider:payMethod, amount:total, clientName:client?.name||'Client', date:new Date().toISOString() });
       localStorage.setItem('baro_payment_history', JSON.stringify(S.paymentHistory));
     }
+    if (newSales.length) { __promosUtilisees.forEach(id => _recordPromoUsage(id, clientId)); S.codePromo = ''; }
     S.cart = [];
     S.saleClientPick = null; S.saleNewClient = false; S.saleNewClientName = ''; S.saleNewClientPhone = '';
     showToast(`${count} ${t('unitsSold')} — ${fmt(total)} ${sym()}`);
@@ -17541,7 +17718,7 @@ function vProducts() {
         <div class="article-row">
           ${itemAvatar(p)}
           <div class="article-info">
-            <div class="article-name">${p.name}${promo?' <span style="font-size:10px;padding:1px 6px;border-radius:4px;background:#ef444415;color:#ef4444;font-weight:700;margin-left:4px">-'+promo.discount+'%</span>':''}${inShop?' <span style="font-size:10px;padding:1px 6px;border-radius:4px;background:var(--accent-light);color:var(--accent);font-weight:700;margin-left:4px">🛍️</span>':''}</div>
+            <div class="article-name">${p.name}${promo?' <span style="font-size:10px;padding:1px 6px;border-radius:4px;background:#ef444415;color:#ef4444;font-weight:700;margin-left:4px">'+_promoEtiquette(promo)+'</span>':''}${inShop?' <span style="font-size:10px;padding:1px 6px;border-radius:4px;background:var(--accent-light);color:var(--accent);font-weight:700;margin-left:4px">🛍️</span>':''}</div>
             <div class="article-meta" style="font-weight:700;color:var(--text-2)">${fmt(p.price)} ${sym()}${p.purchasePrice > 0 ? ` <span style="font-size:11px;font-weight:600;color:${marginPct(p)>=20?'var(--success)':marginPct(p)>=0?'var(--warning)':'var(--danger)'};margin-left:6px">${marginPct(p)}% ${t('margin')}</span>` : ''}</div>
             ${p.purchasePrice > 0 ? `<div class="article-meta" style="margin-top:1px;font-size:11px;color:var(--text-3)">${t('costLabel')}: ${fmt(p.purchasePrice)} · ${t('profitUnit')}: ${fmt(profitUnit(p))} ${sym()}/u</div>` : ''}
             ${recipeNames ? `<div class="article-meta" style="margin-top:2px;color:var(--text-3)">${recipeNames}</div>` : ''}
@@ -17635,7 +17812,7 @@ function vSales() {
         </div>
         ${S.saleNewClient ? `
         <input class="input" type="text" id="sale-new-client-name" placeholder="${t('v_nomClient')}" style="margin-bottom:6px" value="${(S.saleNewClientName||'').replace(/"/g,'&quot;')}" oninput="S.saleNewClientName=this.value">
-        <input class="input" type="tel" id="sale-new-client-phone" placeholder="Téléphone (optionnel)" value="${(S.saleNewClientPhone||'').replace(/"/g,'&quot;')}" oninput="S.saleNewClientPhone=this.value">
+        <input class="input" type="tel" id="sale-new-client-phone" placeholder="${t('zvt_telOpt')}" value="${(S.saleNewClientPhone||'').replace(/"/g,'&quot;')}" oninput="S.saleNewClientPhone=this.value">
         ` : `
         <select class="input" id="sale-client" onchange="S.saleClientPick=this.value?(parseInt(this.value)||this.value):null">
           <option value="">${t('w1_aucunClient')}</option>
@@ -17645,7 +17822,7 @@ function vSales() {
       <div class="form-group">
         <label class="form-label">${t('invoicePayment')}</label>
         <select class="input" id="sale-payment">
-          <option value="cash">Especes</option>
+          <option value="cash">${t('zvt_especes')}</option>
           ${(S.paymentMethods||[]).filter(m=>m.active).map(m=>`<option value="${m.provider}">${m.name}</option>`).join('')}
         </select>
       </div>
@@ -17658,11 +17835,10 @@ function vSales() {
         <select class="input" id="sale-product">
           <option value="">${t('select')}</option>
           ${sellable.map(it => {
-            const p = it.kind === 'product' ? S.products.find(pp => pp.id === it.productId) : null;
-            const pr = p ? _getActivePromo(p.id) : null;
-            const priceShown = pr ? fmt(Math.round(it.price * (100 - pr.discount) / 100)) + ' (-' + pr.discount + '%)' : fmt(it.price);
+            const __o = _ligneVente(it, 1, {});
+            const priceShown = __o.promo ? fmt(__o.unit) + ' (' + _promoEtiquette(__o.promo) + ')' : fmt(it.price);
             const boutiqueTag = it.inBoutique ? ' 🏪' : '';
-            return `<option value="${it.id}">${it.name}${boutiqueTag} — ${priceShown} ${sym()} (${it.stock} ${it.unit})${pr?' PROMO':''}</option>`;
+            return `<option value="${it.id}">${it.name}${boutiqueTag} — ${priceShown} ${sym()} (${it.stock} ${it.unit})${__o.promo ? ' ' + t('zvt_promo') : ''}</option>`;
           }).join('')}
         </select>
         ${sellable.length === 0 && boutiqueFilter ? `<div style="font-size:11px;color:var(--text-3);margin-top:4px">${t('w2_aucunArticleBout')} <a onclick="nav('boutique')" style="color:var(--accent);cursor:pointer;font-weight:700">${t('w1_ajouterArticlesBoutique')}</a></div>` : ''}
@@ -17679,7 +17855,7 @@ function vSales() {
         </div>
         ${S.saleNewClient ? `
         <input class="input" type="text" id="sale-new-client-name" placeholder="${t('v_nomClient')}" style="margin-bottom:6px" value="${(S.saleNewClientName||'').replace(/"/g,'&quot;')}" oninput="S.saleNewClientName=this.value">
-        <input class="input" type="tel" id="sale-new-client-phone" placeholder="Téléphone (optionnel)" value="${(S.saleNewClientPhone||'').replace(/"/g,'&quot;')}" oninput="S.saleNewClientPhone=this.value">
+        <input class="input" type="tel" id="sale-new-client-phone" placeholder="${t('zvt_telOpt')}" value="${(S.saleNewClientPhone||'').replace(/"/g,'&quot;')}" oninput="S.saleNewClientPhone=this.value">
         ` : `
         <select class="input" id="sale-client" onchange="S.saleClientPick=this.value?(parseInt(this.value)||this.value):null">
           <option value="">${t('w1_aucunClient')}</option>
@@ -17689,7 +17865,7 @@ function vSales() {
       <div class="form-group">
         <label class="form-label">${t('invoicePayment')}</label>
         <select class="input" id="sale-payment">
-          <option value="cash">Especes</option>
+          <option value="cash">${t('zvt_especes')}</option>
           ${(S.paymentMethods||[]).filter(m=>m.active).map(m=>`<option value="${m.provider}">${m.name}</option>`).join('')}
         </select>
       </div>
@@ -17713,7 +17889,8 @@ function vSales() {
           <button class="cart-remove" onclick="removeFromCart(${i})">${IC.xmark}</button>
         </div>`).join('')}
       ${S.cart.length>0 ? `
-      <div class="cart-total">${t('total')} : <strong>${fmt(S.cart.reduce((s,c)=>s+c.unitPrice*c.qty,0))} ${sym()}</strong></div>
+      <div style="margin-top:10px">${_champCodePromo()}</div>
+      <div class="cart-total">${t('total')} : <strong>${fmt(S.cart.reduce((s,c)=>s+_ligneVente({ kind: c.kind, productId: c.productId, articleId: c.articleId, price: c.unitPrice, purchasePrice: c.unitCost }, c.qty, { code: S.codePromo }).total,0))} ${sym()}</strong></div>
       <button class="btn btn-primary" style="margin-top:10px" onclick="confirmCart()">${t('validateSale')}</button>` : ''}
     </div>` : ''}` : `
 
@@ -17721,11 +17898,11 @@ function vSales() {
     <div class="card" style="margin-bottom:12px;padding:12px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
         <div style="font-size:14px;font-weight:700">${t('w1_selectionnezPlus')}</div>
-        <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="clearMultiCart()">Vider</button>
+        <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="clearMultiCart()">${t('zvt_vider')}</button>
       </div>
       <div class="search-wrap" style="margin-bottom:10px">
         <span class="search-ico">${IC.search}</span>
-        <input class="input input-search" type="text" placeholder="    Rechercher..." value="${multiQ.replace(/"/g,'&quot;')}" oninput="S.multiSearch=this.value;render()">
+        <input class="input input-search" type="text" placeholder="    ${t('zvt_rechercher')}" value="${multiQ.replace(/"/g,'&quot;')}" oninput="S.multiSearch=this.value;render()">
       </div>
       <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">${t('w1_toucheProduit')}</div>
       ${sellable.length === 0 ? `
@@ -17745,10 +17922,12 @@ function vSales() {
             <div class="pos-imgwrap">
               ${img}
               ${inCart>0?`<span class="pos-qty">${inCart}</span>`:''}
-              ${out?`<span class="pos-out">Rupture</span>`:''}
+              ${out?`<span class="pos-out">${t('zvt_rupture')}</span>`:''}
             </div>
             <div class="pos-tile-name">${it.name.replace(/^🏪\s*/,'')}</div>
-            <div class="pos-tile-price">${fmt(it.price)} ${sym()}</div>
+            ${(() => { const __t = _ligneVente(it, 1, { code: S.codePromo }); return __t.promo
+              ? `<div class="pos-tile-price"><s class="pos-avant">${fmt(it.price)}</s> ${fmt(__t.unit)} ${sym()}</div>`
+              : `<div class="pos-tile-price">${fmt(it.price)} ${sym()}</div>`; })()}
             ${inCart>0?`<span class="pos-minus" onclick="event.stopPropagation();updateMultiCartQty('${it.id}',-1)">−</span>`:''}
           </button>`;
         }).join('')}
@@ -17757,35 +17936,43 @@ function vSales() {
 
     ${Object.keys(S.multiCart).length > 0 ? (() => {
       const entries = Object.entries(S.multiCart);
+      const __opts = { code: S.codePromo, clientId: S.multiClientPick };
       const total = entries.reduce((s, [id, q]) => {
         const it = sellable.find(i => i.id === id);
-        return it ? s + it.price * q : s;
+        return it ? s + _ligneVente(it, q, __opts).total : s;
+      }, 0);
+      const remiseTot = entries.reduce((s, [id, q]) => {
+        const it = sellable.find(i => i.id === id);
+        return it ? s + _ligneVente(it, q, __opts).remise : s;
       }, 0);
       return `
     <div class="card" style="margin-bottom:14px;border:2px solid var(--accent);background:var(--surface)">
-      <div class="card-title">✅ ${entries.length} article${entries.length>1?'s':''} sélectionné${entries.length>1?'s':''}</div>
+      <div class="card-title">✅ ${tpar('zvt_selection', entries.length)}</div>
       ${entries.map(([id,q]) => {
         const it = sellable.find(i => i.id === id);
         if (!it) return '';
+        const __l = _ligneVente(it, q, __opts);
         return `
         <div class="cart-item">
           <div class="cart-item-info">
             <div class="cart-item-name">${it.name}</div>
-            <div class="cart-item-sub">×${q} · ${fmt(it.price*q)} ${sym()}</div>
+            <div class="cart-item-sub">×${q} · ${fmt(__l.total)} ${sym()}${__l.promo ? ` <span class="cp-tag">🏷️ ${_wafEsc(_promoEtiquette(__l.promo))}</span>` : ''}</div>
           </div>
           <button class="cart-remove" onclick="toggleMultiCart('${id}')">${IC.xmark}</button>
         </div>`;
       }).join('')}
-      <div class="cart-total">Total : <strong style="color:var(--accent)">${fmt(total)} ${sym()}</strong></div>
+      <div style="margin-top:10px">${_champCodePromo()}</div>
+      ${remiseTot > 0 ? `<div class="cart-total" style="color:var(--success);font-size:13px">${tpar('zpr_economie', fmt(remiseTot) + ' ' + sym())}</div>` : ''}
+      <div class="cart-total">${t('zvt_total')} <strong style="color:var(--accent)">${fmt(total)} ${sym()}</strong></div>
       <div class="form-group" style="margin-top:10px">
-        <label class="form-label">${t('clients')} <span style="color:var(--text-3);font-weight:400">(optionnel)</span></label>
+        <label class="form-label">${t('clients')} <span style="color:var(--text-3);font-weight:400">${t('zvt_optionnel')}</span></label>
         <div style="display:flex;gap:6px;margin-bottom:8px">
-          <button type="button" class="chip ${!S.multiNewClient?'active':''}" onclick="S.multiNewClient=false;render()">Existant</button>
+          <button type="button" class="chip ${!S.multiNewClient?'active':''}" onclick="S.multiNewClient=false;render()">${t('zvt_existant')}</button>
           <button type="button" class="chip ${S.multiNewClient?'active':''}" onclick="S.multiNewClient=true;render()">${t('w2_nouveauClient')}</button>
         </div>
         ${S.multiNewClient ? `
         <input class="input" type="text" id="multi-new-client-name" placeholder="${t('v_nomClient')}" style="margin-bottom:6px" value="${(S.multiNewClientName||'').replace(/"/g,'&quot;')}" oninput="S.multiNewClientName=this.value">
-        <input class="input" type="tel" id="multi-new-client-phone" placeholder="Téléphone (optionnel)" value="${(S.multiNewClientPhone||'').replace(/"/g,'&quot;')}" oninput="S.multiNewClientPhone=this.value">
+        <input class="input" type="tel" id="multi-new-client-phone" placeholder="${t('zvt_telOpt')}" value="${(S.multiNewClientPhone||'').replace(/"/g,'&quot;')}" oninput="S.multiNewClientPhone=this.value">
         ` : `
         <select class="input" id="multi-client" onchange="S.multiClientPick=this.value?(parseInt(this.value)||this.value):null">
           <option value="">${t('w1_aucunClient')}</option>
@@ -17799,7 +17986,7 @@ function vSales() {
           ${(S.paymentMethods||[]).filter(m=>m.active).map(m=>`<option value="${m.provider}">${m.name}</option>`).join('')}
         </select>
       </div>
-      <button class="btn btn-primary" style="width:100%;margin-top:6px" onclick="confirmMultiSale()">💰 Valider la vente — ${fmt(total)} ${sym()}</button>
+      <button class="btn btn-primary" style="width:100%;margin-top:6px" onclick="confirmMultiSale()">💰 ${tpar('zvt_valider', fmt(total) + ' ' + sym())}</button>
     </div>`;
     })() : ''}
     `}
@@ -24978,18 +25165,19 @@ async function quickSaleProduct(productId) {
   // Apply active promo (auto-applicable, sans code)
   let finalPrice = prod.price;
   let promoName = null, promoDiscount = 0, promoCode = null, promoId = null;
-  const promo = _getActivePromo(prod.id);
+  const __r = _promoPour('product', prod.id, prod.price, { code: S.codePromo });
+  const promo = __r ? __r.promo : null;
   if (promo) {
     promoId = promo.id;
     promoName = promo.name;
     promoCode = promo.code;
-    finalPrice = _applyPromoValue(prod.price, promo);
+    finalPrice = __r.prix;
     promoDiscount = prod.price > 0 ? Math.round((1 - finalPrice/prod.price)*100) : 0;
   }
   // Contrôle avant la vente — et l'usage de la promo n'est compté qu'une
   // fois la vente décidée.
   if (!(await _sovaGardeVente([{ nom: prod.name, prix: finalPrice, cout: prod.purchasePrice || 0, qte: 1 }]))) return;
-  if (promo) _recordPromoUsage(promo.id, null);
+  if (promo) { _recordPromoUsage(promo.id, null); S.codePromo = ''; }
 
   // Create sale
   const sale = {
@@ -31116,7 +31304,11 @@ function generateBoutiqueSite(opts) {
   const _promoMap = {};
   (S.promotions || []).forEach(p => {
     if (!p.active || !p.code) return;
-    if (Array.isArray(p.products) && p.products.length) return; // promo produit = auto, pas un code commande
+    // Seules les réductions « avec code » sur toute la commande vont ici.
+    // Une réduction automatique est déjà dans le prix des cartes : l'ajouter
+    // au code faisait payer deux remises.
+    if (_promoMode(p) !== 'code') return;
+    if ((p.products || []).length || (p.articles || []).length) return;
     if (p.startDate && new Date(p.startDate) > _pNow) return;
     if (p.endDate && new Date(p.endDate + 'T23:59:59') < _pNow) return;
     _promoMap[String(p.code).toUpperCase()] = { type: p.type || 'percent', value: Number(p.value) || Number(p.discount) || 0, name: p.name || p.code };
@@ -31340,7 +31532,9 @@ function generateBoutiqueSite(opts) {
     const M = pmeta(p.id);
     const _nom = (M.titre || '').trim() || p.name;
     const _desc = (M.desc || '').trim() || p.description;
-    const promo = _getActivePromo(p.id);
+    // Article ou produit : chacun a sa propre liste de promotions (les
+    // numéros peuvent se recouper entre les deux). Un pack n'en a pas.
+    const promo = p._pack ? null : _getActivePromo(p.id, p._article ? 'article' : 'product', p.price);
     const promoPrice = promo ? _applyPromoValue(p.price, promo) : null;
     const finalPrice = promoPrice != null ? promoPrice : p.price;
     const _urg = [];
@@ -31485,7 +31679,7 @@ ${items.map(x => _carte(x.p, x.idx)).join('\n')}
   // Données panier embarquées dans la page générée (id, nom, prix après promo)
   const itemsJSON = JSON.stringify(shopProds.map(p => {
     const M = pmeta(p.id);
-    const promo = _getActivePromo(p.id);
+    const promo = p._pack ? null : _getActivePromo(p.id, p._article ? 'article' : 'product', p.price);
     const pp = promo ? _applyPromoValue(p.price, promo) : null;
     const under = p._pack ? null : ((S.articles||[]).find(a => a.id === p.id) || (S.products||[]).find(x => x.id === p.id));
     const imgs = [p.image, ...((under && under.images) || [])].filter(Boolean);
@@ -36614,21 +36808,21 @@ function _renderPromosTab(promos) {
       <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">${t('v_promoOffrez')}</div>
       <button class="btn btn-primary" style="max-width:220px;margin:0 auto" onclick="addPromotion()">${t('x5_creerReduction')}</button>
     </div>` : promos.map(p => {
-      const now = new Date().toISOString().slice(0,10);
+      const now = _jourLocal();
       const expired = (p.endDate||'9999') < now;
       const notYet = (p.startDate||'') > now;
       const limitReached = p.maxUses > 0 && (p.usageCount||0) >= p.maxUses;
-      const statusLabel = !p.active ? 'Désactivée' : expired ? 'Expirée' : notYet ? 'À venir' : limitReached ? 'Épuisée' : 'Active';
+      const statusLabel = !p.active ? t('zpr_stDesactivee') : expired ? t('zpr_stExpiree') : notYet ? t('zpr_stAVenir') : limitReached ? t('zpr_stEpuisee') : t('zpr_stActive');
       const statusCls = (!p.active||expired||limitReached) ? 'st-out' : notYet ? 'st-low' : 'st-ok';
-      const valueDisp = p.type==='fixed' ? `-${fmt(p.value||0)}${sym()}` : `-${p.value||p.discount||0}%`;
+      const valueDisp = _promoEtiquette(p);
       const usageBar = p.maxUses>0 ? Math.min(100, Math.round((p.usageCount||0)/p.maxUses*100)) : 0;
       return `
     <div class="promo-card" onclick="viewPromo(${p.id})" style="cursor:pointer">
       <div class="promo-badge">${valueDisp}</div>
       <div class="promo-info">
-        <div class="promo-name">${p.name}</div>
-        <div style="font-family:monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1px;margin-top:2px">${p.code||'—'}</div>
-        <div class="promo-dates">${p.startDate||'—'} → ${p.endDate||'—'} · ${p.usageCount||0}${p.maxUses>0?'/'+p.maxUses:''} utilisation(s)</div>
+        <div class="promo-name">${_wafEsc(p.name)} <span class="pr-mode-tag ${_promoMode(p)}">${_promoMode(p) === 'code' ? '🏷️ ' + t('zpr_code') : '⚡ ' + t('zpr_auto')}</span></div>
+        <div style="font-family:monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:1px;margin-top:2px">${_wafEsc(p.code||'—')}</div>
+        <div class="promo-dates">${p.startDate||'—'} → ${p.endDate||'—'} · ${tpar('zpr_utilisations', (p.usageCount||0) + (p.maxUses>0 ? '/' + p.maxUses : ''))}</div>
         ${p.maxUses>0?`<div style="height:3px;background:var(--gray-1);border-radius:2px;margin-top:6px;overflow:hidden"><div style="height:100%;width:${usageBar}%;background:var(--accent)"></div></div>`:''}
       </div>
       <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
@@ -37006,20 +37200,26 @@ function editPromotion(id) {
 function vPromoForm() {
   const isEdit = !!S.editingPromoId;
   const p = isEdit ? (S.promotions||[]).find(x => x.id === S.editingPromoId) : null;
-  const today = new Date().toISOString().slice(0,10);
-  const plus30 = new Date(Date.now()+30*86400000).toISOString().slice(0,10);
+  const today = _jourLocal();
+  const __d30 = new Date(); __d30.setDate(__d30.getDate() + 30);
+  const plus30 = __d30.getFullYear() + '-' + String(__d30.getMonth() + 1).padStart(2, '0') + '-' + String(__d30.getDate()).padStart(2, '0');
   const draft = p || {
-    name:'', code:'', type:'percent', value:10, products:[],
+    name:'', code:'', type:'percent', value:10, products:[], articles:[], mode:'auto',
     maxUses:0, maxUsesPerClient:0,
     startDate:today, endDate:plus30, active:true, usageCount:0, usageByClient:{}
   };
+  const mode = _promoMode(draft);
+  const e = _wafEsc;
+  const __bt = (typeof getBusinessType === 'function') ? getBusinessType() : 'reseller';
+  const articlesVendables = __bt === 'maker' ? [] : (S.articles || []).filter(a => (Number(a.price) || 0) > 0);
+  const coche = (liste, id) => (liste || []).some(x => String(x) === String(id));
   return `
   <div class="sub-hero">
     <div class="page-header-row" style="margin-bottom:10px">
       <button class="back-btn-dark" onclick="S.editingPromoId=null;nav('marketing')">${IC.left}</button>
       <div style="flex:1">
-        <div class="sub-hero-title">${isEdit?'Modifier la réduction':t('w1_nouvelleRed')}</div>
-        <div class="sub-hero-sub">${isEdit?'Mise à jour du code promo':t('w1_creezCode')}</div>
+        <div class="sub-hero-title">${isEdit?t('zpr_modifierT'):t('w1_nouvelleRed')}</div>
+        <div class="sub-hero-sub">${isEdit?t('zpr_modifierS'):t('w1_creezCode')}</div>
       </div>
     </div>
   </div>
@@ -37029,16 +37229,26 @@ function vPromoForm() {
       <div class="card-title">${IC.tag||IC.percent} ${t('infoTitle')}</div>
       <div class="form-group">
         <label class="form-label">${t('campaignName')} <span style="color:var(--danger)">*</span></label>
-        <input class="input" id="promo-name" value="${draft.name||''}" placeholder="${t('zy_exPromo')}" oninput="if(!$('promo-code').dataset.manual)$('promo-code').value=_genPromoCode(this.value)">
+        <input class="input" id="promo-name" value="${e(draft.name||'')}" placeholder="${t('zy_exPromo')}" oninput="if(!$('promo-code').dataset.manual)$('promo-code').value=_genPromoCode(this.value)">
         <div style="font-size:10px;color:var(--text-3);margin-top:2px">${t('x5_nomInterne')}</div>
       </div>
       <div class="form-group">
-        <label class="form-label">${t('w8_codePromo')} <span style="color:var(--danger)">*</span></label>
+        <label class="form-label">${t('zpr_application')}</label>
+        <div class="pr-modes">
+          <button type="button" class="pr-mode ${mode==='auto'?'on':''}" onclick="document.querySelectorAll('.pr-mode').forEach(b=>b.classList.remove('on'));this.classList.add('on');$('promo-mode').value='auto';$('promo-code-etoile').style.display='none';$('promo-code-aide').textContent=t('zpr_codeOptionnel')">
+            <b>⚡ ${t('zpr_auto')}</b><span>${t('zpr_autoD')}</span></button>
+          <button type="button" class="pr-mode ${mode==='code'?'on':''}" onclick="document.querySelectorAll('.pr-mode').forEach(b=>b.classList.remove('on'));this.classList.add('on');$('promo-mode').value='code';$('promo-code-etoile').style.display='';$('promo-code-aide').textContent=t('x5_codeSaisiClients')">
+            <b>🏷️ ${t('zpr_code')}</b><span>${t('zpr_codeD')}</span></button>
+        </div>
+        <input type="hidden" id="promo-mode" value="${mode}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">${t('w8_codePromo')} <span id="promo-code-etoile" style="color:var(--danger);${mode==='code'?'':'display:none'}">*</span></label>
         <div style="display:flex;gap:8px;align-items:stretch">
-          <input class="input" id="promo-code" value="${draft.code||''}" placeholder="Ex: NOEL25" style="flex:1 1 auto;text-transform:uppercase;font-family:monospace;font-weight:700;letter-spacing:1px;font-size:18px !important" oninput="this.dataset.manual='1';this.value=this.value.toUpperCase()">
+          <input class="input" id="promo-code" value="${e(draft.code||'')}" placeholder="${t('zpr_exCode')}" style="flex:1 1 auto;text-transform:uppercase;font-family:monospace;font-weight:700;letter-spacing:1px;font-size:18px !important" oninput="this.dataset.manual='1';this.value=this.value.toUpperCase()">
           <button type="button" class="btn btn-ghost" style="flex:0 0 56px;width:56px;min-height:48px;padding:0;font-size:20px;display:flex;align-items:center;justify-content:center" title="${t('w1_genererCode')}" onclick="$('promo-code').value=_genPromoCode($('promo-name').value||'CODE');$('promo-code').dataset.manual=''">🎲</button>
         </div>
-        <div style="font-size:11px;color:var(--text-3);margin-top:4px">${t('x5_codeSaisiClients')}</div>
+        <div id="promo-code-aide" style="font-size:11px;color:var(--text-3);margin-top:4px">${mode==='code'?t('x5_codeSaisiClients'):t('zpr_codeOptionnel')}</div>
       </div>
     </div>
 
@@ -37047,13 +37257,13 @@ function vPromoForm() {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
         <label class="promo-type-opt ${draft.type==='percent'?'selected':''}" onclick="document.querySelectorAll('.promo-type-opt').forEach(e=>e.classList.remove('selected'));this.classList.add('selected');$('promo-type').value='percent';$('promo-value-unit').textContent='%';">
           <div style="font-size:22px;font-weight:800;color:var(--accent)">%</div>
-          <div style="font-size:13px;font-weight:700;margin-top:4px">Pourcentage</div>
-          <div style="font-size:10px;color:var(--text-3)">Ex: -20%</div>
+          <div style="font-size:13px;font-weight:700;margin-top:4px">${t('zpr_pourcentage')}</div>
+          <div style="font-size:10px;color:var(--text-3)">${t('zpr_exPct')}</div>
         </label>
         <label class="promo-type-opt ${draft.type==='fixed'?'selected':''}" onclick="document.querySelectorAll('.promo-type-opt').forEach(e=>e.classList.remove('selected'));this.classList.add('selected');$('promo-type').value='fixed';$('promo-value-unit').textContent='${sym()}';">
           <div style="font-size:22px;font-weight:800;color:var(--accent)">${sym()}</div>
-          <div style="font-size:13px;font-weight:700;margin-top:4px">Montant fixe</div>
-          <div style="font-size:10px;color:var(--text-3)">Ex: -1000 ${sym()}</div>
+          <div style="font-size:13px;font-weight:700;margin-top:4px">${t('zpr_montantFixe')}</div>
+          <div style="font-size:10px;color:var(--text-3)">${tpar('zpr_exFixe', sym())}</div>
         </label>
       </div>
       <input type="hidden" id="promo-type" value="${draft.type}">
@@ -37066,6 +37276,20 @@ function vPromoForm() {
       </div>
     </div>
 
+    ${articlesVendables.length ? `
+    <div class="card" style="margin-bottom:10px">
+      <div class="card-title">${IC.package} ${t('zpr_articlesConcernes')}</div>
+      <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">${t('zpr_rienCoche')}</div>
+      <div style="max-height:220px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;padding:4px">
+        ${articlesVendables.map(a => `
+        <label class="pr-coche">
+          <input type="checkbox" class="promo-art-check" value="${e(a.id)}" ${coche(draft.articles, a.id)?'checked':''}>
+          <div style="flex:1;font-size:13px;min-width:0">${e(a.name)}</div>
+          <div style="font-size:11px;color:var(--text-3)">${fmt(a.price)} ${sym()}</div>
+        </label>`).join('')}
+      </div>
+    </div>` : ''}
+    ${(S.products||[]).length === 0 && articlesVendables.length ? '' : `
     <div class="card" style="margin-bottom:10px">
       <div class="card-title">${IC.package} ${t('w1_prodConcernes')}</div>
       <div style="font-size:11px;color:var(--text-3);margin-bottom:8px">${t('w8_laissezDecoche')}</div>
@@ -37073,8 +37297,8 @@ function vPromoForm() {
       <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:8px;padding:4px">
         ${S.products.map(pr => `
         <label style="display:flex;align-items:center;gap:10px;padding:8px;cursor:pointer;border-radius:6px" onmouseover="this.style.background='var(--gray-1)'" onmouseout="this.style.background='transparent'">
-          <input type="checkbox" class="promo-prod-check" value="${pr.id}" ${(draft.products||[]).includes(pr.id)?'checked':''}>
-          <div style="flex:1;font-size:13px">${pr.name}</div>
+          <input type="checkbox" class="promo-prod-check" value="${e(pr.id)}" ${coche(draft.products, pr.id)?'checked':''}>
+          <div style="flex:1;font-size:13px">${e(pr.name)}</div>
           <div style="font-size:11px;color:var(--text-3)">${fmt(pr.price)} ${sym()}</div>
         </label>`).join('')}
       </div>
@@ -37082,12 +37306,12 @@ function vPromoForm() {
         <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px" onclick="document.querySelectorAll('.promo-prod-check').forEach(c=>c.checked=true)">${t('w8_toutCocher')}</button>
         <button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px" onclick="document.querySelectorAll('.promo-prod-check').forEach(c=>c.checked=false)">${t('w8_toutDecocher')}</button>
       </div>`}
-    </div>
+    </div>`}
 
     <div class="card" style="margin-bottom:10px">
-      <div class="card-title">${IC.users||IC.user} Limites d'utilisation</div>
+      <div class="card-title">${IC.users||IC.user} ${t('zpr_limites')}</div>
       <div class="form-group">
-        <label class="form-label">Utilisations maximum (total)</label>
+        <label class="form-label">${t('zpr_maxTotal')}</label>
         <input class="input" id="promo-maxuses" type="number" min="0" value="${draft.maxUses||0}" placeholder="${t('w1_zeroIllimite')}">
         <div style="font-size:10px;color:var(--text-3);margin-top:2px">${t('w1_limiteAide')}</div>
       </div>
@@ -37110,7 +37334,7 @@ function vPromoForm() {
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
         ${[7,14,30,90].map(d=>({l:t('zz6_nJours').replace('{0}',d),d:d})).map(q=>`
-        <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="const d=new Date();$('promo-start').value=d.toISOString().slice(0,10);d.setDate(d.getDate()+${q.d});$('promo-end').value=d.toISOString().slice(0,10)">${q.l}</button>`).join('')}
+        <button class="btn btn-ghost" style="font-size:11px;padding:4px 10px" onclick="const f=x=>x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0');const d=new Date();$('promo-start').value=f(d);d.setDate(d.getDate()+${q.d});$('promo-end').value=f(d)">${q.l}</button>`).join('')}
       </div>
     </div>
 
@@ -37128,34 +37352,47 @@ function vPromoForm() {
     </div>
 
     <div style="display:flex;gap:8px">
-      ${isEdit?`<button class="btn btn-ghost" style="color:var(--danger);border-color:var(--danger)" onclick="deletePromotion(${draft.id});nav('marketing')">${IC.trash||'🗑'} Supprimer</button>`:''}
-      <button class="btn btn-primary" style="flex:1" onclick="savePromotion()">${IC.check} ${isEdit?'Mettre à jour':t('w1_creerRed')}</button>
+      ${isEdit?`<button class="btn btn-ghost" style="flex:0 0 auto;width:auto;color:var(--danger);border-color:var(--danger)" onclick="deletePromotion(${draft.id})">${IC.trash||'🗑'} ${t('zpr_supprimer')}</button>`:''}
+      <button class="btn btn-primary" style="flex:1" onclick="savePromotion()">${IC.check} ${isEdit?t('zpr_mettreAJour'):t('w1_creerRed')}</button>
     </div>
   </div>`;
 }
 
 async function savePromotion() {
   const name = ($('promo-name')?.value||'').trim();
-  const code = ($('promo-code')?.value||'').trim().toUpperCase();
+  const mode = $('promo-mode')?.value === 'code' ? 'code' : 'auto';
+  let code = ($('promo-code')?.value||'').trim().toUpperCase();
   const type = $('promo-type')?.value || 'percent';
   const value = parseFloat($('promo-value')?.value) || 0;
-  if (!name) { showToast('Nom obligatoire', 'error'); return; }
-  if (!code) { showToast('Code promo obligatoire', 'error'); return; }
-  if (value <= 0) { showToast('Valeur doit être > 0', 'error'); return; }
-  if (type === 'percent' && value > 100) { showToast('Pourcentage max 100', 'error'); return; }
+  if (!name) { showToast(t('zpr_errNom'), 'error'); return; }
+  if (!code && mode === 'code') { showToast(t('zpr_errCode'), 'error'); return; }
+  // En automatique, le code reste utile sur la vitrine : on en propose un.
+  if (!code) code = _genPromoCode(name);
+  if (value <= 0) { showToast(t('zpr_errValeur'), 'error'); return; }
+  if (type === 'percent' && value > 100) { showToast(t('zpr_errPct'), 'error'); return; }
   // Unicité du code
-  const dup = (S.promotions||[]).find(x => x.code === code && x.id !== S.editingPromoId);
-  if (dup) { showToast(`Code "${code}" déjà utilisé`, 'error'); return; }
-  const products = Array.from(document.querySelectorAll('.promo-prod-check:checked')).map(c => parseInt(c.value));
+  const dup = (S.promotions||[]).find(x => String(x.code || '').toUpperCase() === code && x.id !== S.editingPromoId);
+  if (dup) { showToast(tpar('zpr_errDoublon', code), 'error'); return; }
+  // Les identifiants gardent leur forme : un nombre reste un nombre, un
+  // identifiant texte n'est plus réduit à NaN.
+  const idDe = v => (/^\d+$/.test(v) ? Number(v) : v);
+  const products = Array.from(document.querySelectorAll('.promo-prod-check:checked')).map(c => idDe(c.value));
+  const articles = Array.from(document.querySelectorAll('.promo-art-check:checked')).map(c => idDe(c.value));
   const maxUses = parseInt($('promo-maxuses')?.value) || 0;
   const maxUsesPerClient = parseInt($('promo-maxperclient')?.value) || 0;
-  const startDate = $('promo-start')?.value || new Date().toISOString().slice(0,10);
-  const endDate = $('promo-end')?.value || new Date(Date.now()+30*86400000).toISOString().slice(0,10);
+  const startDate = $('promo-start')?.value || _jourLocal();
+  const endDate = $('promo-end')?.value || '';
+  if (endDate && startDate && endDate < startDate) { showToast(t('zpr_errDates'), 'error'); return; }
   const active = $('promo-active')?.checked !== false;
 
-  // Sova regarde ce que la remise fait à chaque produit concerné : sans
-  // produit coché, elle s'applique à TOUS.
-  const __vises = (S.products || []).filter(pr => !products.length || products.includes(pr.id));
+  // Sova regarde ce que la remise fait à chaque produit ou article concerné :
+  // rien de coché = tout est concerné.
+  const __tout = !products.length && !articles.length;
+  const __vises = [
+    ...(S.products || []).filter(pr => __tout || products.some(x => String(x) === String(pr.id))),
+    ...((typeof getBusinessType === 'function' && getBusinessType() === 'maker') ? [] :
+        (S.articles || []).filter(a => (Number(a.price) || 0) > 0 && (__tout || articles.some(x => String(x) === String(a.id))))),
+  ];
   const __perdants = __vises.filter(pr => {
     const cout = Number(pr.purchasePrice) || 0, prix = Number(pr.price) || 0;
     const remise = type === 'percent' ? prix * (1 - value / 100) : prix - value;
@@ -37170,7 +37407,7 @@ async function savePromotion() {
         const remise = _arrondiDevise(type === 'percent' ? prix * (1 - value / 100) : prix - value);
         return tpar('zsg_remiseL', pr.name, fmt(remise), fmt(pr.purchasePrice), sym());
       }),
-      detail: products.length ? t('zsg_remiseD') : t('zsg_remiseTous'),
+      detail: !__tout ? t('zsg_remiseD') : t('zsg_remiseTous'),
       oui: t('zsg_creerQuandMeme'),
     });
     if (!ok) return;
@@ -37179,19 +37416,19 @@ async function savePromotion() {
   if (S.editingPromoId) {
     const p = S.promotions.find(x => x.id === S.editingPromoId);
     if (p) {
-      Object.assign(p, { name, code, type, value, discount: type==='percent'?value:p.discount, products, maxUses, maxUsesPerClient, startDate, endDate, active });
-      showToast('Réduction mise à jour');
+      Object.assign(p, { name, code, type, value, mode, discount: type==='percent'?value:0, products, articles, maxUses, maxUsesPerClient, startDate, endDate, active });
+      showToast(t('zpr_majOk'), 'success');
     }
   } else {
     const promo = {
-      id: Date.now(), name, code, type, value,
+      id: Date.now(), name, code, type, value, mode,
       discount: type==='percent' ? value : 0, // legacy compat
-      products, maxUses, maxUsesPerClient, startDate, endDate, active,
+      products, articles, maxUses, maxUsesPerClient, startDate, endDate, active,
       usageCount: 0, usageByClient: {}, createdAt: new Date().toISOString()
     };
     S.promotions.push(promo);
-    logActivity('promo', `${name} créée — code ${code}`);
-    showToast(`Réduction créée : ${code}`);
+    logActivity('promo', tpar('zpr_log', name, code));
+    showToast(tpar('zpr_creeOk', code), 'success');
   }
   localStorage.setItem('baro_promotions', JSON.stringify(S.promotions));
   S.editingPromoId = null;
@@ -37202,13 +37439,16 @@ async function savePromotion() {
 function vPromoDetail() {
   const p = (S.promotions||[]).find(x => x.id === S.viewingPromoId);
   if (!p) { S.view='marketing'; return vMarketing(); }
-  const now = new Date().toISOString().slice(0,10);
-  const expired = p.endDate < now;
-  const notYet = p.startDate > now;
+  const now = _jourLocal();
+  const expired = !!p.endDate && p.endDate < now;
+  const notYet = !!p.startDate && p.startDate > now;
   const limitReached = p.maxUses > 0 && (p.usageCount||0) >= p.maxUses;
-  const status = !p.active ? 'Désactivée' : expired ? 'Expirée' : notYet ? 'À venir' : limitReached ? 'Limite atteinte' : 'Active';
+  const status = !p.active ? t('zpr_stDesactivee') : expired ? t('zpr_stExpiree') : notYet ? t('zpr_stAVenir') : limitReached ? t('zpr_stEpuisee') : t('zpr_stActive');
   const statusColor = (!p.active||expired||limitReached) ? 'var(--danger)' : notYet ? 'var(--warning)' : 'var(--success)';
-  const valueDisp = p.type==='fixed' ? `-${fmt(p.value)} ${sym()}` : `-${p.value}%`;
+  const valueDisp = _promoEtiquette(p);
+  const e = _wafEsc;
+  const visesArt = (p.articles || []).map(id => (S.articles || []).find(a => String(a.id) === String(id))).filter(Boolean);
+  const visesProd = (p.products || []).map(id => (S.products || []).find(x => String(x.id) === String(id))).filter(Boolean);
   const usageRate = p.maxUses > 0 ? Math.round((p.usageCount||0)/p.maxUses*100) : 0;
   const nbClients = Object.keys(p.usageByClient||{}).length;
   return `
@@ -37216,46 +37456,45 @@ function vPromoDetail() {
     <div class="page-header-row" style="margin-bottom:14px">
       <button class="back-btn-dark" onclick="S.viewingPromoId=null;nav('marketing')">${IC.left}</button>
       <div style="flex:1">
-        <div class="sub-hero-title">${p.name}</div>
-        <div class="sub-hero-sub" style="font-family:monospace;letter-spacing:2px">${p.code}</div>
+        <div class="sub-hero-title">${e(p.name)}</div>
+        <div class="sub-hero-sub" style="font-family:monospace;letter-spacing:2px">${e(p.code || '')}</div>
       </div>
       <span style="font-size:11px;padding:4px 10px;border-radius:8px;background:${statusColor}20;color:${statusColor};font-weight:700">${status}</span>
     </div>
     <div style="display:flex;gap:8px">
       <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${valueDisp}</div><div class="hero-stat-lbl">${t('x2_reduction')}</div></div>
-      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${p.usageCount||0}</div><div class="hero-stat-lbl">Utilisations</div></div>
+      <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${p.usageCount||0}</div><div class="hero-stat-lbl">${t('zpr_utilisationsT')}</div></div>
       <div class="hero-stat" style="flex:1"><div class="hero-stat-val">${nbClients}</div><div class="hero-stat-lbl">${t('zy_clients')}</div></div>
     </div>
   </div>
   <div class="container">
     ${p.maxUses>0 ? `
     <div class="card" style="margin-bottom:10px">
-      <div style="font-size:12px;color:var(--text-3);margin-bottom:6px">Progression ${p.usageCount||0}/${p.maxUses} (${usageRate}%)</div>
+      <div style="font-size:12px;color:var(--text-3);margin-bottom:6px">${tpar('zpr_progression', p.usageCount||0, p.maxUses, usageRate)}</div>
       <div style="height:8px;background:var(--gray-1);border-radius:4px;overflow:hidden">
         <div style="height:100%;width:${usageRate}%;background:linear-gradient(90deg,var(--accent),${statusColor});transition:width .3s"></div>
       </div>
     </div>`:''}
 
     <div class="card" style="margin-bottom:10px">
-      <div class="card-title">${IC.settings||IC.package} Détails</div>
-      <div class="info-row"><span class="info-lbl">Type</span><span class="info-val">${p.type==='fixed'?'Montant fixe':'Pourcentage'}</span></div>
-      <div class="info-row"><span class="info-lbl">Valeur</span><span class="info-val" style="color:var(--accent);font-weight:800">${valueDisp}</span></div>
-      <div class="info-row"><span class="info-lbl">${t('x4_periode')}</span><span class="info-val">${p.startDate} → ${p.endDate}</span></div>
-      <div class="info-row"><span class="info-lbl">${t('zx_produits')}</span><span class="info-val">${(p.products||[]).length===0?'Tous':p.products.length+' spécifique(s)'}</span></div>
-      <div class="info-row"><span class="info-lbl">Max total</span><span class="info-val">${p.maxUses>0?p.maxUses:'Illimité'}</span></div>
-      <div class="info-row"><span class="info-lbl">Max / client</span><span class="info-val">${p.maxUsesPerClient>0?p.maxUsesPerClient:'Illimité'}</span></div>
+      <div class="card-title">${IC.settings||IC.package} ${t('zpr_details')}</div>
+      <div class="info-row"><span class="info-lbl">${t('zpr_mode')}</span><span class="info-val">${_promoMode(p) === 'code' ? '🏷️ ' + t('zpr_code') : '⚡ ' + t('zpr_auto')}</span></div>
+      <div class="info-row"><span class="info-lbl">${t('zpr_type')}</span><span class="info-val">${p.type==='fixed'?t('zpr_montantFixe'):t('zpr_pourcentage')}</span></div>
+      <div class="info-row"><span class="info-lbl">${t('zpr_valeur')}</span><span class="info-val" style="color:var(--accent);font-weight:800">${valueDisp}</span></div>
+      <div class="info-row"><span class="info-lbl">${t('x4_periode')}</span><span class="info-val">${p.startDate||'—'} → ${p.endDate||'—'}</span></div>
+      <div class="info-row"><span class="info-lbl">${t('zx_produits')}</span><span class="info-val">${(p.products||[]).length===0 && (p.articles||[]).length===0 ? t('zpr_tous') : tpar('zpr_nChoisis', (p.products||[]).length + (p.articles||[]).length)}</span></div>
+      <div class="info-row"><span class="info-lbl">${t('zpr_maxTotalC')}</span><span class="info-val">${p.maxUses>0?p.maxUses:t('zpr_illimite')}</span></div>
+      <div class="info-row"><span class="info-lbl">${t('zpr_maxClient')}</span><span class="info-val">${p.maxUsesPerClient>0?p.maxUsesPerClient:t('zpr_illimite')}</span></div>
     </div>
 
-    ${(p.products||[]).length>0?`
+    ${visesProd.length || visesArt.length ? `
     <div class="card" style="margin-bottom:10px">
-      <div class="card-title">${IC.package} ${t('w1_prodConcernes')} (${p.products.length})</div>
-      ${p.products.map(id => {
-        const pr = S.products.find(x=>x.id===id);
-        if (!pr) return '';
+      <div class="card-title">${IC.package} ${t('w1_prodConcernes')} (${visesProd.length + visesArt.length})</div>
+      ${[...visesProd, ...visesArt].map(pr => {
         const discPrice = _applyPromoValue(pr.price, p);
-        return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px">
-          <div>${pr.name}</div>
-          <div><span style="text-decoration:line-through;color:var(--text-3);font-size:11px">${fmt(pr.price)}</span> <strong style="color:var(--accent)">${fmt(discPrice)} ${sym()}</strong></div>
+        return `<div style="display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px">
+          <div style="min-width:0">${e(pr.name)}</div>
+          <div style="flex-shrink:0"><span style="text-decoration:line-through;color:var(--text-3);font-size:11px">${fmt(pr.price)}</span> <strong style="color:var(--accent)">${fmt(discPrice)} ${sym()}</strong></div>
         </div>`;
       }).join('')}
     </div>`:''}
@@ -37265,16 +37504,16 @@ function vPromoDetail() {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
         <button class="btn btn-ghost" onclick="sharePromoWhatsApp(${p.id})" style="background:#25D36610;color:#25D366;border-color:#25D36640">${IC.whatsapp} WhatsApp</button>
         <button class="btn btn-ghost" onclick="sharePromoSMS(${p.id})">${IC.smartphone||IC.phone} SMS</button>
-        <button class="btn btn-ghost" onclick="copyPromoCode('${p.code}')">${IC.check} Copier code</button>
-        <button class="btn btn-ghost" onclick="copyPromoLink(${p.id})">${IC.globe||IC.link} Copier lien</button>
+        <button class="btn btn-ghost" onclick="copyPromoCode(${_jsArg(p.code || '')})">${IC.check} ${t('zpr_copierCode')}</button>
+        <button class="btn btn-ghost" onclick="copyPromoLink(${p.id})">${IC.globe||IC.link} ${t('zpr_copierLien')}</button>
       </div>
     </div>
 
     <div style="display:flex;gap:8px;margin-bottom:8px">
-      <button class="btn btn-primary" style="flex:1" onclick="editPromotion(${p.id})">${IC.edit||IC.settings} Modifier</button>
-      <button class="btn btn-ghost" style="flex:1" onclick="togglePromoActive(${p.id})">${p.active?'Désactiver':t('v_activer')}</button>
+      <button class="btn btn-primary" style="flex:1" onclick="editPromotion(${p.id})">${IC.edit||IC.settings} ${t('zpr_modifier')}</button>
+      <button class="btn btn-ghost" style="flex:1" onclick="togglePromoActive(${p.id})">${p.active?t('zpr_desactiver'):t('v_activer')}</button>
     </div>
-    <button class="btn btn-ghost" style="color:var(--danger);border-color:var(--danger);width:100%" onclick="deletePromotion(${p.id})">${IC.trash||'🗑'} Supprimer</button>
+    <button class="btn btn-ghost" style="color:var(--danger);border-color:var(--danger);width:100%" onclick="deletePromotion(${p.id})">${IC.trash||'🗑'} ${t('zpr_supprimer')}</button>
   </div>`;
 }
 
@@ -37283,16 +37522,16 @@ function togglePromoActive(id) {
   if (!p) return;
   p.active = !p.active;
   localStorage.setItem('baro_promotions', JSON.stringify(S.promotions));
-  showToast(p.active ? 'Réduction activée' : 'Réduction désactivée');
+  showToast(p.active ? t('zpr_activee') : t('zpr_desactivee'));
   render();
 }
 
 function deletePromotion(id) {
-  if (!confirm('Supprimer définitivement cette réduction ?')) return;
+  if (!confirm(t('zpr_confSuppr'))) return;
   S.promotions = S.promotions.filter(x => x.id !== id);
   localStorage.setItem('baro_promotions', JSON.stringify(S.promotions));
-  showToast('Réduction supprimée');
-  if (S.view === 'promo-detail') S.view = 'marketing';
+  showToast(t('zpr_supprimee'));
+  if (S.view === 'promo-detail' || S.view === 'promo-form') { S.view = 'marketing'; S.editingPromoId = null; }
   S.viewingPromoId = null;
   render();
 }
@@ -37304,54 +37543,157 @@ function viewPromo(id) {
 }
 
 // Calcule le prix après application de la promo sur un article unitaire
+// ═══ Promotions : un seul moteur pour toutes les ventes ═══
+// Avant : toute promotion s'appliquait d'office à tout le monde (le code ne
+// servait à rien dans l'app), la remise fixe était ignorée dans les paniers
+// (seul le pourcentage était lu), et un article revendu ne pouvait jamais
+// être en promotion. Maintenant :
+//   * mode « auto » : s'applique seule aux articles visés ;
+//   * mode « code » : seulement si le code est donné (caisse ou vitrine) ;
+//   * une promotion peut viser des produits ET des articles ;
+//   * plusieurs promotions possibles → la plus avantageuse pour le client,
+//     sans cumul ;
+//   * l'usage est compté une fois par vente, pour le bon client.
+function _jourLocal() {
+  const d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function _promoMode(p) { return p && p.mode === 'code' ? 'code' : 'auto'; }
+function _promoVise(p, kind, id) {
+  const prods = p.products || [], arts = p.articles || [];
+  if (!prods.length && !arts.length) return true;
+  if (id == null) return false;
+  if (kind === 'product') return prods.some(x => String(x) === String(id));
+  if (kind === 'article') return arts.some(x => String(x) === String(id));
+  return false;
+}
+// '' si la promotion peut servir, sinon la clé du message qui dit pourquoi.
+function _promoFermee(p, clientId) {
+  if (!p.active) return 'zpr_errInactive';
+  const j = _jourLocal();
+  if (p.startDate && p.startDate > j) return 'zpr_errPasEncore';
+  if (p.endDate && p.endDate < j) return 'zpr_errExpiree';
+  if (p.maxUses > 0 && (p.usageCount || 0) >= p.maxUses) return 'zpr_errLimite';
+  if (clientId != null && p.maxUsesPerClient > 0 && ((p.usageByClient || {})[clientId] || 0) >= p.maxUsesPerClient) return 'zpr_errLimiteClient';
+  return '';
+}
 function _applyPromoValue(price, promo) {
   if (!promo) return price;
-  if (promo.type === 'fixed') return Math.max(0, price - promo.value);
-  const disc = promo.value || promo.discount || 0;
-  return _arrondiDevise(price * (1 - disc/100));
+  const v = Number(promo.value) || 0;
+  // Remise fixe : par article, jamais sous zéro.
+  if (promo.type === 'fixed') return _arrondiDevise(Math.max(0, price - v));
+  const pct = v || Number(promo.discount) || 0;
+  return _arrondiDevise(price * (1 - pct / 100));
+}
+function _promoEtiquette(p) {
+  if (!p) return '';
+  return p.type === 'fixed' ? `−${fmt(p.value || 0)} ${sym()}` : `−${p.value || p.discount || 0} %`;
+}
+// La meilleure promotion pour une ligne : les automatiques, plus celle dont
+// le code a été donné.
+function _promoPour(kind, id, prix, opts) {
+  opts = opts || {};
+  const code = String(opts.code || '').trim().toUpperCase();
+  let best = null, bestPrix = prix;
+  for (const p of (S.promotions || [])) {
+    const parCode = !!code && String(p.code || '').toUpperCase() === code;
+    if (_promoMode(p) === 'code' && !parCode) continue;
+    if (_promoFermee(p, opts.clientId)) continue;
+    if (!_promoVise(p, kind, id)) continue;
+    const np = _applyPromoValue(prix, p);
+    if (np < bestPrix) { best = p; bestPrix = np; }
+  }
+  return best ? { promo: best, prix: bestPrix } : null;
+}
+// Une ligne de vente complète : prix unitaire après promotion, total, marge.
+function _ligneVente(it, qty, opts) {
+  const kind = it.kind;
+  const id = kind === 'product' ? it.productId : kind === 'article' ? it.articleId : null;
+  const base = Number(it.price) || 0;
+  const r = (kind === 'product' || kind === 'article') ? _promoPour(kind, id, base, opts) : null;
+  const unit = r ? r.prix : base;
+  const cout = Number(it.purchasePrice) || 0;
+  const q = Number(qty) || 0;
+  return {
+    unit, base,
+    total: _arrondiDevise(unit * q),
+    profit: _arrondiDevise((unit - cout) * q),
+    remise: _arrondiDevise((base - unit) * q),
+    promo: r ? r.promo : null,
+    pct: base > 0 && r ? Math.round((1 - unit / base) * 100) : 0,
+  };
 }
 
-// Valide un code promo pour un client/produit et renvoie la promo applicable
+// Valide un code (caisse) : { ok, promo } ou { ok:false, error } traduit.
 function validatePromoCode(code, clientId, productId) {
-  if (!code) return { ok:false, error:'Code manquant' };
-  const p = (S.promotions||[]).find(x => x.code?.toUpperCase() === code.toUpperCase());
-  if (!p) return { ok:false, error:'Code invalide' };
-  if (!p.active) return { ok:false, error:'Réduction désactivée' };
-  const now = new Date().toISOString().slice(0,10);
-  if (p.startDate && p.startDate > now) return { ok:false, error:'Réduction pas encore active' };
-  if (p.endDate && p.endDate < now) return { ok:false, error:'Réduction expirée' };
-  if (p.maxUses > 0 && (p.usageCount||0) >= p.maxUses) return { ok:false, error:'Limite d\'utilisation atteinte' };
-  if (clientId && p.maxUsesPerClient > 0) {
-    const used = (p.usageByClient||{})[clientId] || 0;
-    if (used >= p.maxUsesPerClient) return { ok:false, error:'Vous avez atteint votre limite' };
-  }
-  if (productId && (p.products||[]).length > 0 && !p.products.includes(productId)) {
-    return { ok:false, error:'Ce code ne s\'applique pas à ce produit' };
-  }
-  return { ok:true, promo:p };
+  const c = String(code || '').trim().toUpperCase();
+  if (!c) return { ok: false, error: t('zpr_errManquant') };
+  const p = (S.promotions || []).find(x => String(x.code || '').toUpperCase() === c);
+  if (!p) return { ok: false, error: t('zpr_errInvalide') };
+  const ferme = _promoFermee(p, clientId);
+  if (ferme) return { ok: false, error: t(ferme) };
+  if (productId != null && !_promoVise(p, 'product', productId)) return { ok: false, error: t('zpr_errRienVise') };
+  return { ok: true, promo: p };
 }
 
-// Enregistre une utilisation (appelé lors d'une vente avec code)
+// Enregistre une utilisation (une fois par vente)
 function _recordPromoUsage(promoId, clientId) {
-  const p = S.promotions.find(x => x.id === promoId);
+  const p = (S.promotions || []).find(x => x.id === promoId);
   if (!p) return;
-  p.usageCount = (p.usageCount||0) + 1;
-  if (clientId) {
+  p.usageCount = (p.usageCount || 0) + 1;
+  if (clientId != null) {
     p.usageByClient = p.usageByClient || {};
-    p.usageByClient[clientId] = (p.usageByClient[clientId]||0) + 1;
+    p.usageByClient[clientId] = (p.usageByClient[clientId] || 0) + 1;
   }
   localStorage.setItem('baro_promotions', JSON.stringify(S.promotions));
 }
 
-// Promo auto-applicable sur un produit (sans code, pour affichage vitrine)
-function _getActivePromo(productId) {
-  const now = new Date().toISOString().slice(0,10);
-  return (S.promotions||[]).find(p =>
-    p.active &&
-    (p.startDate||'') <= now && (p.endDate||'9999') >= now &&
-    (!p.maxUses || (p.usageCount||0) < p.maxUses) &&
-    ((p.products||[]).length === 0 || (p.products||[]).includes(productId))
-  );
+// Promotion AUTOMATIQUE d'un produit ou d'un article (vitrine, catalogue,
+// listes). La meilleure se choisit sur le VRAI prix : sur un prix fictif,
+// un pourcentage battait toujours une remise fixe.
+function _getActivePromo(productId, kind, prix) {
+  const k = kind || 'product';
+  if (prix == null) {
+    const liste = k === 'article' ? (S.articles || []) : (S.products || []);
+    const it = liste.find(x => String(x.id) === String(productId));
+    prix = it ? (Number(it.price) || 0) : 0;
+  }
+  const r = _promoPour(k, productId, prix, {});
+  return r ? r.promo : null;
+}
+
+// ── Code promo saisi en caisse ──
+// Partagé par le panier, la vente multiple et la vente rapide ; effacé
+// après chaque vente.
+function appliquerCodePromo(valeur, articlesPanier) {
+  const code = String(valeur || '').trim().toUpperCase();
+  if (!code) { S.codePromo = ''; render(); if (S._qs) _qsRender(); return; }
+  const v = validatePromoCode(code, null);
+  if (!v.ok) { showToast(v.error, 'error'); return; }
+  // Le code doit viser au moins une ligne du panier, s'il y en a un.
+  const lignes = articlesPanier || _lignesPanierCourant();
+  if (lignes.length && !lignes.some(l => _promoVise(v.promo, l.kind, l.id))) { showToast(t('zpr_errRienVise'), 'error'); return; }
+  S.codePromo = code;
+  showToast(tpar('zpr_codeApplique', code, _promoEtiquette(v.promo)), 'success');
+  render();
+  if (S._qs) _qsRender();
+}
+function retirerCodePromo() { S.codePromo = ''; render(); if (S._qs) _qsRender(); }
+function _lignesPanierCourant() {
+  if (S._qs) return [{ kind: 'article', id: S._qs.id }];
+  const out = [];
+  const sellable = (typeof bt_sellableItems === 'function') ? bt_sellableItems() : [];
+  Object.keys(S.multiCart || {}).forEach(k => { const it = sellable.find(i => i.id === k); if (it) out.push({ kind: it.kind, id: it.kind === 'product' ? it.productId : it.articleId }); });
+  (S.cart || []).forEach(c => out.push({ kind: c.kind, id: c.kind === 'product' ? c.productId : c.articleId }));
+  return out;
+}
+function _champCodePromo() {
+  const e = _wafEsc;
+  if (S.codePromo) {
+    const p = (S.promotions || []).find(x => String(x.code || '').toUpperCase() === S.codePromo);
+    return `<div class="cp-applique"><span class="cp-pastille">🏷️ ${e(S.codePromo)}${p ? ' · ' + e(_promoEtiquette(p)) : ''}</span><button type="button" class="cp-retirer" onclick="retirerCodePromo()" aria-label="${e(t('zpr_retirer'))}">✕</button></div>`;
+  }
+  return `<div class="cp-ligne"><input class="input cp-input" id="cp-code" placeholder="${e(t('zpr_codePromo'))}" autocomplete="off" autocapitalize="characters" onkeydown="if(event.key==='Enter'){event.preventDefault();appliquerCodePromo(this.value)}"><button type="button" class="btn btn-ghost cp-btn" style="flex:0 0 auto;width:auto" onclick="appliquerCodePromo(document.getElementById('cp-code').value)">${e(t('zpr_appliquer'))}</button></div>`;
 }
 
 // ── Partage / Copy ───────────────────────────
@@ -37986,8 +38328,8 @@ function addCampaign() {
   const typeMap = {'1':'whatsapp','2':'sms','3':'email'};
   const type = typeMap[typeChoice] || typeChoice?.toLowerCase() || 'whatsapp';
   // Pre-build message with active promos
-  const activePromos = (S.promotions||[]).filter(p => p.active);
-  const promoText = activePromos.length > 0 ? '\n\nOffres en cours:\n' + activePromos.map(p => `- ${p.name} (-${p.discount}%)`).join('\n') : '';
+  const activePromos = (S.promotions||[]).filter(p => !_promoFermee(p));
+  const promoText = activePromos.length > 0 ? '\n\n' + t('zpr_offres') + '\n' + activePromos.map(p => `- ${p.name} (${_promoEtiquette(p)}${_promoMode(p) === 'code' && p.code ? ' · ' + p.code : ''})`).join('\n') : '';
   const defaultMsg = `Bonjour ! ${S.session?.business||'Notre boutique'} vous informe : ${name}${promoText}\n\nMerci de votre confiance !`;
   const message = prompt('Message de la campagne :', defaultMsg) || defaultMsg;
   const clientsWithPhone = S.clients.filter(cl => cl.phone);
@@ -42467,7 +42809,7 @@ function exportToJumia() {
   const rows = [headers.join(',')];
   S.products.forEach(p => {
     const promo = _getActivePromo(p.id);
-    const salePrice = promo ? Math.round(p.price * (1 - promo.discount / 100)) : '';
+    const salePrice = promo ? _applyPromoValue(p.price, promo) : '';
     rows.push([
       _csvEscape('SKU-'+p.id),
       _csvEscape(p.name),
@@ -42517,7 +42859,7 @@ function exportToWooCommerce() {
   const rows = [headers.join(',')];
   S.products.forEach(p => {
     const promo = _getActivePromo(p.id);
-    const salePrice = promo ? Math.round(p.price * (1 - promo.discount / 100)) : '';
+    const salePrice = promo ? _applyPromoValue(p.price, promo) : '';
     rows.push([
       p.id,
       'simple',
@@ -44548,7 +44890,7 @@ function _waBcastInsert(token) {
 function _waBcastAddPromo() {
   const promos = (S.promotions || []).filter(p => p.active);
   if (!promos.length) return;
-  const txt = '\n\n🎁 Offres en cours :\n' + promos.map(p => `• ${p.name} (-${p.discount}%)`).join('\n');
+  const txt = '\n\n🎁 ' + t('zpr_offres') + '\n' + promos.map(p => `• ${p.name} (${_promoEtiquette(p)}${_promoMode(p) === 'code' && p.code ? ' · ' + p.code : ''})`).join('\n');
   const st = _waBcastState();
   st.msg += txt;
   render();

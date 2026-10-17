@@ -7027,3 +7027,29 @@ body.dark .sub-hero:not(.sh-teinte) {
 .imp-cols[open]{padding-bottom:8px}
 .imp-cols .imp-map{padding:5px 14px}
 .imp-map select{min-height:40px;padding-top:8px;padding-bottom:8px;font-size:13px}
+
+/* ── Lot 320 : double authentification réelle ── */
+.tfa-aide{font-size:12.5px;color:var(--text-2);line-height:1.55;margin:0 0 12px}
+.tfa-on{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:13px;color:var(--success);background:color-mix(in srgb,var(--success) 13%,transparent);padding:5px 12px;border-radius:999px;margin-bottom:10px}
+.tfa-etapes{margin:0 0 12px;padding-left:20px;font-size:12.5px;color:var(--text-2);line-height:1.55}
+.tfa-etapes li{margin-bottom:6px}
+.tfa-qr{width:208px;max-width:100%;aspect-ratio:1;margin:4px auto 12px;background:#fff;border-radius:16px;padding:10px;box-shadow:0 10px 30px -14px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center}
+.tfa-qr svg{width:100%;height:100%;display:block}
+.tfa-qr-vide{font-size:12px;color:#4b5563;text-align:center;line-height:1.45;padding:10px}
+.tfa-cle{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--gray-1);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.tfa-cle span{font-size:11px;font-weight:800;color:var(--text-3);text-transform:uppercase;letter-spacing:.4px}
+.tfa-cle code{flex:1;min-width:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;font-weight:700;color:var(--text);word-break:break-all;letter-spacing:.5px}
+.tfa-cle .btn{width:auto;margin:0;min-height:36px;padding:0 12px;font-size:12.5px}
+.tfa-ouvrir{display:block;text-align:center;font-size:13px;font-weight:700;color:var(--accent);margin:0 0 14px;text-decoration:underline;text-underline-offset:3px}
+.tfa-saisie{text-align:center;letter-spacing:6px;font-size:22px!important;font-weight:800;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;width:100%}
+.tfa-boutons{display:flex;gap:8px;margin-top:10px}
+.tfa-boutons .btn{flex:1;margin:0;min-height:46px;width:auto}
+.tfa-codes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:4px 0 6px}
+.tfa-codes code{background:var(--gray-1);border:1px dashed var(--border);border-radius:10px;padding:9px 6px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;font-weight:700;color:var(--text);letter-spacing:.6px}
+.tfa-danger{background:var(--danger)!important;border-color:var(--danger)!important;color:#fff!important}
+.tfa-danger-g{color:var(--danger)!important;border-color:color-mix(in srgb,var(--danger) 45%,var(--border))!important}
+.tfa-erreur{min-height:18px;font-size:12.5px;font-weight:700;color:var(--danger);text-align:center;margin-top:2px}
+.tfa-liens{text-align:center;margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.tfa-liens .btn-link{background:none;border:none;color:var(--accent);font-size:13px;font-weight:600;cursor:pointer;padding:8px;font-family:inherit}
+.tfa-liens .tfa-retour{color:var(--text-3);font-size:12.5px}
+.tfa-note{margin-top:16px;padding:10px;background:var(--accent-light);border-radius:10px;font-size:11.5px;color:var(--text-2);text-align:center;line-height:1.45}

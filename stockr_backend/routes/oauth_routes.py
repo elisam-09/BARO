@@ -47,6 +47,11 @@ def _ouvrir_compte(email, nom, d):
     email = email.strip().lower()
     user = User.query.filter(db.func.lower(User.email) == email).first()
     nouveau = user is None
+    # Un compte protégé par la double authentification ne s'ouvre pas
+    # sur la seule foi de Google ou d'Apple : le code reste exigé.
+    if user is not None and user.totp_enabled:
+        from routes.twofa_routes import ticket_pour
+        return ticket_pour(user), False
     if nouveau:
         devise = str(d.get('currency') or 'XOF').upper()
         user = User(
@@ -110,6 +115,8 @@ def google():
         except Exception:
             nom = ''
     user, nouveau = _ouvrir_compte(info['email'], nom, d)
+    if isinstance(user, dict):
+        return jsonify(user)
     return jsonify({'user': user.to_dict(include_token=True), 'nouveau': nouveau})
 
 
@@ -139,4 +146,6 @@ def apple():
         return jsonify({'error': 'email_non_verifie'}), 401
     # Apple ne donne le nom qu'à la première connexion, côté navigateur.
     user, nouveau = _ouvrir_compte(email, str(d.get('name') or '').strip(), d)
+    if isinstance(user, dict):
+        return jsonify(user)
     return jsonify({'user': user.to_dict(include_token=True), 'nouveau': nouveau})

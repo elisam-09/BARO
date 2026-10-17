@@ -84,6 +84,12 @@ class AuthService:
         
         if not user or not user.check_password(password):
             return {'error': 'Email ou mot de passe incorrect'}, None
+
+        # Double authentification : le mot de passe ne suffit pas, aucune
+        # session n'est ouverte avant le code de l'application.
+        if user.totp_enabled:
+            from routes.twofa_routes import ticket_pour
+            return None, ticket_pour(user)
         
         # Met à jour la dernière connexion
         user.last_login = datetime.utcnow()
@@ -170,6 +176,9 @@ def login():
     
     if error:
         return jsonify({'error': error}), 401
+
+    if result.get('need_2fa'):
+        return jsonify(result)
     
     return jsonify({
         'message': 'Connexion réussie',

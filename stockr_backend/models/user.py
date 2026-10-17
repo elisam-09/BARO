@@ -41,6 +41,16 @@ class User(db.Model):
 
     # Équipe : code partagé permettant aux vendeurs de rejoindre la boutique
     team_code = db.Column(db.String(20), nullable=True, index=True)
+
+    # Double authentification (code d'application, vérifié par le serveur)
+    totp_secret = db.Column(db.String(64), nullable=True)
+    totp_enabled = db.Column(db.Boolean, nullable=True, default=False)
+    totp_last_step = db.Column(db.Integer, nullable=True)
+    totp_fails = db.Column(db.Integer, nullable=True, default=0)
+    totp_lock_until = db.Column(db.DateTime, nullable=True)
+    totp_recovery = db.Column(db.Text, nullable=True)
+    totp_ticket = db.Column(db.String(64), nullable=True, index=True)
+    totp_ticket_expiry = db.Column(db.DateTime, nullable=True)
     
     def set_password(self, password):
         """Hash le mot de passe avec bcrypt"""
@@ -76,6 +86,7 @@ class User(db.Model):
             'plan': self.plan or 'free',
             'plan_status': self.plan_status,
             'plan_expires': self.plan_expires.isoformat() if self.plan_expires else None,
+            'two_factor': bool(self.totp_enabled),
         }
         
         if include_token and self.auth_token:

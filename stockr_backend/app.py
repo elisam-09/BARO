@@ -30,6 +30,14 @@ def create_app():
             ('billing_provider', 'VARCHAR(20)'),
             ('billing_customer_id', 'VARCHAR(120)'),
             ('team_code', 'VARCHAR(20)'),
+            ('totp_secret', 'VARCHAR(64)'),
+            ('totp_enabled', 'BOOLEAN DEFAULT 0'),
+            ('totp_last_step', 'INTEGER'),
+            ('totp_fails', 'INTEGER DEFAULT 0'),
+            ('totp_lock_until', 'TIMESTAMP'),
+            ('totp_recovery', 'TEXT'),
+            ('totp_ticket', 'VARCHAR(64)'),
+            ('totp_ticket_expiry', 'TIMESTAMP'),
         ]:
             try:
                 db.session.execute(text(f'ALTER TABLE "user" ADD COLUMN {col} {ddl}'))
@@ -85,6 +93,7 @@ def create_app():
     from routes.shopper_routes import shopper_bp
     from routes.ai_routes import ai_bp
     from routes.oauth_routes import oauth_bp
+    from routes.twofa_routes import twofa_bp
 
     app.register_blueprint(article_bp, url_prefix='/api/articles')
     app.register_blueprint(product_bp, url_prefix='/api/products')
@@ -103,6 +112,7 @@ def create_app():
     app.register_blueprint(shopper_bp, url_prefix='/api/shoppers')
     app.register_blueprint(ai_bp, url_prefix='/api/ai')
     app.register_blueprint(oauth_bp, url_prefix='/api/auth')
+    app.register_blueprint(twofa_bp, url_prefix='/api/auth/2fa')
     
     
     @app.route('/api/health')

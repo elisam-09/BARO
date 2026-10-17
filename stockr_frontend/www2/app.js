@@ -270,6 +270,54 @@ const API_BASE = (location.hostname === 'localhost' || location.hostname === '12
 // ── i18n ─────────────────────────────────────
 const LANGS = {
   fr: {
+    z2f_titre: "Double authentification",
+    z2f_titreConnexion: "Code de sécurité",
+    z2f_appSous: "Ouvrez votre application d'authentification et saisissez le code à 6 chiffres affiché pour BARO.",
+    z2f_secoursSous: "Saisissez l'un de vos codes de secours. Chacun ne sert qu'une fois.",
+    z2f_codeSecours: "Code de secours",
+    z2f_utiliserSecours: "Je n'ai pas mon téléphone : utiliser un code de secours",
+    z2f_utiliserApp: "Utiliser le code de l'application",
+    z2f_retour: "← Retour",
+    z2f_expire: "Pour votre sécurité, cette étape expire au bout de 5 minutes.",
+    z2f_ticketExpire: "Délai dépassé : reconnectez-vous.",
+    z2f_bloque: "Trop d'essais. Réessayez dans 15 minutes.",
+    z2f_codeFaux: "Code incorrect. Vérifiez l'heure de votre téléphone et réessayez.",
+    z2f_horsLigne: "Disponible avec un compte en ligne et une connexion Internet.",
+    z2f_chargement: "Vérification…",
+    z2f_indispo: "La double authentification n'est pas encore disponible sur le serveur.",
+    z2f_reessayer: "Réessayer",
+    z2f_pourquoi: "À chaque connexion, en plus du mot de passe, un code à 6 chiffres donné par une application de votre téléphone. Quelqu'un qui connaît votre mot de passe ne peut plus entrer.",
+    z2f_active: "Activée",
+    z2f_secoursReste: "Il vous reste {0} code(s) de secours.",
+    z2f_etape1: "Installez une application d'authentification : Google Authenticator, Microsoft Authenticator ou Authy.",
+    z2f_etape2: "Dans l'application, ajoutez un compte et scannez ce code (ou saisissez la clé).",
+    z2f_etape3: "Saisissez le code à 6 chiffres que l'application affiche.",
+    z2f_cle: "Clé",
+    z2f_copier: "Copier",
+    z2f_copie: "Copié",
+    z2f_ouvrirApp: "Ouvrir dans l'application d'authentification",
+    z2f_qrAlt: "Code QR à scanner avec l'application d'authentification",
+    z2f_qrEchec: "Le code QR n'a pas pu s'afficher : saisissez la clé ci-dessous dans l'application.",
+    z2f_6chiffres: "Saisissez le code à 6 chiffres.",
+    z2f_dejaActive: "La double authentification est déjà activée.",
+    z2f_echec: "L'opération a échoué. Réessayez.",
+    z2f_codesAide: "Gardez ces codes de secours en lieu sûr (sur papier, par exemple). Ils permettent d'entrer si vous perdez votre téléphone. Ils ne seront plus affichés.",
+    z2f_telecharger: "Télécharger",
+    z2f_codesNotes: "J'ai mis mes codes à l'abri",
+    z2f_couperAide: "Pour désactiver, saisissez le code de l'application ou un code de secours.",
+    z2f_desactivee: "Double authentification désactivée",
+    z2f_fichierTitre: "BARO — codes de secours (double authentification)",
+    z2f_fichierNote: "Chaque code ne sert qu'une fois. Ne les partagez avec personne.",
+    z2f_bioAide: "Empreinte digitale ou reconnaissance faciale (Touch ID, Face ID, Windows Hello).",
+    z2f_bioOk: "✅ Capteur enregistré : vous pouvez ouvrir l'app par biométrie sur cet appareil.",
+    z2f_sessionT: "⏱ Expiration de session",
+    z2f_minutes: "{0} minutes",
+    z2f_1h: "1 heure",
+    z2f_2h: "2 heures",
+    z2f_jamais: "Jamais",
+    z2f_succes: "Réussie",
+    z2f_echecCo: "Échouée",
+    z2f_enregistre: "Réglages de sécurité enregistrés",
     zim_titre: "Importer",
     zim_sous: "Factures, Excel, photos, sauvegardes",
     zim_menuSub: "Facture fournisseur · Excel · photos",
@@ -4337,6 +4385,54 @@ const LANGS = {
     version:'Version',
   },
   en: {
+    z2f_titre: "Two-factor authentication",
+    z2f_titreConnexion: "Security code",
+    z2f_appSous: "Open your authenticator app and enter the 6-digit code shown for BARO.",
+    z2f_secoursSous: "Enter one of your recovery codes. Each one works only once.",
+    z2f_codeSecours: "Recovery code",
+    z2f_utiliserSecours: "I don't have my phone: use a recovery code",
+    z2f_utiliserApp: "Use the app code",
+    z2f_retour: "← Back",
+    z2f_expire: "For your security, this step expires after 5 minutes.",
+    z2f_ticketExpire: "Time is up: please sign in again.",
+    z2f_bloque: "Too many attempts. Try again in 15 minutes.",
+    z2f_codeFaux: "Wrong code. Check your phone's clock and try again.",
+    z2f_horsLigne: "Available with an online account and an internet connection.",
+    z2f_chargement: "Checking…",
+    z2f_indispo: "Two-factor authentication isn't available on the server yet.",
+    z2f_reessayer: "Try again",
+    z2f_pourquoi: "At every sign-in, on top of your password, a 6-digit code from an app on your phone. Someone who knows your password can no longer get in.",
+    z2f_active: "On",
+    z2f_secoursReste: "You have {0} recovery code(s) left.",
+    z2f_etape1: "Install an authenticator app: Google Authenticator, Microsoft Authenticator or Authy.",
+    z2f_etape2: "In the app, add an account and scan this code (or type in the key).",
+    z2f_etape3: "Enter the 6-digit code the app shows.",
+    z2f_cle: "Key",
+    z2f_copier: "Copy",
+    z2f_copie: "Copied",
+    z2f_ouvrirApp: "Open in the authenticator app",
+    z2f_qrAlt: "QR code to scan with the authenticator app",
+    z2f_qrEchec: "The QR code couldn't be shown: type the key below into the app.",
+    z2f_6chiffres: "Enter the 6-digit code.",
+    z2f_dejaActive: "Two-factor authentication is already on.",
+    z2f_echec: "That didn't work. Try again.",
+    z2f_codesAide: "Keep these recovery codes somewhere safe (on paper, for instance). They let you in if you lose your phone. They won't be shown again.",
+    z2f_telecharger: "Download",
+    z2f_codesNotes: "I've stored my codes safely",
+    z2f_couperAide: "To turn it off, enter the app code or a recovery code.",
+    z2f_desactivee: "Two-factor authentication turned off",
+    z2f_fichierTitre: "BARO — recovery codes (two-factor authentication)",
+    z2f_fichierNote: "Each code works only once. Never share them.",
+    z2f_bioAide: "Fingerprint or face recognition (Touch ID, Face ID, Windows Hello).",
+    z2f_bioOk: "✅ Sensor enrolled: you can unlock the app with biometrics on this device.",
+    z2f_sessionT: "⏱ Session timeout",
+    z2f_minutes: "{0} minutes",
+    z2f_1h: "1 hour",
+    z2f_2h: "2 hours",
+    z2f_jamais: "Never",
+    z2f_succes: "Succeeded",
+    z2f_echecCo: "Failed",
+    z2f_enregistre: "Security settings saved",
     zim_titre: "Import",
     zim_sous: "Invoices, Excel, photos, backups",
     zim_menuSub: "Supplier invoice · Excel · photos",
@@ -12343,12 +12439,16 @@ function showToast(msg, type='') {
 }
 
 // ── Auth Actions ───────────────────────────────
-async function doLogin() {
-  const email = S.authEmail.trim().toLowerCase();
+async function doLogin(uDeja) {
+  // uDeja : l'utilisateur rendu par le serveur après le code de double
+  // authentification — le mot de passe a déjà été vérifié.
+  const email = uDeja ? uDeja.email : S.authEmail.trim().toLowerCase();
   const pwd   = S.authPwd;
-  if (!email || !pwd) { showToast(t('fillAll'), 'error'); return; }
+  if (!uDeja && (!email || !pwd)) { showToast(t('fillAll'), 'error'); return; }
   try {
-    const data = await api('POST', '/api/auth/login', { email, password: pwd });
+    const data = uDeja ? { user: uDeja } : await api('POST', '/api/auth/login', { email, password: pwd });
+    // Double authentification : aucune session n'est ouverte avant le code.
+    if (data && data.need_2fa) { _ouvrir2FA(data.ticket, email, null); return; }
     const u = data.user;
     S.token   = u.auth_token;
     const profile = u.profile || 'transformer';
@@ -12375,36 +12475,6 @@ async function doLogin() {
       }
     } catch(_){}
     if (typeof logAudit === 'function') logAudit('auth', 'login', { email: u.email });
-    // 2FA gate
-    if (S.security?.twoFactorEnabled) {
-      const code = String(Math.floor(100000 + Math.random() * 900000));
-      S.twoFAPending = { email: u.email, code, expires: Date.now() + 5 * 60 * 1000, method: S.security.twoFactorMethod || 'email' };
-      S.view = '2fa-verify';
-      render();
-      // Envoi réel (email/SMS) en arrière-plan
-      (async () => {
-        const method = S.security.twoFactorMethod || 'email';
-        if (method === 'email') {
-          const r = await _sendVerificationEmail(u.email, code, 'Connexion BARO');
-          if (r.ok) showToast('📧 Code envoyé à ' + u.email, 'success');
-          else {
-            showToast('📧 Email non configuré — code : ' + code + ' (voir Paramètres > Sécurité)', 'info');
-          }
-        } else if (method === 'sms') {
-          const phone = S.security.twoFactorPhone || u.phone || '';
-          if (!phone) { showToast('Numéro SMS manquant — code : ' + code, 'info'); return; }
-          const r = await _sendVerificationSMS(phone, code, 'Connexion BARO');
-          if (r.ok) showToast('📱 SMS envoyé à ' + phone, 'success');
-          else {
-            showToast('📱 SMS non configuré — code : ' + code, 'info');
-          }
-        } else {
-          // app-based TOTP / fallback
-          showToast('🔐 Code : ' + code, 'info');
-        }
-      })();
-      return;
-    }
     S.view = 'home';
     render();
     await loadData();
@@ -12476,54 +12546,207 @@ function shareTeamCode() {
   window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
 }
 
+// ── Double authentification (vérifiée par le serveur) ─────────────────
+// La connexion ouvre une session seulement après le code de l'application
+// d'authentification. Le secret ne quitte jamais le serveur ni ce
+// téléphone : le QR est dessiné ici, sans service extérieur.
+function _ouvrir2FA(ticket, email, fournisseur) {
+  S.twoFAPending = { ticket, email: email || '', fournisseur: fournisseur || null, expires: Date.now() + 5 * 60 * 1000, secours: false, erreur: '' };
+  S.twoFACodeInput = '';
+  S.authPwd = '';
+  S.view = '2fa-verify';
+  render();
+  setTimeout(() => { const el = document.getElementById('tfa-code'); if (el) el.focus(); }, 250);
+}
 function v2FAVerify() {
   const p = S.twoFAPending;
   if (!p) { S.view = 'home'; render(); return ''; }
-  const maskedEmail = p.email.replace(/(.{2}).*(@.*)/, '$1****$2');
-  const method = p.method || 'email';
-  const methodLbl = method === 'sms' ? '📱 SMS' : method === 'app' ? '🔐 App' : '📧 Email';
-  // Affiche le code en clair si email/SMS non configuré (fallback dev/demo)
-  const emailConfigured = !!localStorage.getItem('stockr_emailjs_public');
-  const smsConfigured   = !!localStorage.getItem('stockr_sms_webhook');
-  const showFallbackCode = (method === 'email' && !emailConfigured) || (method === 'sms' && !smsConfigured) || method === 'app';
+  const sec = !!p.secours;
   return `
   <div class="auth-wrap">
     <div class="auth-card">
       <div class="auth-logo">${IC.baro}<span>BARO</span></div>
-      <div class="auth-title">${t('x4_verification')}</div>
-      <div class="auth-sub">${methodLbl} · ${method==='sms'?('SMS envoyé à '+(S.security?.twoFactorPhone||'')):'Code envoyé à '+maskedEmail}</div>
-
-      ${showFallbackCode ? `
-      <div style="margin-top:16px;padding:14px;background:linear-gradient(135deg,#FEF3C7,#FDE68A);border-radius:12px;border:2px solid #F59E0B">
-        <div style="font-size:11px;color:#92400E;font-weight:700;margin-bottom:6px;text-align:center">⚠️ ${emailConfigured||smsConfigured?'':'Envoi automatique non configuré'} — Votre code :</div>
-        <div style="font-size:28px;font-weight:900;letter-spacing:6px;text-align:center;font-family:monospace;color:#78350F;user-select:all;cursor:copy" onclick="navigator.clipboard.writeText('${p.code}').then(()=>showToast('Code copié','success'))">${p.code}</div>
-        <div style="display:flex;gap:6px;margin-top:8px">
-          ${method==='email' ? `<button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px" onclick="_openMailtoVerification('${p.email}','${p.code}')">📧 Ouvrir email</button>` : ''}
-          ${method==='sms' && S.security?.twoFactorPhone ? `<button class="btn btn-ghost" style="flex:1;font-size:11px;padding:6px" onclick="_openSmsVerification('${S.security.twoFactorPhone}','${p.code}')">📱 Ouvrir SMS</button>` : ''}
-          <button class="btn btn-primary" style="flex:1;font-size:11px;padding:6px" onclick="S.twoFACodeInput='${p.code}';render()">⚡ Auto-remplir</button>
-        </div>
-      </div>` : ''}
-
+      <div class="auth-title">${t('z2f_titreConnexion')}</div>
+      <div class="auth-sub">${sec ? t('z2f_secoursSous') : t('z2f_appSous')}</div>
       <div class="form-group" style="margin-top:20px">
-        <label class="form-label">${t('x4_code6Chiffres')}</label>
-        <input class="input" id="tfa-code" type="text" inputmode="numeric" maxlength="6" placeholder="000000"
-          style="letter-spacing:8px;text-align:center;font-size:24px;font-weight:700;font-family:monospace"
-          value="${S.twoFACodeInput || ''}"
-          oninput="S.twoFACodeInput=this.value.replace(/\\D/g,'').slice(0,6);if(this.value.length===6)verify2FA()">
+        <label class="form-label" for="tfa-code">${sec ? t('z2f_codeSecours') : t('x4_code6Chiffres')}</label>
+        <input class="input tfa-saisie" id="tfa-code" type="text" ${sec
+          ? 'autocomplete="off" autocapitalize="characters" maxlength="11" placeholder="XXXXX-XXXXX"'
+          : 'inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000"'}
+          value="${_impEsc(S.twoFACodeInput || '')}"
+          oninput="${sec ? 'S.twoFACodeInput=this.value.toUpperCase()' : "S.twoFACodeInput=this.value.replace(/\\D/g,'').slice(0,6);this.value=S.twoFACodeInput;if(S.twoFACodeInput.length===6)verify2FA()"}"
+          onkeydown="if(event.key==='Enter')verify2FA()">
       </div>
-
-      <button class="btn btn-primary" style="width:100%;margin-top:10px" onclick="verify2FA()">${t('x4_verifier')}</button>
-
-      <div style="text-align:center;margin-top:14px;display:flex;flex-direction:column;gap:8px">
-        <button class="btn-link" onclick="resend2FA()" style="background:none;border:none;color:var(--accent);font-size:13px;cursor:pointer">${t('x1_renvoyerCode')}</button>
-        <button class="btn-link" onclick="cancel2FA()" style="background:none;border:none;color:var(--text-3);font-size:12px;cursor:pointer">← Retour</button>
+      <div class="tfa-erreur" role="alert">${p.erreur ? _impEsc(p.erreur) : ''}</div>
+      <button class="btn btn-primary" id="tfa-go" style="width:100%;margin-top:6px" onclick="verify2FA()">${t('x4_verifier')}</button>
+      <div class="tfa-liens">
+        <button class="btn-link" onclick="S.twoFAPending.secours=${!sec};S.twoFACodeInput='';S.twoFAPending.erreur='';render()">${sec ? t('z2f_utiliserApp') : t('z2f_utiliserSecours')}</button>
+        <button class="btn-link tfa-retour" onclick="cancel2FA()">${t('z2f_retour')}</button>
       </div>
-
-      <div style="margin-top:20px;padding:10px;background:var(--accent-light);border-radius:8px;font-size:11px;color:var(--text-2);text-align:center">
-        💡 Le code expire dans 5 minutes
-      </div>
+      <div class="tfa-note">${t('z2f_expire')}</div>
     </div>
   </div>`;
+}
+async function verify2FA() {
+  const p = S.twoFAPending;
+  if (!p || p.enCours) return;
+  const code = String(S.twoFACodeInput || '').trim();
+  if (!code) return;
+  if (Date.now() > p.expires) { S.twoFAPending = null; S.view = 'home'; S.authView = 'login'; render(); showToast(t('z2f_ticketExpire'), 'error'); return; }
+  p.enCours = true; p.erreur = '';
+  const b = document.getElementById('tfa-go'); if (b) b.disabled = true;
+  let r = null, d = {};
+  try {
+    r = await fetch(API_BASE + '/api/auth/2fa/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ticket: p.ticket, code }) });
+    d = await r.json().catch(() => ({}));
+  } catch (_) { r = null; }
+  p.enCours = false;
+  if (!r) { p.erreur = t('zau_reseau'); render(); return; }
+  if (!r.ok || !d.user || !d.user.auth_token) {
+    try { logAudit('auth', '2fa_failed', { email: p.email }); } catch (_) {}
+    if (d.error === 'ticket') { S.twoFAPending = null; S.view = 'home'; S.authView = 'login'; render(); showToast(t('z2f_ticketExpire'), 'error'); return; }
+    p.erreur = d.error === 'bloque' ? t('z2f_bloque') : t('z2f_codeFaux');
+    S.twoFACodeInput = '';
+    render();
+    return;
+  }
+  try { logAudit('auth', '2fa_success', { email: d.user.email }); } catch (_) {}
+  S.twoFAPending = null; S.twoFACodeInput = '';
+  if (p.fournisseur) await _sessionSociale(p.fournisseur, { user: d.user, nouveau: false });
+  else await doLogin(d.user);
+}
+
+// ── Réglage : activer, montrer les codes de secours, désactiver ──
+async function _tfaAppel(chemin, corps) {
+  try {
+    const r = await fetch(API_BASE + '/api/auth/2fa' + chemin, {
+      method: corps ? 'POST' : 'GET',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + S.token },
+      body: corps ? JSON.stringify(corps) : undefined,
+    });
+    return { ok: r.ok, status: r.status, data: await r.json().catch(() => ({})) };
+  } catch (_) { return { ok: false, status: 0, data: { error: 'reseau' } }; }
+}
+function _tfaEnLigne() { return !USE_LOCAL && !!S.token && navigator.onLine !== false; }
+async function _tfaStatut() {
+  S.tfa = S.tfa || {};
+  if (S.tfa.charge) return;
+  S.tfa.charge = true;
+  const r = await _tfaAppel('/status');
+  S.tfa.charge = false;
+  S.tfa.statut = r.ok ? r.data : { indispo: true, reseau: r.status === 0 };
+  if (S.view === 'security') render();
+}
+async function _tfaPreparer() {
+  const r = await _tfaAppel('/setup', {});
+  if (!r.ok) { showToast(t(r.data.error === 'deja_active' ? 'z2f_dejaActive' : r.status === 0 ? 'zau_reseau' : 'z2f_echec'), 'error'); return; }
+  S.tfa = { etape: 'qr', secret: r.data.secret, uri: r.data.uri, statut: (S.tfa || {}).statut };
+  render();
+  _tfaQR();
+}
+async function _tfaQR() {
+  const st = S.tfa;
+  if (!st || !st.uri || st.qrSvg != null) return;
+  try {
+    await _spectraLoadScript('https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js');
+    const qr = window.qrcode(0, 'M');
+    qr.addData(st.uri);
+    qr.make();
+    st.qrSvg = qr.createSvgTag({ cellSize: 4, margin: 3, scalable: true, alt: t('z2f_qrAlt') });
+  } catch (_) { st.qrSvg = ''; }
+  if (S.tfa === st && S.view === 'security') render();
+}
+async function _tfaActiver() {
+  const el = document.getElementById('tfa-c');
+  const code = String((el && el.value) || '').replace(/\D/g, '');
+  if (code.length !== 6) { showToast(t('z2f_6chiffres'), 'error'); return; }
+  const r = await _tfaAppel('/enable', { code });
+  if (!r.ok) { showToast(t(r.data.error === 'bloque' ? 'z2f_bloque' : r.status === 0 ? 'zau_reseau' : 'z2f_codeFaux'), 'error'); return; }
+  S.tfa = { etape: 'codes', codes: r.data.recovery_codes || [], statut: { enabled: true, recovery_left: (r.data.recovery_codes || []).length } };
+  try { logAudit('settings', 'security_change', { twoFactor: 'on' }); } catch (_) {}
+  try { haptic('success'); } catch (_) {}
+  render();
+}
+async function _tfaCouper() {
+  const el = document.getElementById('tfa-c');
+  const code = String((el && el.value) || '').trim();
+  if (!code) { showToast(t('z2f_6chiffres'), 'error'); return; }
+  const r = await _tfaAppel('/disable', { code });
+  if (!r.ok) { showToast(t(r.data.error === 'bloque' ? 'z2f_bloque' : r.status === 0 ? 'zau_reseau' : 'z2f_codeFaux'), 'error'); return; }
+  S.tfa = { statut: { enabled: false } };
+  try { logAudit('settings', 'security_change', { twoFactor: 'off' }); } catch (_) {}
+  showToast(t('z2f_desactivee'), 'success');
+  render();
+}
+function _tfaCopier(txt) {
+  try { navigator.clipboard.writeText(txt).then(() => showToast(t('z2f_copie'), 'success')); } catch (_) {}
+}
+function _tfaTelecharger() {
+  const st = S.tfa; if (!st || !st.codes) return;
+  const contenu = [t('z2f_fichierTitre'), (S.session && S.session.email) || '', new Date().toLocaleString(_loc()), '', ...st.codes, '', t('z2f_fichierNote')].join('\r\n');
+  const url = URL.createObjectURL(new Blob([contenu], { type: 'text/plain;charset=utf-8' }));
+  const a = document.createElement('a');
+  a.href = url; a.download = 'baro-codes-secours.txt';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+}
+function _tfaCarte() {
+  const st = S.tfa || {};
+  let corps;
+  if (!_tfaEnLigne()) {
+    corps = `<div class="tfa-aide">${t('z2f_horsLigne')}</div>`;
+  } else if (st.etape === 'qr') {
+    const cle = (st.secret || '').match(/.{1,4}/g) || [];
+    corps = `
+      <ol class="tfa-etapes">
+        <li>${t('z2f_etape1')}</li>
+        <li>${t('z2f_etape2')}</li>
+      </ol>
+      <div class="tfa-qr">${st.qrSvg ? st.qrSvg : st.qrSvg === '' ? `<div class="tfa-qr-vide">${t('z2f_qrEchec')}</div>` : `<div class="tfa-qr-vide"><span class="imp-rond"></span></div>`}</div>
+      <div class="tfa-cle"><span>${t('z2f_cle')}</span><code>${cle.join(' ')}</code>
+        <button class="btn btn-ghost" onclick="_tfaCopier(${_jsArg(st.secret)})">${t('z2f_copier')}</button></div>
+      <a class="tfa-ouvrir" href="${_impEsc(st.uri)}">${t('z2f_ouvrirApp')}</a>
+      <ol class="tfa-etapes" start="3"><li>${t('z2f_etape3')}</li></ol>
+      <input class="input tfa-saisie" id="tfa-c" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" onkeydown="if(event.key==='Enter')_tfaActiver()">
+      <div class="tfa-boutons">
+        <button class="btn btn-ghost" onclick="S.tfa={statut:(S.tfa||{}).statut};render()">${t('zim_annuler')}</button>
+        <button class="btn btn-primary" onclick="_tfaActiver()">${t('w7_activer2FA')}</button>
+      </div>`;
+  } else if (st.etape === 'codes') {
+    corps = `
+      <div class="tfa-on">✓ ${t('z2f_active')}</div>
+      <div class="tfa-aide">${t('z2f_codesAide')}</div>
+      <div class="tfa-codes">${(st.codes || []).map(c => `<code>${_impEsc(c)}</code>`).join('')}</div>
+      <div class="tfa-boutons">
+        <button class="btn btn-ghost" onclick="_tfaCopier(${_jsArg((st.codes || []).join('\n'))})">${t('z2f_copier')}</button>
+        <button class="btn btn-ghost" onclick="_tfaTelecharger()">${t('z2f_telecharger')}</button>
+      </div>
+      <button class="btn btn-primary" style="width:100%;margin-top:8px" onclick="S.tfa={statut:S.tfa.statut};render()">${t('z2f_codesNotes')}</button>`;
+  } else if (st.etape === 'couper') {
+    corps = `
+      <div class="tfa-aide">${t('z2f_couperAide')}</div>
+      <input class="input tfa-saisie" id="tfa-c" type="text" autocomplete="one-time-code" maxlength="11" placeholder="000000" onkeydown="if(event.key==='Enter')_tfaCouper()">
+      <div class="tfa-boutons">
+        <button class="btn btn-ghost" onclick="S.tfa={statut:S.tfa.statut};render()">${t('zim_annuler')}</button>
+        <button class="btn btn-primary tfa-danger" onclick="_tfaCouper()">${t('w7_desactiver')}</button>
+      </div>`;
+  } else if (!st.statut) {
+    _tfaStatut();
+    corps = `<div class="tfa-aide">${t('z2f_chargement')}</div>`;
+  } else if (st.statut.indispo) {
+    corps = `<div class="tfa-aide">${t(st.statut.reseau ? 'zau_reseau' : 'z2f_indispo')}</div>
+      <button class="btn btn-ghost" style="width:100%" onclick="S.tfa={};render()">${t('z2f_reessayer')}</button>`;
+  } else if (st.statut.enabled) {
+    corps = `
+      <div class="tfa-on">✓ ${t('z2f_active')}</div>
+      <div class="tfa-aide">${tpar('z2f_secoursReste', st.statut.recovery_left || 0)}</div>
+      <button class="btn btn-ghost tfa-danger-g" style="width:100%" onclick="S.tfa.etape='couper';render()">${t('w7_desactiver')}</button>`;
+  } else {
+    corps = `
+      <div class="tfa-aide">${t('z2f_pourquoi')}</div>
+      <button class="btn btn-primary" style="width:100%" onclick="_tfaPreparer()">${t('w7_activer2FA')}</button>`;
+  }
+  return `<div class="card tfa" style="margin-bottom:12px"><div class="card-title">🔑 ${t('z2f_titre')}</div>${corps}</div>`;
 }
 
 // ── Envoi vérification EMAIL via EmailJS (gratuit, client-side, 200/mois) ──
@@ -12614,46 +12837,6 @@ function _openMailtoVerification(email, code) {
 function _openSmsVerification(phone, code) {
   const msg = encodeURIComponent(`[BARO] Code de vérification : ${code} (valide 5 min).`);
   window.location.href = `sms:${phone}?body=${msg}`;
-}
-
-async function verify2FA() {
-  const p = S.twoFAPending;
-  if (!p) return;
-  if (Date.now() > p.expires) { showToast('Code expiré. Renvoyez-le.', 'error'); return; }
-  const input = S.twoFACodeInput || '';
-  if (input !== p.code) {
-    if (typeof logAudit === 'function') logAudit('auth', '2fa_failed', { email: p.email });
-    showToast('Code incorrect', 'error');
-    return;
-  }
-  if (typeof logAudit === 'function') logAudit('auth', '2fa_success', { email: p.email });
-  S.twoFAPending = null;
-  S.twoFACodeInput = '';
-  S.view = 'home';
-  render();
-  await loadData();
-  showToast('🎉 Bienvenue !', 'success');
-}
-
-async function resend2FA() {
-  const p = S.twoFAPending;
-  if (!p) return;
-  p.code = String(Math.floor(100000 + Math.random() * 900000));
-  p.expires = Date.now() + 5 * 60 * 1000;
-  const method = p.method || S.security?.twoFactorMethod || 'email';
-  if (method === 'email') {
-    const r = await _sendVerificationEmail(p.email, p.code, 'Connexion BARO');
-    if (r.ok) showToast('📧 Code renvoyé à ' + p.email, 'success');
-    else showToast('Code : ' + p.code + ' (email non configuré)', 'info');
-  } else if (method === 'sms') {
-    const phone = S.security?.twoFactorPhone || '';
-    if (!phone) { showToast('Numéro manquant — code : ' + p.code, 'info'); return; }
-    const r = await _sendVerificationSMS(phone, p.code, 'Connexion BARO');
-    if (r.ok) showToast('📱 SMS renvoyé à ' + phone, 'success');
-    else showToast('Code : ' + p.code + ' (SMS non configuré)', 'info');
-  } else {
-    showToast('Code : ' + p.code, 'info');
-  }
 }
 
 function cancel2FA() {
@@ -16824,12 +17007,16 @@ async function _finirConnexionSociale(fournisseur, corps) {
     });
   } catch (_) { showToast(t('zau_reseau'), 'error'); return; }
   const d = await r.json().catch(() => ({}));
+  if (r.ok && d.need_2fa) { _ouvrir2FA(d.ticket, '', fournisseur); return; }
   if (!r.ok || !d.user || !d.user.auth_token) {
     const e = d && d.error;
     showToast(e === 'non_configure' ? t(fournisseur === 'apple' ? 'zau_appleOff' : 'zau_googleOff')
       : e === 'email_non_verifie' ? t('zau_nonVerifie') : e === 'jeton' ? t('zau_refuse') : t('zau_echec'), 'error');
     return;
   }
+  await _sessionSociale(fournisseur, d);
+}
+async function _sessionSociale(fournisseur, d) {
   const u = d.user;
   S.token = u.auth_token;
   // Type de commerce : celui déjà choisi sur cet appareil, sinon celui du
@@ -28954,82 +29141,27 @@ function vSecurity() {
       `}
     </div>
 
-    <!-- 2FA -->
-    <div class="card" style="margin-bottom:12px">
-      <div class="card-title">🔑 Double authentification (2FA)</div>
-      <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">${t('w7_codeChaqueCo')}</div>
-      <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;cursor:pointer">
-        <span style="font-size:13px;color:var(--text-1);font-weight:600">${t('w7_activer2FA')}</span>
-        <input type="checkbox" ${s.twoFactorEnabled ? 'checked' : ''} onchange="setSecurity('twoFactorEnabled',this.checked)" style="transform:scale(1.5)">
-      </label>
-      ${s.twoFactorEnabled ? `
-        <div style="margin-top:10px">
-          <label class="form-label">${t('w7_methode')}</label>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
-            ${[['email','📧 Email'],['sms','📱 SMS'],['app','🔐 App']].map(([v,lbl]) => `
-              <button onclick="setSecurity('twoFactorMethod','${v}')" style="padding:10px 4px;border-radius:8px;border:2px solid ${s.twoFactorMethod===v?'var(--accent)':'var(--border)'};background:${s.twoFactorMethod===v?'var(--accent-light)':'var(--card-bg)'};font-size:12px;font-weight:700;color:${s.twoFactorMethod===v?'var(--accent)':'var(--text-1)'};cursor:pointer">${lbl}</button>
-            `).join('')}
-          </div>
-
-          ${s.twoFactorMethod === 'email' ? `
-            <div style="margin-top:14px;padding:12px;background:var(--gray-1);border-radius:10px">
-              <div style="font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px">${t('w7_emailVerif')}</div>
-              <input class="input" type="email" placeholder="ex: vous@gmail.com" value="${s.twoFactorEmail || S.session?.email || ''}" oninput="setSecurity('twoFactorEmail', this.value)" style="font-size:14px !important">
-              <div style="display:flex;gap:6px;margin-top:8px;align-items:center">
-                <button class="btn btn-ghost" style="flex:1;font-size:12px" onclick="nav('notifications-setup')">⚙️ Configurer EmailJS</button>
-                <button class="btn btn-primary" style="flex:1;font-size:12px" onclick="testVerificationEmail()">${t('x4_envoyerTest')}</button>
-              </div>
-              <div style="font-size:11px;color:${localStorage.getItem('stockr_emailjs_public') ? 'var(--success)' : 'var(--text-3)'};margin-top:6px">
-                ${localStorage.getItem('stockr_emailjs_public') ? '🟢 EmailJS configuré — envoi réel activé' : '⚪ EmailJS non configuré — codes affichés localement'}
-              </div>
-            </div>
-          ` : ''}
-
-          ${s.twoFactorMethod === 'sms' ? `
-            <div style="margin-top:14px;padding:12px;background:var(--gray-1);border-radius:10px">
-              <div style="font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px">${t('w7_numeroSms')}</div>
-              <input class="input" type="tel" placeholder="+225 07 XX XX XX" value="${s.twoFactorPhone || ''}" oninput="setSecurity('twoFactorPhone', this.value)" style="font-size:14px !important">
-              <div style="display:flex;gap:6px;margin-top:8px">
-                <button class="btn btn-ghost" style="flex:1;font-size:12px" onclick="nav('notifications-setup')">⚙️ Config SMS</button>
-                <button class="btn btn-primary" style="flex:1;font-size:12px" onclick="testVerificationSMS()">${t('x4_envoyerTest')}</button>
-              </div>
-              <div style="font-size:11px;color:${localStorage.getItem('stockr_sms_webhook') ? 'var(--success)' : 'var(--text-3)'};margin-top:6px">
-                ${localStorage.getItem('stockr_sms_webhook') ? '🟢 SMS gateway configurée — envoi réel activé' : '⚪ Pas de webhook SMS — codes affichés localement'}
-              </div>
-            </div>
-          ` : ''}
-
-          ${s.twoFactorMethod === 'app' ? `
-            <div style="margin-top:14px;padding:12px;background:var(--gray-1);border-radius:10px">
-              <div style="font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px">🔐 App authenticator</div>
-              <div style="font-size:12px;color:var(--text-2);line-height:1.6">
-                Utilisez Google Authenticator, Authy ou Microsoft Authenticator. Le code à 6 chiffres sera demandé à chaque connexion.
-              </div>
-            </div>
-          ` : ''}
-        </div>
-      ` : ''}
-    </div>
+    ${_tfaCarte()}
 
     <!-- Biométrie -->
     <div class="card" style="margin-bottom:12px">
       <div class="card-title">${t('w7_biometrie')}</div>
-      <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">Empreinte digitale, reconnaissance faciale (TouchID / FaceID / Windows Hello).</div>
+      <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">${t('z2f_bioAide')}</div>
       <label style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;cursor:pointer">
         <span style="font-size:13px;color:var(--text-1);font-weight:600">${t('w7_activerBio')}</span>
         <input type="checkbox" ${s.biometricEnabled ? 'checked' : ''} onchange="setSecurity('biometricEnabled',this.checked)" style="transform:scale(1.5)">
       </label>
       ${!window.PublicKeyCredential ? `<div style="font-size:11px;color:#F59E0B;margin-top:6px">${t('w7_webauthnNon')}</div>` : ''}
-      ${s.biometricEnabled && localStorage.getItem('stockr_webauthn_cred') ? `<div style="font-size:11px;color:#10B981;margin-top:6px">✅ Capteur biométrique enrôlé — vous pouvez vous connecter par biométrie</div>` : ''}
+      ${s.biometricEnabled && localStorage.getItem('stockr_webauthn_cred') ? `<div style="font-size:11px;color:var(--success);margin-top:6px">${t('z2f_bioOk')}</div>` : ''}
       ${window.PublicKeyCredential && window.location.protocol !== 'https:' && window.location.hostname !== 'localhost' ? `<div style="font-size:11px;color:#F59E0B;margin-top:6px">${t('w7_httpsRequis')}</div>` : ''}
     </div>
 
     <!-- Timeout session -->
     <div class="card" style="margin-bottom:12px">
-      <div class="card-title">⏱ Expiration de session</div>
+      <div class="card-title">${t('z2f_sessionT')}</div>
       <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">${t('w7_deconnexionAuto')}</div>
       <select class="input" onchange="setSecurity('sessionTimeoutMin',parseInt(this.value))">
-        ${[[15,'15 minutes'],[30,'30 minutes'],[60,'1 heure'],[120,'2 heures'],[0,'Jamais']].map(([v,lbl]) => `
+        ${[[15,tpar('z2f_minutes',15)],[30,tpar('z2f_minutes',30)],[60,t('z2f_1h')],[120,t('z2f_2h')],[0,t('z2f_jamais')]].map(([v,lbl]) => `
           <option value="${v}" ${s.sessionTimeoutMin===v?'selected':''}>${lbl}</option>
         `).join('')}
       </select>
@@ -29043,7 +29175,7 @@ function vSecurity() {
           <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px">
             <div style="font-size:16px">${at.success ? '✅' : '❌'}</div>
             <div style="flex:1">
-              <div style="font-weight:600;color:var(--text-1)">${at.success ? 'Succès' : 'Échec'}</div>
+              <div style="font-weight:600;color:var(--text-1)">${at.success ? t('z2f_succes') : t('z2f_echecCo')}</div>
               <div style="font-size:11px;color:var(--text-3)">${new Date(at.ts).toLocaleString(_loc())}</div>
             </div>
             <div style="font-size:10px;color:var(--text-3);font-family:monospace">${at.ip || 'local'}</div>
@@ -29077,7 +29209,7 @@ async function setSecurity(key, value) {
   S.security[key] = value;
   try { localStorage.setItem('stockr_security', JSON.stringify(S.security)); } catch(_){}
   logAudit('settings', 'security_change', { [key]: String(value) });
-  showToast('Paramètres sécurité enregistrés', 'success');
+  showToast(t('z2f_enregistre'), 'success');
   render();
 }
 
@@ -48606,7 +48738,6 @@ function __baroInit() {
   window.resetAppearance    = resetAppearance;
   window.setSecurity        = setSecurity;
   window.verify2FA          = verify2FA;
-  window.resend2FA          = resend2FA;
   window.cancel2FA          = cancel2FA;
   window.exportAuditLogCSV  = exportAuditLogCSV;
   window.clearAuditLog      = clearAuditLog;
